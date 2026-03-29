@@ -6,4 +6,4 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-st.title(":gray[Amazon Sales Dataset Analysis]", text_alignment="center")
+st.title("🛒 :gray[Amazon Sales Dataset Analysis]", text_alignment="center")
