@@ -33,12 +33,12 @@ class Components:
                     padding: 1rem; border-radius: 10px; height: 100%;
                     transition: transform 0.3s ease;'>
             <div style='display: flex; align-items: center; margin-bottom: 0.5rem;'>
-                <p style='color: {Colors.GREY}; margin: 0; font-size: 0.85rem;
+                <p style='color: {Colors.PLATINUM}; margin: 0; font-size: 0.85rem;
                             text-transform: uppercase; letter-spacing: 1px;'>
                     {title}
                 </p>
             </div>
-            <p style='color: {Colors.CHARCOAL}; margin: 0; font-size: 1.6rem, font-weight: 700;'>
+            <p style='color: {Colors.PLATINUM}; margin: 0; font-size: 1.6rem, font-weight: 700;'>
                     {value}
             </p>
             {delta_html}
