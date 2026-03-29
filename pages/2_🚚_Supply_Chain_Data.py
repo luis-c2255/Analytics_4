@@ -155,7 +155,7 @@ fig3 = px.scatter(filtered_df, x='price', y='revenue_generated',
                       symbol='product_type',
                       hover_name='sku',
                       title='Price vs. Revenue Generated',
-                      color_discrete_sequence= px.colors.sequential.Plasma_r,
+                      color_discrete_map={'haircare': 'blue', 'skincare': 'orange', 'cosmetics': 'green'},
                       labels={'price': 'Price', 'revenue_generated': 'Revenue Generated'},
                       log_x=True, size_max=60)
 st.plotly_chart(fig3, width="stretch")

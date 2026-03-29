@@ -734,7 +734,7 @@
         "kind": 5,
         "importPath": "pages.2_🚚_Supply_Chain_Data",
         "description": "pages.2_🚚_Supply_Chain_Data",
-        "peekOfCode": "fig3 = px.scatter(filtered_df, x='price', y='revenue_generated',\n                      color='product_type', size='number_of_products_sold',\n                      symbol='product_type',\n                      hover_name='sku',\n                      title='Price vs. Revenue Generated',\n                      color_discrete_sequence= px.colors.sequential.Plasma_r,\n                      labels={'price': 'Price', 'revenue_generated': 'Revenue Generated'},\n                      log_x=True, size_max=60)\nst.plotly_chart(fig3, width=\"stretch\")\nst.markdown(\"   \")",
+        "peekOfCode": "fig3 = px.scatter(filtered_df, x='price', y='revenue_generated',\n                      color='product_type', size='number_of_products_sold',\n                      symbol='product_type',\n                      hover_name='sku',\n                      title='Price vs. Revenue Generated',\n                      color_discrete_map={'haircare': 'blue', 'skincare': 'orange', 'cosmetics': 'green'},\n                      labels={'price': 'Price', 'revenue_generated': 'Revenue Generated'},\n                      log_x=True, size_max=60)\nst.plotly_chart(fig3, width=\"stretch\")\nst.markdown(\"   \")",
         "detail": "pages.2_🚚_Supply_Chain_Data",
         "documentation": {}
     },
