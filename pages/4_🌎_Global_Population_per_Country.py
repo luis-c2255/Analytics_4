@@ -174,7 +174,7 @@ with col3:
             card_type="warning"
         ), unsafe_allow_html=True
     )
-    
+st.markdown("   ")
 year_for_bar = st.slider(
         "Select Year for Top Population Chart",
         min_value=selected_years[0],
