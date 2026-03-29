@@ -129,3 +129,25 @@ with col5:
         card_type="info"
     ), unsafe_allow_html=True
 )
+
+st.subheader("📊 :green[Overview]", divider="green")
+st.markdown("   ")
+st.subheader("📈 :blue[Product Performance]", divider="blue")
+st.markdown("   ")
+st.subheader("🔗 :yellow[Supply Chain Efficiency]", divider="yellow")
+st.markdown("   ")
+st.subheader("🚚 :red[Logistics & Inventory Deep Dive]", divider="red")
+st.markdown("   ")
+
+
+# ============================================
+# FOOTER
+# ============================================
+st.markdown("---")
+st.markdown("""
+<div style='text-align: center; color: #666;'>
+    <p><strong>📽️ Global Movie Trends (2026) Analysis</strong></p>
+    <p>Explore key metrics, trends, and distribution of movies based on popularity, vote average, genres, and languages.</p>
+    <p style='font-size: 0.9rem;'>Navigate using the sidebar to explore different datasets</p>
+</div>
+""", unsafe_allow_html=True)
