@@ -144,8 +144,8 @@ with col2:
             title="Avg Vote Score",
             value=f"{avg_vote_average:.2f}",
             delta=f"{delta_avg_vote}",
-            delta_positive=True,
-            card_type="success"
+            delta_positive=False,
+            card_type="error"
         ), unsafe_allow_html=True
     )
 with col3:
