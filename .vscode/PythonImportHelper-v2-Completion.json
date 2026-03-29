@@ -361,6 +361,24 @@
         "documentation": {}
     },
     {
+        "label": "trend_df",
+        "kind": 5,
+        "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "description": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "peekOfCode": "trend_df = filtered_df.groupby('release_year').agg(\n    avg_popularity=('popularity', 'mean'),\n    avg_vote_average=('vote_average', 'mean'),\n    movie_count=('id', 'nunique')\n).reset_index()\nfig_pop_trend = px.line(\n    trend_df,\n    x='release_year',\n    y='avg_popularity',\n    title='Average Movie Popularity by Release Year',",
+        "detail": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "documentation": {}
+    },
+    {
+        "label": "fig_pop_trend",
+        "kind": 5,
+        "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "description": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "peekOfCode": "fig_pop_trend = px.line(\n    trend_df,\n    x='release_year',\n    y='avg_popularity',\n    title='Average Movie Popularity by Release Year',\n    labels={'avg_popularity': 'Average Popularity', 'release_year': 'Release Year'},\n    markers=True,\n    line_shape='spline',\n    color_discrete_sequence=['#FFA07A']\n)",
+        "detail": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "documentation": {}
+    },
+    {
         "label": "Colors",
         "kind": 6,
         "importPath": "utils.theme",

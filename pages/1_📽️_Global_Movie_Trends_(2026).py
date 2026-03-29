@@ -216,6 +216,24 @@ st.markdown("   ")
 st.subheader(":green[Trends Over Time]", divider="green")
 st.markdown("   ")
 
+trend_df = filtered_df.groupby('release_year').agg(
+    avg_popularity=('popularity', 'mean'),
+    avg_vote_average=('vote_average', 'mean'),
+    movie_count=('id', 'nunique')
+).reset_index()
+
+fig_pop_trend = px.line(
+    trend_df,
+    x='release_year',
+    y='avg_popularity',
+    title='Average Movie Popularity by Release Year',
+    labels={'avg_popularity': 'Average Popularity', 'release_year': 'Release Year'},
+    markers=True,
+    line_shape='spline',
+    color_discrete_sequence=['#FFA07A']
+)
+st.plotly_chart(fig_pop_trend, width="stretch")
+
 st.subheader(":orange[Relationships]", divider="orange")
 st.markdown("   ")
 
