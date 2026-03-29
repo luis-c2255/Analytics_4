@@ -264,7 +264,7 @@ with col2:
         Components.metric_card(
             title="Avg. % Growth (Range)",
             value=f"{pop_change_analysis['percentage_change'].mean():,.1f}%",
-            delta="",
+            delta="🟢",
             card_type="info"
         ), unsafe_allow_html=True
     )
@@ -273,7 +273,7 @@ with col3:
         Components.metric_card(
             title="Countries with Negative Growth",
             value=f"{pop_change_analysis[pop_change_analysis['percentage_change'] < 0].shape[0]}",
-            delta="",
+            delta="🔴",
             card_type="warning"
         ), unsafe_allow_html=True
     )
