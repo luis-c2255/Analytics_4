@@ -1,0 +1,381 @@
+[
+    {
+        "label": "streamlit",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "streamlit",
+        "description": "streamlit",
+        "detail": "streamlit",
+        "documentation": {}
+    },
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "plotly.express",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "plotly.express",
+        "description": "plotly.express",
+        "detail": "plotly.express",
+        "documentation": {}
+    },
+    {
+        "label": "ast",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "ast",
+        "description": "ast",
+        "detail": "ast",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "Components",
+        "importPath": "utils.theme",
+        "description": "utils.theme",
+        "isExtraImport": true,
+        "detail": "utils.theme",
+        "documentation": {}
+    },
+    {
+        "label": "Components",
+        "importPath": "utils.theme",
+        "description": "utils.theme",
+        "isExtraImport": true,
+        "detail": "utils.theme",
+        "documentation": {}
+    },
+    {
+        "label": "Components",
+        "importPath": "utils.theme",
+        "description": "utils.theme",
+        "isExtraImport": true,
+        "detail": "utils.theme",
+        "documentation": {}
+    },
+    {
+        "label": "Components",
+        "importPath": "utils.theme",
+        "description": "utils.theme",
+        "isExtraImport": true,
+        "detail": "utils.theme",
+        "documentation": {}
+    },
+    {
+        "label": "Components",
+        "importPath": "utils.theme",
+        "description": "utils.theme",
+        "isExtraImport": true,
+        "detail": "utils.theme",
+        "documentation": {}
+    },
+    {
+        "label": "Components",
+        "importPath": "utils.theme",
+        "description": "utils.theme",
+        "isExtraImport": true,
+        "detail": "utils.theme",
+        "documentation": {}
+    },
+    {
+        "label": "Components",
+        "importPath": "utils.theme",
+        "description": "utils.theme",
+        "isExtraImport": true,
+        "detail": "utils.theme",
+        "documentation": {}
+    },
+    {
+        "label": "Components",
+        "importPath": "utils.theme",
+        "description": "utils.theme",
+        "isExtraImport": true,
+        "detail": "utils.theme",
+        "documentation": {}
+    },
+    {
+        "label": "load_data",
+        "kind": 2,
+        "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "description": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "peekOfCode": "def load_data():\n    df = pd.read_csv(\"global_movie_trends.csv\")\n    if df.columns[0].startswith('Unnamed'):\n        df = df.iloc[:, 1:]\n    # Convert release date to datetime and extract year\n    df['release_date'] = pd.to_datetime(df[\"release_date\"], errors='coerce')\n    df[\"release_year\"] = df[\"release_date\"].dt.year\n    # Handle genre_ids: convert string representation of list to actual list, then explode\n    df['genre_ids'] = df[\"genre_ids\"].apply(lambda x: ast.literal_eval(x) if pd.notna(x) else [])\n    # Add a simple mapping to genre",
+        "detail": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "documentation": {}
+    },
+    {
+        "label": "min_year",
+        "kind": 5,
+        "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "description": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "peekOfCode": "min_year = int(df['release_year'].min())\nmax_year = int(df['release_year'].max())\nselected_years = st.sidebar.slider(\n    \"Select Release Year Range\",\n    min_value=min_year,\n    max_value=max_year,\n    value=(min_year, max_year)\n)\n# Language Multi-Select\nall_languages = sorted(df['original_language'].unique().tolist())",
+        "detail": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "documentation": {}
+    },
+    {
+        "label": "max_year",
+        "kind": 5,
+        "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "description": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "peekOfCode": "max_year = int(df['release_year'].max())\nselected_years = st.sidebar.slider(\n    \"Select Release Year Range\",\n    min_value=min_year,\n    max_value=max_year,\n    value=(min_year, max_year)\n)\n# Language Multi-Select\nall_languages = sorted(df['original_language'].unique().tolist())\nselected_languages = st.sidebar.multiselect(",
+        "detail": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "documentation": {}
+    },
+    {
+        "label": "selected_years",
+        "kind": 5,
+        "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "description": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "peekOfCode": "selected_years = st.sidebar.slider(\n    \"Select Release Year Range\",\n    min_value=min_year,\n    max_value=max_year,\n    value=(min_year, max_year)\n)\n# Language Multi-Select\nall_languages = sorted(df['original_language'].unique().tolist())\nselected_languages = st.sidebar.multiselect(\n    \"Select Original Languages\",",
+        "detail": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "documentation": {}
+    },
+    {
+        "label": "all_languages",
+        "kind": 5,
+        "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "description": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "peekOfCode": "all_languages = sorted(df['original_language'].unique().tolist())\nselected_languages = st.sidebar.multiselect(\n    \"Select Original Languages\",\n    options=all_languages,\n    default=all_languages[:min(5, len(all_languages))]\n)\n# Genre Multi-Select\nall_genres = sorted(df_exploded_genres['genre_name'].unique().tolist())\nselected_genres = st.sidebar.multiselect(\n    \"Select Genres\",",
+        "detail": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "documentation": {}
+    },
+    {
+        "label": "selected_languages",
+        "kind": 5,
+        "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "description": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "peekOfCode": "selected_languages = st.sidebar.multiselect(\n    \"Select Original Languages\",\n    options=all_languages,\n    default=all_languages[:min(5, len(all_languages))]\n)\n# Genre Multi-Select\nall_genres = sorted(df_exploded_genres['genre_name'].unique().tolist())\nselected_genres = st.sidebar.multiselect(\n    \"Select Genres\",\n    options=all_genres,",
+        "detail": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "documentation": {}
+    },
+    {
+        "label": "all_genres",
+        "kind": 5,
+        "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "description": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "peekOfCode": "all_genres = sorted(df_exploded_genres['genre_name'].unique().tolist())\nselected_genres = st.sidebar.multiselect(\n    \"Select Genres\",\n    options=all_genres,\n    default=all_genres[:min(5, len(all_genres))]\n)\n# Apply filters\nfiltered_df = df[\n    (df['release_year'] >= selected_years[0]) &\n    (df['release_year'] <= selected_years[1]) &",
+        "detail": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "documentation": {}
+    },
+    {
+        "label": "selected_genres",
+        "kind": 5,
+        "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "description": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "peekOfCode": "selected_genres = st.sidebar.multiselect(\n    \"Select Genres\",\n    options=all_genres,\n    default=all_genres[:min(5, len(all_genres))]\n)\n# Apply filters\nfiltered_df = df[\n    (df['release_year'] >= selected_years[0]) &\n    (df['release_year'] <= selected_years[1]) &\n    (df['original_language'].isin(selected_languages)) &",
+        "detail": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "documentation": {}
+    },
+    {
+        "label": "filtered_df",
+        "kind": 5,
+        "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "description": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "peekOfCode": "filtered_df = df[\n    (df['release_year'] >= selected_years[0]) &\n    (df['release_year'] <= selected_years[1]) &\n    (df['original_language'].isin(selected_languages)) &\n    (df['primary_genre'].isin(selected_genres))\n]\n# Further fitler for genres on exploded df\nfiltered_df_exploded_genres = df_exploded_genres[\n    (df_exploded_genres['release_year'] >= selected_years[0]) &\n    (df_exploded_genres['release_year'] <= selected_years[1]) &",
+        "detail": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "documentation": {}
+    },
+    {
+        "label": "filtered_df_exploded_genres",
+        "kind": 5,
+        "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "description": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "peekOfCode": "filtered_df_exploded_genres = df_exploded_genres[\n    (df_exploded_genres['release_year'] >= selected_years[0]) &\n    (df_exploded_genres['release_year'] <= selected_years[1]) &\n    (df_exploded_genres['original_language'].isin(selected_languages)) &\n    (df_exploded_genres['genre_name'].isin(selected_genres))\n]\n# Handle cases where filters result empty dataframes\nif filtered_df.empty or filtered_df_exploded_genres.empty:\n    st.warning(\"No data available for the selected filters. Please adjust your selections.\")\n    st.stop()",
+        "detail": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "documentation": {}
+    },
+    {
+        "label": "total_movies",
+        "kind": 5,
+        "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "description": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "peekOfCode": "total_movies = filtered_df['id'].nunique()\navg_vote_average = filtered_df['vote_average'].mean()\navg_popularity = filtered_df['popularity'].mean()\navg_vote_count = filtered_df['vote_count'].mean()\n# calculate delta\noverall_total_movies = df['id'].nunique()\noverall_avg_vote_average = df['vote_average'].mean()\noverall_avg_popularity = df['popularity'].mean()\ndelta_total_movies = f\"{int(total_movies - overall_avg_vote_average):+}\"\ndelta_avg_vote = f\"{(avg_vote_average - overall_avg_vote_average) / overall_avg_vote_average * 100:.1f}%\"",
+        "detail": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "documentation": {}
+    },
+    {
+        "label": "avg_vote_average",
+        "kind": 5,
+        "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "description": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "peekOfCode": "avg_vote_average = filtered_df['vote_average'].mean()\navg_popularity = filtered_df['popularity'].mean()\navg_vote_count = filtered_df['vote_count'].mean()\n# calculate delta\noverall_total_movies = df['id'].nunique()\noverall_avg_vote_average = df['vote_average'].mean()\noverall_avg_popularity = df['popularity'].mean()\ndelta_total_movies = f\"{int(total_movies - overall_avg_vote_average):+}\"\ndelta_avg_vote = f\"{(avg_vote_average - overall_avg_vote_average) / overall_avg_vote_average * 100:.1f}%\"\ndelta_avg_pop = f\"{(avg_popularity - overall_avg_popularity) / overall_avg_popularity * 100:.1f}%\"",
+        "detail": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "documentation": {}
+    },
+    {
+        "label": "avg_popularity",
+        "kind": 5,
+        "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "description": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "peekOfCode": "avg_popularity = filtered_df['popularity'].mean()\navg_vote_count = filtered_df['vote_count'].mean()\n# calculate delta\noverall_total_movies = df['id'].nunique()\noverall_avg_vote_average = df['vote_average'].mean()\noverall_avg_popularity = df['popularity'].mean()\ndelta_total_movies = f\"{int(total_movies - overall_avg_vote_average):+}\"\ndelta_avg_vote = f\"{(avg_vote_average - overall_avg_vote_average) / overall_avg_vote_average * 100:.1f}%\"\ndelta_avg_pop = f\"{(avg_popularity - overall_avg_popularity) / overall_avg_popularity * 100:.1f}%\"\ncol1, col2, col3 = st.columns(3)",
+        "detail": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "documentation": {}
+    },
+    {
+        "label": "avg_vote_count",
+        "kind": 5,
+        "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "description": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "peekOfCode": "avg_vote_count = filtered_df['vote_count'].mean()\n# calculate delta\noverall_total_movies = df['id'].nunique()\noverall_avg_vote_average = df['vote_average'].mean()\noverall_avg_popularity = df['popularity'].mean()\ndelta_total_movies = f\"{int(total_movies - overall_avg_vote_average):+}\"\ndelta_avg_vote = f\"{(avg_vote_average - overall_avg_vote_average) / overall_avg_vote_average * 100:.1f}%\"\ndelta_avg_pop = f\"{(avg_popularity - overall_avg_popularity) / overall_avg_popularity * 100:.1f}%\"\ncol1, col2, col3 = st.columns(3)\nwith col1:",
+        "detail": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "documentation": {}
+    },
+    {
+        "label": "overall_total_movies",
+        "kind": 5,
+        "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "description": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "peekOfCode": "overall_total_movies = df['id'].nunique()\noverall_avg_vote_average = df['vote_average'].mean()\noverall_avg_popularity = df['popularity'].mean()\ndelta_total_movies = f\"{int(total_movies - overall_avg_vote_average):+}\"\ndelta_avg_vote = f\"{(avg_vote_average - overall_avg_vote_average) / overall_avg_vote_average * 100:.1f}%\"\ndelta_avg_pop = f\"{(avg_popularity - overall_avg_popularity) / overall_avg_popularity * 100:.1f}%\"\ncol1, col2, col3 = st.columns(3)\nwith col1:\n    st.markdown(\n        Components.metric_card(",
+        "detail": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "documentation": {}
+    },
+    {
+        "label": "overall_avg_vote_average",
+        "kind": 5,
+        "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "description": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "peekOfCode": "overall_avg_vote_average = df['vote_average'].mean()\noverall_avg_popularity = df['popularity'].mean()\ndelta_total_movies = f\"{int(total_movies - overall_avg_vote_average):+}\"\ndelta_avg_vote = f\"{(avg_vote_average - overall_avg_vote_average) / overall_avg_vote_average * 100:.1f}%\"\ndelta_avg_pop = f\"{(avg_popularity - overall_avg_popularity) / overall_avg_popularity * 100:.1f}%\"\ncol1, col2, col3 = st.columns(3)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n            title=\"Total Movies\",",
+        "detail": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "documentation": {}
+    },
+    {
+        "label": "overall_avg_popularity",
+        "kind": 5,
+        "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "description": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "peekOfCode": "overall_avg_popularity = df['popularity'].mean()\ndelta_total_movies = f\"{int(total_movies - overall_avg_vote_average):+}\"\ndelta_avg_vote = f\"{(avg_vote_average - overall_avg_vote_average) / overall_avg_vote_average * 100:.1f}%\"\ndelta_avg_pop = f\"{(avg_popularity - overall_avg_popularity) / overall_avg_popularity * 100:.1f}%\"\ncol1, col2, col3 = st.columns(3)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n            title=\"Total Movies\",\n            value=f\"{total_movies:,}\",",
+        "detail": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "documentation": {}
+    },
+    {
+        "label": "delta_total_movies",
+        "kind": 5,
+        "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "description": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "peekOfCode": "delta_total_movies = f\"{int(total_movies - overall_avg_vote_average):+}\"\ndelta_avg_vote = f\"{(avg_vote_average - overall_avg_vote_average) / overall_avg_vote_average * 100:.1f}%\"\ndelta_avg_pop = f\"{(avg_popularity - overall_avg_popularity) / overall_avg_popularity * 100:.1f}%\"\ncol1, col2, col3 = st.columns(3)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n            title=\"Total Movies\",\n            value=f\"{total_movies:,}\",\n            delta=f\"{delta_total_movies}\",",
+        "detail": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "documentation": {}
+    },
+    {
+        "label": "delta_avg_vote",
+        "kind": 5,
+        "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "description": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "peekOfCode": "delta_avg_vote = f\"{(avg_vote_average - overall_avg_vote_average) / overall_avg_vote_average * 100:.1f}%\"\ndelta_avg_pop = f\"{(avg_popularity - overall_avg_popularity) / overall_avg_popularity * 100:.1f}%\"\ncol1, col2, col3 = st.columns(3)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n            title=\"Total Movies\",\n            value=f\"{total_movies:,}\",\n            delta=f\"{delta_total_movies}\",\n            card_type=\"info\"",
+        "detail": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "documentation": {}
+    },
+    {
+        "label": "delta_avg_pop",
+        "kind": 5,
+        "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "description": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "peekOfCode": "delta_avg_pop = f\"{(avg_popularity - overall_avg_popularity) / overall_avg_popularity * 100:.1f}%\"\ncol1, col2, col3 = st.columns(3)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n            title=\"Total Movies\",\n            value=f\"{total_movies:,}\",\n            delta=f\"{delta_total_movies}\",\n            card_type=\"info\"\n        ), unsafe_allow_html=True",
+        "detail": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "documentation": {}
+    },
+    {
+        "label": "lang_counts",
+        "kind": 5,
+        "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "description": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "peekOfCode": "lang_counts = filtered_df['original_language'].value_counts().head(10).reset_index()\nlang_counts.columns = ['Language', 'Count']\nfig_lang_count = px.bar(\n    lang_counts,\n    x='Count',\n    y='Language',\n    orientation='h',\n    title='Top 10 Languages by Movie Count',\n    labels={'Count': 'Number of Movies', 'Language': 'Original Language'},\n    color='Count',",
+        "detail": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "documentation": {}
+    },
+    {
+        "label": "lang_counts.columns",
+        "kind": 5,
+        "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "description": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "peekOfCode": "lang_counts.columns = ['Language', 'Count']\nfig_lang_count = px.bar(\n    lang_counts,\n    x='Count',\n    y='Language',\n    orientation='h',\n    title='Top 10 Languages by Movie Count',\n    labels={'Count': 'Number of Movies', 'Language': 'Original Language'},\n    color='Count',\n    color_continuous_scale=px.colors.sequential.Viridis",
+        "detail": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "documentation": {}
+    },
+    {
+        "label": "fig_lang_count",
+        "kind": 5,
+        "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "description": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "peekOfCode": "fig_lang_count = px.bar(\n    lang_counts,\n    x='Count',\n    y='Language',\n    orientation='h',\n    title='Top 10 Languages by Movie Count',\n    labels={'Count': 'Number of Movies', 'Language': 'Original Language'},\n    color='Count',\n    color_continuous_scale=px.colors.sequential.Viridis\n)",
+        "detail": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "documentation": {}
+    },
+    {
+        "label": "genre_counts",
+        "kind": 5,
+        "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "description": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "peekOfCode": "genre_counts = filtered_df_exploded_genres['genre_name'].value_counts().head(10).reset_index()\ngenre_counts.columns = ['Genre', 'Count']\nfig_genre_count = px.bar(\n    genre_counts,\n    x='Count',\n    y='Genre',\n    orientation='h',\n    title='Top 10 Genres by Movie Count',\n    labels={'Count': 'Number of Movies', 'Genre': 'Movie Genre'},\n    color='Count',",
+        "detail": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "documentation": {}
+    },
+    {
+        "label": "genre_counts.columns",
+        "kind": 5,
+        "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "description": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "peekOfCode": "genre_counts.columns = ['Genre', 'Count']\nfig_genre_count = px.bar(\n    genre_counts,\n    x='Count',\n    y='Genre',\n    orientation='h',\n    title='Top 10 Genres by Movie Count',\n    labels={'Count': 'Number of Movies', 'Genre': 'Movie Genre'},\n    color='Count',\n    color_continuous_scale=px.colors.sequential.Plasma",
+        "detail": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "documentation": {}
+    },
+    {
+        "label": "fig_genre_count",
+        "kind": 5,
+        "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "description": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "peekOfCode": "fig_genre_count = px.bar(\n    genre_counts,\n    x='Count',\n    y='Genre',\n    orientation='h',\n    title='Top 10 Genres by Movie Count',\n    labels={'Count': 'Number of Movies', 'Genre': 'Movie Genre'},\n    color='Count',\n    color_continuous_scale=px.colors.sequential.Plasma\n)",
+        "detail": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "documentation": {}
+    },
+    {
+        "label": "fig_vote_dist",
+        "kind": 5,
+        "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "description": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "peekOfCode": "fig_vote_dist = px.histogram(\n    filtered_df,\n    x='vote_average',\n    nbins=20,\n    title='Distribution of Movie Vote Average',\n    labels={'vote_average': 'Vote Average'},\n    color_discrete_sequence=['#0083B8']\n)\nfig_vote_dist.update_layout(xaxis_title=\"Vote Average\", yaxis_title=\"Number of Movies\")\nst.plotly_chart(fig_vote_dist, width=\"stretch\")",
+        "detail": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "documentation": {}
+    },
+    {
+        "label": "fig_pop_dist",
+        "kind": 5,
+        "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "description": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "peekOfCode": "fig_pop_dist = px.histogram(\n    filtered_df,\n    x='popularity',\n    nbins=20,\n    title='Distribution of Movie Popularity',\n    labels={'popularity': 'Popularity Score'},\n    color_discrete_sequence=['#ff97ff']\n)\nfig_pop_dist.update_layout(xaxis_title='Popularity Score', yaxis_title='Number of Movies')\nst.plotly_chart(fig_pop_dist, width=\"stretch\")",
+        "detail": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "documentation": {}
+    },
+    {
+        "label": "Colors",
+        "kind": 6,
+        "importPath": "utils.theme",
+        "description": "utils.theme",
+        "peekOfCode": "class Colors:\n    BLUE = \"#3A8DFF\"\n    GREEN = \"#4CC9A6\"\n    RED = \"#FF6B6B\"\n    ORANGE = \"#FFB84D\"\n    CHARCOAL = \"#1E1E1E\"\n    GREY = \"#5A6A7A\"\n    PRUSSIAN = \"#0A1A2F\"\n    PLATINUM = \"#F7F9FC\"\nclass Components:",
+        "detail": "utils.theme",
+        "documentation": {}
+    },
+    {
+        "label": "Components",
+        "kind": 6,
+        "importPath": "utils.theme",
+        "description": "utils.theme",
+        "peekOfCode": "class Components:\n    @staticmethod\n    def metric_card(title: str, value: str, delta: str = \"\", delta_positive: bool = True, card_type: str = \"primary\") -> str:\n        colors = {\n        \"info\": Colors.BLUE,\n        \"success\": Colors.GREEN,\n        \"warning\": Colors.ORANGE,\n        \"error\": Colors.RED\n        }\n        border_color = colors.get(card_type, Colors.BLUE)",
+        "detail": "utils.theme",
+        "documentation": {}
+    }
+]
