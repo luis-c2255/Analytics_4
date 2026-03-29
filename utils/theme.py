@@ -28,7 +28,7 @@ class Components:
         </p>
         """ if delta else ""
         return f"""
-        <div style='border: 2.5px solid {Colors.CHARCOAL};
+        <div style='border: 1px solid {Colors.CHARCOAL};
                     border-top: 4px solid {border_color};
                     padding: 1rem; border-radius: 10px; height: 100%;
                     transition: transform 0.3s ease;'>
