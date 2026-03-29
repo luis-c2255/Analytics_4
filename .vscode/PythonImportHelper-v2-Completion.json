@@ -275,7 +275,7 @@
         "kind": 5,
         "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",
         "description": "pages.1_📽️_Global_Movie_Trends_(2026)",
-        "peekOfCode": "delta_avg_vote = f\"{(avg_vote_average - overall_avg_vote_average) / overall_avg_vote_average * 100:.1f}%\"\ndelta_avg_pop = f\"{(avg_popularity - overall_avg_popularity) / overall_avg_popularity * 100:.1f}%\"\ncol1, col2, col3 = st.columns(3)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n            title=\"Total Movies\",\n            value=f\"{total_movies:,}\",\n            delta=f\"{delta_total_movies}\",\n            delta_positive=False,",
+        "peekOfCode": "delta_avg_vote = f\"{(avg_vote_average - overall_avg_vote_average) / overall_avg_vote_average * 100:.1f}%\"\ndelta_avg_pop = f\"{(avg_popularity - overall_avg_popularity) / overall_avg_popularity * 100:.1f}%\"\ncol1, col2, col3 = st.columns(3)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n            title=\"Total Movies\",\n            value=f\"{total_movies:,}\",\n            delta=f\"{delta_total_movies}\",\n            delta_positive=True,",
         "detail": "pages.1_📽️_Global_Movie_Trends_(2026)",
         "documentation": {}
     },
@@ -284,7 +284,7 @@
         "kind": 5,
         "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",
         "description": "pages.1_📽️_Global_Movie_Trends_(2026)",
-        "peekOfCode": "delta_avg_pop = f\"{(avg_popularity - overall_avg_popularity) / overall_avg_popularity * 100:.1f}%\"\ncol1, col2, col3 = st.columns(3)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n            title=\"Total Movies\",\n            value=f\"{total_movies:,}\",\n            delta=f\"{delta_total_movies}\",\n            delta_positive=False,\n            card_type=\"error\"",
+        "peekOfCode": "delta_avg_pop = f\"{(avg_popularity - overall_avg_popularity) / overall_avg_popularity * 100:.1f}%\"\ncol1, col2, col3 = st.columns(3)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n            title=\"Total Movies\",\n            value=f\"{total_movies:,}\",\n            delta=f\"{delta_total_movies}\",\n            delta_positive=True,\n            card_type=\"success\"",
         "detail": "pages.1_📽️_Global_Movie_Trends_(2026)",
         "documentation": {}
     },

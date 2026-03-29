@@ -134,8 +134,8 @@ with col1:
             title="Total Movies",
             value=f"{total_movies:,}",
             delta=f"{delta_total_movies}",
-            delta_positive=False,
-            card_type="error"
+            delta_positive=True,
+            card_type="success"
         ), unsafe_allow_html=True
     )
 with col2:
@@ -144,8 +144,8 @@ with col2:
             title="Avg Vote Score",
             value=f"{avg_vote_average:.2f}",
             delta=f"{delta_avg_vote}",
-            delta_positive=False,
-            card_type="error"
+            delta_positive=True,
+            card_type="success"
         ), unsafe_allow_html=True
     )
 with col3:
@@ -154,8 +154,8 @@ with col3:
             title="Avg Popularity",
             value=f"{avg_popularity:.1f}",
             delta=f"{delta_avg_pop}",
-            delta_positive=False,
-            card_type="error"
+            delta_positive=True,
+            card_type="success"
         ), unsafe_allow_html=True
     )
 st.markdown("   ")
