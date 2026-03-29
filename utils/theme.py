@@ -18,7 +18,7 @@ class Components:
         "info": Colors.BLUE,
         "success": Colors.GREEN,
         "warning": Colors.ORANGE,
-        "error": Colors:RED
+        "error": Colors.RED
         }
         border_color = colors.get(card_type, Colors.BLUE)
         delta_color = Colors.GREEN if delta_positive else Colors.RED
