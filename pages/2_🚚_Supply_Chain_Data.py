@@ -168,6 +168,7 @@ fig4 = px.bar(revenue_by_supplier, x='supplier_name', y='revenue_generated',
                   hover_data={'revenue_generated': ':$,.2f'},
                   color='supplier_name',
                   text_auto=True,
+                  height=600,
                   orientation='v')
 st.plotly_chart(fig4, width="stretch")
 st.markdown("   ")
@@ -185,6 +186,7 @@ st.markdown("   ")
 fig6 = px.box(filtered_df, x='product_type', y='manufacturing_costs',
                   title='Manufacturing Costs Distribution per Product Type',
                   labels={'product_type': 'Product Type', 'manufacturing_costs': 'Manufacturing Costs'},
+                  height=600,
                   color='product_type')
 st.plotly_chart(fig6, width="stretch")
 st.markdown("   ")
@@ -195,6 +197,7 @@ fig7 = px.bar(filtered_df.groupby(['supplier_name', 'inspection_results'])['defe
                   title='Average Defect Rates by Supplier and Inspection Result',
                   labels={'supplier_name': 'Supplier Name', 'defect_rates': 'Average Defect Rate', 'inspection_results': 'Inspection Result'},
                   hover_data={'defect_rates': ':.2f'},
+                  height=600,
                   text_auto=True)
 st.plotly_chart(fig7, width="stretch")
 st.markdown("   ")
@@ -206,6 +209,7 @@ fig8 = px.bar(avg_lead_times.melt(id_vars='supplier_name', var_name='Lead Time T
                   x='supplier_name', y='Average Days', color='Lead Time Type', barmode='group',
                   title='Average General & Manufacturing Lead Times by Supplier',
                   text_auto=True,
+                  height=600,
                   labels={'supplier_name': 'Supplier Name', 'Average Days': 'Average Lead Time (Days)'})
 st.plotly_chart(fig8, width="stretch")
 st.markdown("   ")
@@ -214,7 +218,7 @@ fig9 = px.scatter(filtered_df, x='production_volumes', y='manufacturing_costs',
                       color='product_type', size='revenue_generated',
                       hover_name='sku',
                       title='Production Volume vs. Manufacturing Costs',
-                      color_continuous_scale=px.colors.sequential.Inferno,
+                      color_continuous_map={'haircare': '#9c179e', 'skincare': '#ed7953', 'cosmetics': '#fdca26'},
                       labels={'production_volumes': 'Production Volume', 'manufacturing_costs': 'Manufacturing Costs', 'product_type': 'Product Type'},
                       log_x=True, log_y=True, size_max=60)
 st.plotly_chart(fig9, width="stretch")
@@ -228,7 +232,7 @@ stock_sales_agg = filtered_df.groupby('product_type').agg(
 fig10 = px.scatter(stock_sales_agg, x='total_products_sold', y='avg_stock_levels',
                        color='product_type', size='avg_stock_levels',
                        hover_name='product_type',
-                       color_continuous_scale=px.colors.sequential.Plotly3_r,
+                       color_continuous_map={'haircare': '#d8576b', 'skincare': '#46039f', 'cosmetics': '#f0f921'},
                        symbol='product_type',
                        title='Average Stock Levels vs. Total Products Sold by Product Type',
                        labels={'total_products_sold': 'Total Products Sold', 'avg_stock_levels': 'Average Stock Levels'},

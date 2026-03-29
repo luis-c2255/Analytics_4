@@ -743,7 +743,7 @@
         "kind": 5,
         "importPath": "pages.2_🚚_Supply_Chain_Data",
         "description": "pages.2_🚚_Supply_Chain_Data",
-        "peekOfCode": "revenue_by_supplier = filtered_df.groupby('supplier_name')['revenue_generated'].sum().sort_values(ascending=False).head(10).reset_index()\nfig4 = px.bar(revenue_by_supplier, x='supplier_name', y='revenue_generated',\n                  title='Top 10 Suppliers by Revenue',\n                  labels={'supplier_name': 'Supplier Name', 'revenue_generated': 'Total Revenue'},\n                  hover_data={'revenue_generated': ':$,.2f'},\n                  color='supplier_name',\n                  text_auto=True,\n                  orientation='v')\nst.plotly_chart(fig4, width=\"stretch\")\nst.markdown(\"   \")",
+        "peekOfCode": "revenue_by_supplier = filtered_df.groupby('supplier_name')['revenue_generated'].sum().sort_values(ascending=False).head(10).reset_index()\nfig4 = px.bar(revenue_by_supplier, x='supplier_name', y='revenue_generated',\n                  title='Top 10 Suppliers by Revenue',\n                  labels={'supplier_name': 'Supplier Name', 'revenue_generated': 'Total Revenue'},\n                  hover_data={'revenue_generated': ':$,.2f'},\n                  color='supplier_name',\n                  text_auto=True,\n                  height=600,\n                  orientation='v')\nst.plotly_chart(fig4, width=\"stretch\")",
         "detail": "pages.2_🚚_Supply_Chain_Data",
         "documentation": {}
     },
@@ -752,7 +752,7 @@
         "kind": 5,
         "importPath": "pages.2_🚚_Supply_Chain_Data",
         "description": "pages.2_🚚_Supply_Chain_Data",
-        "peekOfCode": "fig4 = px.bar(revenue_by_supplier, x='supplier_name', y='revenue_generated',\n                  title='Top 10 Suppliers by Revenue',\n                  labels={'supplier_name': 'Supplier Name', 'revenue_generated': 'Total Revenue'},\n                  hover_data={'revenue_generated': ':$,.2f'},\n                  color='supplier_name',\n                  text_auto=True,\n                  orientation='v')\nst.plotly_chart(fig4, width=\"stretch\")\nst.markdown(\"   \")\nst.subheader(\"🔗 :yellow[Supply Chain Efficiency]\", divider=\"yellow\")",
+        "peekOfCode": "fig4 = px.bar(revenue_by_supplier, x='supplier_name', y='revenue_generated',\n                  title='Top 10 Suppliers by Revenue',\n                  labels={'supplier_name': 'Supplier Name', 'revenue_generated': 'Total Revenue'},\n                  hover_data={'revenue_generated': ':$,.2f'},\n                  color='supplier_name',\n                  text_auto=True,\n                  height=600,\n                  orientation='v')\nst.plotly_chart(fig4, width=\"stretch\")\nst.markdown(\"   \")",
         "detail": "pages.2_🚚_Supply_Chain_Data",
         "documentation": {}
     },
@@ -770,7 +770,7 @@
         "kind": 5,
         "importPath": "pages.2_🚚_Supply_Chain_Data",
         "description": "pages.2_🚚_Supply_Chain_Data",
-        "peekOfCode": "fig5 = px.pie(shipping_costs_by_carrier, values='shipping_costs', names='shipping_carriers',\n                  title='Shipping Cost Distribution by Carrier',\n                  hole=.3,\n                  color_discrete_sequence=px.colors.sequential.Agsunset)\nst.plotly_chart(fig5, width=\"stretch\")\nst.markdown(\"   \")\nfig6 = px.box(filtered_df, x='product_type', y='manufacturing_costs',\n                  title='Manufacturing Costs Distribution per Product Type',\n                  labels={'product_type': 'Product Type', 'manufacturing_costs': 'Manufacturing Costs'},\n                  color='product_type')",
+        "peekOfCode": "fig5 = px.pie(shipping_costs_by_carrier, values='shipping_costs', names='shipping_carriers',\n                  title='Shipping Cost Distribution by Carrier',\n                  hole=.3,\n                  color_discrete_sequence=px.colors.sequential.Agsunset)\nst.plotly_chart(fig5, width=\"stretch\")\nst.markdown(\"   \")\nfig6 = px.box(filtered_df, x='product_type', y='manufacturing_costs',\n                  title='Manufacturing Costs Distribution per Product Type',\n                  labels={'product_type': 'Product Type', 'manufacturing_costs': 'Manufacturing Costs'},\n                  height=600,",
         "detail": "pages.2_🚚_Supply_Chain_Data",
         "documentation": {}
     },
@@ -779,7 +779,7 @@
         "kind": 5,
         "importPath": "pages.2_🚚_Supply_Chain_Data",
         "description": "pages.2_🚚_Supply_Chain_Data",
-        "peekOfCode": "fig6 = px.box(filtered_df, x='product_type', y='manufacturing_costs',\n                  title='Manufacturing Costs Distribution per Product Type',\n                  labels={'product_type': 'Product Type', 'manufacturing_costs': 'Manufacturing Costs'},\n                  color='product_type')\nst.plotly_chart(fig6, width=\"stretch\")\nst.markdown(\"   \")\nfig7 = px.bar(filtered_df.groupby(['supplier_name', 'inspection_results'])['defect_rates'].mean().reset_index(),\n                  x='supplier_name', y='defect_rates', color='inspection_results',\n                  barmode='group',\n                  title='Average Defect Rates by Supplier and Inspection Result',",
+        "peekOfCode": "fig6 = px.box(filtered_df, x='product_type', y='manufacturing_costs',\n                  title='Manufacturing Costs Distribution per Product Type',\n                  labels={'product_type': 'Product Type', 'manufacturing_costs': 'Manufacturing Costs'},\n                  height=600,\n                  color='product_type')\nst.plotly_chart(fig6, width=\"stretch\")\nst.markdown(\"   \")\nfig7 = px.bar(filtered_df.groupby(['supplier_name', 'inspection_results'])['defect_rates'].mean().reset_index(),\n                  x='supplier_name', y='defect_rates', color='inspection_results',\n                  barmode='group',",
         "detail": "pages.2_🚚_Supply_Chain_Data",
         "documentation": {}
     },
@@ -788,7 +788,7 @@
         "kind": 5,
         "importPath": "pages.2_🚚_Supply_Chain_Data",
         "description": "pages.2_🚚_Supply_Chain_Data",
-        "peekOfCode": "fig7 = px.bar(filtered_df.groupby(['supplier_name', 'inspection_results'])['defect_rates'].mean().reset_index(),\n                  x='supplier_name', y='defect_rates', color='inspection_results',\n                  barmode='group',\n                  title='Average Defect Rates by Supplier and Inspection Result',\n                  labels={'supplier_name': 'Supplier Name', 'defect_rates': 'Average Defect Rate', 'inspection_results': 'Inspection Result'},\n                  hover_data={'defect_rates': ':.2f'},\n                  text_auto=True)\nst.plotly_chart(fig7, width=\"stretch\")\nst.markdown(\"   \")\nst.subheader(\"🚚 :red[Logistics & Inventory Deep Dive]\", divider=\"red\")",
+        "peekOfCode": "fig7 = px.bar(filtered_df.groupby(['supplier_name', 'inspection_results'])['defect_rates'].mean().reset_index(),\n                  x='supplier_name', y='defect_rates', color='inspection_results',\n                  barmode='group',\n                  title='Average Defect Rates by Supplier and Inspection Result',\n                  labels={'supplier_name': 'Supplier Name', 'defect_rates': 'Average Defect Rate', 'inspection_results': 'Inspection Result'},\n                  hover_data={'defect_rates': ':.2f'},\n                  height=600,\n                  text_auto=True)\nst.plotly_chart(fig7, width=\"stretch\")\nst.markdown(\"   \")",
         "detail": "pages.2_🚚_Supply_Chain_Data",
         "documentation": {}
     },
@@ -797,7 +797,7 @@
         "kind": 5,
         "importPath": "pages.2_🚚_Supply_Chain_Data",
         "description": "pages.2_🚚_Supply_Chain_Data",
-        "peekOfCode": "avg_lead_times = filtered_df.groupby('supplier_name')[['lead_times', 'manufacturing_lead_time']].mean().reset_index()\nfig8 = px.bar(avg_lead_times.melt(id_vars='supplier_name', var_name='Lead Time Type', value_name='Average Days'),\n                  x='supplier_name', y='Average Days', color='Lead Time Type', barmode='group',\n                  title='Average General & Manufacturing Lead Times by Supplier',\n                  text_auto=True,\n                  labels={'supplier_name': 'Supplier Name', 'Average Days': 'Average Lead Time (Days)'})\nst.plotly_chart(fig8, width=\"stretch\")\nst.markdown(\"   \")\nfig9 = px.scatter(filtered_df, x='production_volumes', y='manufacturing_costs',\n                      color='product_type', size='revenue_generated',",
+        "peekOfCode": "avg_lead_times = filtered_df.groupby('supplier_name')[['lead_times', 'manufacturing_lead_time']].mean().reset_index()\nfig8 = px.bar(avg_lead_times.melt(id_vars='supplier_name', var_name='Lead Time Type', value_name='Average Days'),\n                  x='supplier_name', y='Average Days', color='Lead Time Type', barmode='group',\n                  title='Average General & Manufacturing Lead Times by Supplier',\n                  text_auto=True,\n                  height=600,\n                  labels={'supplier_name': 'Supplier Name', 'Average Days': 'Average Lead Time (Days)'})\nst.plotly_chart(fig8, width=\"stretch\")\nst.markdown(\"   \")\nfig9 = px.scatter(filtered_df, x='production_volumes', y='manufacturing_costs',",
         "detail": "pages.2_🚚_Supply_Chain_Data",
         "documentation": {}
     },
@@ -806,7 +806,7 @@
         "kind": 5,
         "importPath": "pages.2_🚚_Supply_Chain_Data",
         "description": "pages.2_🚚_Supply_Chain_Data",
-        "peekOfCode": "fig8 = px.bar(avg_lead_times.melt(id_vars='supplier_name', var_name='Lead Time Type', value_name='Average Days'),\n                  x='supplier_name', y='Average Days', color='Lead Time Type', barmode='group',\n                  title='Average General & Manufacturing Lead Times by Supplier',\n                  text_auto=True,\n                  labels={'supplier_name': 'Supplier Name', 'Average Days': 'Average Lead Time (Days)'})\nst.plotly_chart(fig8, width=\"stretch\")\nst.markdown(\"   \")\nfig9 = px.scatter(filtered_df, x='production_volumes', y='manufacturing_costs',\n                      color='product_type', size='revenue_generated',\n                      hover_name='sku',",
+        "peekOfCode": "fig8 = px.bar(avg_lead_times.melt(id_vars='supplier_name', var_name='Lead Time Type', value_name='Average Days'),\n                  x='supplier_name', y='Average Days', color='Lead Time Type', barmode='group',\n                  title='Average General & Manufacturing Lead Times by Supplier',\n                  text_auto=True,\n                  height=600,\n                  labels={'supplier_name': 'Supplier Name', 'Average Days': 'Average Lead Time (Days)'})\nst.plotly_chart(fig8, width=\"stretch\")\nst.markdown(\"   \")\nfig9 = px.scatter(filtered_df, x='production_volumes', y='manufacturing_costs',\n                      color='product_type', size='revenue_generated',",
         "detail": "pages.2_🚚_Supply_Chain_Data",
         "documentation": {}
     },
@@ -815,7 +815,7 @@
         "kind": 5,
         "importPath": "pages.2_🚚_Supply_Chain_Data",
         "description": "pages.2_🚚_Supply_Chain_Data",
-        "peekOfCode": "fig9 = px.scatter(filtered_df, x='production_volumes', y='manufacturing_costs',\n                      color='product_type', size='revenue_generated',\n                      hover_name='sku',\n                      title='Production Volume vs. Manufacturing Costs',\n                      color_continuous_scale=px.colors.sequential.Inferno,\n                      labels={'production_volumes': 'Production Volume', 'manufacturing_costs': 'Manufacturing Costs', 'product_type': 'Product Type'},\n                      log_x=True, log_y=True, size_max=60)\nst.plotly_chart(fig9, width=\"stretch\")\nst.markdown(\"   \")\n# Aggregate to product type level to get a clearer picture for this relationship",
+        "peekOfCode": "fig9 = px.scatter(filtered_df, x='production_volumes', y='manufacturing_costs',\n                      color='product_type', size='revenue_generated',\n                      hover_name='sku',\n                      title='Production Volume vs. Manufacturing Costs',\n                      color_continuous_map={'haircare': '#9c179e', 'skincare': '#ed7953', 'cosmetics': '#fdca26'},\n                      labels={'production_volumes': 'Production Volume', 'manufacturing_costs': 'Manufacturing Costs', 'product_type': 'Product Type'},\n                      log_x=True, log_y=True, size_max=60)\nst.plotly_chart(fig9, width=\"stretch\")\nst.markdown(\"   \")\n# Aggregate to product type level to get a clearer picture for this relationship",
         "detail": "pages.2_🚚_Supply_Chain_Data",
         "documentation": {}
     },
@@ -824,7 +824,7 @@
         "kind": 5,
         "importPath": "pages.2_🚚_Supply_Chain_Data",
         "description": "pages.2_🚚_Supply_Chain_Data",
-        "peekOfCode": "stock_sales_agg = filtered_df.groupby('product_type').agg(\n        avg_stock_levels=('stock_levels', 'mean'),\n        total_products_sold=('number_of_products_sold', 'sum')\n).reset_index()\nfig10 = px.scatter(stock_sales_agg, x='total_products_sold', y='avg_stock_levels',\n                       color='product_type', size='avg_stock_levels',\n                       hover_name='product_type',\n                       color_continuous_scale=px.colors.sequential.Plotly3_r,\n                       symbol='product_type',\n                       title='Average Stock Levels vs. Total Products Sold by Product Type',",
+        "peekOfCode": "stock_sales_agg = filtered_df.groupby('product_type').agg(\n        avg_stock_levels=('stock_levels', 'mean'),\n        total_products_sold=('number_of_products_sold', 'sum')\n).reset_index()\nfig10 = px.scatter(stock_sales_agg, x='total_products_sold', y='avg_stock_levels',\n                       color='product_type', size='avg_stock_levels',\n                       hover_name='product_type',\n                       color_continuous_map={'haircare': '#d8576b', 'skincare': '#46039f', 'cosmetics': '#f0f921'},\n                       symbol='product_type',\n                       title='Average Stock Levels vs. Total Products Sold by Product Type',",
         "detail": "pages.2_🚚_Supply_Chain_Data",
         "documentation": {}
     },
@@ -833,7 +833,7 @@
         "kind": 5,
         "importPath": "pages.2_🚚_Supply_Chain_Data",
         "description": "pages.2_🚚_Supply_Chain_Data",
-        "peekOfCode": "fig10 = px.scatter(stock_sales_agg, x='total_products_sold', y='avg_stock_levels',\n                       color='product_type', size='avg_stock_levels',\n                       hover_name='product_type',\n                       color_continuous_scale=px.colors.sequential.Plotly3_r,\n                       symbol='product_type',\n                       title='Average Stock Levels vs. Total Products Sold by Product Type',\n                       labels={'total_products_sold': 'Total Products Sold', 'avg_stock_levels': 'Average Stock Levels'},\n                       size_max=60)\nst.plotly_chart(fig10, width=\"stretch\")\nst.markdown(\"   \")",
+        "peekOfCode": "fig10 = px.scatter(stock_sales_agg, x='total_products_sold', y='avg_stock_levels',\n                       color='product_type', size='avg_stock_levels',\n                       hover_name='product_type',\n                       color_continuous_map={'haircare': '#d8576b', 'skincare': '#46039f', 'cosmetics': '#f0f921'},\n                       symbol='product_type',\n                       title='Average Stock Levels vs. Total Products Sold by Product Type',\n                       labels={'total_products_sold': 'Total Products Sold', 'avg_stock_levels': 'Average Stock Levels'},\n                       size_max=60)\nst.plotly_chart(fig10, width=\"stretch\")\nst.markdown(\"   \")",
         "detail": "pages.2_🚚_Supply_Chain_Data",
         "documentation": {}
     },
