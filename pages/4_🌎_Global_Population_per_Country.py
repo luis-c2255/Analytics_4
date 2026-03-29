@@ -278,19 +278,6 @@ with col3:
         ), unsafe_allow_html=True
     )
 
-df_year_dist = df[(df['year'] == selected_years[1]) & (df['country'] != 'World')]
-fig_hist_pop = px.histogram(
-            df_year_dist,
-            x='population',
-            nbins=50,
-            title=f'Distribution of Country Populations ({selected_years[1]})',
-            labels={'population': 'Population (log scale)', 'count': 'Number of Countries'},
-            log_x=True, # Log scale often useful for highly skewed population data
-            height=450
-        )
-fig_hist_pop.update_layout(xaxis_title="Population (log scale)")
-st.plotly_chart(fig_hist_pop, width="stretch")
-st.markdown("   ")
 
 df_year_share = df_filtered_year[(df_filtered_year['year'] == selected_years[1]) & (df_filtered_year['country'] != 'World')]
 total_pop_for_share = df_year_share['population'].sum()

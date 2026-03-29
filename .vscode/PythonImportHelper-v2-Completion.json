@@ -1477,24 +1477,6 @@
         "documentation": {}
     },
     {
-        "label": "df_year_dist",
-        "kind": 5,
-        "importPath": "pages.4_🌎_Global_Population_per_Country",
-        "description": "pages.4_🌎_Global_Population_per_Country",
-        "peekOfCode": "df_year_dist = df[(df['year'] == selected_years[1]) & (df['country'] != 'World')]\nfig_hist_pop = px.histogram(\n            df_year_dist,\n            x='population',\n            nbins=50,\n            title=f'Distribution of Country Populations ({selected_years[1]})',\n            labels={'population': 'Population (log scale)', 'count': 'Number of Countries'},\n            log_x=True, # Log scale often useful for highly skewed population data\n            height=450\n        )",
-        "detail": "pages.4_🌎_Global_Population_per_Country",
-        "documentation": {}
-    },
-    {
-        "label": "fig_hist_pop",
-        "kind": 5,
-        "importPath": "pages.4_🌎_Global_Population_per_Country",
-        "description": "pages.4_🌎_Global_Population_per_Country",
-        "peekOfCode": "fig_hist_pop = px.histogram(\n            df_year_dist,\n            x='population',\n            nbins=50,\n            title=f'Distribution of Country Populations ({selected_years[1]})',\n            labels={'population': 'Population (log scale)', 'count': 'Number of Countries'},\n            log_x=True, # Log scale often useful for highly skewed population data\n            height=450\n        )\nfig_hist_pop.update_layout(xaxis_title=\"Population (log scale)\")",
-        "detail": "pages.4_🌎_Global_Population_per_Country",
-        "documentation": {}
-    },
-    {
         "label": "df_year_share",
         "kind": 5,
         "importPath": "pages.4_🌎_Global_Population_per_Country",
