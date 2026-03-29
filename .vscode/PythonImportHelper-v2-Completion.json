@@ -653,7 +653,7 @@
         "kind": 5,
         "importPath": "pages.2_🚚_Supply_Chain_Data",
         "description": "pages.2_🚚_Supply_Chain_Data",
-        "peekOfCode": "total_revenue = filtered_df['revenue_generated'].sum()\navg_defect_rate = filtered_df['defect_rates'].mean()\ntotal_products_sold = filtered_df['number_of_products_sold'].sum()\navg_shipping_cost = filtered_df['shipping_costs'].mean()\navg_manufacturing_cost = filtered_df['manufacturing_costs'].mean()\n# Calculate deltas against the overall dataset averages/totals\nrevenue_delta = f\"{((total_revenue - overall_total_revenue) / overall_total_revenue * 100):+.1f}% vs Overall\" if overall_total_revenue else \"N/A\"\ndefect_rate_delta = f\"{((avg_defect_rate - overall_avg_defect_rate)):+.2f}% vs Overall\"\nproducts_sold_delta = f\"{((total_products_sold - overall_total_products_sold) / overall_total_products_sold * 100):+.1f}% vs Overall\" if overall_total_products_sold else \"N/A\"\nshipping_cost_delta = f\"{((avg_shipping_cost - overall_avg_shipping_cost) / overall_avg_shipping_cost * 100):+.1f}% vs Overall\" if overall_avg_shipping_cost else \"N/A\"",
+        "peekOfCode": "total_revenue = filtered_df['revenue_generated'].sum()\navg_defect_rate = filtered_df['defect_rates'].mean()\ntotal_products_sold = filtered_df['number_of_products_sold'].sum()\navg_shipping_cost = filtered_df['shipping_costs'].mean()\navg_manufacturing_cost = filtered_df['manufacturing_costs'].mean()\ncol1, col2, col3, col4, col5 = st.columns(5)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n        title=\"Total Revenue\",",
         "detail": "pages.2_🚚_Supply_Chain_Data",
         "documentation": {}
     },
@@ -662,7 +662,7 @@
         "kind": 5,
         "importPath": "pages.2_🚚_Supply_Chain_Data",
         "description": "pages.2_🚚_Supply_Chain_Data",
-        "peekOfCode": "avg_defect_rate = filtered_df['defect_rates'].mean()\ntotal_products_sold = filtered_df['number_of_products_sold'].sum()\navg_shipping_cost = filtered_df['shipping_costs'].mean()\navg_manufacturing_cost = filtered_df['manufacturing_costs'].mean()\n# Calculate deltas against the overall dataset averages/totals\nrevenue_delta = f\"{((total_revenue - overall_total_revenue) / overall_total_revenue * 100):+.1f}% vs Overall\" if overall_total_revenue else \"N/A\"\ndefect_rate_delta = f\"{((avg_defect_rate - overall_avg_defect_rate)):+.2f}% vs Overall\"\nproducts_sold_delta = f\"{((total_products_sold - overall_total_products_sold) / overall_total_products_sold * 100):+.1f}% vs Overall\" if overall_total_products_sold else \"N/A\"\nshipping_cost_delta = f\"{((avg_shipping_cost - overall_avg_shipping_cost) / overall_avg_shipping_cost * 100):+.1f}% vs Overall\" if overall_avg_shipping_cost else \"N/A\"\nmanufacturing_cost_delta = f\"{((avg_manufacturing_cost - overall_avg_manufacturing_cost) / overall_avg_manufacturing_cost * 100):+.1f}% vs Overall\" if overall_avg_manufacturing_cost else \"N/A\"",
+        "peekOfCode": "avg_defect_rate = filtered_df['defect_rates'].mean()\ntotal_products_sold = filtered_df['number_of_products_sold'].sum()\navg_shipping_cost = filtered_df['shipping_costs'].mean()\navg_manufacturing_cost = filtered_df['manufacturing_costs'].mean()\ncol1, col2, col3, col4, col5 = st.columns(5)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n        title=\"Total Revenue\",\n        value=f\"${total_revenue:,.2f}\",",
         "detail": "pages.2_🚚_Supply_Chain_Data",
         "documentation": {}
     },
@@ -671,7 +671,7 @@
         "kind": 5,
         "importPath": "pages.2_🚚_Supply_Chain_Data",
         "description": "pages.2_🚚_Supply_Chain_Data",
-        "peekOfCode": "total_products_sold = filtered_df['number_of_products_sold'].sum()\navg_shipping_cost = filtered_df['shipping_costs'].mean()\navg_manufacturing_cost = filtered_df['manufacturing_costs'].mean()\n# Calculate deltas against the overall dataset averages/totals\nrevenue_delta = f\"{((total_revenue - overall_total_revenue) / overall_total_revenue * 100):+.1f}% vs Overall\" if overall_total_revenue else \"N/A\"\ndefect_rate_delta = f\"{((avg_defect_rate - overall_avg_defect_rate)):+.2f}% vs Overall\"\nproducts_sold_delta = f\"{((total_products_sold - overall_total_products_sold) / overall_total_products_sold * 100):+.1f}% vs Overall\" if overall_total_products_sold else \"N/A\"\nshipping_cost_delta = f\"{((avg_shipping_cost - overall_avg_shipping_cost) / overall_avg_shipping_cost * 100):+.1f}% vs Overall\" if overall_avg_shipping_cost else \"N/A\"\nmanufacturing_cost_delta = f\"{((avg_manufacturing_cost - overall_avg_manufacturing_cost) / overall_avg_manufacturing_cost * 100):+.1f}% vs Overall\" if overall_avg_manufacturing_cost else \"N/A\"\n# Determine card types based on performance (example logic)",
+        "peekOfCode": "total_products_sold = filtered_df['number_of_products_sold'].sum()\navg_shipping_cost = filtered_df['shipping_costs'].mean()\navg_manufacturing_cost = filtered_df['manufacturing_costs'].mean()\ncol1, col2, col3, col4, col5 = st.columns(5)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n        title=\"Total Revenue\",\n        value=f\"${total_revenue:,.2f}\",\n        delta=\"\",",
         "detail": "pages.2_🚚_Supply_Chain_Data",
         "documentation": {}
     },
@@ -680,7 +680,7 @@
         "kind": 5,
         "importPath": "pages.2_🚚_Supply_Chain_Data",
         "description": "pages.2_🚚_Supply_Chain_Data",
-        "peekOfCode": "avg_shipping_cost = filtered_df['shipping_costs'].mean()\navg_manufacturing_cost = filtered_df['manufacturing_costs'].mean()\n# Calculate deltas against the overall dataset averages/totals\nrevenue_delta = f\"{((total_revenue - overall_total_revenue) / overall_total_revenue * 100):+.1f}% vs Overall\" if overall_total_revenue else \"N/A\"\ndefect_rate_delta = f\"{((avg_defect_rate - overall_avg_defect_rate)):+.2f}% vs Overall\"\nproducts_sold_delta = f\"{((total_products_sold - overall_total_products_sold) / overall_total_products_sold * 100):+.1f}% vs Overall\" if overall_total_products_sold else \"N/A\"\nshipping_cost_delta = f\"{((avg_shipping_cost - overall_avg_shipping_cost) / overall_avg_shipping_cost * 100):+.1f}% vs Overall\" if overall_avg_shipping_cost else \"N/A\"\nmanufacturing_cost_delta = f\"{((avg_manufacturing_cost - overall_avg_manufacturing_cost) / overall_avg_manufacturing_cost * 100):+.1f}% vs Overall\" if overall_avg_manufacturing_cost else \"N/A\"\n# Determine card types based on performance (example logic)\n# Positive for revenue/sales, negative for defect rate/costs",
+        "peekOfCode": "avg_shipping_cost = filtered_df['shipping_costs'].mean()\navg_manufacturing_cost = filtered_df['manufacturing_costs'].mean()\ncol1, col2, col3, col4, col5 = st.columns(5)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n        title=\"Total Revenue\",\n        value=f\"${total_revenue:,.2f}\",\n        delta=\"\",\n        card_type=\"info\"",
         "detail": "pages.2_🚚_Supply_Chain_Data",
         "documentation": {}
     },
@@ -689,97 +689,7 @@
         "kind": 5,
         "importPath": "pages.2_🚚_Supply_Chain_Data",
         "description": "pages.2_🚚_Supply_Chain_Data",
-        "peekOfCode": "avg_manufacturing_cost = filtered_df['manufacturing_costs'].mean()\n# Calculate deltas against the overall dataset averages/totals\nrevenue_delta = f\"{((total_revenue - overall_total_revenue) / overall_total_revenue * 100):+.1f}% vs Overall\" if overall_total_revenue else \"N/A\"\ndefect_rate_delta = f\"{((avg_defect_rate - overall_avg_defect_rate)):+.2f}% vs Overall\"\nproducts_sold_delta = f\"{((total_products_sold - overall_total_products_sold) / overall_total_products_sold * 100):+.1f}% vs Overall\" if overall_total_products_sold else \"N/A\"\nshipping_cost_delta = f\"{((avg_shipping_cost - overall_avg_shipping_cost) / overall_avg_shipping_cost * 100):+.1f}% vs Overall\" if overall_avg_shipping_cost else \"N/A\"\nmanufacturing_cost_delta = f\"{((avg_manufacturing_cost - overall_avg_manufacturing_cost) / overall_avg_manufacturing_cost * 100):+.1f}% vs Overall\" if overall_avg_manufacturing_cost else \"N/A\"\n# Determine card types based on performance (example logic)\n# Positive for revenue/sales, negative for defect rate/costs\nrevenue_card_type = \"success\" if total_revenue >= overall_total_revenue else \"info\"",
-        "detail": "pages.2_🚚_Supply_Chain_Data",
-        "documentation": {}
-    },
-    {
-        "label": "revenue_delta",
-        "kind": 5,
-        "importPath": "pages.2_🚚_Supply_Chain_Data",
-        "description": "pages.2_🚚_Supply_Chain_Data",
-        "peekOfCode": "revenue_delta = f\"{((total_revenue - overall_total_revenue) / overall_total_revenue * 100):+.1f}% vs Overall\" if overall_total_revenue else \"N/A\"\ndefect_rate_delta = f\"{((avg_defect_rate - overall_avg_defect_rate)):+.2f}% vs Overall\"\nproducts_sold_delta = f\"{((total_products_sold - overall_total_products_sold) / overall_total_products_sold * 100):+.1f}% vs Overall\" if overall_total_products_sold else \"N/A\"\nshipping_cost_delta = f\"{((avg_shipping_cost - overall_avg_shipping_cost) / overall_avg_shipping_cost * 100):+.1f}% vs Overall\" if overall_avg_shipping_cost else \"N/A\"\nmanufacturing_cost_delta = f\"{((avg_manufacturing_cost - overall_avg_manufacturing_cost) / overall_avg_manufacturing_cost * 100):+.1f}% vs Overall\" if overall_avg_manufacturing_cost else \"N/A\"\n# Determine card types based on performance (example logic)\n# Positive for revenue/sales, negative for defect rate/costs\nrevenue_card_type = \"success\" if total_revenue >= overall_total_revenue else \"info\"\ndefect_card_type = \"success\" if avg_defect_rate <= overall_avg_defect_rate else \"error\"\nproducts_card_type = \"success\" if total_products_sold >= overall_total_products_sold else \"info\"",
-        "detail": "pages.2_🚚_Supply_Chain_Data",
-        "documentation": {}
-    },
-    {
-        "label": "defect_rate_delta",
-        "kind": 5,
-        "importPath": "pages.2_🚚_Supply_Chain_Data",
-        "description": "pages.2_🚚_Supply_Chain_Data",
-        "peekOfCode": "defect_rate_delta = f\"{((avg_defect_rate - overall_avg_defect_rate)):+.2f}% vs Overall\"\nproducts_sold_delta = f\"{((total_products_sold - overall_total_products_sold) / overall_total_products_sold * 100):+.1f}% vs Overall\" if overall_total_products_sold else \"N/A\"\nshipping_cost_delta = f\"{((avg_shipping_cost - overall_avg_shipping_cost) / overall_avg_shipping_cost * 100):+.1f}% vs Overall\" if overall_avg_shipping_cost else \"N/A\"\nmanufacturing_cost_delta = f\"{((avg_manufacturing_cost - overall_avg_manufacturing_cost) / overall_avg_manufacturing_cost * 100):+.1f}% vs Overall\" if overall_avg_manufacturing_cost else \"N/A\"\n# Determine card types based on performance (example logic)\n# Positive for revenue/sales, negative for defect rate/costs\nrevenue_card_type = \"success\" if total_revenue >= overall_total_revenue else \"info\"\ndefect_card_type = \"success\" if avg_defect_rate <= overall_avg_defect_rate else \"error\"\nproducts_card_type = \"success\" if total_products_sold >= overall_total_products_sold else \"info\"\nshipping_card_type = \"success\" if avg_shipping_cost <= overall_avg_shipping_cost else \"error\"",
-        "detail": "pages.2_🚚_Supply_Chain_Data",
-        "documentation": {}
-    },
-    {
-        "label": "products_sold_delta",
-        "kind": 5,
-        "importPath": "pages.2_🚚_Supply_Chain_Data",
-        "description": "pages.2_🚚_Supply_Chain_Data",
-        "peekOfCode": "products_sold_delta = f\"{((total_products_sold - overall_total_products_sold) / overall_total_products_sold * 100):+.1f}% vs Overall\" if overall_total_products_sold else \"N/A\"\nshipping_cost_delta = f\"{((avg_shipping_cost - overall_avg_shipping_cost) / overall_avg_shipping_cost * 100):+.1f}% vs Overall\" if overall_avg_shipping_cost else \"N/A\"\nmanufacturing_cost_delta = f\"{((avg_manufacturing_cost - overall_avg_manufacturing_cost) / overall_avg_manufacturing_cost * 100):+.1f}% vs Overall\" if overall_avg_manufacturing_cost else \"N/A\"\n# Determine card types based on performance (example logic)\n# Positive for revenue/sales, negative for defect rate/costs\nrevenue_card_type = \"success\" if total_revenue >= overall_total_revenue else \"info\"\ndefect_card_type = \"success\" if avg_defect_rate <= overall_avg_defect_rate else \"error\"\nproducts_card_type = \"success\" if total_products_sold >= overall_total_products_sold else \"info\"\nshipping_card_type = \"success\" if avg_shipping_cost <= overall_avg_shipping_cost else \"error\"\nmanufacturing_card_type = \"success\" if avg_manufacturing_cost <= overall_avg_manufacturing_cost else \"error\"",
-        "detail": "pages.2_🚚_Supply_Chain_Data",
-        "documentation": {}
-    },
-    {
-        "label": "shipping_cost_delta",
-        "kind": 5,
-        "importPath": "pages.2_🚚_Supply_Chain_Data",
-        "description": "pages.2_🚚_Supply_Chain_Data",
-        "peekOfCode": "shipping_cost_delta = f\"{((avg_shipping_cost - overall_avg_shipping_cost) / overall_avg_shipping_cost * 100):+.1f}% vs Overall\" if overall_avg_shipping_cost else \"N/A\"\nmanufacturing_cost_delta = f\"{((avg_manufacturing_cost - overall_avg_manufacturing_cost) / overall_avg_manufacturing_cost * 100):+.1f}% vs Overall\" if overall_avg_manufacturing_cost else \"N/A\"\n# Determine card types based on performance (example logic)\n# Positive for revenue/sales, negative for defect rate/costs\nrevenue_card_type = \"success\" if total_revenue >= overall_total_revenue else \"info\"\ndefect_card_type = \"success\" if avg_defect_rate <= overall_avg_defect_rate else \"error\"\nproducts_card_type = \"success\" if total_products_sold >= overall_total_products_sold else \"info\"\nshipping_card_type = \"success\" if avg_shipping_cost <= overall_avg_shipping_cost else \"error\"\nmanufacturing_card_type = \"success\" if avg_manufacturing_cost <= overall_avg_manufacturing_cost else \"error\"\ncol1, col2, col3, col4, col5 = st.columns(5)",
-        "detail": "pages.2_🚚_Supply_Chain_Data",
-        "documentation": {}
-    },
-    {
-        "label": "manufacturing_cost_delta",
-        "kind": 5,
-        "importPath": "pages.2_🚚_Supply_Chain_Data",
-        "description": "pages.2_🚚_Supply_Chain_Data",
-        "peekOfCode": "manufacturing_cost_delta = f\"{((avg_manufacturing_cost - overall_avg_manufacturing_cost) / overall_avg_manufacturing_cost * 100):+.1f}% vs Overall\" if overall_avg_manufacturing_cost else \"N/A\"\n# Determine card types based on performance (example logic)\n# Positive for revenue/sales, negative for defect rate/costs\nrevenue_card_type = \"success\" if total_revenue >= overall_total_revenue else \"info\"\ndefect_card_type = \"success\" if avg_defect_rate <= overall_avg_defect_rate else \"error\"\nproducts_card_type = \"success\" if total_products_sold >= overall_total_products_sold else \"info\"\nshipping_card_type = \"success\" if avg_shipping_cost <= overall_avg_shipping_cost else \"error\"\nmanufacturing_card_type = \"success\" if avg_manufacturing_cost <= overall_avg_manufacturing_cost else \"error\"\ncol1, col2, col3, col4, col5 = st.columns(5)\nwith col1:",
-        "detail": "pages.2_🚚_Supply_Chain_Data",
-        "documentation": {}
-    },
-    {
-        "label": "revenue_card_type",
-        "kind": 5,
-        "importPath": "pages.2_🚚_Supply_Chain_Data",
-        "description": "pages.2_🚚_Supply_Chain_Data",
-        "peekOfCode": "revenue_card_type = \"success\" if total_revenue >= overall_total_revenue else \"info\"\ndefect_card_type = \"success\" if avg_defect_rate <= overall_avg_defect_rate else \"error\"\nproducts_card_type = \"success\" if total_products_sold >= overall_total_products_sold else \"info\"\nshipping_card_type = \"success\" if avg_shipping_cost <= overall_avg_shipping_cost else \"error\"\nmanufacturing_card_type = \"success\" if avg_manufacturing_cost <= overall_avg_manufacturing_cost else \"error\"\ncol1, col2, col3, col4, col5 = st.columns(5)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n        title=\"Total Revenue\",",
-        "detail": "pages.2_🚚_Supply_Chain_Data",
-        "documentation": {}
-    },
-    {
-        "label": "defect_card_type",
-        "kind": 5,
-        "importPath": "pages.2_🚚_Supply_Chain_Data",
-        "description": "pages.2_🚚_Supply_Chain_Data",
-        "peekOfCode": "defect_card_type = \"success\" if avg_defect_rate <= overall_avg_defect_rate else \"error\"\nproducts_card_type = \"success\" if total_products_sold >= overall_total_products_sold else \"info\"\nshipping_card_type = \"success\" if avg_shipping_cost <= overall_avg_shipping_cost else \"error\"\nmanufacturing_card_type = \"success\" if avg_manufacturing_cost <= overall_avg_manufacturing_cost else \"error\"\ncol1, col2, col3, col4, col5 = st.columns(5)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n        title=\"Total Revenue\",\n        value=f\"${total_revenue:,.2f}\",",
-        "detail": "pages.2_🚚_Supply_Chain_Data",
-        "documentation": {}
-    },
-    {
-        "label": "products_card_type",
-        "kind": 5,
-        "importPath": "pages.2_🚚_Supply_Chain_Data",
-        "description": "pages.2_🚚_Supply_Chain_Data",
-        "peekOfCode": "products_card_type = \"success\" if total_products_sold >= overall_total_products_sold else \"info\"\nshipping_card_type = \"success\" if avg_shipping_cost <= overall_avg_shipping_cost else \"error\"\nmanufacturing_card_type = \"success\" if avg_manufacturing_cost <= overall_avg_manufacturing_cost else \"error\"\ncol1, col2, col3, col4, col5 = st.columns(5)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n        title=\"Total Revenue\",\n        value=f\"${total_revenue:,.2f}\",\n        delta=revenue_delta,",
-        "detail": "pages.2_🚚_Supply_Chain_Data",
-        "documentation": {}
-    },
-    {
-        "label": "shipping_card_type",
-        "kind": 5,
-        "importPath": "pages.2_🚚_Supply_Chain_Data",
-        "description": "pages.2_🚚_Supply_Chain_Data",
-        "peekOfCode": "shipping_card_type = \"success\" if avg_shipping_cost <= overall_avg_shipping_cost else \"error\"\nmanufacturing_card_type = \"success\" if avg_manufacturing_cost <= overall_avg_manufacturing_cost else \"error\"\ncol1, col2, col3, col4, col5 = st.columns(5)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n        title=\"Total Revenue\",\n        value=f\"${total_revenue:,.2f}\",\n        delta=revenue_delta,\n        delta_positive=\"\",",
-        "detail": "pages.2_🚚_Supply_Chain_Data",
-        "documentation": {}
-    },
-    {
-        "label": "manufacturing_card_type",
-        "kind": 5,
-        "importPath": "pages.2_🚚_Supply_Chain_Data",
-        "description": "pages.2_🚚_Supply_Chain_Data",
-        "peekOfCode": "manufacturing_card_type = \"success\" if avg_manufacturing_cost <= overall_avg_manufacturing_cost else \"error\"\ncol1, col2, col3, col4, col5 = st.columns(5)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n        title=\"Total Revenue\",\n        value=f\"${total_revenue:,.2f}\",\n        delta=revenue_delta,\n        delta_positive=\"\",\n        card_type=revenue_card_type",
+        "peekOfCode": "avg_manufacturing_cost = filtered_df['manufacturing_costs'].mean()\ncol1, col2, col3, col4, col5 = st.columns(5)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n        title=\"Total Revenue\",\n        value=f\"${total_revenue:,.2f}\",\n        delta=\"\",\n        card_type=\"info\"\n    ), unsafe_allow_html=True",
         "detail": "pages.2_🚚_Supply_Chain_Data",
         "documentation": {}
     },

@@ -82,20 +82,6 @@ total_products_sold = filtered_df['number_of_products_sold'].sum()
 avg_shipping_cost = filtered_df['shipping_costs'].mean()
 avg_manufacturing_cost = filtered_df['manufacturing_costs'].mean()
 
-# Calculate deltas against the overall dataset averages/totals
-revenue_delta = f"{((total_revenue - overall_total_revenue) / overall_total_revenue * 100):+.1f}% vs Overall" if overall_total_revenue else "N/A"
-defect_rate_delta = f"{((avg_defect_rate - overall_avg_defect_rate)):+.2f}% vs Overall"
-products_sold_delta = f"{((total_products_sold - overall_total_products_sold) / overall_total_products_sold * 100):+.1f}% vs Overall" if overall_total_products_sold else "N/A"
-shipping_cost_delta = f"{((avg_shipping_cost - overall_avg_shipping_cost) / overall_avg_shipping_cost * 100):+.1f}% vs Overall" if overall_avg_shipping_cost else "N/A"
-manufacturing_cost_delta = f"{((avg_manufacturing_cost - overall_avg_manufacturing_cost) / overall_avg_manufacturing_cost * 100):+.1f}% vs Overall" if overall_avg_manufacturing_cost else "N/A"
-
-# Determine card types based on performance (example logic)
-# Positive for revenue/sales, negative for defect rate/costs
-revenue_card_type = "success" if total_revenue >= overall_total_revenue else "info"
-defect_card_type = "success" if avg_defect_rate <= overall_avg_defect_rate else "error"
-products_card_type = "success" if total_products_sold >= overall_total_products_sold else "info"
-shipping_card_type = "success" if avg_shipping_cost <= overall_avg_shipping_cost else "error"
-manufacturing_card_type = "success" if avg_manufacturing_cost <= overall_avg_manufacturing_cost else "error"
 
 col1, col2, col3, col4, col5 = st.columns(5)
 with col1:
@@ -103,9 +89,8 @@ with col1:
         Components.metric_card(
         title="Total Revenue",
         value=f"${total_revenue:,.2f}",
-        delta=revenue_delta,
-        delta_positive="",
-        card_type=revenue_card_type
+        delta="",
+        card_type="info"
     ), unsafe_allow_html=True
 )
 with col2:
@@ -113,9 +98,8 @@ with col2:
         Components.metric_card(
         title="Avg. Defect Rate",
         value=f"{avg_defect_rate:.2f}%",
-        delta=f"{defect_rate_delta}",
-        delta_positive="",
-        card_type=defect_card_type,
+        delta="",
+        card_type="info"
     ), unsafe_allow_html=True
 )
 with col3:
@@ -123,9 +107,8 @@ with col3:
         Components.metric_card(
         title="Products Sold",
         value=f"{int(total_products_sold):,}",
-        delta=f"{products_sold_delta}",
-        delta_positive="",
-        card_type=products_card_type
+        delta="",
+        card_type="info"
     ), unsafe_allow_html=True
 )
 with col4:
@@ -133,9 +116,8 @@ with col4:
         Components.metric_card(
         title="Avg. Manufacturing Cost",
         value=f"${avg_manufacturing_cost:.2f}",
-        delta=f"{manufacturing_cost_delta}",
-        delta_positive="",
-        card_type=manufacturing_card_type
+        delta="",
+        card_type="info"
     ), unsafe_allow_html=True
 )
 with col5:
@@ -143,8 +125,7 @@ with col5:
         Components.metric_card(
         title="Avg. Shipping Cost",
         value=f"${avg_shipping_cost:.2f}",
-        delta=f"{shipping_cost_delta}",
-        delta_positive="",
-        card_type=shipping_card_type
+        delta="",
+        card_type="info"
     ), unsafe_allow_html=True
 )
