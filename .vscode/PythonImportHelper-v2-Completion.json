@@ -1373,7 +1373,7 @@
         "kind": 5,
         "importPath": "pages.4_🌎_Global_Population_per_Country",
         "description": "pages.4_🌎_Global_Population_per_Country",
-        "peekOfCode": "all_countries = sorted(df['country'].unique())\nselected_countries = st.sidebar.multiselect(\n    \"Select Countries (for detailed view)\",\n    all_countries,\n    default=['World', 'China', 'India', 'United States', 'Indonesia'] # Example defaults\n)\n# Apply year filter\ndf_filtered_year = df[(df['year'] >= selected_years[0]) & (df['year'] <= selected_years[1])]\n# --- Main Metrics Section (Visible on all tabs) ---\nst.subheader(\":rainbow[Key Global Metrics]\", divider=\"rainbow\")",
+        "peekOfCode": "all_countries = sorted(df['country'].unique())\nselected_countries = st.sidebar.multiselect(\n    \"Select Countries (for detailed view)\",\n    all_countries,\n    default=['China', 'India', 'United States', 'Indonesia'] # Example defaults\n)\n# Apply year filter\ndf_filtered_year = df[(df['year'] >= selected_years[0]) & (df['year'] <= selected_years[1])]\n# --- Main Metrics Section (Visible on all tabs) ---\nst.subheader(\":rainbow[Key Global Metrics]\", divider=\"rainbow\")",
         "detail": "pages.4_🌎_Global_Population_per_Country",
         "documentation": {}
     },
@@ -1382,7 +1382,7 @@
         "kind": 5,
         "importPath": "pages.4_🌎_Global_Population_per_Country",
         "description": "pages.4_🌎_Global_Population_per_Country",
-        "peekOfCode": "selected_countries = st.sidebar.multiselect(\n    \"Select Countries (for detailed view)\",\n    all_countries,\n    default=['World', 'China', 'India', 'United States', 'Indonesia'] # Example defaults\n)\n# Apply year filter\ndf_filtered_year = df[(df['year'] >= selected_years[0]) & (df['year'] <= selected_years[1])]\n# --- Main Metrics Section (Visible on all tabs) ---\nst.subheader(\":rainbow[Key Global Metrics]\", divider=\"rainbow\")\nlatest_year_data = df_filtered_year[df_filtered_year['year'] == df_filtered_year['year'].max()]",
+        "peekOfCode": "selected_countries = st.sidebar.multiselect(\n    \"Select Countries (for detailed view)\",\n    all_countries,\n    default=['China', 'India', 'United States', 'Indonesia'] # Example defaults\n)\n# Apply year filter\ndf_filtered_year = df[(df['year'] >= selected_years[0]) & (df['year'] <= selected_years[1])]\n# --- Main Metrics Section (Visible on all tabs) ---\nst.subheader(\":rainbow[Key Global Metrics]\", divider=\"rainbow\")\nlatest_year_data = df_filtered_year[df_filtered_year['year'] == df_filtered_year['year'].max()]",
         "detail": "pages.4_🌎_Global_Population_per_Country",
         "documentation": {}
     },

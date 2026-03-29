@@ -43,7 +43,7 @@ all_countries = sorted(df['country'].unique())
 selected_countries = st.sidebar.multiselect(
     "Select Countries (for detailed view)",
     all_countries,
-    default=['World', 'China', 'India', 'United States', 'Indonesia'] # Example defaults
+    default=['China', 'India', 'United States', 'Indonesia'] # Example defaults
 )
 # Apply year filter
 df_filtered_year = df[(df['year'] >= selected_years[0]) & (df['year'] <= selected_years[1])]
