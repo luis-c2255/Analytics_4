@@ -1324,6 +1324,258 @@
         "documentation": {}
     },
     {
+        "label": "load_data",
+        "kind": 2,
+        "importPath": "pages.4_🌎_Global_Population_per_Country",
+        "description": "pages.4_🌎_Global_Population_per_Country",
+        "peekOfCode": "def load_data():\n    df = pd.read_csv(\"global_population_country.csv\")\n    # convert 'year' to integer\n    df['year'] = df['year'].astype(int)\n    # ensure population is numeric, coercing error to Nan\n    df['population'] = pd.to_numeric(df['population'], errors='coerce')\n    df.dropna(subset=['population'], inplace=True)\n    df.drop_duplicates(subset=['country', 'year'], inplace=True)\n    return df\ndf = load_data()",
+        "detail": "pages.4_🌎_Global_Population_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "df",
+        "kind": 5,
+        "importPath": "pages.4_🌎_Global_Population_per_Country",
+        "description": "pages.4_🌎_Global_Population_per_Country",
+        "peekOfCode": "df = load_data()\n# sidebar filters\nst.sidebar.header('Filter Options')\n# Year Slider\nmin_year = int(df['year'].min())\nmax_year = int(df['year'].max())\nselected_years = st.sidebar.slider(\n    \"Select Year Range\",\n    min_value=min_year,\n    max_value=max_year,",
+        "detail": "pages.4_🌎_Global_Population_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "min_year",
+        "kind": 5,
+        "importPath": "pages.4_🌎_Global_Population_per_Country",
+        "description": "pages.4_🌎_Global_Population_per_Country",
+        "peekOfCode": "min_year = int(df['year'].min())\nmax_year = int(df['year'].max())\nselected_years = st.sidebar.slider(\n    \"Select Year Range\",\n    min_value=min_year,\n    max_value=max_year,\n    value=(min_year, max_year)\n)\n# Country Multi-select\nall_countries = sorted(df['country'].unique())",
+        "detail": "pages.4_🌎_Global_Population_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "max_year",
+        "kind": 5,
+        "importPath": "pages.4_🌎_Global_Population_per_Country",
+        "description": "pages.4_🌎_Global_Population_per_Country",
+        "peekOfCode": "max_year = int(df['year'].max())\nselected_years = st.sidebar.slider(\n    \"Select Year Range\",\n    min_value=min_year,\n    max_value=max_year,\n    value=(min_year, max_year)\n)\n# Country Multi-select\nall_countries = sorted(df['country'].unique())\nselected_countries = st.sidebar.multiselect(",
+        "detail": "pages.4_🌎_Global_Population_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "selected_years",
+        "kind": 5,
+        "importPath": "pages.4_🌎_Global_Population_per_Country",
+        "description": "pages.4_🌎_Global_Population_per_Country",
+        "peekOfCode": "selected_years = st.sidebar.slider(\n    \"Select Year Range\",\n    min_value=min_year,\n    max_value=max_year,\n    value=(min_year, max_year)\n)\n# Country Multi-select\nall_countries = sorted(df['country'].unique())\nselected_countries = st.sidebar.multiselect(\n    \"Select Countries (for detailed view)\",",
+        "detail": "pages.4_🌎_Global_Population_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "all_countries",
+        "kind": 5,
+        "importPath": "pages.4_🌎_Global_Population_per_Country",
+        "description": "pages.4_🌎_Global_Population_per_Country",
+        "peekOfCode": "all_countries = sorted(df['country'].unique())\nselected_countries = st.sidebar.multiselect(\n    \"Select Countries (for detailed view)\",\n    all_countries,\n    default=['World', 'China', 'India', 'United States', 'Indonesia'] # Example defaults\n)\n# Apply year filter\ndf_filtered_year = df[(df['year'] >= selected_years[0]) & (df['year'] <= selected_years[1])]\n# --- Main Metrics Section (Visible on all tabs) ---\nst.subheader(\":rainbow[Key Global Metrics]\", divider=\"rainbow\")",
+        "detail": "pages.4_🌎_Global_Population_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "selected_countries",
+        "kind": 5,
+        "importPath": "pages.4_🌎_Global_Population_per_Country",
+        "description": "pages.4_🌎_Global_Population_per_Country",
+        "peekOfCode": "selected_countries = st.sidebar.multiselect(\n    \"Select Countries (for detailed view)\",\n    all_countries,\n    default=['World', 'China', 'India', 'United States', 'Indonesia'] # Example defaults\n)\n# Apply year filter\ndf_filtered_year = df[(df['year'] >= selected_years[0]) & (df['year'] <= selected_years[1])]\n# --- Main Metrics Section (Visible on all tabs) ---\nst.subheader(\":rainbow[Key Global Metrics]\", divider=\"rainbow\")\nlatest_year_data = df_filtered_year[df_filtered_year['year'] == df_filtered_year['year'].max()]",
+        "detail": "pages.4_🌎_Global_Population_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "df_filtered_year",
+        "kind": 5,
+        "importPath": "pages.4_🌎_Global_Population_per_Country",
+        "description": "pages.4_🌎_Global_Population_per_Country",
+        "peekOfCode": "df_filtered_year = df[(df['year'] >= selected_years[0]) & (df['year'] <= selected_years[1])]\n# --- Main Metrics Section (Visible on all tabs) ---\nst.subheader(\":rainbow[Key Global Metrics]\", divider=\"rainbow\")\nlatest_year_data = df_filtered_year[df_filtered_year['year'] == df_filtered_year['year'].max()]\nprevious_year_for_delta = df_filtered_year['year'].max() - 10\nif previous_year_for_delta < df_filtered_year['year'].min():\n    previous_year_for_delta = df_filtered_year['year'].min()\nprevious_year_data = df_filtered_year[df_filtered_year['year'] == previous_year_for_delta]\ncol1, col2, col3 = st.columns(3)\nwith col1:",
+        "detail": "pages.4_🌎_Global_Population_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "latest_year_data",
+        "kind": 5,
+        "importPath": "pages.4_🌎_Global_Population_per_Country",
+        "description": "pages.4_🌎_Global_Population_per_Country",
+        "peekOfCode": "latest_year_data = df_filtered_year[df_filtered_year['year'] == df_filtered_year['year'].max()]\nprevious_year_for_delta = df_filtered_year['year'].max() - 10\nif previous_year_for_delta < df_filtered_year['year'].min():\n    previous_year_for_delta = df_filtered_year['year'].min()\nprevious_year_data = df_filtered_year[df_filtered_year['year'] == previous_year_for_delta]\ncol1, col2, col3 = st.columns(3)\nwith col1:\n    total_pop_latest = latest_year_data['population'].sum()\n    total_pop_previous = previous_year_data['population'].sum() if not previous_year_data.empty else 0\n    delta_pop_percent = ((total_pop_latest - total_pop_previous) / total_pop_previous * 100) if total_pop_previous else 0",
+        "detail": "pages.4_🌎_Global_Population_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "previous_year_for_delta",
+        "kind": 5,
+        "importPath": "pages.4_🌎_Global_Population_per_Country",
+        "description": "pages.4_🌎_Global_Population_per_Country",
+        "peekOfCode": "previous_year_for_delta = df_filtered_year['year'].max() - 10\nif previous_year_for_delta < df_filtered_year['year'].min():\n    previous_year_for_delta = df_filtered_year['year'].min()\nprevious_year_data = df_filtered_year[df_filtered_year['year'] == previous_year_for_delta]\ncol1, col2, col3 = st.columns(3)\nwith col1:\n    total_pop_latest = latest_year_data['population'].sum()\n    total_pop_previous = previous_year_data['population'].sum() if not previous_year_data.empty else 0\n    delta_pop_percent = ((total_pop_latest - total_pop_previous) / total_pop_previous * 100) if total_pop_previous else 0\n    st.markdown(",
+        "detail": "pages.4_🌎_Global_Population_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "previous_year_data",
+        "kind": 5,
+        "importPath": "pages.4_🌎_Global_Population_per_Country",
+        "description": "pages.4_🌎_Global_Population_per_Country",
+        "peekOfCode": "previous_year_data = df_filtered_year[df_filtered_year['year'] == previous_year_for_delta]\ncol1, col2, col3 = st.columns(3)\nwith col1:\n    total_pop_latest = latest_year_data['population'].sum()\n    total_pop_previous = previous_year_data['population'].sum() if not previous_year_data.empty else 0\n    delta_pop_percent = ((total_pop_latest - total_pop_previous) / total_pop_previous * 100) if total_pop_previous else 0\n    st.markdown(\n        Components.metric_card(\n            title=f\"Global Pop. ({latest_year_data['year'].max()})\",\n            value=f\"{total_pop_latest:,.0f}\",",
+        "detail": "pages.4_🌎_Global_Population_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "year_for_bar",
+        "kind": 5,
+        "importPath": "pages.4_🌎_Global_Population_per_Country",
+        "description": "pages.4_🌎_Global_Population_per_Country",
+        "peekOfCode": "year_for_bar = st.slider(\n        \"Select Year for Top Population Chart\",\n        min_value=selected_years[0],\n        max_value=selected_years[1],\n        value=selected_years[1],\n        key=\"year_for_bar_top_pop\"\n    )\ndf_year_for_bar = df[ (df['year'] == year_for_bar) & (df['country'] != 'World') ].sort_values(by='population', ascending=False).head(15)\nfig_top_pop = px.bar(\n        df_year_for_bar,",
+        "detail": "pages.4_🌎_Global_Population_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "df_year_for_bar",
+        "kind": 5,
+        "importPath": "pages.4_🌎_Global_Population_per_Country",
+        "description": "pages.4_🌎_Global_Population_per_Country",
+        "peekOfCode": "df_year_for_bar = df[ (df['year'] == year_for_bar) & (df['country'] != 'World') ].sort_values(by='population', ascending=False).head(15)\nfig_top_pop = px.bar(\n        df_year_for_bar,\n        x='population',\n        y='country',\n        orientation='h',\n        title=f'Top 15 Countries by Population ({year_for_bar})',\n        labels={'population': 'Population', 'country': 'Country'},\n        hover_data={'population': ':,.0f'},\n        height=500",
+        "detail": "pages.4_🌎_Global_Population_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "fig_top_pop",
+        "kind": 5,
+        "importPath": "pages.4_🌎_Global_Population_per_Country",
+        "description": "pages.4_🌎_Global_Population_per_Country",
+        "peekOfCode": "fig_top_pop = px.bar(\n        df_year_for_bar,\n        x='population',\n        y='country',\n        orientation='h',\n        title=f'Top 15 Countries by Population ({year_for_bar})',\n        labels={'population': 'Population', 'country': 'Country'},\n        hover_data={'population': ':,.0f'},\n        height=500\n    )",
+        "detail": "pages.4_🌎_Global_Population_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "start_year_pop_abs",
+        "kind": 5,
+        "importPath": "pages.4_🌎_Global_Population_per_Country",
+        "description": "pages.4_🌎_Global_Population_per_Country",
+        "peekOfCode": "start_year_pop_abs = df_filtered_year[df_filtered_year['year'] == selected_years[0]].set_index('country')['population']\nend_year_pop_abs = df_filtered_year[df_filtered_year['year'] == selected_years[1]].set_index('country')['population']\n# Merge to calculate growth\npop_change_abs = pd.DataFrame({\n    'start_pop': start_year_pop_abs,\n    'end_pop': end_year_pop_abs\n}).dropna()\nif not pop_change_abs.empty:\n    pop_change_abs['absolute_change'] = pop_change_abs['end_pop'] - pop_change_abs['start_pop']\n    pop_change_abs = pop_change_abs[pop_change_abs.index != 'World'].sort_values(by='absolute_change', ascending=False).reset_index()",
+        "detail": "pages.4_🌎_Global_Population_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "end_year_pop_abs",
+        "kind": 5,
+        "importPath": "pages.4_🌎_Global_Population_per_Country",
+        "description": "pages.4_🌎_Global_Population_per_Country",
+        "peekOfCode": "end_year_pop_abs = df_filtered_year[df_filtered_year['year'] == selected_years[1]].set_index('country')['population']\n# Merge to calculate growth\npop_change_abs = pd.DataFrame({\n    'start_pop': start_year_pop_abs,\n    'end_pop': end_year_pop_abs\n}).dropna()\nif not pop_change_abs.empty:\n    pop_change_abs['absolute_change'] = pop_change_abs['end_pop'] - pop_change_abs['start_pop']\n    pop_change_abs = pop_change_abs[pop_change_abs.index != 'World'].sort_values(by='absolute_change', ascending=False).reset_index()\n    st.write(f\"Absolute population change from {selected_years[0]} to {selected_years[1]}.\")",
+        "detail": "pages.4_🌎_Global_Population_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "pop_change_abs",
+        "kind": 5,
+        "importPath": "pages.4_🌎_Global_Population_per_Country",
+        "description": "pages.4_🌎_Global_Population_per_Country",
+        "peekOfCode": "pop_change_abs = pd.DataFrame({\n    'start_pop': start_year_pop_abs,\n    'end_pop': end_year_pop_abs\n}).dropna()\nif not pop_change_abs.empty:\n    pop_change_abs['absolute_change'] = pop_change_abs['end_pop'] - pop_change_abs['start_pop']\n    pop_change_abs = pop_change_abs[pop_change_abs.index != 'World'].sort_values(by='absolute_change', ascending=False).reset_index()\n    st.write(f\"Absolute population change from {selected_years[0]} to {selected_years[1]}.\")\n    num_countries_growth_abs = st.slider(\"Number of Countries to Display (Absolute Change)\", 5, 50, 15, key=\"num_countries_abs_growth\")\n    # Top Growth Countries (Absolute)",
+        "detail": "pages.4_🌎_Global_Population_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "df_year_dist",
+        "kind": 5,
+        "importPath": "pages.4_🌎_Global_Population_per_Country",
+        "description": "pages.4_🌎_Global_Population_per_Country",
+        "peekOfCode": "df_year_dist = df[(df['year'] == selected_years[1]) & (df['country'] != 'World')]\nfig_hist_pop = px.histogram(\n            df_year_dist,\n            x='population',\n            nbins=50,\n            title=f'Distribution of Country Populations ({selected_years[1]})',\n            labels={'population': 'Population (log scale)', 'count': 'Number of Countries'},\n            log_x=True, # Log scale often useful for highly skewed population data\n            height=450\n        )",
+        "detail": "pages.4_🌎_Global_Population_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "fig_hist_pop",
+        "kind": 5,
+        "importPath": "pages.4_🌎_Global_Population_per_Country",
+        "description": "pages.4_🌎_Global_Population_per_Country",
+        "peekOfCode": "fig_hist_pop = px.histogram(\n            df_year_dist,\n            x='population',\n            nbins=50,\n            title=f'Distribution of Country Populations ({selected_years[1]})',\n            labels={'population': 'Population (log scale)', 'count': 'Number of Countries'},\n            log_x=True, # Log scale often useful for highly skewed population data\n            height=450\n        )\nfig_hist_pop.update_layout(xaxis_title=\"Population (log scale)\")",
+        "detail": "pages.4_🌎_Global_Population_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "df_year_share",
+        "kind": 5,
+        "importPath": "pages.4_🌎_Global_Population_per_Country",
+        "description": "pages.4_🌎_Global_Population_per_Country",
+        "peekOfCode": "df_year_share = df_filtered_year[(df_filtered_year['year'] == selected_years[1]) & (df_filtered_year['country'] != 'World')]\ntotal_pop_for_share = df_year_share['population'].sum()\ndf_year_share['share'] = (df_year_share['population'] / total_pop_for_share) * 100\nfig_treemap = px.treemap(\n            df_year_share,\n            path=[px.Constant(\"Global\"), 'country'],\n            values='population',\n            title=f'Global Population Share by Country ({selected_years[1]})',\n            hover_data={'population': ':,.0f', 'share': ':.2f%'},\n            height=600",
+        "detail": "pages.4_🌎_Global_Population_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "total_pop_for_share",
+        "kind": 5,
+        "importPath": "pages.4_🌎_Global_Population_per_Country",
+        "description": "pages.4_🌎_Global_Population_per_Country",
+        "peekOfCode": "total_pop_for_share = df_year_share['population'].sum()\ndf_year_share['share'] = (df_year_share['population'] / total_pop_for_share) * 100\nfig_treemap = px.treemap(\n            df_year_share,\n            path=[px.Constant(\"Global\"), 'country'],\n            values='population',\n            title=f'Global Population Share by Country ({selected_years[1]})',\n            hover_data={'population': ':,.0f', 'share': ':.2f%'},\n            height=600\n        )",
+        "detail": "pages.4_🌎_Global_Population_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "df_year_share['share']",
+        "kind": 5,
+        "importPath": "pages.4_🌎_Global_Population_per_Country",
+        "description": "pages.4_🌎_Global_Population_per_Country",
+        "peekOfCode": "df_year_share['share'] = (df_year_share['population'] / total_pop_for_share) * 100\nfig_treemap = px.treemap(\n            df_year_share,\n            path=[px.Constant(\"Global\"), 'country'],\n            values='population',\n            title=f'Global Population Share by Country ({selected_years[1]})',\n            hover_data={'population': ':,.0f', 'share': ':.2f%'},\n            height=600\n        )\nfig_treemap.update_layout(margin = dict(t=50, l=25, r=25, b=25))",
+        "detail": "pages.4_🌎_Global_Population_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "fig_treemap",
+        "kind": 5,
+        "importPath": "pages.4_🌎_Global_Population_per_Country",
+        "description": "pages.4_🌎_Global_Population_per_Country",
+        "peekOfCode": "fig_treemap = px.treemap(\n            df_year_share,\n            path=[px.Constant(\"Global\"), 'country'],\n            values='population',\n            title=f'Global Population Share by Country ({selected_years[1]})',\n            hover_data={'population': ':,.0f', 'share': ':.2f%'},\n            height=600\n        )\nfig_treemap.update_layout(margin = dict(t=50, l=25, r=25, b=25))\nst.plotly_chart(fig_treemap, width=\"stretch\")",
+        "detail": "pages.4_🌎_Global_Population_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "fig_treemap.update_layout(margin",
+        "kind": 5,
+        "importPath": "pages.4_🌎_Global_Population_per_Country",
+        "description": "pages.4_🌎_Global_Population_per_Country",
+        "peekOfCode": "fig_treemap.update_layout(margin = dict(t=50, l=25, r=25, b=25))\nst.plotly_chart(fig_treemap, width=\"stretch\")\npop_change_analysis = pop_change_analysis[pop_change_analysis.index != 'World'].sort_values(by='percentage_change', ascending=False).reset_index()\nst.write(f\"Percentage population change from {selected_years[0]} to {selected_years[1]}.\")\nnum_countries_growth_perc = st.slider(\"Number of Countries to Display (Percentage Change)\", 5, 50, 15, key=\"num_countries_perc_growth\")\nst.markdown(f\"Top {num_countries_growth_perc} Countries by Percentage Population Increase\")\nfig_growth_perc = px.bar(\n            pop_change_analysis.head(num_countries_growth_perc),\n            x='percentage_change',\n            y='country',",
+        "detail": "pages.4_🌎_Global_Population_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "pop_change_analysis",
+        "kind": 5,
+        "importPath": "pages.4_🌎_Global_Population_per_Country",
+        "description": "pages.4_🌎_Global_Population_per_Country",
+        "peekOfCode": "pop_change_analysis = pop_change_analysis[pop_change_analysis.index != 'World'].sort_values(by='percentage_change', ascending=False).reset_index()\nst.write(f\"Percentage population change from {selected_years[0]} to {selected_years[1]}.\")\nnum_countries_growth_perc = st.slider(\"Number of Countries to Display (Percentage Change)\", 5, 50, 15, key=\"num_countries_perc_growth\")\nst.markdown(f\"Top {num_countries_growth_perc} Countries by Percentage Population Increase\")\nfig_growth_perc = px.bar(\n            pop_change_analysis.head(num_countries_growth_perc),\n            x='percentage_change',\n            y='country',\n            orientation='h',\n            title=f'Top Countries by Percentage Population Increase ({selected_years[0]}-{selected_years[1]})',",
+        "detail": "pages.4_🌎_Global_Population_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "num_countries_growth_perc",
+        "kind": 5,
+        "importPath": "pages.4_🌎_Global_Population_per_Country",
+        "description": "pages.4_🌎_Global_Population_per_Country",
+        "peekOfCode": "num_countries_growth_perc = st.slider(\"Number of Countries to Display (Percentage Change)\", 5, 50, 15, key=\"num_countries_perc_growth\")\nst.markdown(f\"Top {num_countries_growth_perc} Countries by Percentage Population Increase\")\nfig_growth_perc = px.bar(\n            pop_change_analysis.head(num_countries_growth_perc),\n            x='percentage_change',\n            y='country',\n            orientation='h',\n            title=f'Top Countries by Percentage Population Increase ({selected_years[0]}-{selected_years[1]})',\n            labels={'percentage_change': 'Percentage Population Change', 'country': 'Country'},\n            hover_data={'percentage_change': ':.2f%'},",
+        "detail": "pages.4_🌎_Global_Population_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "fig_growth_perc",
+        "kind": 5,
+        "importPath": "pages.4_🌎_Global_Population_per_Country",
+        "description": "pages.4_🌎_Global_Population_per_Country",
+        "peekOfCode": "fig_growth_perc = px.bar(\n            pop_change_analysis.head(num_countries_growth_perc),\n            x='percentage_change',\n            y='country',\n            orientation='h',\n            title=f'Top Countries by Percentage Population Increase ({selected_years[0]}-{selected_years[1]})',\n            labels={'percentage_change': 'Percentage Population Change', 'country': 'Country'},\n            hover_data={'percentage_change': ':.2f%'},\n            color_discrete_sequence=px.colors.sequential.Greens_r,\n            height=500",
+        "detail": "pages.4_🌎_Global_Population_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "fig_decline_perc",
+        "kind": 5,
+        "importPath": "pages.4_🌎_Global_Population_per_Country",
+        "description": "pages.4_🌎_Global_Population_per_Country",
+        "peekOfCode": "fig_decline_perc = px.bar(\n    pop_change_analysis.tail(num_countries_growth_perc).sort_values(by='percentage_change', ascending=True),\n    x='percentage_change',\n    y='country',\n    orientation='h',\n    title=f'Top Countries by Percentage Population Decrease ({selected_years[0]}-{selected_years[1]})',\n    labels={'percentage_change': 'Percentage Population Change', 'country': 'Country'},\n    hover_data={'percentage_change': ':.2f%'},\n    color_discrete_sequence=px.colors.sequential.Reds_r,\n     height=500",
+        "detail": "pages.4_🌎_Global_Population_per_Country",
+        "documentation": {}
+    },
+    {
         "label": "Colors",
         "kind": 6,
         "importPath": "utils.theme",
