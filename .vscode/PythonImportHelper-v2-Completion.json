@@ -815,7 +815,7 @@
         "kind": 5,
         "importPath": "pages.2_🚚_Supply_Chain_Data",
         "description": "pages.2_🚚_Supply_Chain_Data",
-        "peekOfCode": "fig9 = px.scatter(filtered_df, x='production_volumes', y='manufacturing_costs',\n                      color='product_type', size='revenue_generated',\n                      hover_name='sku',\n                      title='Production Volume vs. Manufacturing Costs',\n                      color_continuous_map={'haircare': '#9c179e', 'skincare': '#ed7953', 'cosmetics': '#fdca26'},\n                      labels={'production_volumes': 'Production Volume', 'manufacturing_costs': 'Manufacturing Costs', 'product_type': 'Product Type'},\n                      log_x=True, log_y=True, size_max=60)\nst.plotly_chart(fig9, width=\"stretch\")\nst.markdown(\"   \")\n# Aggregate to product type level to get a clearer picture for this relationship",
+        "peekOfCode": "fig9 = px.scatter(filtered_df, x='production_volumes', y='manufacturing_costs',\n                      color='product_type', size='revenue_generated',\n                      hover_name='sku',\n                      title='Production Volume vs. Manufacturing Costs',\n                      color_discrete_map={'haircare': '#9c179e', 'skincare': '#ed7953', 'cosmetics': '#fdca26'},\n                      labels={'production_volumes': 'Production Volume', 'manufacturing_costs': 'Manufacturing Costs', 'product_type': 'Product Type'},\n                      log_x=True, log_y=True, size_max=60)\nst.plotly_chart(fig9, width=\"stretch\")\nst.markdown(\"   \")\n# Aggregate to product type level to get a clearer picture for this relationship",
         "detail": "pages.2_🚚_Supply_Chain_Data",
         "documentation": {}
     },
@@ -824,7 +824,7 @@
         "kind": 5,
         "importPath": "pages.2_🚚_Supply_Chain_Data",
         "description": "pages.2_🚚_Supply_Chain_Data",
-        "peekOfCode": "stock_sales_agg = filtered_df.groupby('product_type').agg(\n        avg_stock_levels=('stock_levels', 'mean'),\n        total_products_sold=('number_of_products_sold', 'sum')\n).reset_index()\nfig10 = px.scatter(stock_sales_agg, x='total_products_sold', y='avg_stock_levels',\n                       color='product_type', size='avg_stock_levels',\n                       hover_name='product_type',\n                       color_continuous_map={'haircare': '#d8576b', 'skincare': '#46039f', 'cosmetics': '#f0f921'},\n                       symbol='product_type',\n                       title='Average Stock Levels vs. Total Products Sold by Product Type',",
+        "peekOfCode": "stock_sales_agg = filtered_df.groupby('product_type').agg(\n        avg_stock_levels=('stock_levels', 'mean'),\n        total_products_sold=('number_of_products_sold', 'sum')\n).reset_index()\nfig10 = px.scatter(stock_sales_agg, x='total_products_sold', y='avg_stock_levels',\n                       color='product_type', size='avg_stock_levels',\n                       hover_name='product_type',\n                       color_discrete_map={'haircare': '#d8576b', 'skincare': '#46039f', 'cosmetics': '#f0f921'},\n                       symbol='product_type',\n                       title='Average Stock Levels vs. Total Products Sold by Product Type',",
         "detail": "pages.2_🚚_Supply_Chain_Data",
         "documentation": {}
     },
@@ -833,7 +833,7 @@
         "kind": 5,
         "importPath": "pages.2_🚚_Supply_Chain_Data",
         "description": "pages.2_🚚_Supply_Chain_Data",
-        "peekOfCode": "fig10 = px.scatter(stock_sales_agg, x='total_products_sold', y='avg_stock_levels',\n                       color='product_type', size='avg_stock_levels',\n                       hover_name='product_type',\n                       color_continuous_map={'haircare': '#d8576b', 'skincare': '#46039f', 'cosmetics': '#f0f921'},\n                       symbol='product_type',\n                       title='Average Stock Levels vs. Total Products Sold by Product Type',\n                       labels={'total_products_sold': 'Total Products Sold', 'avg_stock_levels': 'Average Stock Levels'},\n                       size_max=60)\nst.plotly_chart(fig10, width=\"stretch\")\nst.markdown(\"   \")",
+        "peekOfCode": "fig10 = px.scatter(stock_sales_agg, x='total_products_sold', y='avg_stock_levels',\n                       color='product_type', size='avg_stock_levels',\n                       hover_name='product_type',\n                       color_discrete_map={'haircare': '#d8576b', 'skincare': '#46039f', 'cosmetics': '#f0f921'},\n                       symbol='product_type',\n                       title='Average Stock Levels vs. Total Products Sold by Product Type',\n                       labels={'total_products_sold': 'Total Products Sold', 'avg_stock_levels': 'Average Stock Levels'},\n                       size_max=60)\nst.plotly_chart(fig10, width=\"stretch\")\nst.markdown(\"   \")",
         "detail": "pages.2_🚚_Supply_Chain_Data",
         "documentation": {}
     },
