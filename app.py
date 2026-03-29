@@ -39,7 +39,7 @@ with col5:
     icon="🛒", icon_position="left", width="stretch"
     )
 with col6:
-    st.link_button("Global Suicide Rates per Country",
+    st.link_button("Global Suicide Rates",
     "https:",
     icon="☠️", icon_position="left", width="stretch"
     )
