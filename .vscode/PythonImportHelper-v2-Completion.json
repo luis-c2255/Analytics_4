@@ -671,7 +671,7 @@
         "kind": 5,
         "importPath": "pages.2_🚚_Supply_Chain_Data",
         "description": "pages.2_🚚_Supply_Chain_Data",
-        "peekOfCode": "total_products_sold = filtered_df['number_of_products_sold'].sum()\navg_shipping_cost = filtered_df['shipping_costs'].mean()\navg_manufacturing_cost = filtered_df['manufacturing_costs'].mean()\ncol1, col2, col3, col4, col5 = st.columns(5)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n        title=\"Total Revenue\",\n        value=f\"${total_revenue:,.2f}\",\n        delta=\"\",",
+        "peekOfCode": "total_products_sold = filtered_df['number_of_products_sold'].sum()\navg_shipping_cost = filtered_df['shipping_costs'].mean()\navg_manufacturing_cost = filtered_df['manufacturing_costs'].mean()\ncol1, col2, col3, col4, col5 = st.columns(5)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n        title=\"Total Revenue\",\n        value=f\"${total_revenue:,.2f}\",\n        delta=\"💲\",",
         "detail": "pages.2_🚚_Supply_Chain_Data",
         "documentation": {}
     },
@@ -680,7 +680,7 @@
         "kind": 5,
         "importPath": "pages.2_🚚_Supply_Chain_Data",
         "description": "pages.2_🚚_Supply_Chain_Data",
-        "peekOfCode": "avg_shipping_cost = filtered_df['shipping_costs'].mean()\navg_manufacturing_cost = filtered_df['manufacturing_costs'].mean()\ncol1, col2, col3, col4, col5 = st.columns(5)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n        title=\"Total Revenue\",\n        value=f\"${total_revenue:,.2f}\",\n        delta=\"\",\n        card_type=\"info\"",
+        "peekOfCode": "avg_shipping_cost = filtered_df['shipping_costs'].mean()\navg_manufacturing_cost = filtered_df['manufacturing_costs'].mean()\ncol1, col2, col3, col4, col5 = st.columns(5)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n        title=\"Total Revenue\",\n        value=f\"${total_revenue:,.2f}\",\n        delta=\"💲\",\n        card_type=\"success\"",
         "detail": "pages.2_🚚_Supply_Chain_Data",
         "documentation": {}
     },
@@ -689,7 +689,7 @@
         "kind": 5,
         "importPath": "pages.2_🚚_Supply_Chain_Data",
         "description": "pages.2_🚚_Supply_Chain_Data",
-        "peekOfCode": "avg_manufacturing_cost = filtered_df['manufacturing_costs'].mean()\ncol1, col2, col3, col4, col5 = st.columns(5)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n        title=\"Total Revenue\",\n        value=f\"${total_revenue:,.2f}\",\n        delta=\"\",\n        card_type=\"info\"\n    ), unsafe_allow_html=True",
+        "peekOfCode": "avg_manufacturing_cost = filtered_df['manufacturing_costs'].mean()\ncol1, col2, col3, col4, col5 = st.columns(5)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n        title=\"Total Revenue\",\n        value=f\"${total_revenue:,.2f}\",\n        delta=\"💲\",\n        card_type=\"success\"\n    ), unsafe_allow_html=True",
         "detail": "pages.2_🚚_Supply_Chain_Data",
         "documentation": {}
     },

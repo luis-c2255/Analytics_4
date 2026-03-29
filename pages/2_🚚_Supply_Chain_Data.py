@@ -89,8 +89,8 @@ with col1:
         Components.metric_card(
         title="Total Revenue",
         value=f"${total_revenue:,.2f}",
-        delta="",
-        card_type="info"
+        delta="💲",
+        card_type="success"
     ), unsafe_allow_html=True
 )
 with col2:
@@ -98,8 +98,8 @@ with col2:
         Components.metric_card(
         title="Avg. Defect Rate",
         value=f"{avg_defect_rate:.2f}%",
-        delta="",
-        card_type="info"
+        delta="💱",
+        card_type="success"
     ), unsafe_allow_html=True
 )
 with col3:
@@ -107,16 +107,16 @@ with col3:
         Components.metric_card(
         title="Products Sold",
         value=f"{int(total_products_sold):,}",
-        delta="",
+        delta="🪙",
         card_type="info"
     ), unsafe_allow_html=True
 )
 with col4:
     st.markdown(
         Components.metric_card(
-        title="Avg. Manufacturing Cost",
+        title="Avg. Manufacturing",
         value=f"${avg_manufacturing_cost:.2f}",
-        delta="",
+        delta="💶",
         card_type="info"
     ), unsafe_allow_html=True
 )
@@ -125,7 +125,7 @@ with col5:
         Components.metric_card(
         title="Avg. Shipping Cost",
         value=f"${avg_shipping_cost:.2f}",
-        delta="",
+        delta="💷",
         card_type="info"
     ), unsafe_allow_html=True
 )
