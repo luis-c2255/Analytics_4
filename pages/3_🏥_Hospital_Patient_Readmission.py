@@ -119,6 +119,7 @@ with col2:
             title="Overall Readmission Rate",
             value=f"{readmission_rate:.1f}%",
             delta="+0.5% (WoW)",
+            delta_positive=False,
             card_type="error" if readmission_rate > 15 else "success"
         ), unsafe_allow_html=True
     )
@@ -128,6 +129,7 @@ with col3:
             title="Avg. Length of Stay",
             value=f"{avg_length_of_stay:.1f} days",
             delta="-0.2 days (YoY)",
+            delta_positive=False,
             card_type="success" if avg_length_of_stay < 7 else "warning"
         ), unsafe_allow_html=True
     )
