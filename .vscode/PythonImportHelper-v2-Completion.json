@@ -707,7 +707,7 @@
         "kind": 5,
         "importPath": "pages.2_🚚_Supply_Chain_Data",
         "description": "pages.2_🚚_Supply_Chain_Data",
-        "peekOfCode": "revenue_by_product = filtered_df.groupby('product_type')['revenue_generated'].sum().sort_values(ascending=False).reset_index()\nfig1 = px.bar(revenue_by_product, x='product_type', y='revenue_generated',\n              title='Total Revenue by Product Type',\n                  labels={'product_type': 'Product Type', 'revenue_generated': 'Total Revenue'},\n                  hover_data={'revenue_generated': ':$,.2f'},\n                  color='product_type')\nst.plotly_chart(fig1, width=\"stretch\")\nst.markdown(\"   \")\nfig2 = px.histogram(filtered_df, x='price', nbins=20,\n                        title='Distribution of Product Prices',",
+        "peekOfCode": "revenue_by_product = filtered_df.groupby('product_type')['revenue_generated'].sum().sort_values(ascending=False).reset_index()\nfig1 = px.bar(revenue_by_product, x='product_type', y='revenue_generated',\n              title='Total Revenue by Product Type',\n                  labels={'product_type': 'Product Type', 'revenue_generated': 'Total Revenue'},\n                  hover_data={'revenue_generated': ':$,.2f'},\n                  text_auto=True,\n                  color='product_type')\nst.plotly_chart(fig1, width=\"stretch\")\nst.markdown(\"   \")\nfig2 = px.histogram(filtered_df, x='price', nbins=20,",
         "detail": "pages.2_🚚_Supply_Chain_Data",
         "documentation": {}
     },
@@ -716,7 +716,7 @@
         "kind": 5,
         "importPath": "pages.2_🚚_Supply_Chain_Data",
         "description": "pages.2_🚚_Supply_Chain_Data",
-        "peekOfCode": "fig1 = px.bar(revenue_by_product, x='product_type', y='revenue_generated',\n              title='Total Revenue by Product Type',\n                  labels={'product_type': 'Product Type', 'revenue_generated': 'Total Revenue'},\n                  hover_data={'revenue_generated': ':$,.2f'},\n                  color='product_type')\nst.plotly_chart(fig1, width=\"stretch\")\nst.markdown(\"   \")\nfig2 = px.histogram(filtered_df, x='price', nbins=20,\n                        title='Distribution of Product Prices',\n                        labels={'price': 'Price'},",
+        "peekOfCode": "fig1 = px.bar(revenue_by_product, x='product_type', y='revenue_generated',\n              title='Total Revenue by Product Type',\n                  labels={'product_type': 'Product Type', 'revenue_generated': 'Total Revenue'},\n                  hover_data={'revenue_generated': ':$,.2f'},\n                  text_auto=True,\n                  color='product_type')\nst.plotly_chart(fig1, width=\"stretch\")\nst.markdown(\"   \")\nfig2 = px.histogram(filtered_df, x='price', nbins=20,\n                        title='Distribution of Product Prices',",
         "detail": "pages.2_🚚_Supply_Chain_Data",
         "documentation": {}
     },
@@ -725,7 +725,7 @@
         "kind": 5,
         "importPath": "pages.2_🚚_Supply_Chain_Data",
         "description": "pages.2_🚚_Supply_Chain_Data",
-        "peekOfCode": "fig2 = px.histogram(filtered_df, x='price', nbins=20,\n                        title='Distribution of Product Prices',\n                        labels={'price': 'Price'},\n                        marginal='box', # Shows box plot on top\n                        color_discrete_sequence=px.colors.sequential.Viridis)\nst.plotly_chart(fig2, width=\"stretch\")\nst.subheader(\"📈 :blue[Product Performance]\", divider=\"blue\")\nst.markdown(\"   \")\nfig3 = px.scatter(filtered_df, x='price', y='revenue_generated',\n                      color='product_type', size='number_of_products_sold',",
+        "peekOfCode": "fig2 = px.histogram(filtered_df, x='price', nbins=20,\n                        title='Distribution of Product Prices',\n                        labels={'price': 'Price'},\n                        marginal='box', # Shows box plot on top\n                        color_discrete_sequence=px.colors.sequential.Plasma_r)\nst.plotly_chart(fig2, width=\"stretch\")\nst.subheader(\"📈 :blue[Product Performance]\", divider=\"blue\")\nst.markdown(\"   \")\nfig3 = px.scatter(filtered_df, x='price', y='revenue_generated',\n                      color='product_type', size='number_of_products_sold',",
         "detail": "pages.2_🚚_Supply_Chain_Data",
         "documentation": {}
     },

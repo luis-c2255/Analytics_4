@@ -137,6 +137,7 @@ fig1 = px.bar(revenue_by_product, x='product_type', y='revenue_generated',
               title='Total Revenue by Product Type',
                   labels={'product_type': 'Product Type', 'revenue_generated': 'Total Revenue'},
                   hover_data={'revenue_generated': ':$,.2f'},
+                  text_auto=True,
                   color='product_type')
 st.plotly_chart(fig1, width="stretch")
 st.markdown("   ")
@@ -144,7 +145,7 @@ fig2 = px.histogram(filtered_df, x='price', nbins=20,
                         title='Distribution of Product Prices',
                         labels={'price': 'Price'},
                         marginal='box', # Shows box plot on top
-                        color_discrete_sequence=px.colors.sequential.Viridis)
+                        color_discrete_sequence=px.colors.sequential.Plasma_r)
 st.plotly_chart(fig2, width="stretch")
 
 st.subheader("📈 :blue[Product Performance]", divider="blue")
@@ -235,8 +236,8 @@ st.sidebar.info("Analyze your supply chain data for better decision-making!")
 st.markdown("---")
 st.markdown("""
 <div style='text-align: center; color: #666;'>
-    <p><strong>📽️ Global Movie Trends (2026) Analysis</strong></p>
-    <p>Explore key metrics, trends, and distribution of movies based on popularity, vote average, genres, and languages.</p>
+    <p><strong>🚚 Supply Chain Data Analysis</strong></p>
+    <p>Explore key metrics, product performance, supply chain efficiency, logistics and iventory.</p>
     <p style='font-size: 0.9rem;'>Navigate using the sidebar to explore different datasets</p>
 </div>
 """, unsafe_allow_html=True)
