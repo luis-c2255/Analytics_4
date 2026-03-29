@@ -38,7 +38,7 @@ class Components:
                     {title}
                 </p>
             </div>
-            <p style='color: {Colors.PLATINUM}; margin: 0; font-size: 1.2rem; font-weight: 700;'>
+            <p style='color: {Colors.BLUE}; margin: 0; font-size: 1.2rem; font-weight: 700;'>
                     {value}
             </p>
             {delta_html}
