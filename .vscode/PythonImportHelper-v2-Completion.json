@@ -379,6 +379,132 @@
         "documentation": {}
     },
     {
+        "label": "fig_vote_trend",
+        "kind": 5,
+        "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "description": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "peekOfCode": "fig_vote_trend = px.line(\n        trend_df,\n        x='release_year',\n        y='avg_vote_average',\n        title='Average Vote Average by Release Year',\n        labels={'avg_vote_average': 'Average Vote Average', 'release_year': 'Release Year'},\n        markers=True,\n        line_shape=\"spline\",\n        color_discrete_sequence=['#20B2AA']\n    )",
+        "detail": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "documentation": {}
+    },
+    {
+        "label": "fig_movie_count_trend",
+        "kind": 5,
+        "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "description": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "peekOfCode": "fig_movie_count_trend = px.area(\n        trend_df,\n        x='release_year',\n        y='movie_count',\n        title='Number of Unique Movies Released by Year',\n        labels={'movie_count': 'Number of Movies', 'release_year': 'Release Year'},\n        color_discrete_sequence=['#ADD8E6'],\n        line_shape=\"spline\"\n    )\nst.plotly_chart(fig_movie_count_trend, width=\"stretch\")",
+        "detail": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "documentation": {}
+    },
+    {
+        "label": "fig_scatter_pop_vote",
+        "kind": 5,
+        "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "description": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "peekOfCode": "fig_scatter_pop_vote = px.scatter(\n        filtered_df,\n        x='popularity',\n        y='vote_average',\n        size='vote_count', # Use vote_count to represent reliability of vote_average\n        color='original_language',\n        hover_name='title',\n        title='Popularity vs. Vote Average by Original Language',\n        labels={'popularity': 'Popularity Score', 'vote_average': 'Vote Average'},\n        height=600,",
+        "detail": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "documentation": {}
+    },
+    {
+        "label": "fig_scatter_pop_vote_genre",
+        "kind": 5,
+        "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "description": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "peekOfCode": "fig_scatter_pop_vote_genre = px.scatter(\n        filtered_df, # Use filtered_df as it now has 'primary_genre'\n        x='popularity',\n        y='vote_average',\n        size='vote_count',\n        color='primary_genre',\n        hover_name='title',\n        title='Popularity vs. Vote Average by Primary Genre',\n        labels={'popularity': 'Popularity Score', 'vote_average': 'Vote Average'},\n        height=600,",
+        "detail": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "documentation": {}
+    },
+    {
+        "label": "fig_box_pop_genre",
+        "kind": 5,
+        "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "description": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "peekOfCode": "fig_box_pop_genre = px.box(\n            filtered_df_exploded_genres,\n            x='popularity',\n            y='genre_name',\n            orientation='h',\n            title='Popularity Distribution by Genre',\n            labels={'popularity': 'Popularity Score', 'genre_name': 'Genre'},\n            color='genre_name',\n            height=600\n        )",
+        "detail": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "documentation": {}
+    },
+    {
+        "label": "fig_box_vote_genre",
+        "kind": 5,
+        "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "description": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "peekOfCode": "fig_box_vote_genre = px.box(\n            filtered_df_exploded_genres,\n            x='vote_average',\n            y='genre_name',\n            orientation='h',\n            title='Vote Average Distribution by Genre',\n            labels={'vote_average': 'Vote Average', 'genre_name': 'Genre'},\n            color='genre_name',\n            height=600\n        )",
+        "detail": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "documentation": {}
+    },
+    {
+        "label": "fig_box_pop_lang",
+        "kind": 5,
+        "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "description": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "peekOfCode": "fig_box_pop_lang = px.box(\n            filtered_df,\n            x='popularity',\n            y='original_language',\n            orientation='h',\n            title='Popularity Distribution by Language',\n            labels={'popularity': 'Popularity Score', 'original_language': 'Language'},\n            color='original_language',\n            height=600\n        )",
+        "detail": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "documentation": {}
+    },
+    {
+        "label": "fig_box_vote_lang",
+        "kind": 5,
+        "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "description": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "peekOfCode": "fig_box_vote_lang = px.box(\n            filtered_df,\n            x='vote_average',\n            y='original_language',\n            orientation='h',\n            title='Vote Average Distribution by Language',\n            labels={'vote_average': 'Vote Average', 'original_language': 'Language'},\n            color='original_language',\n            height=600\n        )",
+        "detail": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "documentation": {}
+    },
+    {
+        "label": "min_vote_count_threshold",
+        "kind": 5,
+        "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "description": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "peekOfCode": "min_vote_count_threshold = 5000 # Adjustable threshold for reliable ratings\ntop_movies_df = filtered_df[filtered_df['vote_count'] >= min_vote_count_threshold].copy()\nif not top_movies_df.empty:\n    top_popular = top_movies_df.sort_values('popularity', ascending=False).head(10)\n    fig_top_popular = px.bar(\n                top_popular,\n                x='popularity',\n                y='title',\n                orientation='h',\n                title='Top 10 Most Popular Movies (Filtered)',",
+        "detail": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "documentation": {}
+    },
+    {
+        "label": "top_movies_df",
+        "kind": 5,
+        "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "description": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "peekOfCode": "top_movies_df = filtered_df[filtered_df['vote_count'] >= min_vote_count_threshold].copy()\nif not top_movies_df.empty:\n    top_popular = top_movies_df.sort_values('popularity', ascending=False).head(10)\n    fig_top_popular = px.bar(\n                top_popular,\n                x='popularity',\n                y='title',\n                orientation='h',\n                title='Top 10 Most Popular Movies (Filtered)',\n                labels={'popularity': 'Popularity Score', 'title': 'Movie Title'},",
+        "detail": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "documentation": {}
+    },
+    {
+        "label": "lang_genre_composition",
+        "kind": 5,
+        "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "description": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "peekOfCode": "lang_genre_composition = filtered_df_exploded_genres.groupby(['original_language', 'genre_name'])['id'].nunique().reset_index()\nlang_genre_composition.columns = ['original_language', 'genre_name', 'movie_count']\nfig_treemap = px.treemap(\n        lang_genre_composition,\n        path=[px.Constant(\"All Movies\"), 'original_language', 'genre_name'],\n        values='movie_count',\n        color='movie_count',\n        hover_data=['original_language', 'genre_name'],\n        title='Hierarchical Composition of Movies by Language and Genre',\n        height=600,",
+        "detail": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "documentation": {}
+    },
+    {
+        "label": "lang_genre_composition.columns",
+        "kind": 5,
+        "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "description": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "peekOfCode": "lang_genre_composition.columns = ['original_language', 'genre_name', 'movie_count']\nfig_treemap = px.treemap(\n        lang_genre_composition,\n        path=[px.Constant(\"All Movies\"), 'original_language', 'genre_name'],\n        values='movie_count',\n        color='movie_count',\n        hover_data=['original_language', 'genre_name'],\n        title='Hierarchical Composition of Movies by Language and Genre',\n        height=600,\n        color_continuous_scale='Rainbow'",
+        "detail": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "documentation": {}
+    },
+    {
+        "label": "fig_treemap",
+        "kind": 5,
+        "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "description": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "peekOfCode": "fig_treemap = px.treemap(\n        lang_genre_composition,\n        path=[px.Constant(\"All Movies\"), 'original_language', 'genre_name'],\n        values='movie_count',\n        color='movie_count',\n        hover_data=['original_language', 'genre_name'],\n        title='Hierarchical Composition of Movies by Language and Genre',\n        height=600,\n        color_continuous_scale='Rainbow'\n    )",
+        "detail": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "documentation": {}
+    },
+    {
+        "label": "fig_treemap.update_layout(margin",
+        "kind": 5,
+        "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "description": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "peekOfCode": "fig_treemap.update_layout(margin = dict(t=50, l=25, r=25, b=25))\nst.plotly_chart(fig_treemap, width=\"stretch\")\n# ============================================\n# FOOTER\n# ============================================\nst.markdown(\"---\")\nst.markdown(\"\"\"\n<div style='text-align: center; color: #666;'>\n    <p><strong>📽️ Global Movie Trends (2026) Analysis</strong></p>\n    <p>Explore key metrics, trends, and distribution of movies based on popularity, vote average, genres, and languages.</p>",
+        "detail": "pages.1_📽️_Global_Movie_Trends_(2026)",
+        "documentation": {}
+    },
+    {
         "label": "Colors",
         "kind": 6,
         "importPath": "utils.theme",

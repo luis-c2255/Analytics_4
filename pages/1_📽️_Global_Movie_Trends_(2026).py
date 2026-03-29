@@ -233,14 +233,179 @@ fig_pop_trend = px.line(
     color_discrete_sequence=['#FFA07A']
 )
 st.plotly_chart(fig_pop_trend, width="stretch")
+st.markdown("   ")
 
-st.subheader(":orange[Relationships]", divider="orange")
+fig_vote_trend = px.line(
+        trend_df,
+        x='release_year',
+        y='avg_vote_average',
+        title='Average Vote Average by Release Year',
+        labels={'avg_vote_average': 'Average Vote Average', 'release_year': 'Release Year'},
+        markers=True,
+        line_shape="spline",
+        color_discrete_sequence=['#20B2AA']
+    )
+st.plotly_chart(fig_vote_trend, width="stretch")
+st.markdown("   ")
+
+fig_movie_count_trend = px.area(
+        trend_df,
+        x='release_year',
+        y='movie_count',
+        title='Number of Unique Movies Released by Year',
+        labels={'movie_count': 'Number of Movies', 'release_year': 'Release Year'},
+        color_discrete_sequence=['#ADD8E6'],
+        line_shape="spline"
+    )
+st.plotly_chart(fig_movie_count_trend, width="stretch")
+st.markdown("   ")
+
+st.subheader(":orange[Relationships & Correlations]", divider="orange")
+st.markdown("   ")
+st.markdown("Explore the relationship between a movie's popularity and its average vote score.", text_alignment="center")
+
+fig_scatter_pop_vote = px.scatter(
+        filtered_df,
+        x='popularity',
+        y='vote_average',
+        size='vote_count', # Use vote_count to represent reliability of vote_average
+        color='original_language',
+        hover_name='title',
+        title='Popularity vs. Vote Average by Original Language',
+        labels={'popularity': 'Popularity Score', 'vote_average': 'Vote Average'},
+        height=600,
+        log_x=True, # Popularity can have a wide range, log scale helps
+        template="plotly_white"
+    )
+st.plotly_chart(fig_scatter_pop_vote, width="stretch")
+st.markdown("   ")
+st.markdown("This plot shows the relationship, with points colored by the primary genre.",  text_alignment="center")
+
+fig_scatter_pop_vote_genre = px.scatter(
+        filtered_df, # Use filtered_df as it now has 'primary_genre'
+        x='popularity',
+        y='vote_average',
+        size='vote_count',
+        color='primary_genre',
+        hover_name='title',
+        title='Popularity vs. Vote Average by Primary Genre',
+        labels={'popularity': 'Popularity Score', 'vote_average': 'Vote Average'},
+        height=600,
+        log_x=True,
+        template="plotly_white"
+    )
+st.plotly_chart(fig_scatter_pop_vote_genre, width="stretch")
 st.markdown("   ")
 
 st.subheader(":violet[Detailed Category Analysis]", divider="violet")
 st.markdown("   ")
+fig_box_pop_genre = px.box(
+            filtered_df_exploded_genres,
+            x='popularity',
+            y='genre_name',
+            orientation='h',
+            title='Popularity Distribution by Genre',
+            labels={'popularity': 'Popularity Score', 'genre_name': 'Genre'},
+            color='genre_name',
+            height=600
+        )
+fig_box_pop_genre.update_layout(yaxis={'categoryorder':'mean ascending'})
+st.plotly_chart(fig_box_pop_genre,  width="stretch")
+st.markdown("   ")
 
+fig_box_vote_genre = px.box(
+            filtered_df_exploded_genres,
+            x='vote_average',
+            y='genre_name',
+            orientation='h',
+            title='Vote Average Distribution by Genre',
+            labels={'vote_average': 'Vote Average', 'genre_name': 'Genre'},
+            color='genre_name',
+            height=600
+        )
+fig_box_vote_genre.update_layout(yaxis={'categoryorder':'mean ascending'})
+st.plotly_chart(fig_box_vote_genre, width="stretch")
+st.markdown("   ")
 
+fig_box_pop_lang = px.box(
+            filtered_df,
+            x='popularity',
+            y='original_language',
+            orientation='h',
+            title='Popularity Distribution by Language',
+            labels={'popularity': 'Popularity Score', 'original_language': 'Language'},
+            color='original_language',
+            height=600
+        )
+fig_box_pop_lang.update_layout(yaxis={'categoryorder':'mean ascending'})
+st.plotly_chart(fig_box_pop_lang, width="stretch")
+st.markdown("   ")
+
+fig_box_vote_lang = px.box(
+            filtered_df,
+            x='vote_average',
+            y='original_language',
+            orientation='h',
+            title='Vote Average Distribution by Language',
+            labels={'vote_average': 'Vote Average', 'original_language': 'Language'},
+            color='original_language',
+            height=600
+        )
+fig_box_vote_lang.update_layout(yaxis={'categoryorder':'mean ascending'})
+st.plotly_chart(fig_box_vote_lang, width="stretch")
+st.markdown("   ")
+
+min_vote_count_threshold = 5000 # Adjustable threshold for reliable ratings
+top_movies_df = filtered_df[filtered_df['vote_count'] >= min_vote_count_threshold].copy()
+
+if not top_movies_df.empty:
+    top_popular = top_movies_df.sort_values('popularity', ascending=False).head(10)
+    fig_top_popular = px.bar(
+                top_popular,
+                x='popularity',
+                y='title',
+                orientation='h',
+                title='Top 10 Most Popular Movies (Filtered)',
+                labels={'popularity': 'Popularity Score', 'title': 'Movie Title'},
+                color='popularity',
+                color_continuous_scale=px.colors.sequential.YlGnBu
+            )
+    fig_top_popular.update_layout(yaxis={'categoryorder':'total ascending'})
+    st.plotly_chart(fig_top_popular, width="stretch")
+
+    st.markdown("   ")
+    top_rated = top_movies_df.sort_values('vote_average', ascending=False).head(10)
+    fig_top_rated = px.bar(
+                top_rated,
+                x='vote_average',
+                y='title',
+                orientation='h',
+                title='Top 10 Highest Rated Movies (Filtered)',
+                labels={'vote_average': 'Vote Average', 'title': 'Movie Title'},
+                color='vote_average',
+                color_continuous_scale=px.colors.sequential.YlOrRd
+        )
+    fig_top_rated.update_layout(yaxis={'categoryorder':'total ascending'})
+    st.plotly_chart(fig_top_rated,  width="stretch")
+else:
+    st.info(f"No movies meet the criteria of having at least {min_vote_count_threshold} votes within the selected filters.")
+    
+# Group by language and genre, count unique movies
+lang_genre_composition = filtered_df_exploded_genres.groupby(['original_language', 'genre_name'])['id'].nunique().reset_index()
+lang_genre_composition.columns = ['original_language', 'genre_name', 'movie_count']
+
+fig_treemap = px.treemap(
+        lang_genre_composition,
+        path=[px.Constant("All Movies"), 'original_language', 'genre_name'],
+        values='movie_count',
+        color='movie_count',
+        hover_data=['original_language', 'genre_name'],
+        title='Hierarchical Composition of Movies by Language and Genre',
+        height=600,
+        color_continuous_scale='Rainbow'
+    )
+fig_treemap.update_layout(margin = dict(t=50, l=25, r=25, b=25))
+st.plotly_chart(fig_treemap, width="stretch")
 # ============================================
 # FOOTER
 # ============================================
