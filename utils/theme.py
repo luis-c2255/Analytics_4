@@ -23,7 +23,7 @@ class Components:
         border_color = colors.get(card_type, Colors.BLUE)
         delta_color = Colors.GREEN if delta_positive else Colors.RED
         delta_html = f"""
-        <p sytle='color: {delta_color}; margin: 0.5rem 0 0 0; font-size: 0.85rem;'>
+        <p sytle='color: {delta_color}; margin: 0.5rem 0 0 0; font-size: 2rem;'>
             {delta}
         </p>
         """ if delta else ""
