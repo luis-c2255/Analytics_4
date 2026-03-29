@@ -118,6 +118,15 @@
         "documentation": {}
     },
     {
+        "label": "plotly.graph_objects",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "plotly.graph_objects",
+        "description": "plotly.graph_objects",
+        "detail": "plotly.graph_objects",
+        "documentation": {}
+    },
+    {
         "label": "load_data",
         "kind": 2,
         "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",
@@ -826,6 +835,159 @@
         "description": "pages.2_🚚_Supply_Chain_Data",
         "peekOfCode": "fig10 = px.scatter(stock_sales_agg, x='total_products_sold', y='avg_stock_levels',\n                       color='product_type', size='avg_stock_levels',\n                       hover_name='product_type',\n                       title='Average Stock Levels vs. Total Products Sold by Product Type',\n                       labels={'total_products_sold': 'Total Products Sold', 'avg_stock_levels': 'Average Stock Levels'},\n                       size_max=60)\nst.plotly_chart(fig10, width=\"stretch\")\nst.markdown(\"   \")\nst.sidebar.markdown(\"---\")\nst.sidebar.info(\"Analyze your supply chain data for better decision-making!\")",
         "detail": "pages.2_🚚_Supply_Chain_Data",
+        "documentation": {}
+    },
+    {
+        "label": "load_data",
+        "kind": 2,
+        "importPath": "pages.3_🏥_Hospital_Patient_Readmission",
+        "description": "pages.3_🏥_Hospital_Patient_Readmission",
+        "peekOfCode": "def load_data():\n    df = pd.read_csv(\"hospital_readmission_dataset.csv\")\n    # Convert admission_date to datetime\n    df['admission_date'] = pd.to_datetime(df['admission_date'])\n    # Basic cleaning: Handle duplicates\n    df.drop_duplicates(inplace=True)\n    # Create month-year for time series analysis\n    df['admission_month'] = df['admission_date'].dt.to_period('M').astype(str)\n    # Create age groups\n    bins = [0, 40, 60, 75, 100]",
+        "detail": "pages.3_🏥_Hospital_Patient_Readmission",
+        "documentation": {}
+    },
+    {
+        "label": "df",
+        "kind": 5,
+        "importPath": "pages.3_🏥_Hospital_Patient_Readmission",
+        "description": "pages.3_🏥_Hospital_Patient_Readmission",
+        "peekOfCode": "df = load_data()\n# --- Sidebar Filters ---\nst.sidebar.header(\"Filter Options\")\n# Date range slider for admission_date\nmin_date = df['admission_date'].min().to_pydatetime()\nmax_date = df['admission_date'].max().to_pydatetime()\nselected_date_range = st.sidebar.slider(\n    \"Admission Date Range\",\n    min_value=min_date,\n    max_value=max_date,",
+        "detail": "pages.3_🏥_Hospital_Patient_Readmission",
+        "documentation": {}
+    },
+    {
+        "label": "min_date",
+        "kind": 5,
+        "importPath": "pages.3_🏥_Hospital_Patient_Readmission",
+        "description": "pages.3_🏥_Hospital_Patient_Readmission",
+        "peekOfCode": "min_date = df['admission_date'].min().to_pydatetime()\nmax_date = df['admission_date'].max().to_pydatetime()\nselected_date_range = st.sidebar.slider(\n    \"Admission Date Range\",\n    min_value=min_date,\n    max_value=max_date,\n    value=(min_date, max_date),\n    format=\"YYYY-MM-DD\"\n)\ndf_filtered_date = df[(df['admission_date'] >= selected_date_range[0]) & (df['admission_date'] <= selected_date_range[1])]",
+        "detail": "pages.3_🏥_Hospital_Patient_Readmission",
+        "documentation": {}
+    },
+    {
+        "label": "max_date",
+        "kind": 5,
+        "importPath": "pages.3_🏥_Hospital_Patient_Readmission",
+        "description": "pages.3_🏥_Hospital_Patient_Readmission",
+        "peekOfCode": "max_date = df['admission_date'].max().to_pydatetime()\nselected_date_range = st.sidebar.slider(\n    \"Admission Date Range\",\n    min_value=min_date,\n    max_value=max_date,\n    value=(min_date, max_date),\n    format=\"YYYY-MM-DD\"\n)\ndf_filtered_date = df[(df['admission_date'] >= selected_date_range[0]) & (df['admission_date'] <= selected_date_range[1])]\n# Multiselect for categorical filters",
+        "detail": "pages.3_🏥_Hospital_Patient_Readmission",
+        "documentation": {}
+    },
+    {
+        "label": "selected_date_range",
+        "kind": 5,
+        "importPath": "pages.3_🏥_Hospital_Patient_Readmission",
+        "description": "pages.3_🏥_Hospital_Patient_Readmission",
+        "peekOfCode": "selected_date_range = st.sidebar.slider(\n    \"Admission Date Range\",\n    min_value=min_date,\n    max_value=max_date,\n    value=(min_date, max_date),\n    format=\"YYYY-MM-DD\"\n)\ndf_filtered_date = df[(df['admission_date'] >= selected_date_range[0]) & (df['admission_date'] <= selected_date_range[1])]\n# Multiselect for categorical filters\nselected_seasons = st.sidebar.multiselect(",
+        "detail": "pages.3_🏥_Hospital_Patient_Readmission",
+        "documentation": {}
+    },
+    {
+        "label": "df_filtered_date",
+        "kind": 5,
+        "importPath": "pages.3_🏥_Hospital_Patient_Readmission",
+        "description": "pages.3_🏥_Hospital_Patient_Readmission",
+        "peekOfCode": "df_filtered_date = df[(df['admission_date'] >= selected_date_range[0]) & (df['admission_date'] <= selected_date_range[1])]\n# Multiselect for categorical filters\nselected_seasons = st.sidebar.multiselect(\n    \"Select Season(s)\",\n    options=df_filtered_date['season'].unique(),\n    default=df_filtered_date['season'].unique()\n)\nselected_genders = st.sidebar.multiselect(\n    \"Select Gender(s)\",\n    options=df_filtered_date['gender'].unique(),",
+        "detail": "pages.3_🏥_Hospital_Patient_Readmission",
+        "documentation": {}
+    },
+    {
+        "label": "selected_seasons",
+        "kind": 5,
+        "importPath": "pages.3_🏥_Hospital_Patient_Readmission",
+        "description": "pages.3_🏥_Hospital_Patient_Readmission",
+        "peekOfCode": "selected_seasons = st.sidebar.multiselect(\n    \"Select Season(s)\",\n    options=df_filtered_date['season'].unique(),\n    default=df_filtered_date['season'].unique()\n)\nselected_genders = st.sidebar.multiselect(\n    \"Select Gender(s)\",\n    options=df_filtered_date['gender'].unique(),\n    default=df_filtered_date['gender'].unique()\n)",
+        "detail": "pages.3_🏥_Hospital_Patient_Readmission",
+        "documentation": {}
+    },
+    {
+        "label": "selected_genders",
+        "kind": 5,
+        "importPath": "pages.3_🏥_Hospital_Patient_Readmission",
+        "description": "pages.3_🏥_Hospital_Patient_Readmission",
+        "peekOfCode": "selected_genders = st.sidebar.multiselect(\n    \"Select Gender(s)\",\n    options=df_filtered_date['gender'].unique(),\n    default=df_filtered_date['gender'].unique()\n)\nselected_regions = st.sidebar.multiselect(\n    \"Select Region(s)\",\n    options=df_filtered_date['region'].unique(),\n    default=df_filtered_date['region'].unique()\n)",
+        "detail": "pages.3_🏥_Hospital_Patient_Readmission",
+        "documentation": {}
+    },
+    {
+        "label": "selected_regions",
+        "kind": 5,
+        "importPath": "pages.3_🏥_Hospital_Patient_Readmission",
+        "description": "pages.3_🏥_Hospital_Patient_Readmission",
+        "peekOfCode": "selected_regions = st.sidebar.multiselect(\n    \"Select Region(s)\",\n    options=df_filtered_date['region'].unique(),\n    default=df_filtered_date['region'].unique()\n)\nselected_diagnoses = st.sidebar.multiselect(\n    \"Select Primary Diagnosis(es)\",\n    options=df_filtered_date['primary_diagnosis'].unique(),\n    default=df_filtered_date['primary_diagnosis'].unique()\n)",
+        "detail": "pages.3_🏥_Hospital_Patient_Readmission",
+        "documentation": {}
+    },
+    {
+        "label": "selected_diagnoses",
+        "kind": 5,
+        "importPath": "pages.3_🏥_Hospital_Patient_Readmission",
+        "description": "pages.3_🏥_Hospital_Patient_Readmission",
+        "peekOfCode": "selected_diagnoses = st.sidebar.multiselect(\n    \"Select Primary Diagnosis(es)\",\n    options=df_filtered_date['primary_diagnosis'].unique(),\n    default=df_filtered_date['primary_diagnosis'].unique()\n)\nselected_insurance_types = st.sidebar.multiselect(\n    \"Select Insurance Type(s)\",\n    options=df_filtered_date['insurance_type'].unique(),\n    default=df_filtered_date['insurance_type'].unique()\n)",
+        "detail": "pages.3_🏥_Hospital_Patient_Readmission",
+        "documentation": {}
+    },
+    {
+        "label": "selected_insurance_types",
+        "kind": 5,
+        "importPath": "pages.3_🏥_Hospital_Patient_Readmission",
+        "description": "pages.3_🏥_Hospital_Patient_Readmission",
+        "peekOfCode": "selected_insurance_types = st.sidebar.multiselect(\n    \"Select Insurance Type(s)\",\n    options=df_filtered_date['insurance_type'].unique(),\n    default=df_filtered_date['insurance_type'].unique()\n)\nselected_discharge_dispositions = st.sidebar.multiselect(\n    \"Select Discharge Disposition(s)\",\n    options=df_filtered_date['discharge_disposition'].unique(),\n    default=df_filtered_date['discharge_disposition'].unique()\n)",
+        "detail": "pages.3_🏥_Hospital_Patient_Readmission",
+        "documentation": {}
+    },
+    {
+        "label": "selected_discharge_dispositions",
+        "kind": 5,
+        "importPath": "pages.3_🏥_Hospital_Patient_Readmission",
+        "description": "pages.3_🏥_Hospital_Patient_Readmission",
+        "peekOfCode": "selected_discharge_dispositions = st.sidebar.multiselect(\n    \"Select Discharge Disposition(s)\",\n    options=df_filtered_date['discharge_disposition'].unique(),\n    default=df_filtered_date['discharge_disposition'].unique()\n)\n# Apply filters\ndf_filtered = df_filtered_date[\n    df_filtered_date['season'].isin(selected_seasons) &\n    df_filtered_date['gender'].isin(selected_genders) &\n    df_filtered_date['region'].isin(selected_regions) &",
+        "detail": "pages.3_🏥_Hospital_Patient_Readmission",
+        "documentation": {}
+    },
+    {
+        "label": "df_filtered",
+        "kind": 5,
+        "importPath": "pages.3_🏥_Hospital_Patient_Readmission",
+        "description": "pages.3_🏥_Hospital_Patient_Readmission",
+        "peekOfCode": "df_filtered = df_filtered_date[\n    df_filtered_date['season'].isin(selected_seasons) &\n    df_filtered_date['gender'].isin(selected_genders) &\n    df_filtered_date['region'].isin(selected_regions) &\n    df_filtered_date['primary_diagnosis'].isin(selected_diagnoses) &\n    df_filtered_date['insurance_type'].isin(selected_insurance_types) &\n    df_filtered_date['discharge_disposition'].isin(selected_discharge_dispositions)\n]\nif df_filtered.empty:\n    st.warning(\"No data matches the selected filters. Please adjust your selections.\")",
+        "detail": "pages.3_🏥_Hospital_Patient_Readmission",
+        "documentation": {}
+    },
+    {
+        "label": "total_patients",
+        "kind": 5,
+        "importPath": "pages.3_🏥_Hospital_Patient_Readmission",
+        "description": "pages.3_🏥_Hospital_Patient_Readmission",
+        "peekOfCode": "total_patients = df_filtered.shape[0]\nreadmission_rate = df_filtered['label'].mean() * 100\navg_length_of_stay = df_filtered['length_of_stay'].mean()\navg_readmission_risk_score = df_filtered['readmission_risk_score'].mean()\ncol1, col2, col3, col4 = st.columns(4)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n            title=\"Total Patients\",\n            value=f\"{total_patients:,}\",",
+        "detail": "pages.3_🏥_Hospital_Patient_Readmission",
+        "documentation": {}
+    },
+    {
+        "label": "readmission_rate",
+        "kind": 5,
+        "importPath": "pages.3_🏥_Hospital_Patient_Readmission",
+        "description": "pages.3_🏥_Hospital_Patient_Readmission",
+        "peekOfCode": "readmission_rate = df_filtered['label'].mean() * 100\navg_length_of_stay = df_filtered['length_of_stay'].mean()\navg_readmission_risk_score = df_filtered['readmission_risk_score'].mean()\ncol1, col2, col3, col4 = st.columns(4)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n            title=\"Total Patients\",\n            value=f\"{total_patients:,}\",\n            delta=\"+150 (MoM)\",",
+        "detail": "pages.3_🏥_Hospital_Patient_Readmission",
+        "documentation": {}
+    },
+    {
+        "label": "avg_length_of_stay",
+        "kind": 5,
+        "importPath": "pages.3_🏥_Hospital_Patient_Readmission",
+        "description": "pages.3_🏥_Hospital_Patient_Readmission",
+        "peekOfCode": "avg_length_of_stay = df_filtered['length_of_stay'].mean()\navg_readmission_risk_score = df_filtered['readmission_risk_score'].mean()\ncol1, col2, col3, col4 = st.columns(4)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n            title=\"Total Patients\",\n            value=f\"{total_patients:,}\",\n            delta=\"+150 (MoM)\",\n            card_type=\"info\"",
+        "detail": "pages.3_🏥_Hospital_Patient_Readmission",
+        "documentation": {}
+    },
+    {
+        "label": "avg_readmission_risk_score",
+        "kind": 5,
+        "importPath": "pages.3_🏥_Hospital_Patient_Readmission",
+        "description": "pages.3_🏥_Hospital_Patient_Readmission",
+        "peekOfCode": "avg_readmission_risk_score = df_filtered['readmission_risk_score'].mean()\ncol1, col2, col3, col4 = st.columns(4)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n            title=\"Total Patients\",\n            value=f\"{total_patients:,}\",\n            delta=\"+150 (MoM)\",\n            card_type=\"info\"\n        ), unsafe_allow_html=True",
+        "detail": "pages.3_🏥_Hospital_Patient_Readmission",
         "documentation": {}
     },
     {
