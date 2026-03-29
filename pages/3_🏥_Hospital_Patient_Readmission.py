@@ -142,4 +142,187 @@ with col4:
             card_type="success"
         ), unsafe_allow_html=True
     )
-    
+
+st.subheader(":blue[Overview]", divider="blue")
+st.markdown("   ")
+readmission_counts = df_filtered['label'].value_counts(normalize=True).reset_index()
+readmission_counts['label'] = readmission_counts['label'].map({0: 'No Readmission', 1: 'Readmission'})
+fig_pie = px.pie(
+    readmission_counts,
+    names='label',
+    values='proportion',
+    title='Proportion of Readmissions',
+    color_discrete_sequence=px.colors.qualitative.Pastel
+)
+st.plotly_chart(fig_pie, width="stretch")
+st.markdown("   ")
+
+fig_hist = px.histogram(
+    df_filtered,
+    x='readmission_risk_score',
+    nbins=20,
+    title='Readmission Risk Score Distribution',
+    color_discrete_sequence=['#636EFA']
+)
+st.plotly_chart(fig_hist, width="stretch")
+st.markdown("   ")
+
+st.subheader(":red[Risk Factors]", divider="red")
+st.markdown("   ")
+top_n_diagnoses = df_filtered['primary_diagnosis'].value_counts().nlargest(10).index
+df_top_diagnoses = df_filtered[df_filtered['primary_diagnosis'].isin(top_n_diagnoses)]
+readmission_by_diagnosis = df_top_diagnoses.groupby('primary_diagnosis')['label'].mean().reset_index()
+readmission_by_diagnosis['readmission_rate'] = readmission_by_diagnosis['label'] * 100
+
+fig_diag = px.bar(
+    readmission_by_diagnosis.sort_values('readmission_rate', ascending=False),
+    x='readmission_rate',
+    y='primary_diagnosis', 
+    orientation='h',
+    title='Readmission Rate by Top Primary Diagnosis',
+    labels={'readmission_rate': 'Readmission Rate (%)', 'primary_diagnosis': 'Primary Digaagnosis'},
+    text_auto=True,
+    color_discrete_sequence=px.colors.sequential.Viridis
+)
+st.plotly_chart(fig_diag, width="stretch")
+st.markdown("   ")
+
+fig_box_los = px.box(
+    df_filtered,
+    x='label',
+    y='length_of_stay',
+    title='Length of Stay by Readmission Status',
+    labels={'label': 'Readmission Status (0: No, 1: Yes)', 'length': 'Length  of Stay (days)'},
+    color='label',
+    color_discrete_map={0: 'salmon', 1: 'lightgreen'}
+)
+st.plotly_chart(fig_box_los, width="stretch")
+st.markdown("   ")
+
+readmission_by_comorbid = df_filtered.groupby('comorbidities_count')['label'].mean().reset_index()
+readmission_by_comorbid['readmission_rate'] = readmission_by_comorbid['label'] * 100
+
+fig_comorbid = px.bar(
+    readmission_by_comorbid,
+    x='comorbidities_count',
+    y='readmission_rate',
+    title='Readmission Rate by Number of Comorbidities',
+    labels={'comorbidities_count': 'Number of Comorbidities', 'readmission_rate': 'Readmission Rate (%)'},
+    color_discrete_sequence=['#EF553B']
+)
+st.plotly_chart(fig_comorbid, width="stretch")
+st.markdown("   ")
+
+st.subheader(":green[Demographics & Operations]", divider="green")
+st.markdown("   ")
+readmission_by_gender = df_filtered.groupby('gender')['label'].mean().reset_index()
+readmission_by_gender['readmission_rate'] = readmission_by_gender['label'] * 100
+
+fig_gender = px.bar(
+    readmission_by_gender,
+    x='gender',
+    y='readmission_rate',
+    title='Readmission Rate by Gender',
+    text_auto=True,
+    labels={'gender': 'Gender', 'readmission_rate': 'Readmission Rate (%)'},
+    color_discrete_sequence=px.colors.qualitative.G10
+)
+st.plotly_chart(fig_gender, width="stretch")
+st.markdown("   ")
+
+readmission_by_season = df_filtered.groupby('season')['label'].mean().reset_index()
+readmission_by_season['readmission_rate'] = readmission_by_season['label'] * 100
+
+fig_season = px.bar(
+    readmission_by_season,
+    x='season',
+    y='readmission_rate',
+    title='Readmission Rate by Season',
+    text_auto=True,
+    labels={'season': 'Season', 'readmission_rate': 'Readmission Rate (%)'},
+    color_discrete_sequence=px.colors.qualitative.Set2
+)
+st.plotly_chart(fig_season, width="stretch")
+st.markdown("   ")
+
+readmission_by_region = df_filtered.groupby('region')['label'].mean().reset_index()
+readmission_by_region['readmission_rate'] = readmission_by_region['label'] * 100
+
+fig_region = px.bar(
+    readmission_by_region.sort_values('readmission_rate', ascending=False),
+    x='readmission_rate',
+    y='region',
+    orientation='h',
+    title='Readmission Rate by Region',
+    text_auto=True,
+    labels={'region': 'Region', 'readmission_rate': 'Readmission Rate (%)'},
+    color_discrete_sequence=px.colors.qualitative.Bold
+)
+st.plotly_chart(fig_region, width="stretch")
+st.markdown("   ")
+
+readmission_by_insurance = df_filtered.groupby('insurance_type')['label'].mean().reset_index()
+readmission_by_insurance['readmission_rate'] = readmission_by_insurance['label'] * 100
+fig_insurance = px.bar(readmission_by_insurance.sort_values('readmission_rate', ascending=False),
+                        x='readmission_rate', y='insurance_type', orientation='h',
+                        title='Readmission Rate by Insurance Type',
+                        labels={'insurance_rate': 'Insurance Type', 'readmission_rate': 'Readmission Rate (%)'},
+                        text_auto=True,
+                        color_discrete_sequence=px.colors.qualitative.Vivid
+                    )
+st.plotly_chart(fig_insurance, width="stretch")
+st.markdown("   ")
+
+st.subheader(":yellow[Advanced Insights]", divider="yellow")
+st.markdown("   ")
+monthly_readmission = df_filtered.groupby('admission_month')['label'].mean().reset_index()
+monthly_readmission['readmission_rate'] = monthly_readmission['label'] * 100
+monthly_readmission['admission_month'] = pd.to_datetime(monthly_readmission['admission_month'])
+monthly_readmission = monthly_readmission.sort_values('admission_month')
+
+fig_trend = px.line(monthly_readmission, x='admission_month', y='readmission_rate',
+                        title='Monthly Readmission Rate Over Time',
+                        labels={'admission_month': 'Admission Month', 'readmission_rate': 'Readmission Rate (%)'},
+                        markers=True, line_shape="spline")
+fig_trend.update_xaxes(dtick="M1", tickformat="%b\n%Y") # Format x-axis for months
+st.plotly_chart(fig_trend, width="stretch")
+st.markdown("   ")
+
+readmission_by_age_group = df_filtered.groupby('age_group')['label'].mean().reset_index()
+readmission_by_age_group['readmission_rate'] = readmission_by_age_group['label'] * 100
+fig_age_group = px.bar(readmission_by_age_group.sort_values('readmission_rate', ascending=False),
+                               x='age_group', y='readmission_rate',
+                               title='Readmission Rate by Age Group',
+                               labels={'age_group': 'Age Group', 'readmission_rate': 'Readmission Rate (%)'},
+                               color_discrete_sequence=px.colors.qualitative.Plotly)
+st.plotly_chart(fig_age_group, width="stretch")
+st.markdown("   ")
+
+readmission_by_discharge = df_filtered.groupby('discharge_disposition')['label'].mean().reset_index()
+readmission_by_discharge['readmission_rate'] = readmission_by_discharge['label'] * 100
+fig_discharge = px.bar(readmission_by_discharge.sort_values('readmission_rate', ascending=False),
+                               x='readmission_rate', y='discharge_disposition', orientation='h',
+                               title='Readmission Rate by Discharge Disposition',
+                               labels={'discharge_disposition': 'Discharge Disposition', 'readmission_rate': 'Readmission Rate (%)'},
+                               color_discrete_sequence=px.colors.qualitative.T10)
+st.plotly_chart(fig_discharge, width="stretch")
+st.markdown("   ")
+
+fig_violin_risk = px.violin(df_filtered, x='label', y='readmission_risk_score', color='label',
+                                title='Readmission Risk Score Distribution (0: No Readmission, 1: Readmission)',
+                                labels={'label': 'Actual Readmission Status', 'readmission_risk_score': 'Readmission Risk Score'},
+                                box=True, # show box plot inside violin
+                                points="outliers", # show all points but highlight outliers
+                                color_discrete_map={0: 'lightblue', 1: 'pink'})
+st.plotly_chart(fig_violin_risk, width="stretch")
+# ============================================
+# FOOTER
+# ============================================
+st.markdown("---")
+st.markdown("""
+<div style='text-align: center; color: #666;'>
+    <p><strong>🏥 Hospital Patient Readmission Analysis</strong></p>
+    <p>Explore key metrics, risk factors, demographics and operations.</p>
+    <p style='font-size: 0.9rem;'>Navigate using the sidebar to explore different datasets</p>
+</div>
+""", unsafe_allow_html=True)
