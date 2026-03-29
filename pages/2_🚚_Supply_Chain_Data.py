@@ -103,7 +103,7 @@ with col1:
         Components.metric_card(
         title="Total Revenue",
         value=f"${total_revenue:,.2f}",
-        delta=f"{revenue_delta}",
+        delta=revenue_delta,
         delta_positive="",
         card_type=revenue_card_type
     ), unsafe_allow_html=True

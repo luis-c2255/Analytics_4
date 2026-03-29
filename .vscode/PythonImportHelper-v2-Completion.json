@@ -761,7 +761,7 @@
         "kind": 5,
         "importPath": "pages.2_🚚_Supply_Chain_Data",
         "description": "pages.2_🚚_Supply_Chain_Data",
-        "peekOfCode": "products_card_type = \"success\" if total_products_sold >= overall_total_products_sold else \"info\"\nshipping_card_type = \"success\" if avg_shipping_cost <= overall_avg_shipping_cost else \"error\"\nmanufacturing_card_type = \"success\" if avg_manufacturing_cost <= overall_avg_manufacturing_cost else \"error\"\ncol1, col2, col3, col4, col5 = st.columns(5)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n        title=\"Total Revenue\",\n        value=f\"${total_revenue:,.2f}\",\n        delta=f\"{revenue_delta}\",",
+        "peekOfCode": "products_card_type = \"success\" if total_products_sold >= overall_total_products_sold else \"info\"\nshipping_card_type = \"success\" if avg_shipping_cost <= overall_avg_shipping_cost else \"error\"\nmanufacturing_card_type = \"success\" if avg_manufacturing_cost <= overall_avg_manufacturing_cost else \"error\"\ncol1, col2, col3, col4, col5 = st.columns(5)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n        title=\"Total Revenue\",\n        value=f\"${total_revenue:,.2f}\",\n        delta=revenue_delta,",
         "detail": "pages.2_🚚_Supply_Chain_Data",
         "documentation": {}
     },
@@ -770,7 +770,7 @@
         "kind": 5,
         "importPath": "pages.2_🚚_Supply_Chain_Data",
         "description": "pages.2_🚚_Supply_Chain_Data",
-        "peekOfCode": "shipping_card_type = \"success\" if avg_shipping_cost <= overall_avg_shipping_cost else \"error\"\nmanufacturing_card_type = \"success\" if avg_manufacturing_cost <= overall_avg_manufacturing_cost else \"error\"\ncol1, col2, col3, col4, col5 = st.columns(5)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n        title=\"Total Revenue\",\n        value=f\"${total_revenue:,.2f}\",\n        delta=f\"{revenue_delta}\",\n        delta_positive=\"\",",
+        "peekOfCode": "shipping_card_type = \"success\" if avg_shipping_cost <= overall_avg_shipping_cost else \"error\"\nmanufacturing_card_type = \"success\" if avg_manufacturing_cost <= overall_avg_manufacturing_cost else \"error\"\ncol1, col2, col3, col4, col5 = st.columns(5)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n        title=\"Total Revenue\",\n        value=f\"${total_revenue:,.2f}\",\n        delta=revenue_delta,\n        delta_positive=\"\",",
         "detail": "pages.2_🚚_Supply_Chain_Data",
         "documentation": {}
     },
@@ -779,7 +779,7 @@
         "kind": 5,
         "importPath": "pages.2_🚚_Supply_Chain_Data",
         "description": "pages.2_🚚_Supply_Chain_Data",
-        "peekOfCode": "manufacturing_card_type = \"success\" if avg_manufacturing_cost <= overall_avg_manufacturing_cost else \"error\"\ncol1, col2, col3, col4, col5 = st.columns(5)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n        title=\"Total Revenue\",\n        value=f\"${total_revenue:,.2f}\",\n        delta=f\"{revenue_delta}\",\n        delta_positive=\"\",\n        card_type=revenue_card_type",
+        "peekOfCode": "manufacturing_card_type = \"success\" if avg_manufacturing_cost <= overall_avg_manufacturing_cost else \"error\"\ncol1, col2, col3, col4, col5 = st.columns(5)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n        title=\"Total Revenue\",\n        value=f\"${total_revenue:,.2f}\",\n        delta=revenue_delta,\n        delta_positive=\"\",\n        card_type=revenue_card_type",
         "detail": "pages.2_🚚_Supply_Chain_Data",
         "documentation": {}
     },
