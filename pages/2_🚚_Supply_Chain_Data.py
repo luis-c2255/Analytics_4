@@ -152,8 +152,10 @@ st.subheader("📈 :blue[Product Performance]", divider="blue")
 st.markdown("   ")
 fig3 = px.scatter(filtered_df, x='price', y='revenue_generated',
                       color='product_type', size='number_of_products_sold',
+                      symbol='product_type',
                       hover_name='sku',
                       title='Price vs. Revenue Generated',
+                      color_continuous_scale='darkmint',
                       labels={'price': 'Price', 'revenue_generated': 'Revenue Generated'},
                       log_x=True, size_max=60)
 st.plotly_chart(fig3, width="stretch")
@@ -165,6 +167,7 @@ fig4 = px.bar(revenue_by_supplier, x='supplier_name', y='revenue_generated',
                   labels={'supplier_name': 'Supplier Name', 'revenue_generated': 'Total Revenue'},
                   hover_data={'revenue_generated': ':$,.2f'},
                   color='supplier_name',
+                  text_auto=True,
                   orientation='v')
 st.plotly_chart(fig4, width="stretch")
 st.markdown("   ")
@@ -191,7 +194,8 @@ fig7 = px.bar(filtered_df.groupby(['supplier_name', 'inspection_results'])['defe
                   barmode='group',
                   title='Average Defect Rates by Supplier and Inspection Result',
                   labels={'supplier_name': 'Supplier Name', 'defect_rates': 'Average Defect Rate', 'inspection_results': 'Inspection Result'},
-                  hover_data={'defect_rates': ':.2f'})
+                  hover_data={'defect_rates': ':.2f'},
+                  text_auto=True)
 st.plotly_chart(fig7, width="stretch")
 st.markdown("   ")
 
@@ -201,6 +205,7 @@ avg_lead_times = filtered_df.groupby('supplier_name')[['lead_times', 'manufactur
 fig8 = px.bar(avg_lead_times.melt(id_vars='supplier_name', var_name='Lead Time Type', value_name='Average Days'),
                   x='supplier_name', y='Average Days', color='Lead Time Type', barmode='group',
                   title='Average General & Manufacturing Lead Times by Supplier',
+                  text_auto=True,
                   labels={'supplier_name': 'Supplier Name', 'Average Days': 'Average Lead Time (Days)'})
 st.plotly_chart(fig8, width="stretch")
 st.markdown("   ")
@@ -209,6 +214,7 @@ fig9 = px.scatter(filtered_df, x='production_volumes', y='manufacturing_costs',
                       color='product_type', size='revenue_generated',
                       hover_name='sku',
                       title='Production Volume vs. Manufacturing Costs',
+                      color_continuous_scale='Inferno',
                       labels={'production_volumes': 'Production Volume', 'manufacturing_costs': 'Manufacturing Costs', 'product_type': 'Product Type'},
                       log_x=True, log_y=True, size_max=60)
 st.plotly_chart(fig9, width="stretch")
@@ -222,6 +228,8 @@ stock_sales_agg = filtered_df.groupby('product_type').agg(
 fig10 = px.scatter(stock_sales_agg, x='total_products_sold', y='avg_stock_levels',
                        color='product_type', size='avg_stock_levels',
                        hover_name='product_type',
+                       color_continuous_scale='plotly3',
+                       symbol='product_type',
                        title='Average Stock Levels vs. Total Products Sold by Product Type',
                        labels={'total_products_sold': 'Total Products Sold', 'avg_stock_levels': 'Average Stock Levels'},
                        size_max=60)
