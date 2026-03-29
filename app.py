@@ -29,7 +29,7 @@ with col3:
     )
 col4, col5, col6, col7 = st.columns(4)
 with col4:
-    st.link_button("Global Population per Country 1950-2024",
+    st.link_button("Global Population per Country",
     "https:",
     icon="🌎", icon_position="left", width="stretch"
     )
@@ -39,7 +39,7 @@ with col5:
     icon="🛒", icon_position="left", width="stretch"
     )
 with col6:
-    st.link_button("Global Suicide Rates per Country 2000-2021",
+    st.link_button("Global Suicide Rates per Country",
     "https:",
     icon="☠️", icon_position="left", width="stretch"
     )
