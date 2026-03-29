@@ -9,7 +9,7 @@ st.set_page_config(
 st.title(":green[Multiple Dataset Analysis]", text_alignment="center")
 
 with st.container(height="content", width="stretch", horizontal_alignment="center"):    
-    st.image("utils/image.svg")
+    st.image("utils/1.svg")
    
 col1,  col2, col3 = st.columns(3)
 with col1:
