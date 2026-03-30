@@ -32,13 +32,9 @@ class Components:
         </p>
         """ if delta else ""
         return f"""
-        <div style='border: 1px solid {Colors.LIGHTGREEN};
-                    background-color: {Colors.DARKGREEN};
-                    border-top: 6px solid {border_color};
-                    padding: 1rem; border-radius: 10px; height: 100%;'>
+        <div style='border: 1px solid {Colors.LIGHTGREEN}; background-color: {Colors.DARKGREEN}; border-top: 6px solid {border_color}; padding: 1rem; border-radius: 10px; height: 100%;'>
             <div style='display: flex; align-items: center; margin-bottom: 0.5rem;'>
-                <p style='color: {Colors.PLATINUM}; margin: 0; font-size: 1rem;
-                            text-transform: uppercase; letter-spacing: 1px; font-weight: 600;'>
+                <p style='color: {Colors.PLATINUM}; margin: 0; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;'>
                     {title}
                 </p>
             </div>
