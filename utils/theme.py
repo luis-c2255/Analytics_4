@@ -39,8 +39,8 @@ class Components:
                         transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
                         hover: {{"box-shadow": "0 10px 20px rgba(0, 0, 0, 0.4)"}};
                         transform: translateY(-4px);'>
-                <p style='color: {Colors.PLATINUM}; margin: 0; font-size: 1.25rem;
-                            text-transform: uppercase; letter-spacing: 1px; font-weight: 700;'>
+                <p style='color: {Colors.PLATINUM}; margin: 0; font-size: 1rem;
+                            text-transform: uppercase; letter-spacing: 1px; font-weight: 600;'>
                     {title}
                 </p>
             </div>
