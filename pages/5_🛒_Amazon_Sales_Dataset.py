@@ -87,7 +87,7 @@ with col1:
             value=f"${total_sales:,.2f}",
             delta=f"+{((total_sales / prev_total_sales) - 1) * 100:.1f}%" if prev_total_sales else "N/A",
             card_type="success"
-        )
+        ), unsafe_allow_html=True
     )
 with col2:
     st.markdown(
@@ -96,7 +96,7 @@ with col2:
             value=f"{int(total_products_sold):,}",
             delta=f"+{int(total_products_sold - prev_total_products_sold):,}" if prev_total_products_sold else "N/A",
             card_type="info"
-        )
+        ), unsafe_allow_html=True
     )
 with col3:
     st.markdown(
@@ -105,7 +105,7 @@ with col3:
             value=f"{avg_rating:.2f} ⭐",
             delta=f"+{(avg_rating - prev_avg_rating):.1f}" if prev_avg_rating else "N/A",
             card_type="success" if (avg_rating - prev_avg_rating) >= 0 else "error"
-        )
+        ), unsafe_allow_html=True
     )
 with col4:
     st.markdown(
@@ -114,7 +114,7 @@ with col4:
             value=f"${avg_order_value:,.2f}",
             delta=f"+{((avg_order_value / prev_avg_order_value) - 1) * 100:.1f}%" if prev_avg_order_value else "N/A",
             card_type="info"
-        )
+        )unsafe_allow_html=True
     )
 st.markdown("   ")        
 st.subheader(":blue[Overview & Performance]", divider="blue")

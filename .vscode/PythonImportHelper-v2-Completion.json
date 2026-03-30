@@ -1715,7 +1715,7 @@
         "kind": 5,
         "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
         "description": "pages.5_🛒_Amazon_Sales_Dataset",
-        "peekOfCode": "prev_avg_order_value = avg_order_value * 0.97\ncol1, col2, col3, col4 = st.columns(4)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n            title=\"Total Revenue\",\n            value=f\"${total_sales:,.2f}\",\n            delta=f\"+{((total_sales / prev_total_sales) - 1) * 100:.1f}%\" if prev_total_sales else \"N/A\",\n            card_type=\"success\"\n        )",
+        "peekOfCode": "prev_avg_order_value = avg_order_value * 0.97\ncol1, col2, col3, col4 = st.columns(4)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n            title=\"Total Revenue\",\n            value=f\"${total_sales:,.2f}\",\n            delta=f\"+{((total_sales / prev_total_sales) - 1) * 100:.1f}%\" if prev_total_sales else \"N/A\",\n            card_type=\"success\"\n        ), unsafe_allow_html=True",
         "detail": "pages.5_🛒_Amazon_Sales_Dataset",
         "documentation": {}
     },
