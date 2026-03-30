@@ -148,6 +148,65 @@ div[data-testid="stSidebarNavSearch"] input {
     font-weight: 700;
 }
 
+[data-testid="stSidebar"] .stMultiSelect>div {
+    background-color: #04250e;
+    border: 1px solid #235b2c;
+    border-radius: 5px;
+}
+
+[data-testid="stSidebar"] .stMultiSelect label {
+    color: #E0E0E0 !important;
+}
+
+[data-testid="stSidebar"] .stMultiSelect div[data-baseweb="tag"] {
+    background-color: #235b2c !important;
+    border: none;
+    border-radius: 5px !important;
+    color: #E0E0E0 !important;
+}
+
+[data-testid="stSidebar"] .stMultiSelect div[data-baseweb="tag"] svg {
+    fill: #E0E0E0 !important;
+}
+
+.stMultiSelect [data-baseweb="popover"] {
+    background-color: #04250e !important;
+    color: #E0E0E0 !important;
+}
+
+.stMultiSelect [data-baseweb="option"]:hover {
+    background-color: #235b2c !important;
+    color: #E0E0E0 !important;
+}
+
+[data-testid="stSidebar"] .stSlider label {
+    color: #E0E0E0 !important;
+}
+
+[data-testid="stSidebar"] .stSlider [data-baseweb="slider"]>div {
+    background-color: #235b2c !important;
+}
+
+[data-testid="stSidebar"] .stSlider [data-baseweb="slider"]>div>div {
+    background-color: #46B83D !important;
+}
+
+[data-testid="stSidebar"] .stSlider [data-baseweb="slider"] [role="slider"] {
+    background-color: #46B83D !important;
+    border: 2px solid #235b2c !important;
+    width: 16px !important;
+    height: 16px !important;
+}
+
+[data-testid="stSidebar"] .stSlider [data-baseweb="slider"] [role="slider"]:hover {
+    background-color: #5A9E4B !important;
+    border-color: #235b2c !important;
+    box-shadow: 0 5px 15px rgba(70, 184, 61, 0.3) !important;
+}
+
+[data-testid="stSidebar"] .stSlider [data-baseweb="slider"] [role="slider"]:focus {
+    box-shadow: 0 0 0 4px rgba(70, 184, 61, 0.5) !important;
+}
 
 /* Download Button */
 .stDownloadButton>button {
