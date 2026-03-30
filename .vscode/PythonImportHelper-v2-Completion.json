@@ -53,7 +53,15 @@
         "documentation": {}
     },
     {
-        "label": "Components",
+        "label": "Colors",
+        "importPath": "utils.theme",
+        "description": "utils.theme",
+        "isExtraImport": true,
+        "detail": "utils.theme",
+        "documentation": {}
+    },
+    {
+        "label": "init_page",
         "importPath": "utils.theme",
         "description": "utils.theme",
         "isExtraImport": true,
@@ -69,7 +77,15 @@
         "documentation": {}
     },
     {
-        "label": "Components",
+        "label": "Colors",
+        "importPath": "utils.theme",
+        "description": "utils.theme",
+        "isExtraImport": true,
+        "detail": "utils.theme",
+        "documentation": {}
+    },
+    {
+        "label": "init_page",
         "importPath": "utils.theme",
         "description": "utils.theme",
         "isExtraImport": true,
@@ -85,7 +101,15 @@
         "documentation": {}
     },
     {
-        "label": "Components",
+        "label": "Colors",
+        "importPath": "utils.theme",
+        "description": "utils.theme",
+        "isExtraImport": true,
+        "detail": "utils.theme",
+        "documentation": {}
+    },
+    {
+        "label": "init_page",
         "importPath": "utils.theme",
         "description": "utils.theme",
         "isExtraImport": true,
@@ -101,7 +125,111 @@
         "documentation": {}
     },
     {
+        "label": "Colors",
+        "importPath": "utils.theme",
+        "description": "utils.theme",
+        "isExtraImport": true,
+        "detail": "utils.theme",
+        "documentation": {}
+    },
+    {
+        "label": "init_page",
+        "importPath": "utils.theme",
+        "description": "utils.theme",
+        "isExtraImport": true,
+        "detail": "utils.theme",
+        "documentation": {}
+    },
+    {
         "label": "Components",
+        "importPath": "utils.theme",
+        "description": "utils.theme",
+        "isExtraImport": true,
+        "detail": "utils.theme",
+        "documentation": {}
+    },
+    {
+        "label": "Colors",
+        "importPath": "utils.theme",
+        "description": "utils.theme",
+        "isExtraImport": true,
+        "detail": "utils.theme",
+        "documentation": {}
+    },
+    {
+        "label": "init_page",
+        "importPath": "utils.theme",
+        "description": "utils.theme",
+        "isExtraImport": true,
+        "detail": "utils.theme",
+        "documentation": {}
+    },
+    {
+        "label": "Components",
+        "importPath": "utils.theme",
+        "description": "utils.theme",
+        "isExtraImport": true,
+        "detail": "utils.theme",
+        "documentation": {}
+    },
+    {
+        "label": "Colors",
+        "importPath": "utils.theme",
+        "description": "utils.theme",
+        "isExtraImport": true,
+        "detail": "utils.theme",
+        "documentation": {}
+    },
+    {
+        "label": "init_page",
+        "importPath": "utils.theme",
+        "description": "utils.theme",
+        "isExtraImport": true,
+        "detail": "utils.theme",
+        "documentation": {}
+    },
+    {
+        "label": "Components",
+        "importPath": "utils.theme",
+        "description": "utils.theme",
+        "isExtraImport": true,
+        "detail": "utils.theme",
+        "documentation": {}
+    },
+    {
+        "label": "Colors",
+        "importPath": "utils.theme",
+        "description": "utils.theme",
+        "isExtraImport": true,
+        "detail": "utils.theme",
+        "documentation": {}
+    },
+    {
+        "label": "init_page",
+        "importPath": "utils.theme",
+        "description": "utils.theme",
+        "isExtraImport": true,
+        "detail": "utils.theme",
+        "documentation": {}
+    },
+    {
+        "label": "Components",
+        "importPath": "utils.theme",
+        "description": "utils.theme",
+        "isExtraImport": true,
+        "detail": "utils.theme",
+        "documentation": {}
+    },
+    {
+        "label": "Colors",
+        "importPath": "utils.theme",
+        "description": "utils.theme",
+        "isExtraImport": true,
+        "detail": "utils.theme",
+        "documentation": {}
+    },
+    {
+        "label": "init_page",
         "importPath": "utils.theme",
         "description": "utils.theme",
         "isExtraImport": true,
@@ -1562,7 +1690,7 @@
         "kind": 6,
         "importPath": "utils.theme",
         "description": "utils.theme",
-        "peekOfCode": "class Colors:\n    BLUE = \"#3A8DFF\"\n    GREEN = \"#4CC9A6\"\n    RED = \"#FF6B6B\"\n    ORANGE = \"#FFB84D\"\n    CHARCOAL = \"#1E1E1E\"\n    GREY = \"#5A6A7A\"\n    PRUSSIAN = \"#0A1A2F\"\n    PLATINUM = \"#F7F9FC\"\nclass Components:",
+        "peekOfCode": "class Colors:\n    BLUE = \"#3A8DFF\"\n    GREEN = \"#4CC9A6\"\n    RED = \"#FF6B6B\"\n    ORANGE = \"#FFB84D\"\n    CHARCOAL = \"#1E1E1E\"\n    GREY = \"#5A6A7A\"\n    PRUSSIAN = \"#0A1A2F\"\n    PLATINUM = \"#F7F9FC\"\n    DARKGREEN = \"#0B2C24\"",
         "detail": "utils.theme",
         "documentation": {}
     },

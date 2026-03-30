@@ -1,12 +1,17 @@
 import streamlit as st
-from utils.theme import Components
+from utils.theme import Components, Colors, init_page
 
-st.set_page_config(
-    layout="wide",
-    initial_sidebar_state="expanded"
+init_page("Multiple Dataset Analysis", "📊")
+
+try:
+    with open('style.css') as f:
+        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+except FileNotFoundError:
+    pass
+
+st.markdown(
+    Components.page_header("📊 Multiple Dataset Analysis"), unsafe_allow_html=True
 )
-
-st.title(":green[Multiple Dataset Analysis]", text_alignment="center")
 
 with st.container(height="content", width="stretch", horizontal_alignment="center"):    
     st.image("utils/1.svg")

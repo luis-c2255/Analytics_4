@@ -2,14 +2,19 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import io
-from utils.theme import Components
+from utils.theme import Components, Colors, init_page
 
-st.set_page_config(
-    layout="wide",
-    initial_sidebar_state="expanded"
+init_page("Supply Chain Data Analysis", "🚚")
+
+try:
+    with open('style.css') as f:
+        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+except FileNotFoundError:
+    pass
+
+st.markdown(
+    Components.page_header("🚚  Supply Chain Data Analysis"), unsafe_allow_html=True
 )
-
-st.title("🚚 :orange[Supply Chain Data Analysis]", text_alignment="center")
 
 # --- Data Loading ---
 @st.cache_data

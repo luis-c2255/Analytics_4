@@ -9,6 +9,8 @@ class Colors:
     GREY = "#5A6A7A"
     PRUSSIAN = "#0A1A2F"
     PLATINUM = "#F7F9FC"
+    DARKGREEN = "#0B2C24"
+    LIGHTGREEN = "#247A4D"
     
     
 class Components:
@@ -65,4 +67,30 @@ class Components:
             <div style='flex-grow: 1; color: {Colors.PLATINUM};'>{content}</div>
         </div>
         """
-            
+    @staticmethod
+    def page_header(title:str) -> str:
+        """Create a styled page header"""
+        return f"""
+        <div style='background: linear-gradient(135deg, {Colors.DARKGREEN} 0%, {Colors.LIGHTGREEN} 100%);
+                    padding: 0.8rem; border-radius: 8px; margin-bottom: 0.8rem;'>
+                    <h1 style='color: white; margin: 0; text-align: center; font-size: 2.5rem;'>{title}</h1>
+        </div>
+        """
+    def init_page(page_name: str, icon: str = "📊"):
+        """Initialize page with common settings"""
+        try:
+            st.set_page_config(
+                page_title=f"{page_name} | Retail Analytics",
+                page_icon=icon,
+                layout="wide",
+                initial_sidebar_state="expanded"
+            )
+        except:
+            # page config already set, skip
+            pass
+        # Load custom CSS
+        try:
+            with open ('style.css') as f:
+                st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+        except FileNotFoundError:
+            pass

@@ -3,14 +3,19 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import numpy as np
-from utils.theme import Components
+from utils.theme import Components, Colors, init_page
 
-st.set_page_config(
-    layout="wide",
-    initial_sidebar_state="expanded"
+init_page("Global Population per Country 1950-2024 Analysis", "🌎")
+
+try:
+    with open('style.css') as f:
+        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+except FileNotFoundError:
+    pass
+
+st.markdown(
+    Components.page_header("🌎  Global Population per Country 1950-2024 Analysis"), unsafe_allow_html=True
 )
-
-st.title("🌎 :green[Global Population per Country 1950-2024 Analysis]", text_alignment="center")
 
 @st.cache_data
 def load_data():

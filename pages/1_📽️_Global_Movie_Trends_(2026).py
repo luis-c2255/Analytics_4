@@ -3,12 +3,15 @@ import pandas as pd
 import plotly.express as px
 import ast # For literal_eval
 import numpy as np # For numerical operations
-from utils.theme import Components
+from utils.theme import Components, Colors, init_page
 
-st.set_page_config(
-    layout="wide",
-    initial_sidebar_state="expanded"
-)
+init_page("Global Movie Trends (2026)", "📽️")
+
+try:
+    with open('style.css') as f:
+        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+except FileNotFoundError:
+    pass
 
 @st.cache_data
 def load_data():
@@ -54,7 +57,10 @@ def load_data():
 # Load data
 df, df_exploded_genres, genre_mapping = load_data()
 
-st.title("📽️ :blue[Global Movie Trends (2026) Analysis]", text_alignment="center")
+st.markdown(
+    Components.page_header("📽️ Global Movie Trends (2026) Analysis"), unsafe_allow_html=True
+)
+
 st.markdown("""
             Explore key metrics, trends, and distribution of movies based on popularity, vote average, genres, and languages.
             This expanded dashboard includes detailed categorical analysis for deeper insights.

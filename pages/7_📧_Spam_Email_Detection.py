@@ -1,9 +1,15 @@
 import streamlit as st
-from utils.theme import Components
+from utils.theme import Components, Colors, init_page
 
-st.set_page_config(
-    layout="wide",
-    initial_sidebar_state="expanded"
+init_page("Spam Email Detection Analysis", "📧")
+
+try:
+    with open('style.css') as f:
+        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+except FileNotFoundError:
+    pass
+
+st.markdown(
+    Components.page_header("📧  Spam Email Detection Analysis"), unsafe_allow_html=True
 )
 
-st.title("📧 :blue[Spam Email Detection Analysis]", text_alignment="center")
