@@ -33,7 +33,7 @@ class Components:
         return f"""
         <div style='border: 1px solid {Colors.CHARCOAL};
                     background-color: {Colors.PRUSSIAN};
-                    border-top: 4px solid {border_color};
+                    border-top: 6px solid {border_color};
                     padding: 1rem; border-radius: 10px; height: 100%;
                     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
                     hover: {{"box-shadow": "0 10px 20px rgba(0, 0, 0, 0.4)"}};
