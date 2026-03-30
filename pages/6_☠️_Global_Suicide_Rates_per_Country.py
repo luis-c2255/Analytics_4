@@ -174,6 +174,171 @@ for col, m in zip(cols, metrics):
                 value=m["value"],
                 delta=m["delta"],
                 card_type=m["card_type"]
-            ),
-            unsafe_allow_html=True
+            ), unsafe_allow_html=True
+        )        
+
+st.subheader("📊 :green[Overview & Trends]", divider="green")
+st.markdown("   ")
+
+global_yearly_avg = df_global_trends.groupby('year')['suicide_rate'].mean().reset_index()
+
+fig_global_trend = px.line(
+            global_yearly_avg.sort_values('year'),
+            x='year',
+            y='suicide_rate',
+            title='Global Average Suicide Rate Over Time (All Ages, Both Sexes)',
+            labels={'year': 'Year', 'suicide_rate': 'Suicide Rate (per 100k)'},
+            markers=True
         )
+st.plotly_chart(fig_global_trend, width="stretch")
+st.markdown("   ")
+
+fig_hist = px.histogram(
+            filtered_df,
+            x='suicide_rate',
+            nbins=50,
+            title='Distribution of Suicide Rates Across All Records',
+            labels={'suicide_rate': 'Suicide Rate (per 100k)', 'count': 'Number of Records'},
+            color_discrete_sequence=['#1f77b4']
+        )
+st.plotly_chart(fig_hist, width="stretch")
+
+st.subheader("👤 :violet[Demographic Breakdown]", divider="violet")
+st.markdown("   ")
+
+avg_rate_by_sex_data = filtered_df[filtered_df['age_group'] == 'ALL'].groupby('sex')['suicide_rate'].mean().reset_index()
+fig_sex = px.bar(
+                avg_rate_by_sex_data,
+                x='sex',
+                y='suicide_rate',
+                title='Average Suicide Rate by Sex',
+                labels={'sex': 'Sex', 'suicide_rate': 'Average Suicide Rate (per 100k)'},
+                color='sex',
+                color_discrete_map={'male': '#636efa', 'female': '#ef553b', 'both': '#00cc96'} # Custom colors
+            )
+st.plotly_chart(fig_sex, width="stretch")
+st.markdown("   ")
+df_filtered_demographics_for_charts = df[(df['age_group'] != 'ALL') & (df['sex'] != 'both')]
+age_group_order = ['5-14', '15-24', '25-34', '35-54', '55-74', '75+']
+df_filtered_demographics_for_charts['age_group'] = pd.Categorical(
+            df_filtered_demographics_for_charts['age_group'], categories=age_group_order, ordered=True
+        )
+fig_violin_sex = px.violin(
+            df_filtered_demographics_for_charts,
+            y='suicide_rate',
+            x='sex',
+            color='sex',
+            box=True, # show box plots inside violins
+            points='outliers', # show actual outlier points
+            title='Suicide Rate Distribution by Sex (Excluding "ALL" Age Group)',
+            labels={'sex': 'Sex', 'suicide_rate': 'Suicide Rate (per 100k)'}
+        )
+st.plotly_chart(fig_violin_sex, width="stretch")
+st.markdown("   ")
+avg_rate_by_age_data = filtered_df[(filtered_df['sex'] != 'both') & (filtered_df['age_group'] != 'ALL')]
+avg_rate_by_age_data = avg_rate_by_age_data.groupby('age_group')['suicide_rate'].mean().reset_index()
+age_group_order = ['5-14', '15-24', '25-34', '35-54', '55-74', '75+']
+avg_rate_by_age_data['age_group'] = pd.Categorical(avg_rate_by_age_data['age_group'], categories=age_group_order, ordered=True)
+avg_rate_by_age_data.sort_values('age_group', inplace=True)
+
+fig_age = px.bar(
+                avg_rate_by_age_data,
+                x='age_group',
+                y='suicide_rate',
+                title='Average Suicide Rate by Age Group',
+                labels={'age_group': 'Age Group', 'suicide_rate': 'Average Suicide Rate (per 100k)'},
+                color='age_group',
+            )
+st.plotly_chart(fig_age, width="stretch")
+st.markdown("   ")
+df_filtered_demographics_for_charts = df[(df['age_group'] != 'ALL') & (df['sex'] != 'both')]
+df_filtered_demographics_for_charts['age_group'] = pd.Categorical(
+            df_filtered_demographics_for_charts['age_group'], categories=age_group_order, ordered=True
+        )
+fig_violin_age = px.violin(
+            df_filtered_demographics_for_charts.sort_values('age_group'),
+            y='suicide_rate',
+            x='age_group',
+            color='age_group',
+            box=True,
+            points='outliers',
+            title='Suicide Rate Distribution by Age Group (Excluding "ALL" Sex)',
+            labels={'age_group': 'Age Group', 'suicide_rate': 'Suicide Rate (per 100k)'}
+        )
+st.plotly_chart(fig_violin_age, width="stretch")
+st.markdown("   ")
+
+st.subheader("🗺️ :blue[Country Comparison]", divider="blue")
+st.markdown("   ")
+country_avg_rates_all = df_global_trends.groupby('country')['suicide_rate'].mean().sort_values(ascending=False).reset_index()
+top_n_countries = country_avg_rates_all.head(20)
+
+fig_top_countries = px.bar(
+                top_n_countries,
+                x='suicide_rate',
+                y='country',
+                orientation='h',
+                title='Top 20 Countries by Average Suicide Rate (All Ages, Both Sexes)',
+                labels={'suicide_rate': 'Average Suicide Rate (per 100k)', 'country': 'Country'},
+                color='suicide_rate', # Color by rate
+                color_continuous_scale=px.colors.sequential.Plasma
+            )
+fig_top_countries.update_layout(yaxis={'categoryorder':'total ascending'}) # Make highest bar at top
+st.plotly_chart(fig_top_countries, width="stretch")
+st.markdown("   ")
+
+country_detailed_trend = filtered_df[(filtered_df['country'] == selected_country) & (filtered_df['age_group'] != 'ALL')]
+fig_country_trend = px.line(
+                country_detailed_trend.sort_values('year'),
+                x='year',
+                y='suicide_rate',
+                color='sex',
+                line_dash='age_group', # Differentiate by age_group
+                title=f'Suicide Rate Trend in {selected_country} by Sex and Age Group',
+                labels={'year': 'Year', 'suicide_rate': 'Suicide Rate (per 100k)', 'sex': 'Sex', 'age_group': 'Age Group'}
+            )
+st.plotly_chart(fig_country_trend, width="stretch")
+st.markdown("   ")
+
+pivot_df = df_global_trends.pivot_table(index='country', columns='year', values='suicide_rate')
+country_overall_avg = df_global_trends.groupby('country')['suicide_rate'].mean().sort_values(ascending=False)
+top_countries_for_heatmap = country_overall_avg.head(25).index.tolist() # Top 25 countries
+pivot_df_final = pivot_df.loc[pivot_df.index.intersection(top_countries_for_heatmap)]
+pivot_df_final = pivot_df_final.reindex(index=top_countries_for_heatmap)
+
+fig_heatmap = px.heatmap(
+                    pivot_df_final,
+                    title='Suicide Rate Heatmap by Country and Year (Top Countries, All Ages, Both Sexes)',
+                    labels={'country': 'Country', 'year': 'Year', 'value': 'Suicide Rate (per 100k)'},
+                    color_continuous_scale=px.colors.sequential.Plasma # Good for showing intensity
+                )
+st.plotly_chart(fig_heatmap, width="stretch")
+st.markdown("   ")
+treemap_data = df_filtered_demographics_for_charts.groupby(['country', 'age_group'])['suicide_rate'].mean().reset_index()
+top_countries_for_treemap = treemap_data.groupby('country')['suicide_rate'].mean().nlargest(15).index
+treemap_data_filtered = treemap_data[treemap_data['country'].isin(top_countries_for_treemap)]
+
+fig_treemap = px.treemap(
+                treemap_data_filtered,
+                path=[px.Constant("Global Average Rate"), 'country', 'age_group'],
+                values='suicide_rate',
+                color='suicide_rate',
+                color_continuous_scale='RdYlBu_r', # Red-Yellow-Blue reversed, higher rates are red
+                title='Hierarchical Average Suicide Rate by Country and Age Group (Top 15 Countries)'
+            )
+st.plotly_chart(fig_treemap, width="stretch")
+st.markdown("   ")
+
+st.subheader("🌍 :orange[Geospatial Insights]", divider="orange")
+
+# ============================================
+# FOOTER
+# ============================================
+st.markdown("---")
+st.markdown("""
+<div style='text-align: center; color: #666;'>
+    <p><strong>🌎 Global Population per Country 1950-2024 Analysis</strong></p>
+    <p>Explore key metrics, population trends, distribution, composition and growth.</p>
+    <p style='font-size: 0.9rem;'>Navigate using the sidebar to explore different datasets</p>
+</div>
+""", unsafe_allow_html=True)
