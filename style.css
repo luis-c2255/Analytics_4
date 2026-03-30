@@ -119,6 +119,35 @@ section[data-testid="stSidebar"] {
     padding: 1rem;
 }
 
+div[data-testid="stSidebarNavSearch"] input {
+    border: 1px solid #1B2A3B !important;
+    border-radius: 5px !important;
+}
+
+[data-testid="stSidebarNav"] ul {
+    padding-top: 2rem;
+}
+
+[data-testid="stSidebarNav"] li {
+    background-color: rgba(76, 201, 166, 0.15);
+    margin-bottom: 10px;
+    border: 1px solid #8bb9ee;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+[data-testid="stSidebarNav"] li:hover {
+    background-color: rgba(76, 201, 166, 0.25);
+    border-color: #46B83D;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(70, 184, 61, 0.3);
+}
+
+[data-testid="stSidebarNav"] span {
+    color: #E0E0E0 !important;
+    font-weight: 700;
+}
+
 
 /* Download Button */
 .stDownloadButton>button {
