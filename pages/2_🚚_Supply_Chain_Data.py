@@ -2,10 +2,14 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import io
-from utils.theme import Components, Colors, init_page
+from utils.theme import Components
 
-init_page("Supply Chain Data Analysis", "🚚")
-
+st.set_page_config(
+        page_title=f"Supply Chain Data Analysis",
+        page_icon= "🚚",
+        layout="wide",
+        initial_sidebar_state="expanded"
+    )
 try:
     with open('style.css') as f:
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)

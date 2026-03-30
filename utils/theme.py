@@ -77,22 +77,3 @@ class Components:
                     <h1 style='color: white; margin: 0; text-align: center; font-size: 2.5rem;'>{title}</h1>
         </div>
         """
-    @staticmethod
-    def init_page(page_name: str, icon: str = "📊"):
-        """Initialize page with common settings"""
-        try:
-            st.set_page_config(
-                page_title=f"{page_name} | Retail Analytics",
-                page_icon=icon,
-                layout="wide",
-            initial_sidebar_state="expanded"
-            )
-        except:
-            # page config already set, skip
-            pass
-        # Load custom CSS
-        try:
-            with open ('style.css') as f:
-                st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
-        except FileNotFoundError:
-            pass

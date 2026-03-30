@@ -53,15 +53,7 @@
         "documentation": {}
     },
     {
-        "label": "Colors",
-        "importPath": "utils.theme",
-        "description": "utils.theme",
-        "isExtraImport": true,
-        "detail": "utils.theme",
-        "documentation": {}
-    },
-    {
-        "label": "init_page",
+        "label": "Components",
         "importPath": "utils.theme",
         "description": "utils.theme",
         "isExtraImport": true,
@@ -77,15 +69,7 @@
         "documentation": {}
     },
     {
-        "label": "Colors",
-        "importPath": "utils.theme",
-        "description": "utils.theme",
-        "isExtraImport": true,
-        "detail": "utils.theme",
-        "documentation": {}
-    },
-    {
-        "label": "init_page",
+        "label": "Components",
         "importPath": "utils.theme",
         "description": "utils.theme",
         "isExtraImport": true,
@@ -101,15 +85,7 @@
         "documentation": {}
     },
     {
-        "label": "Colors",
-        "importPath": "utils.theme",
-        "description": "utils.theme",
-        "isExtraImport": true,
-        "detail": "utils.theme",
-        "documentation": {}
-    },
-    {
-        "label": "init_page",
+        "label": "Components",
         "importPath": "utils.theme",
         "description": "utils.theme",
         "isExtraImport": true,
@@ -125,111 +101,7 @@
         "documentation": {}
     },
     {
-        "label": "Colors",
-        "importPath": "utils.theme",
-        "description": "utils.theme",
-        "isExtraImport": true,
-        "detail": "utils.theme",
-        "documentation": {}
-    },
-    {
-        "label": "init_page",
-        "importPath": "utils.theme",
-        "description": "utils.theme",
-        "isExtraImport": true,
-        "detail": "utils.theme",
-        "documentation": {}
-    },
-    {
         "label": "Components",
-        "importPath": "utils.theme",
-        "description": "utils.theme",
-        "isExtraImport": true,
-        "detail": "utils.theme",
-        "documentation": {}
-    },
-    {
-        "label": "Colors",
-        "importPath": "utils.theme",
-        "description": "utils.theme",
-        "isExtraImport": true,
-        "detail": "utils.theme",
-        "documentation": {}
-    },
-    {
-        "label": "init_page",
-        "importPath": "utils.theme",
-        "description": "utils.theme",
-        "isExtraImport": true,
-        "detail": "utils.theme",
-        "documentation": {}
-    },
-    {
-        "label": "Components",
-        "importPath": "utils.theme",
-        "description": "utils.theme",
-        "isExtraImport": true,
-        "detail": "utils.theme",
-        "documentation": {}
-    },
-    {
-        "label": "Colors",
-        "importPath": "utils.theme",
-        "description": "utils.theme",
-        "isExtraImport": true,
-        "detail": "utils.theme",
-        "documentation": {}
-    },
-    {
-        "label": "init_page",
-        "importPath": "utils.theme",
-        "description": "utils.theme",
-        "isExtraImport": true,
-        "detail": "utils.theme",
-        "documentation": {}
-    },
-    {
-        "label": "Components",
-        "importPath": "utils.theme",
-        "description": "utils.theme",
-        "isExtraImport": true,
-        "detail": "utils.theme",
-        "documentation": {}
-    },
-    {
-        "label": "Colors",
-        "importPath": "utils.theme",
-        "description": "utils.theme",
-        "isExtraImport": true,
-        "detail": "utils.theme",
-        "documentation": {}
-    },
-    {
-        "label": "init_page",
-        "importPath": "utils.theme",
-        "description": "utils.theme",
-        "isExtraImport": true,
-        "detail": "utils.theme",
-        "documentation": {}
-    },
-    {
-        "label": "Components",
-        "importPath": "utils.theme",
-        "description": "utils.theme",
-        "isExtraImport": true,
-        "detail": "utils.theme",
-        "documentation": {}
-    },
-    {
-        "label": "Colors",
-        "importPath": "utils.theme",
-        "description": "utils.theme",
-        "isExtraImport": true,
-        "detail": "utils.theme",
-        "documentation": {}
-    },
-    {
-        "label": "init_page",
         "importPath": "utils.theme",
         "description": "utils.theme",
         "isExtraImport": true,

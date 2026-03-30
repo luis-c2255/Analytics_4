@@ -3,10 +3,15 @@ import pandas as pd
 import plotly.express as px
 import ast # For literal_eval
 import numpy as np # For numerical operations
-from utils.theme import Components, Colors, init_page
+from utils.theme import Components
 
-init_page("Global Movie Trends (2026)", "📽️")
 
+st.set_page_config(
+        page_title=f"Global Movie Trends (2026)",
+        page_icon= "📽️",
+        layout="wide",
+        initial_sidebar_state="expanded"
+    )
 try:
     with open('style.css') as f:
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)

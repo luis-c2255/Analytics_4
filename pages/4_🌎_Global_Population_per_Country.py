@@ -3,10 +3,14 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import numpy as np
-from utils.theme import Components, Colors, init_page
+from utils.theme import Components
 
-init_page("Global Population per Country 1950-2024 Analysis", "🌎")
-
+st.set_page_config(
+        page_title=f"Global Population per Country 1950-2024 Analysis",
+        page_icon= "🌎",
+        layout="wide",
+        initial_sidebar_state="expanded"
+    )
 try:
     with open('style.css') as f:
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)

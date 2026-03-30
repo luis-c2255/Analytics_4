@@ -1,8 +1,13 @@
 import streamlit as st
-from utils.theme import Components, Colors, init_page
+from utils.theme import Components
 
-init_page("Multiple Dataset Analysis", "📊")
 
+st.set_page_config(
+        page_title=f"Multiple Dataset Analysis",
+        page_icon= "📊",
+        layout="wide",
+        initial_sidebar_state="expanded"
+    )
 try:
     with open('style.css') as f:
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
