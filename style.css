@@ -237,7 +237,7 @@ div[data-testid="stSidebarNavSearch"] input {
 
 /* Text inside the bubble */
 [data-testid="stSidebar"] [data-testid="stSliderThumbValue"] p {
-    color: #0F3D2E !important;
+    color: #A8F0C4 !important;
     margin: 0 !important;
     padding: 0 !important;
 }
