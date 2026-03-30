@@ -131,7 +131,7 @@ div[data-testid="stSidebarNavSearch"] input {
 [data-testid="stSidebarNav"] li {
     background-color: rgba(76, 201, 166, 0.15);
     margin-bottom: 10px;
-    border: 1px solid #8bb9ee;
+    border: 1px solid #34b17f;
     border-radius: 10px;
     transition: all 0.3s ease;
 }
@@ -148,75 +148,122 @@ div[data-testid="stSidebarNavSearch"] input {
     font-weight: 700;
 }
 
-[data-testid="stSidebar"] [data-testid="stMultiSelect"]>div {
-    background-color: #04250e !important;
-    border: 1px solid #235b2c !important;
-    border-radius: 5px !important;
-}
+/* ---------------- SIDEBAR MULTISELECT (WORKING VERSION) ---------------- */
 
+/* Label */
 [data-testid="stSidebar"] [data-testid="stMultiSelect"] label {
-    color: #E0E0E0 !important;
+    color: #A8F0C4 !important;
 }
 
-[data-testid="stSidebar"] [data-testid="stMultiSelect"] div[data-baseweb="tag"] {
-    background-color: #235b2c !important;
-    border: none;
-    border-radius: 5px !important;
-    color: #E0E0E0 !important;
+/* Multiselect outer container */
+[data-testid="stSidebar"] [data-testid="stMultiSelect"] .st-emotion-cache-1dvwncr {
+    background-color: #0F3D2E !important;
+    border: 1px solid #2ECC71 !important;
+    border-radius: 6px !important;
+    padding: 4px !important;
 }
 
-[data-testid="stSidebar"] [data-testid="stMultiSelect"] div[data-baseweb="tag"] svg {
-    fill: #E0E0E0 !important;
+/* BaseWeb select container */
+[data-testid="stSidebar"] [data-testid="stMultiSelect"] [data-baseweb="select"] {
+    background-color: transparent !important;
 }
 
-[data-testid="stSidebar"] [data-testid="stMultiSelect"] [data-baseweb="popover"] {
-    background-color: #04250e !important;
-    color: #E0E0E0 !important;
+/* Selected tag (pill) */
+[data-testid="stSidebar"] [data-testid="stMultiSelect"] [data-baseweb="tag"] {
+    background-color: #2ECC71 !important;
+    /* red pill */
+    color: #0F3D2E !important;
+    border-radius: 4px !important;
+    padding: 2px 6px !important;
 }
 
-[data-testid="stSidebar"] [data-testid="stMultiSelect"] [data-baseweb="option"]:hover {
-    background-color: #235b2c !important;
-    color: #E0E0E0 !important;
+/* Tag text */
+[data-testid="stSidebar"] [data-testid="stMultiSelect"] [data-baseweb="tag"] span[title] {
+    color: #0F3D2E !important;
 }
 
-/* Sidebar slider label */
+/* Delete icon inside tag */
+[data-testid="stSidebar"] [data-testid="stMultiSelect"] [data-baseweb="tag"] svg {
+    fill: #0F3D2E !important;
+}
+
+/* Input box (where user types) */
+[data-testid="stSidebar"] [data-testid="stMultiSelect"] input[role="combobox"] {
+    color: #A8F0C4 !important;
+    background-color: transparent !important;
+}
+
+/* Dropdown arrow icon */
+[data-testid="stSidebar"] [data-testid="stMultiSelect"] svg[title="open"] {
+    fill: #A8F0C4 !important;
+}
+
+/* Clear-all icon */
+[data-testid="stSidebar"] [data-testid="stMultiSelect"] svg[title="Clear all"] {
+    fill: #2ECC71 !important;
+}
+
+/* Dropdown menu background */
+[data-testid="stSidebar"] [data-baseweb="popover"] {
+    background-color: #0F3D2E !important;
+    border: 1px solid #2ECC71 !important;
+}
+
+/* Dropdown option hover */
+[data-testid="stSidebar"] [data-baseweb="option"]:hover {
+    background-color: #2ECC71 !important;
+    color: #0F3D2E !important;
+}
+
+
+/* ---------------- SIDEBAR SLIDER (WORKING VERSION) ---------------- */
+
+/* Label */
 [data-testid="stSidebar"] [data-testid="stSlider"] label {
-    color: #E0ECFF !important;
-    /* label text */
+    color: #A8F0C4 !important;
 }
 
-/* Slider track (background) */
-[data-testid="stSidebar"] [data-testid="stSlider"] [data-baseweb="slider"]>div {
-    background-color: #04250e !important;
-    /* unfilled track */
+/* Slider container */
+[data-testid="stSidebar"] [data-testid="stSlider"] [data-baseweb="slider"] {
+    padding-top: 6px !important;
 }
 
-/* Filled portion of the track */
-[data-testid="stSidebar"] [data-testid="stSlider"] [data-baseweb="slider"]>div>div {
-    background-color: #5A9E4B !important;
-    /* active track */
+/* Unfilled track */
+[data-testid="stSidebar"] [data-testid="stSlider"] .st-an.st-ao.st-ap.st-aq.st-ar.st-as.st-af.st-at.st-al {
+    background-color: #0F3D2E !important;
+    /* dark red */
+    height: 6px !important;
+    border-radius: 4px !important;
 }
 
-/* Slider thumb (handle) */
+/* Filled track */
+[data-testid="stSidebar"] [data-testid="stSlider"] .st-ag>.st-emotion-cache-1rr4qq7>.st-emotion-cache-dx6mrm {
+    background-color: #2ECC71 !important;
+    /* red */
+    height: 6px !important;
+    border-radius: 4px !important;
+}
+
+/* Slider thumbs */
 [data-testid="stSidebar"] [data-testid="stSlider"] [role="slider"] {
-    background-color: #5A9E4B !important;
-    /* thumb color */
-    border: 2px solid #FFFFFF !important;
-    /* thumb border */
+    background-color: #2ECC71 !important;
+    border: 2px solid #A8F0C4 !important;
     width: 18px !important;
     height: 18px !important;
+    border-radius: 50% !important;
 }
 
 /* Thumb hover */
 [data-testid="stSidebar"] [data-testid="stSlider"] [role="slider"]:hover {
-    background-color: #275311 !important;
-    border-color: white !important;
+    background-color: #58D68D !important;
+    border-color: #FFFFFF !important;
 }
 
 /* Thumb focus ring */
 [data-testid="stSidebar"] [data-testid="stSlider"] [role="slider"]:focus {
-    box-shadow: 0 0 0 4px rgba(70, 184, 61, 0.3) !important;
+    box-shadow: 0 0 0 4px rgba(46, 204, 113, 0.4) !important;
 }
+
 
 /* Download Button */
 .stDownloadButton>button {
