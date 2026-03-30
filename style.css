@@ -49,7 +49,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 1.5rem;
-    background-color: #0A1A2F;
+    background-color: #131313d0;
     border-bottom: 2px solid #1B2A3B;
     border-radius: 10px;
     margin-bottom: 2rem;
@@ -120,7 +120,7 @@ section[data-testid="stSidebar"] {
 }
 
 div[data-testid="stSidebarNavSearch"] input {
-    border: 1px solid #1B2A3B !important;
+    border: 1px solid #235b2c !important;
     border-radius: 5px !important;
 }
 
