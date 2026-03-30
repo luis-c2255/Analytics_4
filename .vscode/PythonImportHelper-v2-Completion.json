@@ -1805,7 +1805,7 @@
         "kind": 5,
         "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
         "description": "pages.5_🛒_Amazon_Sales_Dataset",
-        "peekOfCode": "product_revenue = df_filtered.groupby(['product_id', 'product_category'])[\"total_revenue\"].sum().reset_index()\ntop_products = product_revenue.sort_values(\"total_revenue\", ascending=False).head(10)\nfig_top_products = px.bar(\n            top_products,\n            x=\"total_revenue\",\n            y=\"product_id\",\n            color=\"product_category\",\n            title=\"Top 10 Products by Total Revenue\",\n            labels={\"total_revenue\": \"Total Revenue ($)\", \"product_id\": \"Product ID\"},\n            text_auto=True,",
+        "peekOfCode": "product_revenue = df_filtered.groupby(['product_id', 'product_category'])[\"total_revenue\"].sum().reset_index()\ntop_products = product_revenue.sort_values(\"total_revenue\", ascending=False).head(10)\nfig_top_products = px.bar(\n            top_products,\n            x=\"total_revenue\",\n            y=\"product_id\",\n            color=\"product_category\",\n            orientation=\"h\",\n            title=\"Top 10 Products by Total Revenue\",\n            labels={\"total_revenue\": \"Total Revenue ($)\", \"product_id\": \"Product ID\"},",
         "detail": "pages.5_🛒_Amazon_Sales_Dataset",
         "documentation": {}
     },
@@ -1814,7 +1814,7 @@
         "kind": 5,
         "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
         "description": "pages.5_🛒_Amazon_Sales_Dataset",
-        "peekOfCode": "top_products = product_revenue.sort_values(\"total_revenue\", ascending=False).head(10)\nfig_top_products = px.bar(\n            top_products,\n            x=\"total_revenue\",\n            y=\"product_id\",\n            color=\"product_category\",\n            title=\"Top 10 Products by Total Revenue\",\n            labels={\"total_revenue\": \"Total Revenue ($)\", \"product_id\": \"Product ID\"},\n            text_auto=True,\n            color_discrete_sequence=px.colors.qualitative.Pastel",
+        "peekOfCode": "top_products = product_revenue.sort_values(\"total_revenue\", ascending=False).head(10)\nfig_top_products = px.bar(\n            top_products,\n            x=\"total_revenue\",\n            y=\"product_id\",\n            color=\"product_category\",\n            orientation=\"h\",\n            title=\"Top 10 Products by Total Revenue\",\n            labels={\"total_revenue\": \"Total Revenue ($)\", \"product_id\": \"Product ID\"},\n            text_auto=True,",
         "detail": "pages.5_🛒_Amazon_Sales_Dataset",
         "documentation": {}
     },
@@ -1823,7 +1823,7 @@
         "kind": 5,
         "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
         "description": "pages.5_🛒_Amazon_Sales_Dataset",
-        "peekOfCode": "fig_top_products = px.bar(\n            top_products,\n            x=\"total_revenue\",\n            y=\"product_id\",\n            color=\"product_category\",\n            title=\"Top 10 Products by Total Revenue\",\n            labels={\"total_revenue\": \"Total Revenue ($)\", \"product_id\": \"Product ID\"},\n            text_auto=True,\n            color_discrete_sequence=px.colors.qualitative.Pastel\n        )",
+        "peekOfCode": "fig_top_products = px.bar(\n            top_products,\n            x=\"total_revenue\",\n            y=\"product_id\",\n            color=\"product_category\",\n            orientation=\"h\",\n            title=\"Top 10 Products by Total Revenue\",\n            labels={\"total_revenue\": \"Total Revenue ($)\", \"product_id\": \"Product ID\"},\n            text_auto=True,\n            color_discrete_sequence=px.colors.qualitative.Pastel",
         "detail": "pages.5_🛒_Amazon_Sales_Dataset",
         "documentation": {}
     },

@@ -199,6 +199,7 @@ fig_top_products = px.bar(
             x="total_revenue",
             y="product_id",
             color="product_category",
+            orientation="h",
             title="Top 10 Products by Total Revenue",
             labels={"total_revenue": "Total Revenue ($)", "product_id": "Product ID"},
             text_auto=True,
