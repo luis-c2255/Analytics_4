@@ -7,11 +7,12 @@ class Colors:
     RED = "#FF6B6B"
     ORANGE = "#FFB84D"
     CHARCOAL = "#1E1E1E"
-    GREY = "#5A6A7A"
+    GREY = "#9EA4A9"
     PRUSSIAN = "#0A1A2F"
     PLATINUM = "#F7F9FC"
     DARKGREEN = "#0B2C24"
     LIGHTGREEN = "#247A4D"
+    STEELBLUE = "#5A6A7A"
     
     
 class Components:
@@ -44,7 +45,7 @@ class Components:
                     {title}
                 </p>
             </div>
-            <p style='color: {Colors.LIGHTGREEN}; margin: 0; font-size: 1.2rem; font-weight: 700;'>
+            <p style='color: {Colors.GREY}; margin: 0; font-size: 1.2rem; font-weight: 700;'>
                     {value}
             </p>
             {delta_html}
