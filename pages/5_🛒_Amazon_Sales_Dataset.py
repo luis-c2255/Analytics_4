@@ -81,7 +81,7 @@ prev_avg_order_value = avg_order_value * 0.97
 
 col1, col2, col3, col4 = st.columns(4)
 with col1:
-        st.markdown(
+    st.markdown(
         Components.metric_card(
             title="Total Revenue",
             value=f"${total_sales:,.2f}",
@@ -90,7 +90,7 @@ with col1:
         )
     )
 with col2:
-        st.markdown(
+    st.markdown(
         Components.metric_card(
             title="Products Sold",
             value=f"{int(total_products_sold):,}",
@@ -99,7 +99,7 @@ with col2:
         )
     )
 with col3:
-        st.markdown(
+    st.markdown(
         Components.metric_card(
             title="Average Rating",
             value=f"{avg_rating:.2f} ⭐",
@@ -108,7 +108,7 @@ with col3:
         )
     )
 with col4:
-        st.markdown(
+    st.markdown(
         Components.metric_card(
             title="Average Order Value",
             value=f"${avg_order_value:,.2f}",

@@ -1661,7 +1661,7 @@
         "kind": 5,
         "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
         "description": "pages.5_🛒_Amazon_Sales_Dataset",
-        "peekOfCode": "total_products_sold = df['quantity_sold'].sum()\navg_rating = df['rating'].mean()\navg_order_value = df['total_revenue'].mean()\nprev_total_sales = total_sales * 0.95\nprev_total_products_sold = total_products_sold * 0.96\nprev_avg_rating = avg_rating - 0.1\nprev_avg_order_value = avg_order_value * 0.97\ncol1, col2, col3, col4 = st.columns(4)\nwith col1:\n        st.markdown(",
+        "peekOfCode": "total_products_sold = df['quantity_sold'].sum()\navg_rating = df['rating'].mean()\navg_order_value = df['total_revenue'].mean()\nprev_total_sales = total_sales * 0.95\nprev_total_products_sold = total_products_sold * 0.96\nprev_avg_rating = avg_rating - 0.1\nprev_avg_order_value = avg_order_value * 0.97\ncol1, col2, col3, col4 = st.columns(4)\nwith col1:\n    st.markdown(",
         "detail": "pages.5_🛒_Amazon_Sales_Dataset",
         "documentation": {}
     },
@@ -1670,7 +1670,7 @@
         "kind": 5,
         "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
         "description": "pages.5_🛒_Amazon_Sales_Dataset",
-        "peekOfCode": "avg_rating = df['rating'].mean()\navg_order_value = df['total_revenue'].mean()\nprev_total_sales = total_sales * 0.95\nprev_total_products_sold = total_products_sold * 0.96\nprev_avg_rating = avg_rating - 0.1\nprev_avg_order_value = avg_order_value * 0.97\ncol1, col2, col3, col4 = st.columns(4)\nwith col1:\n        st.markdown(\n        Components.metric_card(",
+        "peekOfCode": "avg_rating = df['rating'].mean()\navg_order_value = df['total_revenue'].mean()\nprev_total_sales = total_sales * 0.95\nprev_total_products_sold = total_products_sold * 0.96\nprev_avg_rating = avg_rating - 0.1\nprev_avg_order_value = avg_order_value * 0.97\ncol1, col2, col3, col4 = st.columns(4)\nwith col1:\n    st.markdown(\n        Components.metric_card(",
         "detail": "pages.5_🛒_Amazon_Sales_Dataset",
         "documentation": {}
     },
@@ -1679,7 +1679,7 @@
         "kind": 5,
         "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
         "description": "pages.5_🛒_Amazon_Sales_Dataset",
-        "peekOfCode": "avg_order_value = df['total_revenue'].mean()\nprev_total_sales = total_sales * 0.95\nprev_total_products_sold = total_products_sold * 0.96\nprev_avg_rating = avg_rating - 0.1\nprev_avg_order_value = avg_order_value * 0.97\ncol1, col2, col3, col4 = st.columns(4)\nwith col1:\n        st.markdown(\n        Components.metric_card(\n            title=\"Total Revenue\",",
+        "peekOfCode": "avg_order_value = df['total_revenue'].mean()\nprev_total_sales = total_sales * 0.95\nprev_total_products_sold = total_products_sold * 0.96\nprev_avg_rating = avg_rating - 0.1\nprev_avg_order_value = avg_order_value * 0.97\ncol1, col2, col3, col4 = st.columns(4)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n            title=\"Total Revenue\",",
         "detail": "pages.5_🛒_Amazon_Sales_Dataset",
         "documentation": {}
     },
@@ -1688,7 +1688,7 @@
         "kind": 5,
         "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
         "description": "pages.5_🛒_Amazon_Sales_Dataset",
-        "peekOfCode": "prev_total_sales = total_sales * 0.95\nprev_total_products_sold = total_products_sold * 0.96\nprev_avg_rating = avg_rating - 0.1\nprev_avg_order_value = avg_order_value * 0.97\ncol1, col2, col3, col4 = st.columns(4)\nwith col1:\n        st.markdown(\n        Components.metric_card(\n            title=\"Total Revenue\",\n            value=f\"${total_sales:,.2f}\",",
+        "peekOfCode": "prev_total_sales = total_sales * 0.95\nprev_total_products_sold = total_products_sold * 0.96\nprev_avg_rating = avg_rating - 0.1\nprev_avg_order_value = avg_order_value * 0.97\ncol1, col2, col3, col4 = st.columns(4)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n            title=\"Total Revenue\",\n            value=f\"${total_sales:,.2f}\",",
         "detail": "pages.5_🛒_Amazon_Sales_Dataset",
         "documentation": {}
     },
@@ -1697,7 +1697,7 @@
         "kind": 5,
         "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
         "description": "pages.5_🛒_Amazon_Sales_Dataset",
-        "peekOfCode": "prev_total_products_sold = total_products_sold * 0.96\nprev_avg_rating = avg_rating - 0.1\nprev_avg_order_value = avg_order_value * 0.97\ncol1, col2, col3, col4 = st.columns(4)\nwith col1:\n        st.markdown(\n        Components.metric_card(\n            title=\"Total Revenue\",\n            value=f\"${total_sales:,.2f}\",\n            delta=f\"+{((total_sales / prev_total_sales) - 1) * 100:.1f}%\" if prev_total_sales else \"N/A\",",
+        "peekOfCode": "prev_total_products_sold = total_products_sold * 0.96\nprev_avg_rating = avg_rating - 0.1\nprev_avg_order_value = avg_order_value * 0.97\ncol1, col2, col3, col4 = st.columns(4)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n            title=\"Total Revenue\",\n            value=f\"${total_sales:,.2f}\",\n            delta=f\"+{((total_sales / prev_total_sales) - 1) * 100:.1f}%\" if prev_total_sales else \"N/A\",",
         "detail": "pages.5_🛒_Amazon_Sales_Dataset",
         "documentation": {}
     },
@@ -1706,7 +1706,7 @@
         "kind": 5,
         "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
         "description": "pages.5_🛒_Amazon_Sales_Dataset",
-        "peekOfCode": "prev_avg_rating = avg_rating - 0.1\nprev_avg_order_value = avg_order_value * 0.97\ncol1, col2, col3, col4 = st.columns(4)\nwith col1:\n        st.markdown(\n        Components.metric_card(\n            title=\"Total Revenue\",\n            value=f\"${total_sales:,.2f}\",\n            delta=f\"+{((total_sales / prev_total_sales) - 1) * 100:.1f}%\" if prev_total_sales else \"N/A\",\n            card_type=\"success\"",
+        "peekOfCode": "prev_avg_rating = avg_rating - 0.1\nprev_avg_order_value = avg_order_value * 0.97\ncol1, col2, col3, col4 = st.columns(4)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n            title=\"Total Revenue\",\n            value=f\"${total_sales:,.2f}\",\n            delta=f\"+{((total_sales / prev_total_sales) - 1) * 100:.1f}%\" if prev_total_sales else \"N/A\",\n            card_type=\"success\"",
         "detail": "pages.5_🛒_Amazon_Sales_Dataset",
         "documentation": {}
     },
@@ -1715,7 +1715,7 @@
         "kind": 5,
         "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
         "description": "pages.5_🛒_Amazon_Sales_Dataset",
-        "peekOfCode": "prev_avg_order_value = avg_order_value * 0.97\ncol1, col2, col3, col4 = st.columns(4)\nwith col1:\n        st.markdown(\n        Components.metric_card(\n            title=\"Total Revenue\",\n            value=f\"${total_sales:,.2f}\",\n            delta=f\"+{((total_sales / prev_total_sales) - 1) * 100:.1f}%\" if prev_total_sales else \"N/A\",\n            card_type=\"success\"\n        )",
+        "peekOfCode": "prev_avg_order_value = avg_order_value * 0.97\ncol1, col2, col3, col4 = st.columns(4)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n            title=\"Total Revenue\",\n            value=f\"${total_sales:,.2f}\",\n            delta=f\"+{((total_sales / prev_total_sales) - 1) * 100:.1f}%\" if prev_total_sales else \"N/A\",\n            card_type=\"success\"\n        )",
         "detail": "pages.5_🛒_Amazon_Sales_Dataset",
         "documentation": {}
     },
