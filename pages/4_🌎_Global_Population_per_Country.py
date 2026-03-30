@@ -191,6 +191,7 @@ year_for_bar = st.slider(
         value=selected_years[1],
         key="year_for_bar_top_pop"
     )
+
 df_year_for_bar = df[ (df['year'] == year_for_bar) & (df['country'] != 'World') ].sort_values(by='population', ascending=False).head(15)
 fig_top_pop = px.bar(
         df_year_for_bar,

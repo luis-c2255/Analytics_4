@@ -1558,6 +1558,240 @@
         "documentation": {}
     },
     {
+        "label": "load_data",
+        "kind": 2,
+        "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
+        "description": "pages.5_🛒_Amazon_Sales_Dataset",
+        "peekOfCode": "def load_data():\n    # Load the dataset\n    df = pd.read_csv('amazon_sales_dataset.csv')\n    # Convert 'Order Date' to datetime\n    df['Order Date'] = pd.to_datetime(df['Order Date'])\n    numeric_cols = ['price', 'discount_percent', 'quantity_sold', 'rating', 'review_count', \n                    'discounted_price', 'total_revenue']\n    for col in numeric_cols:\n        df[col] = pd.to_numeric(df[col], errors='coerce')\n    df.dropna(subset=['price', 'quantity_sold', 'total_revenue', 'rating'], inplace=True)",
+        "detail": "pages.5_🛒_Amazon_Sales_Dataset",
+        "documentation": {}
+    },
+    {
+        "label": "calculate_metrics",
+        "kind": 2,
+        "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
+        "description": "pages.5_🛒_Amazon_Sales_Dataset",
+        "peekOfCode": "def calculate_metrics(df):\n    total_sales = df['total_revenue'].sum()\n    total_products_sold = df['quantity_sold'].sum()\n    avg_rating = df['rating'].mean()\n    avg_order_value = df['total_revenue'].mean()\n    prev_total_sales = total_sales * 0.95\n    prev_total_products_sold = total_products_sold * 0.96\n    prev_avg_rating = avg_rating - 0.1\n    prev_avg_order_value = avg_order_value * 0.97\n    col1, col2, col3, col4 = st.columns(4)",
+        "detail": "pages.5_🛒_Amazon_Sales_Dataset",
+        "documentation": {}
+    },
+    {
+        "label": "df",
+        "kind": 5,
+        "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
+        "description": "pages.5_🛒_Amazon_Sales_Dataset",
+        "peekOfCode": "df = load_data()\n# Date range Filters\nst.sidebar.header(\"Filter Options\")\nmin_date = df['order_date'].min().date()\nmax_date = df['order_date'].max().date()\ndate_range = st.sidebar.slider(\n    \"Select Date Range\",\n    min_value=min_date,\n    max_value=max_date,\n    value=(min_date, max_date),",
+        "detail": "pages.5_🛒_Amazon_Sales_Dataset",
+        "documentation": {}
+    },
+    {
+        "label": "min_date",
+        "kind": 5,
+        "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
+        "description": "pages.5_🛒_Amazon_Sales_Dataset",
+        "peekOfCode": "min_date = df['order_date'].min().date()\nmax_date = df['order_date'].max().date()\ndate_range = st.sidebar.slider(\n    \"Select Date Range\",\n    min_value=min_date,\n    max_value=max_date,\n    value=(min_date, max_date),\n    format=\"YYYY-MM-DD\"\n)\ndf_filtered = df[(df['order_date'].dt.date >= date_range[0]) & (df['order_date'].dt.date <= date_range[1])]",
+        "detail": "pages.5_🛒_Amazon_Sales_Dataset",
+        "documentation": {}
+    },
+    {
+        "label": "max_date",
+        "kind": 5,
+        "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
+        "description": "pages.5_🛒_Amazon_Sales_Dataset",
+        "peekOfCode": "max_date = df['order_date'].max().date()\ndate_range = st.sidebar.slider(\n    \"Select Date Range\",\n    min_value=min_date,\n    max_value=max_date,\n    value=(min_date, max_date),\n    format=\"YYYY-MM-DD\"\n)\ndf_filtered = df[(df['order_date'].dt.date >= date_range[0]) & (df['order_date'].dt.date <= date_range[1])]\nselected_categories = st.sidebar.multiselect(",
+        "detail": "pages.5_🛒_Amazon_Sales_Dataset",
+        "documentation": {}
+    },
+    {
+        "label": "date_range",
+        "kind": 5,
+        "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
+        "description": "pages.5_🛒_Amazon_Sales_Dataset",
+        "peekOfCode": "date_range = st.sidebar.slider(\n    \"Select Date Range\",\n    min_value=min_date,\n    max_value=max_date,\n    value=(min_date, max_date),\n    format=\"YYYY-MM-DD\"\n)\ndf_filtered = df[(df['order_date'].dt.date >= date_range[0]) & (df['order_date'].dt.date <= date_range[1])]\nselected_categories = st.sidebar.multiselect(\n    \"Select Product Categories\",",
+        "detail": "pages.5_🛒_Amazon_Sales_Dataset",
+        "documentation": {}
+    },
+    {
+        "label": "df_filtered",
+        "kind": 5,
+        "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
+        "description": "pages.5_🛒_Amazon_Sales_Dataset",
+        "peekOfCode": "df_filtered = df[(df['order_date'].dt.date >= date_range[0]) & (df['order_date'].dt.date <= date_range[1])]\nselected_categories = st.sidebar.multiselect(\n    \"Select Product Categories\",\n    options=df['product_category'].unique(),\n    default=df['product_category'].unique()\n)\ndf_filtered = df_filtered[df_filtered['product_category'].isin(selected_categories)]\nselected_regions = st.sidebar.multiselect(\n    \"Select Customer Regions\",\n    options=df['customer_region'].unique(),",
+        "detail": "pages.5_🛒_Amazon_Sales_Dataset",
+        "documentation": {}
+    },
+    {
+        "label": "selected_categories",
+        "kind": 5,
+        "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
+        "description": "pages.5_🛒_Amazon_Sales_Dataset",
+        "peekOfCode": "selected_categories = st.sidebar.multiselect(\n    \"Select Product Categories\",\n    options=df['product_category'].unique(),\n    default=df['product_category'].unique()\n)\ndf_filtered = df_filtered[df_filtered['product_category'].isin(selected_categories)]\nselected_regions = st.sidebar.multiselect(\n    \"Select Customer Regions\",\n    options=df['customer_region'].unique(),\n    default=df['customer_region'].unique()",
+        "detail": "pages.5_🛒_Amazon_Sales_Dataset",
+        "documentation": {}
+    },
+    {
+        "label": "df_filtered",
+        "kind": 5,
+        "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
+        "description": "pages.5_🛒_Amazon_Sales_Dataset",
+        "peekOfCode": "df_filtered = df_filtered[df_filtered['product_category'].isin(selected_categories)]\nselected_regions = st.sidebar.multiselect(\n    \"Select Customer Regions\",\n    options=df['customer_region'].unique(),\n    default=df['customer_region'].unique()\n)\ndf_filtered = df_filtered[df_filtered['customer_region'].isin(selected_regions)]\nst.subheader(\":rainbow[Key Metrics]\", divider=\"rainbow\")\ndef calculate_metrics(df):\n    total_sales = df['total_revenue'].sum()",
+        "detail": "pages.5_🛒_Amazon_Sales_Dataset",
+        "documentation": {}
+    },
+    {
+        "label": "selected_regions",
+        "kind": 5,
+        "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
+        "description": "pages.5_🛒_Amazon_Sales_Dataset",
+        "peekOfCode": "selected_regions = st.sidebar.multiselect(\n    \"Select Customer Regions\",\n    options=df['customer_region'].unique(),\n    default=df['customer_region'].unique()\n)\ndf_filtered = df_filtered[df_filtered['customer_region'].isin(selected_regions)]\nst.subheader(\":rainbow[Key Metrics]\", divider=\"rainbow\")\ndef calculate_metrics(df):\n    total_sales = df['total_revenue'].sum()\n    total_products_sold = df['quantity_sold'].sum()",
+        "detail": "pages.5_🛒_Amazon_Sales_Dataset",
+        "documentation": {}
+    },
+    {
+        "label": "df_filtered",
+        "kind": 5,
+        "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
+        "description": "pages.5_🛒_Amazon_Sales_Dataset",
+        "peekOfCode": "df_filtered = df_filtered[df_filtered['customer_region'].isin(selected_regions)]\nst.subheader(\":rainbow[Key Metrics]\", divider=\"rainbow\")\ndef calculate_metrics(df):\n    total_sales = df['total_revenue'].sum()\n    total_products_sold = df['quantity_sold'].sum()\n    avg_rating = df['rating'].mean()\n    avg_order_value = df['total_revenue'].mean()\n    prev_total_sales = total_sales * 0.95\n    prev_total_products_sold = total_products_sold * 0.96\n    prev_avg_rating = avg_rating - 0.1",
+        "detail": "pages.5_🛒_Amazon_Sales_Dataset",
+        "documentation": {}
+    },
+    {
+        "label": "category_revenue",
+        "kind": 5,
+        "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
+        "description": "pages.5_🛒_Amazon_Sales_Dataset",
+        "peekOfCode": "category_revenue = df_filtered.groupby('product_category')['total_revenue'].sum().reset_index()\nfig_category_revenue = px.bar(\n    category_revenue.sort_values('total_revenue', ascending=False),\n    x='total_revenue',\n    y='product_category',\n    orientation='h',\n    title='Total Revenue by Product Category',\n    labels={'total_revenue': 'Total Revenue ($)', 'product_category': 'Product Category'},\n    color='total_revenue',\n    text_auto=True,",
+        "detail": "pages.5_🛒_Amazon_Sales_Dataset",
+        "documentation": {}
+    },
+    {
+        "label": "fig_category_revenue",
+        "kind": 5,
+        "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
+        "description": "pages.5_🛒_Amazon_Sales_Dataset",
+        "peekOfCode": "fig_category_revenue = px.bar(\n    category_revenue.sort_values('total_revenue', ascending=False),\n    x='total_revenue',\n    y='product_category',\n    orientation='h',\n    title='Total Revenue by Product Category',\n    labels={'total_revenue': 'Total Revenue ($)', 'product_category': 'Product Category'},\n    color='total_revenue',\n    text_auto=True,\n    color_continuous_scale=px.colors.sequential.Viridis",
+        "detail": "pages.5_🛒_Amazon_Sales_Dataset",
+        "documentation": {}
+    },
+    {
+        "label": "region_quantity",
+        "kind": 5,
+        "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
+        "description": "pages.5_🛒_Amazon_Sales_Dataset",
+        "peekOfCode": "region_quantity = df_filtered.groupby(\"customer_region\")[\"quantity_sold\"].sum().reset_index()\nfig_region_quantity = px.bar(\n            region_quantity.sort_values(\"quantity_sold\", ascending=False),\n            x=\"customer_region\",\n            y=\"quantity_sold\",\n            title=\"Total Quantity Sold by Customer Region\",\n            labels={\"quantity_sold\": \"Quantity Sold\", \"customer_region\": \"Customer Region\"},\n            color=\"quantity_sold\",\n            text_auto=True,\n            color_continuous_scale=px.colors.sequential.Plasma",
+        "detail": "pages.5_🛒_Amazon_Sales_Dataset",
+        "documentation": {}
+    },
+    {
+        "label": "fig_region_quantity",
+        "kind": 5,
+        "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
+        "description": "pages.5_🛒_Amazon_Sales_Dataset",
+        "peekOfCode": "fig_region_quantity = px.bar(\n            region_quantity.sort_values(\"quantity_sold\", ascending=False),\n            x=\"customer_region\",\n            y=\"quantity_sold\",\n            title=\"Total Quantity Sold by Customer Region\",\n            labels={\"quantity_sold\": \"Quantity Sold\", \"customer_region\": \"Customer Region\"},\n            color=\"quantity_sold\",\n            text_auto=True,\n            color_continuous_scale=px.colors.sequential.Plasma\n        )",
+        "detail": "pages.5_🛒_Amazon_Sales_Dataset",
+        "documentation": {}
+    },
+    {
+        "label": "df_filtered[\"year_month\"]",
+        "kind": 5,
+        "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
+        "description": "pages.5_🛒_Amazon_Sales_Dataset",
+        "peekOfCode": "df_filtered[\"year_month\"] = df_filtered[\"order_date\"].dt.to_period(\"M\").astype(str)\nmonthly_revenue = df_filtered.groupby(\"year_month\")[\"total_revenue\"].sum().reset_index()\nmonthly_revenue[\"year_month_dt\"] = pd.to_datetime(monthly_revenue[\"year_month\"])\nmonthly_revenue = monthly_revenue.sort_values(\"year_month_dt\")\nfig_monthly_revenue = px.line(\n            monthly_revenue,\n            x=\"year_month_dt\",\n            y=\"total_revenue\",\n            title=\"Monthly Total Revenue Over Time\",\n            labels={\"year_month_dt\": \"Date\", \"total_revenue\": \"Total Revenue ($)\"},",
+        "detail": "pages.5_🛒_Amazon_Sales_Dataset",
+        "documentation": {}
+    },
+    {
+        "label": "monthly_revenue",
+        "kind": 5,
+        "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
+        "description": "pages.5_🛒_Amazon_Sales_Dataset",
+        "peekOfCode": "monthly_revenue = df_filtered.groupby(\"year_month\")[\"total_revenue\"].sum().reset_index()\nmonthly_revenue[\"year_month_dt\"] = pd.to_datetime(monthly_revenue[\"year_month\"])\nmonthly_revenue = monthly_revenue.sort_values(\"year_month_dt\")\nfig_monthly_revenue = px.line(\n            monthly_revenue,\n            x=\"year_month_dt\",\n            y=\"total_revenue\",\n            title=\"Monthly Total Revenue Over Time\",\n            labels={\"year_month_dt\": \"Date\", \"total_revenue\": \"Total Revenue ($)\"},\n            markers=True",
+        "detail": "pages.5_🛒_Amazon_Sales_Dataset",
+        "documentation": {}
+    },
+    {
+        "label": "monthly_revenue[\"year_month_dt\"]",
+        "kind": 5,
+        "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
+        "description": "pages.5_🛒_Amazon_Sales_Dataset",
+        "peekOfCode": "monthly_revenue[\"year_month_dt\"] = pd.to_datetime(monthly_revenue[\"year_month\"])\nmonthly_revenue = monthly_revenue.sort_values(\"year_month_dt\")\nfig_monthly_revenue = px.line(\n            monthly_revenue,\n            x=\"year_month_dt\",\n            y=\"total_revenue\",\n            title=\"Monthly Total Revenue Over Time\",\n            labels={\"year_month_dt\": \"Date\", \"total_revenue\": \"Total Revenue ($)\"},\n            markers=True\n        )",
+        "detail": "pages.5_🛒_Amazon_Sales_Dataset",
+        "documentation": {}
+    },
+    {
+        "label": "monthly_revenue",
+        "kind": 5,
+        "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
+        "description": "pages.5_🛒_Amazon_Sales_Dataset",
+        "peekOfCode": "monthly_revenue = monthly_revenue.sort_values(\"year_month_dt\")\nfig_monthly_revenue = px.line(\n            monthly_revenue,\n            x=\"year_month_dt\",\n            y=\"total_revenue\",\n            title=\"Monthly Total Revenue Over Time\",\n            labels={\"year_month_dt\": \"Date\", \"total_revenue\": \"Total Revenue ($)\"},\n            markers=True\n        )\nfig_monthly_revenue.update_xaxes(dtick=\"M1\", tickformat=\"%b\\n%Y\")",
+        "detail": "pages.5_🛒_Amazon_Sales_Dataset",
+        "documentation": {}
+    },
+    {
+        "label": "fig_monthly_revenue",
+        "kind": 5,
+        "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
+        "description": "pages.5_🛒_Amazon_Sales_Dataset",
+        "peekOfCode": "fig_monthly_revenue = px.line(\n            monthly_revenue,\n            x=\"year_month_dt\",\n            y=\"total_revenue\",\n            title=\"Monthly Total Revenue Over Time\",\n            labels={\"year_month_dt\": \"Date\", \"total_revenue\": \"Total Revenue ($)\"},\n            markers=True\n        )\nfig_monthly_revenue.update_xaxes(dtick=\"M1\", tickformat=\"%b\\n%Y\")\nst.plotly_chart(fig_monthly_revenue, width=\"stretch\")",
+        "detail": "pages.5_🛒_Amazon_Sales_Dataset",
+        "documentation": {}
+    },
+    {
+        "label": "product_revenue",
+        "kind": 5,
+        "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
+        "description": "pages.5_🛒_Amazon_Sales_Dataset",
+        "peekOfCode": "product_revenue = df_filtered.groupby(['product_id', 'product_category'])[\"total_revenue\"].sum().reset_index()\ntop_products = product_revenue.sort_values(\"total_revenue\", ascending=False).head(10)\nfig_top_products = px.bar(\n            top_products,\n            x=\"total_revenue\",\n            y=\"product_id\",\n            orientation=\"h\",\n            color=\"product_category\",\n            title=\"Top 10 Products by Total Revenue\",\n            labels={\"total_revenue\": \"Total Revenue ($)\", \"product_id\": \"Product ID\"},",
+        "detail": "pages.5_🛒_Amazon_Sales_Dataset",
+        "documentation": {}
+    },
+    {
+        "label": "top_products",
+        "kind": 5,
+        "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
+        "description": "pages.5_🛒_Amazon_Sales_Dataset",
+        "peekOfCode": "top_products = product_revenue.sort_values(\"total_revenue\", ascending=False).head(10)\nfig_top_products = px.bar(\n            top_products,\n            x=\"total_revenue\",\n            y=\"product_id\",\n            orientation=\"h\",\n            color=\"product_category\",\n            title=\"Top 10 Products by Total Revenue\",\n            labels={\"total_revenue\": \"Total Revenue ($)\", \"product_id\": \"Product ID\"},\n            text_auto=True,",
+        "detail": "pages.5_🛒_Amazon_Sales_Dataset",
+        "documentation": {}
+    },
+    {
+        "label": "fig_top_products",
+        "kind": 5,
+        "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
+        "description": "pages.5_🛒_Amazon_Sales_Dataset",
+        "peekOfCode": "fig_top_products = px.bar(\n            top_products,\n            x=\"total_revenue\",\n            y=\"product_id\",\n            orientation=\"h\",\n            color=\"product_category\",\n            title=\"Top 10 Products by Total Revenue\",\n            labels={\"total_revenue\": \"Total Revenue ($)\", \"product_id\": \"Product ID\"},\n            text_auto=True,\n            color_discrete_sequence=px.colors.qualitative.Pastel",
+        "detail": "pages.5_🛒_Amazon_Sales_Dataset",
+        "documentation": {}
+    },
+    {
+        "label": "fig_price_dist",
+        "kind": 5,
+        "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
+        "description": "pages.5_🛒_Amazon_Sales_Dataset",
+        "peekOfCode": "fig_price_dist = px.histogram(\n            df_filtered,\n            x=\"price\",\n            nbins=50, # More bins for better granularity\n            title=\"Distribution of Original Product Prices\",\n            labels={\"price\": \"Original Price ($)\"},\n            color_discrete_sequence=['#EF553B']\n        )\nfig_price_dist.update_traces(marker_line_width=1, marker_line_color=\"white\")\nst.plotly_chart(fig_price_dist, width=\"stretch\")",
+        "detail": "pages.5_🛒_Amazon_Sales_Dataset",
+        "documentation": {}
+    },
+    {
+        "label": "regional_category_revenue",
+        "kind": 5,
+        "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
+        "description": "pages.5_🛒_Amazon_Sales_Dataset",
+        "peekOfCode": "regional_category_revenue = df_filtered.groupby([\"customer_region\", \"product_category\"])[\"total_revenue\"].sum().reset_index()\nfig_regional_category = px.bar(\n            regional_category_revenue,\n            x=\"customer_region\",\n            y=\"total_revenue\",\n            color=\"product_category\",\n            title=\"Total Revenue by Region and Product Category\",\n            labels={\"total_revenue\": \"Total Revenue ($)\", \"customer_region\": \"Customer Region\"},\n            text_auto=True,\n            hover_data=[\"product_category\", \"total_revenue\"]",
+        "detail": "pages.5_🛒_Amazon_Sales_Dataset",
+        "documentation": {}
+    },
+    {
+        "label": "fig_regional_category",
+        "kind": 5,
+        "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
+        "description": "pages.5_🛒_Amazon_Sales_Dataset",
+        "peekOfCode": "fig_regional_category = px.bar(\n            regional_category_revenue,\n            x=\"customer_region\",\n            y=\"total_revenue\",\n            color=\"product_category\",\n            title=\"Total Revenue by Region and Product Category\",\n            labels={\"total_revenue\": \"Total Revenue ($)\", \"customer_region\": \"Customer Region\"},\n            text_auto=True,\n            hover_data=[\"product_category\", \"total_revenue\"]\n        )",
+        "detail": "pages.5_🛒_Amazon_Sales_Dataset",
+        "documentation": {}
+    },
+    {
         "label": "Colors",
         "kind": 6,
         "importPath": "utils.theme",
