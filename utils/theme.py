@@ -31,8 +31,8 @@ class Components:
         </p>
         """ if delta else ""
         return f"""
-        <div style='border: 1px solid {Colors.CHARCOAL};
-                    background-color: {Colors.PRUSSIAN};
+        <div style='border: 1px solid {Colors.LIGHTGREEN};
+                    background-color: {Colors.DARKGREEN};
                     border-top: 6px solid {border_color};
                     padding: 1rem; border-radius: 10px; height: 100%;'>
             <div style='display: flex; align-items: center; margin-bottom: 0.5rem;
