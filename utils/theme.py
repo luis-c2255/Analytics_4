@@ -1,6 +1,5 @@
 import streamlit as st
 
-
 class Colors:
     BLUE = "#3A8DFF"
     GREEN = "#4CC9A6"
@@ -26,21 +25,16 @@ class Components:
         }
         border_color = colors.get(card_type, Colors.BLUE)
         delta_color = Colors.GREEN if delta_positive else Colors.RED
-        delta_html = f"""
-        <p style='color: {delta_color}; margin: 0.5rem 0 0 0; font-size: 1.5rem;'>
-            {delta}
-        </p>
-        """ if delta else ""
+        delta_html = (
+            f"<p class='metric-delta' style='color:{delta_color};'>{delta}</p>"
+            if delta else ""
+        )
         return f"""
-        <div style='border: 1px solid {Colors.LIGHTGREEN}; background-color: {Colors.DARKGREEN}; border-top: 6px solid {border_color}; padding: 1rem; border-radius: 10px; height: 100%;'>
-            <div style='display: flex; align-items: center; margin-bottom: 0.5rem;'>
-                <p style='color: {Colors.PLATINUM}; margin: 0; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;'>
-                    {title}
-                </p>
+        <div class='metric-card' style='--bordercolor:{border_color};'>
+            <div style='display:flex; align-items:center; margin-bottom:0.5rem;'>
+                <p class='metric-title'>{title}</p>
             </div>
-            <p style='color: {Colors.GREY}; margin: 0; font-size: 1.2rem; font-weight: 700;'>
-                    {value}
-            </p>
+            <p class='metric-value'>{value}</p>
             {delta_html}
         </div>
         """
