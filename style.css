@@ -179,33 +179,43 @@ div[data-testid="stSidebarNavSearch"] input {
     color: #E0E0E0 !important;
 }
 
+/* Sidebar slider label */
 [data-testid="stSidebar"] .stSlider label {
-    color: #E0E0E0 !important;
+    color: #E0ECFF !important;
+    /* label text */
 }
 
+/* Slider track (background) */
 [data-testid="stSidebar"] .stSlider [data-baseweb="slider"]>div {
-    background-color: #235b2c !important;
+    background-color: #0A1A2F !important;
+    /* unfilled track */
 }
 
+/* Filled portion of the track */
 [data-testid="stSidebar"] .stSlider [data-baseweb="slider"]>div>div {
-    background-color: #46B83D !important;
+    background-color: #1E88E5 !important;
+    /* active track */
 }
 
+/* Slider thumb (handle) */
 [data-testid="stSidebar"] .stSlider [data-baseweb="slider"] [role="slider"] {
-    background-color: #46B83D !important;
-    border: 2px solid #235b2c !important;
-    width: 16px !important;
-    height: 16px !important;
+    background-color: #1E88E5 !important;
+    /* thumb color */
+    border: 2px solid #E0ECFF !important;
+    /* thumb border */
+    width: 18px !important;
+    height: 18px !important;
 }
 
+/* Thumb hover */
 [data-testid="stSidebar"] .stSlider [data-baseweb="slider"] [role="slider"]:hover {
-    background-color: #5A9E4B !important;
-    border-color: #235b2c !important;
-    box-shadow: 0 5px 15px rgba(70, 184, 61, 0.3) !important;
+    background-color: #42A5F5 !important;
+    border-color: white !important;
 }
 
+/* Thumb focus ring */
 [data-testid="stSidebar"] .stSlider [data-baseweb="slider"] [role="slider"]:focus {
-    box-shadow: 0 0 0 4px rgba(70, 184, 61, 0.5) !important;
+    box-shadow: 0 0 0 4px rgba(30, 136, 229, 0.4) !important;
 }
 
 /* Download Button */
