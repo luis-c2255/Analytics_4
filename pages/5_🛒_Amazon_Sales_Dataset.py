@@ -114,7 +114,7 @@ with col4:
             value=f"${avg_order_value:,.2f}",
             delta=f"+{((avg_order_value / prev_avg_order_value) - 1) * 100:.1f}%" if prev_avg_order_value else "N/A",
             card_type="info"
-        )unsafe_allow_html=True
+        ),unsafe_allow_html=True
     )
 st.markdown("   ")        
 st.subheader(":blue[Overview & Performance]", divider="blue")
