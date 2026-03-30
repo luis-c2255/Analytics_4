@@ -1567,15 +1567,6 @@
         "documentation": {}
     },
     {
-        "label": "calculate_metrics",
-        "kind": 2,
-        "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
-        "description": "pages.5_🛒_Amazon_Sales_Dataset",
-        "peekOfCode": "def calculate_metrics(df):\n    total_sales = df['total_revenue'].sum()\n    total_products_sold = df['quantity_sold'].sum()\n    avg_rating = df['rating'].mean()\n    avg_order_value = df['total_revenue'].mean()\n    prev_total_sales = total_sales * 0.95\n    prev_total_products_sold = total_products_sold * 0.96\n    prev_avg_rating = avg_rating - 0.1\n    prev_avg_order_value = avg_order_value * 0.97\n    col1, col2, col3, col4 = st.columns(4)",
-        "detail": "pages.5_🛒_Amazon_Sales_Dataset",
-        "documentation": {}
-    },
-    {
         "label": "df",
         "kind": 5,
         "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
@@ -1634,7 +1625,7 @@
         "kind": 5,
         "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
         "description": "pages.5_🛒_Amazon_Sales_Dataset",
-        "peekOfCode": "df_filtered = df_filtered[df_filtered['product_category'].isin(selected_categories)]\nselected_regions = st.sidebar.multiselect(\n    \"Select Customer Regions\",\n    options=df['customer_region'].unique(),\n    default=df['customer_region'].unique()\n)\ndf_filtered = df_filtered[df_filtered['customer_region'].isin(selected_regions)]\nst.subheader(\":rainbow[Key Metrics]\", divider=\"rainbow\")\ndef calculate_metrics(df):\n    total_sales = df['total_revenue'].sum()",
+        "peekOfCode": "df_filtered = df_filtered[df_filtered['product_category'].isin(selected_categories)]\nselected_regions = st.sidebar.multiselect(\n    \"Select Customer Regions\",\n    options=df['customer_region'].unique(),\n    default=df['customer_region'].unique()\n)\ndf_filtered = df_filtered[df_filtered['customer_region'].isin(selected_regions)]\nst.subheader(\":rainbow[Key Metrics]\", divider=\"rainbow\")\ntotal_sales = df['total_revenue'].sum()\ntotal_products_sold = df['quantity_sold'].sum()",
         "detail": "pages.5_🛒_Amazon_Sales_Dataset",
         "documentation": {}
     },
@@ -1643,7 +1634,7 @@
         "kind": 5,
         "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
         "description": "pages.5_🛒_Amazon_Sales_Dataset",
-        "peekOfCode": "selected_regions = st.sidebar.multiselect(\n    \"Select Customer Regions\",\n    options=df['customer_region'].unique(),\n    default=df['customer_region'].unique()\n)\ndf_filtered = df_filtered[df_filtered['customer_region'].isin(selected_regions)]\nst.subheader(\":rainbow[Key Metrics]\", divider=\"rainbow\")\ndef calculate_metrics(df):\n    total_sales = df['total_revenue'].sum()\n    total_products_sold = df['quantity_sold'].sum()",
+        "peekOfCode": "selected_regions = st.sidebar.multiselect(\n    \"Select Customer Regions\",\n    options=df['customer_region'].unique(),\n    default=df['customer_region'].unique()\n)\ndf_filtered = df_filtered[df_filtered['customer_region'].isin(selected_regions)]\nst.subheader(\":rainbow[Key Metrics]\", divider=\"rainbow\")\ntotal_sales = df['total_revenue'].sum()\ntotal_products_sold = df['quantity_sold'].sum()\navg_rating = df['rating'].mean()",
         "detail": "pages.5_🛒_Amazon_Sales_Dataset",
         "documentation": {}
     },
@@ -1652,7 +1643,79 @@
         "kind": 5,
         "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
         "description": "pages.5_🛒_Amazon_Sales_Dataset",
-        "peekOfCode": "df_filtered = df_filtered[df_filtered['customer_region'].isin(selected_regions)]\nst.subheader(\":rainbow[Key Metrics]\", divider=\"rainbow\")\ndef calculate_metrics(df):\n    total_sales = df['total_revenue'].sum()\n    total_products_sold = df['quantity_sold'].sum()\n    avg_rating = df['rating'].mean()\n    avg_order_value = df['total_revenue'].mean()\n    prev_total_sales = total_sales * 0.95\n    prev_total_products_sold = total_products_sold * 0.96\n    prev_avg_rating = avg_rating - 0.1",
+        "peekOfCode": "df_filtered = df_filtered[df_filtered['customer_region'].isin(selected_regions)]\nst.subheader(\":rainbow[Key Metrics]\", divider=\"rainbow\")\ntotal_sales = df['total_revenue'].sum()\ntotal_products_sold = df['quantity_sold'].sum()\navg_rating = df['rating'].mean()\navg_order_value = df['total_revenue'].mean()\nprev_total_sales = total_sales * 0.95\nprev_total_products_sold = total_products_sold * 0.96\nprev_avg_rating = avg_rating - 0.1\nprev_avg_order_value = avg_order_value * 0.97",
+        "detail": "pages.5_🛒_Amazon_Sales_Dataset",
+        "documentation": {}
+    },
+    {
+        "label": "total_sales",
+        "kind": 5,
+        "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
+        "description": "pages.5_🛒_Amazon_Sales_Dataset",
+        "peekOfCode": "total_sales = df['total_revenue'].sum()\ntotal_products_sold = df['quantity_sold'].sum()\navg_rating = df['rating'].mean()\navg_order_value = df['total_revenue'].mean()\nprev_total_sales = total_sales * 0.95\nprev_total_products_sold = total_products_sold * 0.96\nprev_avg_rating = avg_rating - 0.1\nprev_avg_order_value = avg_order_value * 0.97\ncol1, col2, col3, col4 = st.columns(4)\nwith col1:",
+        "detail": "pages.5_🛒_Amazon_Sales_Dataset",
+        "documentation": {}
+    },
+    {
+        "label": "total_products_sold",
+        "kind": 5,
+        "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
+        "description": "pages.5_🛒_Amazon_Sales_Dataset",
+        "peekOfCode": "total_products_sold = df['quantity_sold'].sum()\navg_rating = df['rating'].mean()\navg_order_value = df['total_revenue'].mean()\nprev_total_sales = total_sales * 0.95\nprev_total_products_sold = total_products_sold * 0.96\nprev_avg_rating = avg_rating - 0.1\nprev_avg_order_value = avg_order_value * 0.97\ncol1, col2, col3, col4 = st.columns(4)\nwith col1:\n        st.markdown(",
+        "detail": "pages.5_🛒_Amazon_Sales_Dataset",
+        "documentation": {}
+    },
+    {
+        "label": "avg_rating",
+        "kind": 5,
+        "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
+        "description": "pages.5_🛒_Amazon_Sales_Dataset",
+        "peekOfCode": "avg_rating = df['rating'].mean()\navg_order_value = df['total_revenue'].mean()\nprev_total_sales = total_sales * 0.95\nprev_total_products_sold = total_products_sold * 0.96\nprev_avg_rating = avg_rating - 0.1\nprev_avg_order_value = avg_order_value * 0.97\ncol1, col2, col3, col4 = st.columns(4)\nwith col1:\n        st.markdown(\n        Components.metric_card(",
+        "detail": "pages.5_🛒_Amazon_Sales_Dataset",
+        "documentation": {}
+    },
+    {
+        "label": "avg_order_value",
+        "kind": 5,
+        "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
+        "description": "pages.5_🛒_Amazon_Sales_Dataset",
+        "peekOfCode": "avg_order_value = df['total_revenue'].mean()\nprev_total_sales = total_sales * 0.95\nprev_total_products_sold = total_products_sold * 0.96\nprev_avg_rating = avg_rating - 0.1\nprev_avg_order_value = avg_order_value * 0.97\ncol1, col2, col3, col4 = st.columns(4)\nwith col1:\n        st.markdown(\n        Components.metric_card(\n            title=\"Total Revenue\",",
+        "detail": "pages.5_🛒_Amazon_Sales_Dataset",
+        "documentation": {}
+    },
+    {
+        "label": "prev_total_sales",
+        "kind": 5,
+        "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
+        "description": "pages.5_🛒_Amazon_Sales_Dataset",
+        "peekOfCode": "prev_total_sales = total_sales * 0.95\nprev_total_products_sold = total_products_sold * 0.96\nprev_avg_rating = avg_rating - 0.1\nprev_avg_order_value = avg_order_value * 0.97\ncol1, col2, col3, col4 = st.columns(4)\nwith col1:\n        st.markdown(\n        Components.metric_card(\n            title=\"Total Revenue\",\n            value=f\"${total_sales:,.2f}\",",
+        "detail": "pages.5_🛒_Amazon_Sales_Dataset",
+        "documentation": {}
+    },
+    {
+        "label": "prev_total_products_sold",
+        "kind": 5,
+        "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
+        "description": "pages.5_🛒_Amazon_Sales_Dataset",
+        "peekOfCode": "prev_total_products_sold = total_products_sold * 0.96\nprev_avg_rating = avg_rating - 0.1\nprev_avg_order_value = avg_order_value * 0.97\ncol1, col2, col3, col4 = st.columns(4)\nwith col1:\n        st.markdown(\n        Components.metric_card(\n            title=\"Total Revenue\",\n            value=f\"${total_sales:,.2f}\",\n            delta=f\"+{((total_sales / prev_total_sales) - 1) * 100:.1f}%\" if prev_total_sales else \"N/A\",",
+        "detail": "pages.5_🛒_Amazon_Sales_Dataset",
+        "documentation": {}
+    },
+    {
+        "label": "prev_avg_rating",
+        "kind": 5,
+        "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
+        "description": "pages.5_🛒_Amazon_Sales_Dataset",
+        "peekOfCode": "prev_avg_rating = avg_rating - 0.1\nprev_avg_order_value = avg_order_value * 0.97\ncol1, col2, col3, col4 = st.columns(4)\nwith col1:\n        st.markdown(\n        Components.metric_card(\n            title=\"Total Revenue\",\n            value=f\"${total_sales:,.2f}\",\n            delta=f\"+{((total_sales / prev_total_sales) - 1) * 100:.1f}%\" if prev_total_sales else \"N/A\",\n            card_type=\"success\"",
+        "detail": "pages.5_🛒_Amazon_Sales_Dataset",
+        "documentation": {}
+    },
+    {
+        "label": "prev_avg_order_value",
+        "kind": 5,
+        "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
+        "description": "pages.5_🛒_Amazon_Sales_Dataset",
+        "peekOfCode": "prev_avg_order_value = avg_order_value * 0.97\ncol1, col2, col3, col4 = st.columns(4)\nwith col1:\n        st.markdown(\n        Components.metric_card(\n            title=\"Total Revenue\",\n            value=f\"${total_sales:,.2f}\",\n            delta=f\"+{((total_sales / prev_total_sales) - 1) * 100:.1f}%\" if prev_total_sales else \"N/A\",\n            card_type=\"success\"\n        )",
         "detail": "pages.5_🛒_Amazon_Sales_Dataset",
         "documentation": {}
     },

@@ -68,19 +68,19 @@ df_filtered = df_filtered[df_filtered['customer_region'].isin(selected_regions)]
 
 st.subheader(":rainbow[Key Metrics]", divider="rainbow")
 
-def calculate_metrics(df):
-    total_sales = df['total_revenue'].sum()
-    total_products_sold = df['quantity_sold'].sum()
-    avg_rating = df['rating'].mean()
-    avg_order_value = df['total_revenue'].mean()
-    prev_total_sales = total_sales * 0.95
-    prev_total_products_sold = total_products_sold * 0.96
-    prev_avg_rating = avg_rating - 0.1
-    prev_avg_order_value = avg_order_value * 0.97
+
+total_sales = df['total_revenue'].sum()
+total_products_sold = df['quantity_sold'].sum()
+avg_rating = df['rating'].mean()
+avg_order_value = df['total_revenue'].mean()
+prev_total_sales = total_sales * 0.95
+prev_total_products_sold = total_products_sold * 0.96
+prev_avg_rating = avg_rating - 0.1
+prev_avg_order_value = avg_order_value * 0.97
 
 
-    col1, col2, col3, col4 = st.columns(4)
-    with col1:
+col1, col2, col3, col4 = st.columns(4)
+with col1:
         st.markdown(
         Components.metric_card(
             title="Total Revenue",
@@ -89,7 +89,7 @@ def calculate_metrics(df):
             card_type="success"
         )
     )
-    with col2:
+with col2:
         st.markdown(
         Components.metric_card(
             title="Products Sold",
@@ -98,7 +98,7 @@ def calculate_metrics(df):
             card_type="info"
         )
     )
-    with col3:
+with col3:
         st.markdown(
         Components.metric_card(
             title="Average Rating",
@@ -107,7 +107,7 @@ def calculate_metrics(df):
             card_type="success" if (avg_rating - prev_avg_rating) >= 0 else "error"
         )
     )
-    with col4:
+with col4:
         st.markdown(
         Components.metric_card(
             title="Average Order Value",
