@@ -1702,5 +1702,14 @@
         "peekOfCode": "class Components:\n    @staticmethod\n    def metric_card(title: str, value: str, delta: str = \"\", delta_positive: bool = True, card_type: str = \"primary\") -> str:\n        colors = {\n        \"info\": Colors.BLUE,\n        \"success\": Colors.GREEN,\n        \"warning\": Colors.ORANGE,\n        \"error\": Colors.RED\n        }\n        border_color = colors.get(card_type, Colors.BLUE)",
         "detail": "utils.theme",
         "documentation": {}
+    },
+    {
+        "label": "init_page",
+        "kind": 2,
+        "importPath": "utils.theme",
+        "description": "utils.theme",
+        "peekOfCode": "def init_page(page_name: str, icon: str = \"📊\"):\n    \"\"\"Initialize page with common settings\"\"\"\n    try:\n        st.set_page_config(\n                page_title=f\"{page_name} | Retail Analytics\",\n                page_icon=icon,\n                layout=\"wide\",\n                initial_sidebar_state=\"expanded\"\n            )\n    except:",
+        "detail": "utils.theme",
+        "documentation": {}
     }
 ]
