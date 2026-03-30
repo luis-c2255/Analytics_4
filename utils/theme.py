@@ -34,7 +34,9 @@ class Components:
         <div style='border: 1px solid {Colors.CHARCOAL};
                     border-top: 4px solid {border_color};
                     padding: 1rem; border-radius: 10px; height: 100%;
-                    transition: transform 0.3s ease;'>
+                    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+                    hover: {{"box-shadow": "0 10px 20px rgba(0, 0, 0, 0.4)"}};
+                    transform: translateY(-4px);'>
             <div style='display: flex; align-items: center; margin-bottom: 0.5rem;'>
                 <p style='color: {Colors.PLATINUM}; margin: 0; font-size: 0.85rem;
                             text-transform: uppercase; letter-spacing: 1px;'>

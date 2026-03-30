@@ -119,6 +119,7 @@ section[data-testid="stSidebar"] {
     padding: 1rem;
 }
 
+
 /* Download Button */
 .stDownloadButton>button {
     background: linear-gradient(135deg, #46B83D 0%, #111E0B 100%);
