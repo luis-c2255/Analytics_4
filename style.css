@@ -231,7 +231,6 @@ div[data-testid="stSidebarNavSearch"] input {
 /* Unfilled track */
 [data-testid="stSidebar"] [data-testid="stSlider"] .st-an.st-ao.st-ap.st-aq.st-ar.st-as.st-af.st-at.st-al {
     background-color: #0F3D2E !important;
-    /* dark red */
     height: 6px !important;
     border-radius: 4px !important;
 }
@@ -239,7 +238,6 @@ div[data-testid="stSidebarNavSearch"] input {
 /* Filled track */
 [data-testid="stSidebar"] [data-testid="stSlider"] .st-ag>.st-emotion-cache-1rr4qq7>.st-emotion-cache-dx6mrm {
     background-color: #2ECC71 !important;
-    /* red */
     height: 6px !important;
     border-radius: 4px !important;
 }
