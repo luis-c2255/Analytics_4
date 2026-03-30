@@ -104,7 +104,7 @@ else:
     # --- 2. Highest Single Rate Observed ---
     max_rate = filtered_df["suicide_rate"].max()
     metrics.append({
-        "title": "Highest Single Rate Observed",
+        "title": "Highest Single Rate",
         "value": f"{max_rate:.2f}",
         "delta": "Absolute Peak",
         "card_type": "error"
