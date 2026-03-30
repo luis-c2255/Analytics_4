@@ -107,7 +107,7 @@ else:
         "title": "Highest Single Rate",
         "value": f"{max_rate:.2f}",
         "delta": "Absolute Peak",
-        "card_type": "error"
+        "card_type": "info"
     })
 
     # --- 3. Top Avg. Country Rate ---
@@ -123,7 +123,7 @@ else:
             "title": "Top Avg. Country Rate",
             "value": f"{top_country}: {top_rate:.2f}",
             "delta": f"{delta_pct:+.1f}% vs Global Avg" if not pd.isna(delta_pct) else "N/A",
-            "card_type": "error" if delta_pct > 20 else "warning"
+            "card_type": "info" if delta_pct > 20 else "warning"
         })
     else:
         country_avg = safe_mean(filtered_df, "suicide_rate")
@@ -152,7 +152,7 @@ else:
         if male > female:
             pct = ((male - female) / female) * 100 if female > 0 else float("nan")
             gender_value = f"{pct:.1f}% (Male > Female)"
-            gender_type = "error" if pct > 50 else "warning"
+            gender_type = "info" if pct > 50 else "warning"
         else:
             pct = ((female - male) / male) * 100 if male > 0 else float("nan")
             gender_value = f"{pct:.1f}% (Female > Male)"
