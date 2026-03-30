@@ -114,7 +114,7 @@ div[data-testid="stMetric"]:hover {
 
 /* Sidebar Styling */
 section[data-testid="stSidebar"] {
-    background-color: #0A1A2F;
+    background-color: #04250e;
     border-right: 2px solid #1B2A3B;
     padding: 1rem;
 }
