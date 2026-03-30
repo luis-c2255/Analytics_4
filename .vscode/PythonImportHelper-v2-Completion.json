@@ -1562,7 +1562,7 @@
         "kind": 2,
         "importPath": "pages.5_🛒_Amazon_Sales_Dataset",
         "description": "pages.5_🛒_Amazon_Sales_Dataset",
-        "peekOfCode": "def load_data():\n    # Load the dataset\n    df = pd.read_csv('amazon_sales_dataset.csv')\n    # Convert 'Order Date' to datetime\n    df['Order Date'] = pd.to_datetime(df['Order Date'])\n    numeric_cols = ['price', 'discount_percent', 'quantity_sold', 'rating', 'review_count', \n                    'discounted_price', 'total_revenue']\n    for col in numeric_cols:\n        df[col] = pd.to_numeric(df[col], errors='coerce')\n    df.dropna(subset=['price', 'quantity_sold', 'total_revenue', 'rating'], inplace=True)",
+        "peekOfCode": "def load_data():\n    # Load the dataset\n    df = pd.read_csv('amazon_sales_dataset.csv')\n    # Convert 'Order Date' to datetime\n    df['order_date'] = pd.to_datetime(df['order_date'])\n    numeric_cols = ['price', 'discount_percent', 'quantity_sold', 'rating', 'review_count', \n                    'discounted_price', 'total_revenue']\n    for col in numeric_cols:\n        df[col] = pd.to_numeric(df[col], errors='coerce')\n    df.dropna(subset=['price', 'quantity_sold', 'total_revenue', 'rating'], inplace=True)",
         "detail": "pages.5_🛒_Amazon_Sales_Dataset",
         "documentation": {}
     },

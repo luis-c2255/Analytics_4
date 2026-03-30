@@ -27,7 +27,7 @@ def load_data():
     df = pd.read_csv('amazon_sales_dataset.csv')
     
     # Convert 'Order Date' to datetime
-    df['Order Date'] = pd.to_datetime(df['Order Date'])
+    df['order_date'] = pd.to_datetime(df['order_date'])
     
     numeric_cols = ['price', 'discount_percent', 'quantity_sold', 'rating', 'review_count', 
                     'discounted_price', 'total_revenue']
