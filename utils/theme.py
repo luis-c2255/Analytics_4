@@ -85,7 +85,7 @@ class Components:
                 page_title=f"{page_name} | Retail Analytics",
                 page_icon=icon,
                 layout="wide",
-                initial_sidebar_state="expanded"
+            initial_sidebar_state="expanded"
             )
         except:
             # page config already set, skip
