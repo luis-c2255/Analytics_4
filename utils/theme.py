@@ -32,6 +32,7 @@ class Components:
         """ if delta else ""
         return f"""
         <div style='border: 1px solid {Colors.CHARCOAL};
+                    background-color: {Colors.PRUSSIAN};
                     border-top: 4px solid {border_color};
                     padding: 1rem; border-radius: 10px; height: 100%;
                     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
