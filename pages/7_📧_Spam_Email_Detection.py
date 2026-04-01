@@ -290,18 +290,7 @@ fig_links = px.histogram(
 )
 st.plotly_chart(fig_links, width="stretch")
 st.markdown("   ")
-st.subheader(":orange-background[Number of Exclamation Marks in Spam Emails]")
 
-fig_exclamations = px.histogram(
-    spam_only_df, 
-    x='num_exclamation_marks',
-    title='Distribution of Exclamation Marks in Spam Emails',
-    nbins=10,
-    text_auto=True,
-    color_discrete_sequence=['purple']
-)
-st.plotly_chart(fig_exclamations, width="stretch")
-st.markdown("   ")
 st.subheader(":orange-background[Number of Attachments in Spam Emails]")
 
 attachments_counts = spam_only_df['num_attachments'].value_counts().reset_index()
