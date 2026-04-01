@@ -478,7 +478,7 @@ with insights_col1:
                 st.write(f"Top 10% of countries have {concentration:.1f}x the average rate")
 
 with insights_col2:
-    st.subheader(":red[Recommendations]")
+    st.subheader(":red-background[Recommendations]")
     with st.expander("Based on the data analysis:", expanded=True):
         st.markdown("""
             1. 🏥 Targeted Interventions: Focus mental health resources on high-risk demographics (elderly, males)
