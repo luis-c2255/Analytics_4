@@ -139,7 +139,7 @@ st.markdown("   ")
 st.subheader("🌍 :blue[Geographic Analysis]", divider="blue")
 st.markdown("   ")
 
-st.markdown("##### :blue[Geographic Distribution of Suicide Rates]")
+st.markdown("##### :blue-background[Geographic Distribution of Suicide Rates]")
 
 map_data = df_filtered[df_filtered['age_group'] == 'ALL'].groupby(
     ['country', 'iso_a3']
@@ -225,7 +225,7 @@ if len(age_data) > 0:
     st.warning(f"⚠️ Most Vulnerable: Age group {most_vulnerable['age_group']} with rate of {most_vulnerable['suicide_rate']:.2f} per 100k")
     
 # Heatmap: Sex vs Age Group
-st.markdown("##### :violet[Sex vs Age Group Heatmap]")
+st.markdown("##### :violet-background[Sex vs Age Group Heatmap]")
 
 heatmap_data = df_filtered[df_filtered['sex'].isin(['male', 'female'])].pivot_table(
     values='suicide_rate',
@@ -260,7 +260,7 @@ fig_trend.update_traces(line_color='#e74c3c', line_width=3)
 st.plotly_chart(fig_trend, width="stretch")
 
 st.markdown("   ")
-st.markdown("##### :violet[Trends by Sex]")
+st.markdown("##### :violet-background[Trends by Sex]")
 
 sex_yearly = df_filtered[(df_filtered['age_group'] == 'ALL') &
 (df_filtered['sex'].isin(['male', 'female']))].groupby(['year', 'sex'])['suicide_rate'].mean().reset_index()
@@ -279,7 +279,7 @@ st.markdown("   ")
 
 # Country comparison (if countries selected)
 if countries:
-    st.markdown("##### :violet[Selected Countries Comparison Over Time]")
+    st.markdown("##### :violet-background[Selected Countries Comparison Over Time]")
     country_trends = df_filtered[df_filtered['age_group'] == 'ALL'].groupby(['year', 'country'])['suicide_rate'].mean().reset_index()
     fig_country_trends = px.line(
         country_trends,
@@ -316,7 +316,7 @@ with col2:
     st.dataframe(bottom_20, width="stretch", height=600)
 
 # Regional comparison
-st.markdown("##### :green[Regional Patterns]")
+st.markdown("##### :green-background[Regional Patterns]")
 st.markdown("*Countries grouped by latitude regions*")
 
 df_regional = df_filtered[df_filtered['age_group'] == 'ALL'].copy()
@@ -343,7 +343,7 @@ st.markdown("   ")
 
 st.subheader("📊 :red[Filtered Raw Data]", divider="red")
 st.markdown("   ")
-st.markdown(f":red[Total Records: {len(df_filtered):,}]")
+st.markdown(f":red-background[Total Records: {len(df_filtered):,}]")
 
 # Display options
 col1, col2 = st.columns([3, 1])
@@ -378,7 +378,7 @@ df_display_formatted['longitude'] = df_display_formatted['longitude'].round(4)
 
 st.dataframe(df_display_formatted, width="stretch", height=600)
 
-st.markdown("📥 :green[Download Data]")
+st.markdown("📥 :green-background[Download Data]")
 
 csv = df_filtered.to_csv(index=False).encode('utf-8')
 
@@ -389,13 +389,12 @@ st.download_button(
     mime='text/csv'
 )
 st.markdown("   ")
-
 st.subheader("🔑 :yellow[Key Takeaways]")
 
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    st.markdown("### 👥 :violet[Demographics]", text_alignment="center")
+    st.markdown("### 👥 :violet-background[Demographics]", text_alignment="center")
     male_avg = df_filtered[(df_filtered['sex'] == 'male') & (df_filtered['age_group'] == 'ALL')]['suicide_rate'].mean()
     female_avg = df_filtered[(df_filtered['sex'] == 'female') & (df_filtered['age_group'] == 'ALL')]['suicide_rate'].mean()
     
@@ -429,7 +428,7 @@ with col1:
 
        
 with col2:
-    st.markdown("### 🌍 :green[Geographic]", text_alignment="center")
+    st.markdown("### 🌍 :green-background[Geographic]", text_alignment="center")
     if len(df_filtered) > 0:
         highest_country_data = df_filtered[df_filtered['age_group'] == 'ALL'].groupby('country')['suicide_rate'].mean().sort_values(ascending=False)
     if len(highest_country_data) > 0:
@@ -440,7 +439,7 @@ with col2:
         st.markdown(Components.metric_card(title="Rate", value=f"{highest_rate:.2f} per 100k", delta="💹", card_type="info"), unsafe_allow_html=True)
 
 with col3:
-    st.markdown("### 📅 :blue[Temporal]", text_alignment="center")
+    st.markdown("### 📅 :blue-background[Temporal]", text_alignment="center")
     if len(yearly_trend) > 1:
         first_year_rate = yearly_trend.iloc[0]['suicide_rate']
         last_year_rate = yearly_trend.iloc[-1]['suicide_rate']
@@ -458,12 +457,12 @@ st.subheader("💡 :orange[Analytical Insights]")
 insights_col1, insights_col2 = st.columns(2)
 
 with insights_col1:
-    st.markdown("### :red[Risk Factors Identified]")
+    st.markdown("### :red-background[Risk Factors Identified]")
     if len(df_filtered) > 0:
         age_vulnerability = df_filtered[df_filtered['sex'] == 'both'].groupby('age_group')['suicide_rate'].mean().sort_values(ascending=False)
     if len(age_vulnerability) > 0:
         with st.expander("🎯 Most Vulnerable Age Group:", expanded=True):
-            st.write(f"{age_vulnerability.index[0]} ({age_vulnerability.values[0]:.2f} per 100k)")
+            st.write(f"Age Group {age_vulnerability.index[0]} ({age_vulnerability.values[0]:.2f} per 100k)")
     if not pd.isna(male_avg) and not pd.isna(female_avg) and female_avg > 0:
         gender_ratio = male_avg / female_avg
         with st.expander("⚖️ Gender Disparity:", expanded=True):
@@ -477,8 +476,47 @@ with insights_col1:
             concentration = top_10_pct / overall_avg
             with st.expander("🌍 Geographic Concentration:", expanded=True):
                 st.write(f"Top 10% of countries have {concentration:.1f}x the average rate")
-    
+
+with insights_col2:
+    st.subheader(":red[Recommendations]")
+    with st.expander("Based on the data analysis:", expanded=True):
+        st.markdown("""
+            1. 🏥 Targeted Interventions: Focus mental health resources on high-risk demographics (elderly, males)
             
+            2. 🌐 Regional Programs: Countries with consistently high rates need specialized prevention programs
+            
+            3. 📊 Continuous Monitoring: Track temporal trends to identify emerging patterns and evaluate intervention effectiveness
+            
+            4. 🔬 Further Research: Investigate socioeconomic, cultural, and healthcare factors contributing to regional variations
+            
+            5. 👥 Gender-Specific Approaches: Develop tailored prevention strategies addressing the significant male-female disparity
+            """)
+st.markdown("   ")
+with st.expander("ℹ️ About This Dashboard"):
+    st.markdown("""
+        ### Data Source
+        This dashboard analyzes global suicide rates from the WHO and other international health organizations.
+        
+        ### Methodology
+        - Data Cleaning: Numeric values were normalized and validated
+        - Aggregation: Rates are averaged across years and demographics as selected
+        - Visualization: Interactive Plotly charts allow detailed exploration
+        - Filters: Use the sidebar to drill down into specific subsets
+        
+        ### Metrics Explained
+        - Suicide Rate: Number of suicides per 100,000 population
+        - Age Groups: Various age brackets including "ALL" for overall population
+        - Sex Categories: Male, Female, and Both (combined)
+        
+        ### Limitations
+        - Data quality varies by country and year
+        - Some countries may have incomplete reporting
+        - Cultural and reporting differences affect comparability
+        
+        ### Usage
+        This tool is intendedd for research, policy analysis, and public health planning.
+        It should not be used for individual risk assessment or clinical purposes.
+        """)
 
 # ============================================
 # FOOTER
