@@ -189,7 +189,7 @@ fig_sex = px.bar(
     title='Average Suicide Rate by Sex',
     labels={'suicide_rate': 'Rate per 100k', 'sex': 'Sex'},
     color='sex',
-    color_continuous_map={'male': '#3498db', 'female': '#e74c3c'}
+    color_discrete_map={'male': '#3498db', 'female': '#e74c3c'}
 )
 fig_sex.update_layout(showlegend=False)
 st.plotly_chart(fig_sex, width="stretch")

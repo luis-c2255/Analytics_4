@@ -1967,7 +1967,7 @@
         "kind": 5,
         "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
         "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
-        "peekOfCode": "fig_sex = px.bar(\n    sex_data,\n    x='sex',\n    y='suicide_rate',\n    title='Average Suicide Rate by Sex',\n    labels={'suicide_rate': 'Rate per 100k', 'sex': 'Sex'},\n    color='sex',\n    color_continuous_map={'male': '#3498db', 'female': '#e74c3c'}\n)\nfig_sex.update_layout(showlegend=False)",
+        "peekOfCode": "fig_sex = px.bar(\n    sex_data,\n    x='sex',\n    y='suicide_rate',\n    title='Average Suicide Rate by Sex',\n    labels={'suicide_rate': 'Rate per 100k', 'sex': 'Sex'},\n    color='sex',\n    color_discrete_map={'male': '#3498db', 'female': '#e74c3c'}\n)\nfig_sex.update_layout(showlegend=False)",
         "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
         "documentation": {}
     },
