@@ -2480,7 +2480,7 @@
         "kind": 5,
         "importPath": "pages.7_📧_Spam_Email_Detection",
         "description": "pages.7_📧_Spam_Email_Detection",
-        "peekOfCode": "attachments_counts = spam_only_df['num_attachments'].value_counts().reset_index()\nattachments_counts.columns = ['num_attachments', 'count']\nfig_attachments = px.bar(\n    attachments_counts.sort_values('num_attachments'), \n    x='num_attachments', \n    y='count',\n    title='Distribution of Number of Attachments in Spam Emails',\n    color_discrete_sequence=['teal']\n)\nst.plotly_chart(fig_attachments, width=\"stretch\")",
+        "peekOfCode": "attachments_counts = spam_only_df['num_attachments'].value_counts().reset_index()\nattachments_counts.columns = ['num_attachments', 'count']\nfig_attachments = px.bar(\n    attachments_counts.sort_values('num_attachments'), \n    x='num_attachments', \n    y='count',\n    title='Distribution of Number of Attachments in Spam Emails',\n    text_auto=True,\n    color_discrete_sequence=['teal']\n)",
         "detail": "pages.7_📧_Spam_Email_Detection",
         "documentation": {}
     },
@@ -2489,7 +2489,7 @@
         "kind": 5,
         "importPath": "pages.7_📧_Spam_Email_Detection",
         "description": "pages.7_📧_Spam_Email_Detection",
-        "peekOfCode": "attachments_counts.columns = ['num_attachments', 'count']\nfig_attachments = px.bar(\n    attachments_counts.sort_values('num_attachments'), \n    x='num_attachments', \n    y='count',\n    title='Distribution of Number of Attachments in Spam Emails',\n    color_discrete_sequence=['teal']\n)\nst.plotly_chart(fig_attachments, width=\"stretch\")\nst.markdown(\"   \")",
+        "peekOfCode": "attachments_counts.columns = ['num_attachments', 'count']\nfig_attachments = px.bar(\n    attachments_counts.sort_values('num_attachments'), \n    x='num_attachments', \n    y='count',\n    title='Distribution of Number of Attachments in Spam Emails',\n    text_auto=True,\n    color_discrete_sequence=['teal']\n)\nst.plotly_chart(fig_attachments, width=\"stretch\")",
         "detail": "pages.7_📧_Spam_Email_Detection",
         "documentation": {}
     },
@@ -2498,7 +2498,7 @@
         "kind": 5,
         "importPath": "pages.7_📧_Spam_Email_Detection",
         "description": "pages.7_📧_Spam_Email_Detection",
-        "peekOfCode": "fig_attachments = px.bar(\n    attachments_counts.sort_values('num_attachments'), \n    x='num_attachments', \n    y='count',\n    title='Distribution of Number of Attachments in Spam Emails',\n    color_discrete_sequence=['teal']\n)\nst.plotly_chart(fig_attachments, width=\"stretch\")\nst.markdown(\"   \")\nst.subheader(\":violet[Temporal Patterns]\", divider=\"violet\")",
+        "peekOfCode": "fig_attachments = px.bar(\n    attachments_counts.sort_values('num_attachments'), \n    x='num_attachments', \n    y='count',\n    title='Distribution of Number of Attachments in Spam Emails',\n    text_auto=True,\n    color_discrete_sequence=['teal']\n)\nst.plotly_chart(fig_attachments, width=\"stretch\")\nst.markdown(\"   \")",
         "detail": "pages.7_📧_Spam_Email_Detection",
         "documentation": {}
     },

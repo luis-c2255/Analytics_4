@@ -309,6 +309,7 @@ fig_attachments = px.bar(
     x='num_attachments', 
     y='count',
     title='Distribution of Number of Attachments in Spam Emails',
+    text_auto=True,
     color_discrete_sequence=['teal']
 )
 st.plotly_chart(fig_attachments, width="stretch")
