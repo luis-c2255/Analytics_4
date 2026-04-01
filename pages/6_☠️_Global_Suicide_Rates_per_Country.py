@@ -165,7 +165,7 @@ country_map_data = filtered_df.groupby('country').agg(
     {'latitude': 'first', 'longitude': 'first', 'suicide_rate': 'mean'}
 ).reset_index()
 
-fig_geo = px.scatter_mapbox(
+fig_geo = px.scatter_map(
     country_map_data,
     lat='latitude', lon='longitude',
     color='suicide_rate',

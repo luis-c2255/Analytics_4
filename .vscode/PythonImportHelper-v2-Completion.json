@@ -1985,7 +1985,7 @@
         "kind": 5,
         "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
         "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
-        "peekOfCode": "country_map_data = filtered_df.groupby('country').agg(\n    {'latitude': 'first', 'longitude': 'first', 'suicide_rate': 'mean'}\n).reset_index()\nfig_geo = px.scatter_mapbox(\n    country_map_data,\n    lat='latitude', lon='longitude',\n    color='suicide_rate',\n    size='suicide_rate',\n    hover_name='country',\n    color_continuous_scale=px.colors.cyclical.IceFire,",
+        "peekOfCode": "country_map_data = filtered_df.groupby('country').agg(\n    {'latitude': 'first', 'longitude': 'first', 'suicide_rate': 'mean'}\n).reset_index()\nfig_geo = px.scatter_map(\n    country_map_data,\n    lat='latitude', lon='longitude',\n    color='suicide_rate',\n    size='suicide_rate',\n    hover_name='country',\n    color_continuous_scale=px.colors.cyclical.IceFire,",
         "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
         "documentation": {}
     },
@@ -1994,7 +1994,7 @@
         "kind": 5,
         "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
         "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
-        "peekOfCode": "fig_geo = px.scatter_mapbox(\n    country_map_data,\n    lat='latitude', lon='longitude',\n    color='suicide_rate',\n    size='suicide_rate',\n    hover_name='country',\n    color_continuous_scale=px.colors.cyclical.IceFire,\n    zoom=1,\n    title=\"Average Suicide Rate by Country\",\n    labels={'suicide_rate': 'Avg Suicide Rate (per 100k)'}",
+        "peekOfCode": "fig_geo = px.scatter_map(\n    country_map_data,\n    lat='latitude', lon='longitude',\n    color='suicide_rate',\n    size='suicide_rate',\n    hover_name='country',\n    color_continuous_scale=px.colors.cyclical.IceFire,\n    zoom=1,\n    title=\"Average Suicide Rate by Country\",\n    labels={'suicide_rate': 'Avg Suicide Rate (per 100k)'}",
         "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
         "documentation": {}
     },
