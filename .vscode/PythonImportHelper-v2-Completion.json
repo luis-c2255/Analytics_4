@@ -1931,7 +1931,7 @@
         "kind": 5,
         "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
         "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
-        "peekOfCode": "fig_map = px.scatter_geo(\n    map_data,\n    lat='latitude',\n    lon='longitude',\n    hover_name='country',\n    size='suicide_rate',\n    color='suicide_rate',\n    color_continuous_scale='Reds',\n    title='Global Suicide Rates Heat Map',\n    projection='natural earth',",
+        "peekOfCode": "fig_map = px.scatter_geo(\n    map_data,\n    lat='latitude',\n    lon='longitude',\n    hover_name='country',\n    size='suicide_rate',\n    color='suicide_rate',\n    color_continuous_scale='bluered',\n    title='Global Suicide Rates Heat Map',\n    projection='natural earth',",
         "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
         "documentation": {}
     },
