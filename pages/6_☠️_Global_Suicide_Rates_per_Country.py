@@ -130,7 +130,7 @@ st.markdown("   ")
 st.subheader("🌍 :blue[Geographic Analysis]", divider="blue")
 st.markdown("   ")
 
-st.markdown(":blue[#### Geographic Distribution of Suicide Rates]")
+st.markdown("#### :blue[Geographic Distribution of Suicide Rates]")
 
 st.subheader("👥 :violet[Demographic Patterns]", divider="violet")
 st.markdown("   ")
