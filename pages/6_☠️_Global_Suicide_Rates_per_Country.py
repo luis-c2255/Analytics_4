@@ -155,7 +155,7 @@ fig_map = px.choropleth(
     projection='natural earth',
     labels={'suicide_rate': 'Rate per 100k'}
 )
-fig_map.update_layout(height=500, geo=dict(showframe=False, showcoastlines=True))
+fig_map.update_layout(height=700, geo=dict(showframe=False, showcoastlines=True))
 st.plotly_chart(fig_map, width="stretch")
 st.markdown("   ")
 
