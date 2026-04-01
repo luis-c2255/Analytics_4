@@ -2462,7 +2462,7 @@
         "kind": 5,
         "importPath": "pages.7_📧_Spam_Email_Detection",
         "description": "pages.7_📧_Spam_Email_Detection",
-        "peekOfCode": "fig_links = px.histogram(\n    spam_only_df, \n    x='num_links',\n    title='Distribution of Number of Links in Spam Emails',\n    nbins=20,\n    color_discrete_sequence=['salmon']\n)\nst.plotly_chart(fig_links, width=\"stretch\")\nst.markdown(\"   \")\nst.subheader(\":orange-background[Number of Exclamation Marks in Spam Emails]\")",
+        "peekOfCode": "fig_links = px.histogram(\n    spam_only_df, \n    x='num_links',\n    title='Distribution of Number of Links in Spam Emails',\n    nbins=20,\n    text_auto=True,\n    color_discrete_sequence=['salmon']\n)\nst.plotly_chart(fig_links, width=\"stretch\")\nst.markdown(\"   \")",
         "detail": "pages.7_📧_Spam_Email_Detection",
         "documentation": {}
     },
@@ -2471,7 +2471,7 @@
         "kind": 5,
         "importPath": "pages.7_📧_Spam_Email_Detection",
         "description": "pages.7_📧_Spam_Email_Detection",
-        "peekOfCode": "fig_exclamations = px.histogram(\n    spam_only_df, \n    x='num_exclamation_marks',\n    title='Distribution of Exclamation Marks in Spam Emails',\n    nbins=10,\n    color_discrete_sequence=['purple']\n)\nst.plotly_chart(fig_exclamations, width=\"stretch\")\nst.markdown(\"   \")\nst.subheader(\":orange-background[Number of Attachments in Spam Emails]\")",
+        "peekOfCode": "fig_exclamations = px.histogram(\n    spam_only_df, \n    x='num_exclamation_marks',\n    title='Distribution of Exclamation Marks in Spam Emails',\n    nbins=10,\n    text_auto=True,\n    color_discrete_sequence=['purple']\n)\nst.plotly_chart(fig_exclamations, width=\"stretch\")\nst.markdown(\"   \")",
         "detail": "pages.7_📧_Spam_Email_Detection",
         "documentation": {}
     },

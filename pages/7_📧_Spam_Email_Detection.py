@@ -285,6 +285,7 @@ fig_links = px.histogram(
     x='num_links',
     title='Distribution of Number of Links in Spam Emails',
     nbins=20,
+    text_auto=True,
     color_discrete_sequence=['salmon']
 )
 st.plotly_chart(fig_links, width="stretch")
@@ -296,6 +297,7 @@ fig_exclamations = px.histogram(
     x='num_exclamation_marks',
     title='Distribution of Exclamation Marks in Spam Emails',
     nbins=10,
+    text_auto=True,
     color_discrete_sequence=['purple']
 )
 st.plotly_chart(fig_exclamations, width="stretch")
