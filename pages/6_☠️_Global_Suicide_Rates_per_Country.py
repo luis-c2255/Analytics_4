@@ -404,7 +404,7 @@ with col1:
             Components.metric_card(
                 title="Male Rate",
                 value=f"{male_avg:.2f} per 100k",
-                delta="",
+                delta="♂️",
                 card_type="info"
             ), unsafe_allow_html=True
         )
@@ -413,7 +413,7 @@ with col1:
             Components.metric_card(
                 title="Female Rate",
                 value=f"{female_avg:.2f} per 100k",
-                delta="",
+                delta="♀️",
                 card_type="info"
             ), unsafe_allow_html=True
         )
@@ -422,12 +422,12 @@ with col1:
             Components.metric_card(
                 title="Gender Gap",
                 value=f"{(male_avg - female_avg):.2f}",
-                delta="",
+                delta="🚻",
                 card_type="info"
             ), unsafe_allow_html=True
         )
 
-        
+import EmojioneV1FlagForMorocco from '~icons/emojione-v1/flag-for-morocco';        
 with col2:
     st.markdown("### 🌍 :green[Geographic]")
     if len(df_filtered) > 0:
@@ -435,7 +435,7 @@ with col2:
     if len(highest_country_data) > 0:
         highest_country = highest_country_data.index[0]
         highest_rate = highest_country_data.values[0]
-        st.markdown(Components.metric_card(title="Highest Rate Country", value=f"{highest_country}", delta="", card_type="info"), unsafe_allow_html=True)
+        st.markdown(Components.metric_card(title="Highest Rate Country", value=f"{highest_country}", delta=":morocco:", card_type="info"), unsafe_allow_html=True)
         st.markdown("   ")
         st.markdown(Components.metric_card(title="Rate", value=f"{highest_rate:.2f} per 100k", delta="", card_type="info"), unsafe_allow_html=True)
 
