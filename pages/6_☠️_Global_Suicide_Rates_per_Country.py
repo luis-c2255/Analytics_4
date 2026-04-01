@@ -334,6 +334,7 @@ fig_regional = px.bar(
     y='suicide_rate',
     title='Average Suicide Rates by Geographic Region',
     labels={'suicide_rate': 'Rate per 100k', 'region': 'Region'},
+    text_auto=True,
     color='suicide_rate',
     color_continuous_scale='Viridis'
 )

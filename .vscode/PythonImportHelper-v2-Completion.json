@@ -2066,7 +2066,7 @@
         "kind": 5,
         "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
         "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
-        "peekOfCode": "regional_rates = df_regional.groupby('region')['suicide_rate'].mean().reset_index()\nfig_regional = px.bar(\n    regional_rates,\n    x='region',\n    y='suicide_rate',\n    title='Average Suicide Rates by Geographic Region',\n    labels={'suicide_rate': 'Rate per 100k', 'region': 'Region'},\n    color='suicide_rate',\n    color_continuous_scale='Viridis'\n)",
+        "peekOfCode": "regional_rates = df_regional.groupby('region')['suicide_rate'].mean().reset_index()\nfig_regional = px.bar(\n    regional_rates,\n    x='region',\n    y='suicide_rate',\n    title='Average Suicide Rates by Geographic Region',\n    labels={'suicide_rate': 'Rate per 100k', 'region': 'Region'},\n    text_auto=True,\n    color='suicide_rate',\n    color_continuous_scale='Viridis'",
         "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
         "documentation": {}
     },
@@ -2075,7 +2075,7 @@
         "kind": 5,
         "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
         "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
-        "peekOfCode": "fig_regional = px.bar(\n    regional_rates,\n    x='region',\n    y='suicide_rate',\n    title='Average Suicide Rates by Geographic Region',\n    labels={'suicide_rate': 'Rate per 100k', 'region': 'Region'},\n    color='suicide_rate',\n    color_continuous_scale='Viridis'\n)\nst.plotly_chart(fig_regional, width=\"stretch\")",
+        "peekOfCode": "fig_regional = px.bar(\n    regional_rates,\n    x='region',\n    y='suicide_rate',\n    title='Average Suicide Rates by Geographic Region',\n    labels={'suicide_rate': 'Rate per 100k', 'region': 'Region'},\n    text_auto=True,\n    color='suicide_rate',\n    color_continuous_scale='Viridis'\n)",
         "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
         "documentation": {}
     },
