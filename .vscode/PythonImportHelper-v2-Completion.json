@@ -2642,7 +2642,7 @@
         "kind": 5,
         "importPath": "pages.7_📧_Spam_Email_Detection",
         "description": "pages.7_📧_Spam_Email_Detection",
-        "peekOfCode": "correlation_matrix = numerical_df.corr()\nfig_heatmap = px.imshow(\n    correlation_matrix,\n    text_auto=True,\n    color_continuous_scale=px.colors.sequential.Viridis,\n    title='Correlation Matrix of Numerical Features (Filtered)')\nst.plotly_chart(fig_heatmap,  width=\"stretch\")\nst.markdown(\"   \")\nst.subheader(\":red-background[Top Sender Domains by Spam Count]\")\nspam_domain_counts = filtered_df[filtered_df['label'] == 1]['sender_domain'].value_counts().nlargest(top_n_domains).reset_index()",
+        "peekOfCode": "correlation_matrix = numerical_df.corr()\nfig_heatmap = px.imshow(\n    correlation_matrix,\n    text_auto=True,\n    color_continuous_scale=px.colors.sequential.Viridis,\n    title='Correlation Matrix of Numerical Features (Filtered)')\nfig_heatmap.update_layout(height=700)\nst.plotly_chart(fig_heatmap, width=\"stretch\")\nst.markdown(\"   \")\nst.subheader(\":red-background[Top Sender Domains by Spam Count]\")",
         "detail": "pages.7_📧_Spam_Email_Detection",
         "documentation": {}
     },
@@ -2651,7 +2651,7 @@
         "kind": 5,
         "importPath": "pages.7_📧_Spam_Email_Detection",
         "description": "pages.7_📧_Spam_Email_Detection",
-        "peekOfCode": "fig_heatmap = px.imshow(\n    correlation_matrix,\n    text_auto=True,\n    color_continuous_scale=px.colors.sequential.Viridis,\n    title='Correlation Matrix of Numerical Features (Filtered)')\nst.plotly_chart(fig_heatmap,  width=\"stretch\")\nst.markdown(\"   \")\nst.subheader(\":red-background[Top Sender Domains by Spam Count]\")\nspam_domain_counts = filtered_df[filtered_df['label'] == 1]['sender_domain'].value_counts().nlargest(top_n_domains).reset_index()\nspam_domain_counts.columns = ['Sender Domain', 'Spam Count']",
+        "peekOfCode": "fig_heatmap = px.imshow(\n    correlation_matrix,\n    text_auto=True,\n    color_continuous_scale=px.colors.sequential.Viridis,\n    title='Correlation Matrix of Numerical Features (Filtered)')\nfig_heatmap.update_layout(height=700)\nst.plotly_chart(fig_heatmap, width=\"stretch\")\nst.markdown(\"   \")\nst.subheader(\":red-background[Top Sender Domains by Spam Count]\")\nspam_domain_counts = filtered_df[filtered_df['label'] == 1]['sender_domain'].value_counts().nlargest(top_n_domains).reset_index()",
         "detail": "pages.7_📧_Spam_Email_Detection",
         "documentation": {}
     },

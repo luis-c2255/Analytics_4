@@ -463,7 +463,8 @@ fig_heatmap = px.imshow(
     text_auto=True,
     color_continuous_scale=px.colors.sequential.Viridis,
     title='Correlation Matrix of Numerical Features (Filtered)')
-st.plotly_chart(fig_heatmap,  width="stretch")
+fig_heatmap.update_layout(height=700)
+st.plotly_chart(fig_heatmap, width="stretch")
 st.markdown("   ")
 
 st.subheader(":red-background[Top Sender Domains by Spam Count]")
