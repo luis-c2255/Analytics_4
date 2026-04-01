@@ -121,7 +121,7 @@ st.markdown("   ")
 
 st.subheader(":green[Overview & Distributions]", divider="green")
 st.markdown("   ")
-st.markdown(":green-background['Key Metrics']")
+st.markdown(":green-background[Key Metrics]")
 total_filtered = filtered_df.shape[0]
 spam_filtered = filtered_df[filtered_df['label'] == 1].shape[0]
 spam_rate_filtered = (spam_filtered / total_filtered) * 100 if total_filtered > 0 else 0
