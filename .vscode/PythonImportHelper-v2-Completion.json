@@ -2219,7 +2219,7 @@
         "kind": 5,
         "importPath": "pages.7_📧_Spam_Email_Detection",
         "description": "pages.7_📧_Spam_Email_Detection",
-        "peekOfCode": "filtered_df = df[df['label'].isin(label_filter)]\nfiltered_df = filtered_df[filtered_df['sender_domain'].isin(domain_filter)]\nfiltered_df = filtered_df[\n    (filtered_df['sender_reputation_score'] >= min_rep_score) &\n    (filtered_df['sender_reputation_score'] <= max_rep_score)\n]\nst.subheader(\":rainbow[Key Metrics (Overall Dataset)]\", divider=\"rainbow\")\nst.markdown(\"   \")\ncol1, col2, col3, col4, col5 = st.columns(5)\nwith col1:",
+        "peekOfCode": "filtered_df = df[df['label'].isin(label_filter)]\nfiltered_df = filtered_df[filtered_df['sender_domain'].isin(domain_filter)]\nfiltered_df = filtered_df[\n    (filtered_df['sender_reputation_score'] >= min_rep_score) &\n    (filtered_df['sender_reputation_score'] <= max_rep_score)\n]\nst.subheader(\":rainbow[Key Metrics (Overall Dataset)]\", divider=\"rainbow\")\nst.markdown(\"   \")\ncol1, col2, col3 = st.columns(3)\nwith col1:",
         "detail": "pages.7_📧_Spam_Email_Detection",
         "documentation": {}
     },
@@ -2228,7 +2228,7 @@
         "kind": 5,
         "importPath": "pages.7_📧_Spam_Email_Detection",
         "description": "pages.7_📧_Spam_Email_Detection",
-        "peekOfCode": "filtered_df = filtered_df[filtered_df['sender_domain'].isin(domain_filter)]\nfiltered_df = filtered_df[\n    (filtered_df['sender_reputation_score'] >= min_rep_score) &\n    (filtered_df['sender_reputation_score'] <= max_rep_score)\n]\nst.subheader(\":rainbow[Key Metrics (Overall Dataset)]\", divider=\"rainbow\")\nst.markdown(\"   \")\ncol1, col2, col3, col4, col5 = st.columns(5)\nwith col1:\n    total_emails = df.shape[0]",
+        "peekOfCode": "filtered_df = filtered_df[filtered_df['sender_domain'].isin(domain_filter)]\nfiltered_df = filtered_df[\n    (filtered_df['sender_reputation_score'] >= min_rep_score) &\n    (filtered_df['sender_reputation_score'] <= max_rep_score)\n]\nst.subheader(\":rainbow[Key Metrics (Overall Dataset)]\", divider=\"rainbow\")\nst.markdown(\"   \")\ncol1, col2, col3 = st.columns(3)\nwith col1:\n    total_emails = df.shape[0]",
         "detail": "pages.7_📧_Spam_Email_Detection",
         "documentation": {}
     },
@@ -2237,7 +2237,7 @@
         "kind": 5,
         "importPath": "pages.7_📧_Spam_Email_Detection",
         "description": "pages.7_📧_Spam_Email_Detection",
-        "peekOfCode": "filtered_df = filtered_df[\n    (filtered_df['sender_reputation_score'] >= min_rep_score) &\n    (filtered_df['sender_reputation_score'] <= max_rep_score)\n]\nst.subheader(\":rainbow[Key Metrics (Overall Dataset)]\", divider=\"rainbow\")\nst.markdown(\"   \")\ncol1, col2, col3, col4, col5 = st.columns(5)\nwith col1:\n    total_emails = df.shape[0]\n    st.markdown(",
+        "peekOfCode": "filtered_df = filtered_df[\n    (filtered_df['sender_reputation_score'] >= min_rep_score) &\n    (filtered_df['sender_reputation_score'] <= max_rep_score)\n]\nst.subheader(\":rainbow[Key Metrics (Overall Dataset)]\", divider=\"rainbow\")\nst.markdown(\"   \")\ncol1, col2, col3 = st.columns(3)\nwith col1:\n    total_emails = df.shape[0]\n    st.markdown(",
         "detail": "pages.7_📧_Spam_Email_Detection",
         "documentation": {}
     },

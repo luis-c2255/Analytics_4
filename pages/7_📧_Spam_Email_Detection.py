@@ -62,7 +62,7 @@ filtered_df = filtered_df[
 
 st.subheader(":rainbow[Key Metrics (Overall Dataset)]", divider="rainbow")
 st.markdown("   ")
-col1, col2, col3, col4, col5 = st.columns(5)
+col1, col2, col3 = st.columns(3)
 with col1:
     total_emails = df.shape[0]
     st.markdown(
@@ -94,6 +94,7 @@ with col3:
             card_type="error"
         ), unsafe_allow_html=True
     )
+col4, col5 = st.columns(2)    
 with col4:
     avg_spam_rep = df[df['label'] == 1]['sender_reputation_score'].mean() if spam_emails > 0 else 0
     st.markdown(
