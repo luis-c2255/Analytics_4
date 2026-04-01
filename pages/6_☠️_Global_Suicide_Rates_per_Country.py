@@ -435,8 +435,8 @@ with col2:
     if len(highest_country_data) > 0:
         highest_country = highest_country_data.index[0]
         highest_rate = highest_country_data.values[0]
-        st.metric("Highest Rate Country", highest_country)
-        st.metric("Rate", f"{highest_rate:.2f} per 100k")
+        st.markdown(Components.metric_card(title="Highest Rate Country", value=f"{highest_country}", delta="", card_type="info"), unsafe_allow_html=True)
+        st.markdown(Components.metric_card(title="Rate", value=f"{highest_rate:.2f} per 100k", delta="", card_type="info"), unsafe_allow_html=True)
 
 with col3:
     st.markdown("### 📅 :blue[Temporal]")
