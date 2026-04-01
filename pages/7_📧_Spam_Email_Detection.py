@@ -458,7 +458,7 @@ numerical_df = filtered_df[['num_words', 'num_characters', 'num_exclamation_mark
 numerical_df.rename(columns={'label': 'is_spam'}, inplace=True)
 
 correlation_matrix = numerical_df.corr()
-fig_heatmap = px.heatmap(
+fig_heatmap = px.imshow(
     correlation_matrix,
     text_auto=True,
     color_continuous_scale=px.colors.sequential.Viridis,
