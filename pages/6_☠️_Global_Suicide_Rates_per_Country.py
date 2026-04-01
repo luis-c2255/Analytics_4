@@ -494,7 +494,7 @@ with insights_col2:
 st.markdown("   ")
 with st.expander("ℹ️ About This Dashboard"):
     st.markdown("""
-        ### Data Source
+        ### :orange[Data Source]
         This dashboard analyzes global suicide rates from the WHO and other international health organizations.
         
         ### Methodology
