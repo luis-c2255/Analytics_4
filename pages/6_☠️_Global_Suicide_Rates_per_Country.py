@@ -37,7 +37,6 @@ def load_data():
     df = df.dropna(subset=['suicide_rate', 'year'])
     df['latitude'] = df['latitude'].fillna(0)
     df['longitude'] = df['longitude'].fillna(0)
-    df = df.drop_duplicates()
     df['year'] = df['year'].astype(int)
     return df
 
