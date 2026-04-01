@@ -298,7 +298,7 @@ st.subheader("🔝 :green[Country Rankings]", divider="green")
 st.markdown("   ")
 col1, col2 = st.columns(2)
 with col1:
-    st.markdown("🔴 :green[Highest Suicide Rates]")
+    st.markdown("🔴 :red[Highest Suicide Rates]")
     top_20 = df_filtered[df_filtered['age_group'] == 'ALL'].groupby('country')['suicide_rate'].mean().sort_values(ascending=False).head(20).reset_index()
     top_20.index = range(1, len(top_20) + 1)
     top_20.columns = ['Country', 'Rate per 100k']
