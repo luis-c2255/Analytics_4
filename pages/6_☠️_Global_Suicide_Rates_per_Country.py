@@ -222,7 +222,7 @@ with col3:
     st.markdown(
         Components.metric_card(
             title="Dominant Age Group",
-            value=f"{filtered_df['age_group'].mode()[0]}",
+            value=f"{filtered_df['age_group'].mode()}",
             delta="No change",
             card_type="info"
         ), unsafe_allow_html=True
