@@ -410,6 +410,7 @@ with col3:
             card_type="info"
         ), unsafe_allow_html=True
     )
+st.markdown("   ")
 st.subheader(":red-background[Relationship: Number of Words vs. Number of Characters]")
 fig_scatter_words_chars = px.scatter(
     filtered_df, 
