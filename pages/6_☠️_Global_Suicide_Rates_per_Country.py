@@ -170,7 +170,7 @@ fig_top = px.bar(
     color=top_countries.values,
     color_continuous_scale='Reds'
 )
-fig_top.update_layout(height=700, showlegend=False)
+fig_top.update_layout(height=700, showlegend=False, xaxis={'categoryorder':'total descending'})
 st.plotly_chart(fig_top, width="stretch")
 st.markdown("   ")
 
