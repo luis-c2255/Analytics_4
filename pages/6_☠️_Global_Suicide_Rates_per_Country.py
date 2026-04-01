@@ -201,7 +201,7 @@ st.subheader(":orange[Key Metrics]")
 
 col1, col2, col3 = st.columns(3)
 with col1:
-    st.columns(
+    st.markdown(
         Components.metric_card(
             title="Median Rate",
             value=f"{round(filtered_df['suicide_rate'].median(), 2)}",
@@ -210,7 +210,7 @@ with col1:
         ), unsafe_allow_html=True
     )
 with col2:
-    st.columns(
+    st.markdown(
         Components.metric_card(
             title="Std Dev Rate",
             value=f"{round(filtered_df['suicide_rate'].std(), 2)}",
@@ -219,7 +219,7 @@ with col2:
         ), unsafe_allow_html=True
     )
 with col3:
-    st.columns(
+    st.markdown(
         Components.metric_card(
             title="Dominant Age Group",
             value=f"{filtered_df['age_group'].mode()[0]}",
