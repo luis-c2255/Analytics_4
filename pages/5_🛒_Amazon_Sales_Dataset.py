@@ -264,8 +264,8 @@ st.dataframe(df_filtered)
 st.markdown("---")
 st.markdown("""
 <div style='text-align: center; color: #666;'>
-    <p><strong>🌎 Global Population per Country 1950-2024 Analysis</strong></p>
-    <p>Explore key metrics, population trends, distribution, composition and growth.</p>
+    <p><strong>🛒  Amazon Sales Dataset Analysis</strong></p>
+    <p>Explore key metrics, performance, sales & discounts, product, customer feedback and regional analysis.</p>
     <p style='font-size: 0.9rem;'>Navigate using the sidebar to explore different datasets</p>
 </div>
 """, unsafe_allow_html=True)
