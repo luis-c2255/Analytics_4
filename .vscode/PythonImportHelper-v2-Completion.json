@@ -1954,6 +1954,213 @@
         "documentation": {}
     },
     {
+        "label": "sex_data",
+        "kind": 5,
+        "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "peekOfCode": "sex_data = df_filtered[\n    (df_filtered['age_group'] == 'ALL') &\n    (df_filtered['sex'].isin(['male', 'female']))\n].groupby('sex')['suicide_rate'].mean().reset_index()\nfig_sex = px.bar(\n    sex_data,\n    x='sex',\n    y='suicide_rate',\n    title='Average Suicide Rate by Sex',\n    labels={'suicide_rate': 'Rate per 100k', 'sex': 'Sex'},",
+        "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "fig_sex",
+        "kind": 5,
+        "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "peekOfCode": "fig_sex = px.bar(\n    sex_data,\n    x='sex',\n    y='suicide_rate',\n    title='Average Suicide Rate by Sex',\n    labels={'suicide_rate': 'Rate per 100k', 'sex': 'Sex'},\n    color='sex',\n    color_continuous_map={'male': '#3498db', 'female': '#e74c3c'}\n)\nfig_sex.update_layout(showlegend=False)",
+        "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "age_data",
+        "kind": 5,
+        "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "peekOfCode": "age_data = df_filtered[df_filtered['sex'] == 'both'].groupby('age_group')['suicide_rate'].mean().sort_values(ascending=False).reset_index()\nfig_age = px.bar(\n    age_data,\n    x='age_group',\n    y='suicide_rate',\n    title='Suicide Rates by Age Group',\n    labels={'suicide_rate': 'Rate per 100k', 'age_group': 'Age Group'},\n    color='suicide_rate',\n    color_continuous_scale='Oranges'\n)",
+        "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "fig_age",
+        "kind": 5,
+        "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "peekOfCode": "fig_age = px.bar(\n    age_data,\n    x='age_group',\n    y='suicide_rate',\n    title='Suicide Rates by Age Group',\n    labels={'suicide_rate': 'Rate per 100k', 'age_group': 'Age Group'},\n    color='suicide_rate',\n    color_continuous_scale='Oranges'\n)\nfig_age.update_layout(showlegend=False)",
+        "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "heatmap_data",
+        "kind": 5,
+        "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "peekOfCode": "heatmap_data = df_filtered[df_filtered['sex'].isin(['male', 'female'])].pivot_table(\n    values='suicide_rate',\n    index='age_group',\n    columns='sex',\n    aggfunc='mean'\n)\nfig_heatmap = px.imshow(\n    heatmap_data,\n    title='Suicide Rates: Sex vs Age Group',\n    labels={'x': 'Sex', 'y': 'Age Group', 'color': 'Rate per 100k'},",
+        "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "fig_heatmap",
+        "kind": 5,
+        "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "peekOfCode": "fig_heatmap = px.imshow(\n    heatmap_data,\n    title='Suicide Rates: Sex vs Age Group',\n    labels={'x': 'Sex', 'y': 'Age Group', 'color': 'Rate per 100k'},\n    color_continuous_scale='RdYlBu_r',\n    aspect='auto'\n)\nst.plotly_chart(fig_heatmap, width=\"stretch\")\nst.markdown(\"   \")\nst.subheader(\"📅 :yellow[Temporal Trends]\", divider=\"yellow\")",
+        "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "yearly_trend",
+        "kind": 5,
+        "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "peekOfCode": "yearly_trend = df_filtered[df_filtered['age_group'] == 'ALL'].groupby('year')['suicide_rate'].mean().reset_index()\nfig_trend = px.line(\n    yearly_trend,\n    x='year',\n    y='suicide_rate',\n    title='Global Average Suicide Rate Over Time',\n    labels={'suicide_rate': 'Rate per 100k', 'year': 'Year'},\n    markers=True\n)\nfig_trend.update_traces(line_color='#e74c3c', line_width=3)",
+        "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "fig_trend",
+        "kind": 5,
+        "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "peekOfCode": "fig_trend = px.line(\n    yearly_trend,\n    x='year',\n    y='suicide_rate',\n    title='Global Average Suicide Rate Over Time',\n    labels={'suicide_rate': 'Rate per 100k', 'year': 'Year'},\n    markers=True\n)\nfig_trend.update_traces(line_color='#e74c3c', line_width=3)\nst.plotly_chart(fig_trend, width=\"stretch\")",
+        "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "sex_yearly",
+        "kind": 5,
+        "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "peekOfCode": "sex_yearly = df_filtered[(df_filtered['age_group'] == 'ALL') &\n(df_filtered['sex'].isin(['male', 'female']))].groupby(['year', 'sex'])['suicide_rate'].mean().reset_index()\nfig_sex_trend = px.line(\n    sex_yearly,\n    x='year',\n    y='suicide_rate',\n    color='sex',\n    title='Suicide Rate Trends by Sex',\n    labels={'suicide_rate': 'Rate per 100k', 'year': 'Year'},\n    color_discrete_map={'male': '#3498db', 'female': '#e74c3c'}",
+        "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "fig_sex_trend",
+        "kind": 5,
+        "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "peekOfCode": "fig_sex_trend = px.line(\n    sex_yearly,\n    x='year',\n    y='suicide_rate',\n    color='sex',\n    title='Suicide Rate Trends by Sex',\n    labels={'suicide_rate': 'Rate per 100k', 'year': 'Year'},\n    color_discrete_map={'male': '#3498db', 'female': '#e74c3c'}\n)\nst.plotly_chart(fig_sex_trend, width=\"stretch\")",
+        "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "df_regional",
+        "kind": 5,
+        "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "peekOfCode": "df_regional = df_filtered[df_filtered['age_group'] == 'ALL'].copy()\ndf_regional['region'] = pd.cut(\n    df_regional['latitude'],\n    bins=[-90, -23.5, 23.5, 90],\n    labels=['Southern Hemisphere', 'Tropical', 'Northern Hemisphere']\n)\nregional_rates = df_regional.groupby('region')['suicide_rate'].mean().reset_index()\nfig_regional = px.bar(\n    regional_rates,\n    x='region',",
+        "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "df_regional['region']",
+        "kind": 5,
+        "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "peekOfCode": "df_regional['region'] = pd.cut(\n    df_regional['latitude'],\n    bins=[-90, -23.5, 23.5, 90],\n    labels=['Southern Hemisphere', 'Tropical', 'Northern Hemisphere']\n)\nregional_rates = df_regional.groupby('region')['suicide_rate'].mean().reset_index()\nfig_regional = px.bar(\n    regional_rates,\n    x='region',\n    y='suicide_rate',",
+        "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "regional_rates",
+        "kind": 5,
+        "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "peekOfCode": "regional_rates = df_regional.groupby('region')['suicide_rate'].mean().reset_index()\nfig_regional = px.bar(\n    regional_rates,\n    x='region',\n    y='suicide_rate',\n    title='Average Suicide Rates by Geographic Region',\n    labels={'suicide_rate': 'Rate per 100k', 'region': 'Region'},\n    color='suicide_rate',\n    color_continuous_scale='Viridis'\n)",
+        "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "fig_regional",
+        "kind": 5,
+        "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "peekOfCode": "fig_regional = px.bar(\n    regional_rates,\n    x='region',\n    y='suicide_rate',\n    title='Average Suicide Rates by Geographic Region',\n    labels={'suicide_rate': 'Rate per 100k', 'region': 'Region'},\n    color='suicide_rate',\n    color_continuous_scale='Viridis'\n)\nst.plotly_chart(fig_regional, width=\"stretch\")",
+        "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "df_display",
+        "kind": 5,
+        "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "peekOfCode": "df_display = df_filtered.copy()\nif search_country:\n    df_display = df_display[df_display['country'].str.contains(search_country, case=False, na=False)]\n# Sort options\nsort_col = st.selectbox(\n    \"Sort by column\",\n    options=df_display.columns.tolist(),\n    index=df_display.columns.tolist().index('suicide_rate')\n)\nsort_order = st.radio(\"Sort order\", ['Descending', 'Ascending'], horizontal=True)",
+        "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "sort_col",
+        "kind": 5,
+        "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "peekOfCode": "sort_col = st.selectbox(\n    \"Sort by column\",\n    options=df_display.columns.tolist(),\n    index=df_display.columns.tolist().index('suicide_rate')\n)\nsort_order = st.radio(\"Sort order\", ['Descending', 'Ascending'], horizontal=True)\ndf_display = df_display.sort_values(\n    by=sort_col,\n    ascending=(sort_order == 'Ascending')\n).head(rows_to_show)",
+        "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "sort_order",
+        "kind": 5,
+        "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "peekOfCode": "sort_order = st.radio(\"Sort order\", ['Descending', 'Ascending'], horizontal=True)\ndf_display = df_display.sort_values(\n    by=sort_col,\n    ascending=(sort_order == 'Ascending')\n).head(rows_to_show)\n# Format the display\ndf_display_formatted = df_display.copy()\ndf_display_formatted['suicide_rate'] = df_display_formatted['suicide_rate'].round(2)\ndf_display_formatted['latitude'] = df_display_formatted['latitude'].round(4)\ndf_display_formatted['longitude'] = df_display_formatted['longitude'].round(4)",
+        "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "df_display",
+        "kind": 5,
+        "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "peekOfCode": "df_display = df_display.sort_values(\n    by=sort_col,\n    ascending=(sort_order == 'Ascending')\n).head(rows_to_show)\n# Format the display\ndf_display_formatted = df_display.copy()\ndf_display_formatted['suicide_rate'] = df_display_formatted['suicide_rate'].round(2)\ndf_display_formatted['latitude'] = df_display_formatted['latitude'].round(4)\ndf_display_formatted['longitude'] = df_display_formatted['longitude'].round(4)\nst.dataframe(df_display_formatted, width=\"stretch\", height=600)",
+        "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "df_display_formatted",
+        "kind": 5,
+        "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "peekOfCode": "df_display_formatted = df_display.copy()\ndf_display_formatted['suicide_rate'] = df_display_formatted['suicide_rate'].round(2)\ndf_display_formatted['latitude'] = df_display_formatted['latitude'].round(4)\ndf_display_formatted['longitude'] = df_display_formatted['longitude'].round(4)\nst.dataframe(df_display_formatted, width=\"stretch\", height=600)\nst.markdown(\"#####📥 :red[Download Data]\")\ncsv = df_filtered.to_csv(index=False).encode('utf-8')\nst.download_button(\n    label=\"Download Filtered Data as CSV\",\n    data=csv,",
+        "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "df_display_formatted['suicide_rate']",
+        "kind": 5,
+        "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "peekOfCode": "df_display_formatted['suicide_rate'] = df_display_formatted['suicide_rate'].round(2)\ndf_display_formatted['latitude'] = df_display_formatted['latitude'].round(4)\ndf_display_formatted['longitude'] = df_display_formatted['longitude'].round(4)\nst.dataframe(df_display_formatted, width=\"stretch\", height=600)\nst.markdown(\"#####📥 :red[Download Data]\")\ncsv = df_filtered.to_csv(index=False).encode('utf-8')\nst.download_button(\n    label=\"Download Filtered Data as CSV\",\n    data=csv,\n    file_name=f\"suicide_rates-filtered_{year_range[0]}_{year_range[1]}.csv\",",
+        "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "df_display_formatted['latitude']",
+        "kind": 5,
+        "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "peekOfCode": "df_display_formatted['latitude'] = df_display_formatted['latitude'].round(4)\ndf_display_formatted['longitude'] = df_display_formatted['longitude'].round(4)\nst.dataframe(df_display_formatted, width=\"stretch\", height=600)\nst.markdown(\"#####📥 :red[Download Data]\")\ncsv = df_filtered.to_csv(index=False).encode('utf-8')\nst.download_button(\n    label=\"Download Filtered Data as CSV\",\n    data=csv,\n    file_name=f\"suicide_rates-filtered_{year_range[0]}_{year_range[1]}.csv\",\n    mime='text/csv'",
+        "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "df_display_formatted['longitude']",
+        "kind": 5,
+        "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "peekOfCode": "df_display_formatted['longitude'] = df_display_formatted['longitude'].round(4)\nst.dataframe(df_display_formatted, width=\"stretch\", height=600)\nst.markdown(\"#####📥 :red[Download Data]\")\ncsv = df_filtered.to_csv(index=False).encode('utf-8')\nst.download_button(\n    label=\"Download Filtered Data as CSV\",\n    data=csv,\n    file_name=f\"suicide_rates-filtered_{year_range[0]}_{year_range[1]}.csv\",\n    mime='text/csv'\n)",
+        "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "csv",
+        "kind": 5,
+        "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "peekOfCode": "csv = df_filtered.to_csv(index=False).encode('utf-8')\nst.download_button(\n    label=\"Download Filtered Data as CSV\",\n    data=csv,\n    file_name=f\"suicide_rates-filtered_{year_range[0]}_{year_range[1]}.csv\",\n    mime='text/csv'\n)\nst.markdown(\"   \")\nst.subheader(\"🔑 :yellow[Key Takeaways]\")\ncol1, col2, col3 = st.columns(3)",
+        "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "documentation": {}
+    },
+    {
         "label": "Colors",
         "kind": 6,
         "importPath": "utils.theme",
