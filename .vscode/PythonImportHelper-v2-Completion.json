@@ -1859,7 +1859,7 @@
         "kind": 2,
         "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
         "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
-        "peekOfCode": "def load_data():\n    df = pd.read_csv(\"suicide_rates_master.csv\")\n    for col in ['suicide_rate', 'latitude', 'longitude']:\n        df[col] = df[col].astype(str).str.replace(',', '.')\n        df[col] = pd.to_numeric(df[col], errors='coerce')\n    df = df.dropna(subset=['suicide_rate', 'latitude', 'longitude'])\n    df = df.drop_duplicates()\n    df['year'] = df['year'].astype(int)\n    return df\ndf = load_data()",
+        "peekOfCode": "def load_data():\n    df = pd.read_csv(\"suicide_rates_master.csv\")\n    for col in ['suicide_rate', 'latitude', 'longitude']:\n        df[col] = df[col].astype(str).str.replace(',', '.')\n        df[col] = pd.to_numeric(df[col], errors='coerce')\n    df = df.dropna(subset=['suicide_rate', 'latitude', 'longitude', 'year'])\n    df = df.drop_duplicates()\n    df['year'] = df['year'].astype(int)\n    return df\ndf = load_data()",
         "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
         "documentation": {}
     },

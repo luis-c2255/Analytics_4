@@ -27,7 +27,7 @@ def load_data():
         df[col] = df[col].astype(str).str.replace(',', '.')
         df[col] = pd.to_numeric(df[col], errors='coerce')
     
-    df = df.dropna(subset=['suicide_rate', 'latitude', 'longitude'])
+    df = df.dropna(subset=['suicide_rate', 'latitude', 'longitude', 'year'])
     df = df.drop_duplicates()
     df['year'] = df['year'].astype(int)
     return df
