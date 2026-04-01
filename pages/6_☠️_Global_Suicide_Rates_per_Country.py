@@ -130,10 +130,46 @@ st.markdown("   ")
 st.subheader("🌍 :blue[Geographic Analysis]", divider="blue")
 st.markdown("   ")
 
-st.markdown("###### :blue[Geographic Distribution of Suicide Rates]")
+st.markdown("##### :blue[Geographic Distribution of Suicide Rates]")
+
+map_data = df_filtered[df_filtered['age_group'] == 'ALL'].groupby(
+    ['country', 'latitude', 'longitude', 'iso_a3']
+)['suicide_rate'].mean().reset_index()
+
+fig_map = px.scatter_geo(
+    map_data,
+    lat='latitude',
+    lon='longitude',
+    hover_name='country',
+    size='sucide_rate',
+    color='suicide_rate',
+    color_continuous_scale='Reds',
+    title='Global Suicide Rates Heat Map',
+    projection='natural earth',
+    size_max=30
+)
+fig_map.update_layout(height=500)
+st.plotly_chart(fig_map, width="stretch")
+st.markdown("   ")
+
+top_countries = df_filtered[df_filtered['age_group'] == 'ALL'].groupby(['country'])['suicide_rate'].mean().sort_values(ascending=False).head(15)
+
+fig_top = px.bar(
+    x=top_countries.values,
+    y=top_countries.index,
+    orientation='h',
+    title='Top 15 Countries by Average Suicide Rate',
+    labels={'x': 'Rate per 100k', 'y': 'Country'},
+    color=top_countries.values,
+    color_continuous_scale='Reds'
+)
+fig_top.update_layout(height=500, showlegend=False)
+st.plotly_chart(fig_top, width="stretch")
+st.markdown("   ")
 
 st.subheader("👥 :violet[Demographic Patterns]", divider="violet")
 st.markdown("   ")
+
 st.subheader("📅 :yellow[Temporal Trends]", divider="yellow")
 st.markdown("   ")
 st.subheader("🔝 :green[Rankings]", divider="green")
