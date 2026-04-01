@@ -23,11 +23,20 @@ st.markdown(
 @st.cache_data
 def load_data():
     df = pd.read_csv("suicide_rates_master.csv")
-    for col in ['suicide_rate', 'latitude', 'longitude', 'year']:
-        df[col] = df[col].astype(str).str.replace(',', '.')
-        df[col] = pd.to_numeric(df[col], errors='coerce')
+    df.columns = df.columns.str.strip()
     
-    df = df.dropna(subset=['suicide_rate', 'latitude', 'longitude', 'year'])
+    for col in ['suicide_rate', 'latitude', 'longitude', 'year']:
+        if col in df.columns:
+            if df[col].dtype == object:
+                df[col] = df[col].str.replace(',', '.')
+            df[col] = pd.to_numeric(df[col], errors='coerce')
+    
+        st.write(f"Pre-drop count: {len(df)}")
+        st.write("Missing values per column:", df.isnull().sum())
+        
+    df = df.dropna(subset=['suicide_rate', 'year'])
+    df['latitude'] = df['latitude'].fillna(0)
+    df['longitude'] = df['longitude'].fillna(0)
     df = df.drop_duplicates()
     df['year'] = df['year'].astype(int)
     return df
@@ -36,18 +45,16 @@ df = load_data()
 st.write(f"Rows loaded: {len(df)}")
 
 st.sidebar.header("Filter Options")
+if not df.empty:
+    all_countries = sorted(df['country'].unique())
+    selected_countries = st.sidebar.multiselect("Select Country(s)", all_countries, default=all_countries)
 
-all_countries = sorted(df['country'].unique())
-selected_countries = st.sidebar.multiselect("Select Country(s)", all_countries, default=all_countries)
-
-if not df.empty and df['year'].notna().any():
     min_year = int(df['year'].min())
     max_year = int(df['year'].max())
+
+    year_range = st.sidebar.slider("Select Year Range", min_value=min_year, max_value=max_year, value=(min_year, max_year))
 else:
-    min_year, max_year = 2000, 2021
-
-year_range = st.sidebar.slider("Select Year Range", min_value=min_year, max_value=max_year, value=(min_year, max_year))
-
+    st.error("No data")
 all_sex = df['sex'].unique()
 selected_sex = st.sidebar.multiselect("Select Sex", all_sex, default=all_sex)
 
