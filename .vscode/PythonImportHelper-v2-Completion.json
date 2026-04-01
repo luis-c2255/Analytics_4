@@ -1868,7 +1868,52 @@
         "kind": 5,
         "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
         "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
-        "peekOfCode": "df = load_data()\n# ============================================\n# FOOTER\n# ============================================\nst.markdown(\"---\")\nst.markdown(\"\"\"\n<div style='text-align: center; color: #666;'>\n    <p><strong>☠️  Global Suicide Rates per Country 2000-2021 Analysis</strong></p>\n    <p>Explore key metrics, population trends, distribution, composition and growth.</p>\n    <p style='font-size: 0.9rem;'>Navigate using the sidebar to explore different datasets</p>",
+        "peekOfCode": "df = load_data()\n# Sidebar filters\nst.sidebar.header(\"🔍 Filters\")\nyear_range = st.sidebar.slider(\n    \"Select Year Range\",\n    int(df['year'].min()),\n    int(df['year'].max()),\n    (int(df['year'].min()), int(df['year'].max()))\n)\ncountries = st.sidebar.multiselect(",
+        "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "year_range",
+        "kind": 5,
+        "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "peekOfCode": "year_range = st.sidebar.slider(\n    \"Select Year Range\",\n    int(df['year'].min()),\n    int(df['year'].max()),\n    (int(df['year'].min()), int(df['year'].max()))\n)\ncountries = st.sidebar.multiselect(\n    \"Select Countries (leave empty for all)\",\n    options=sorted(df['country'].unique()),\n    default=[]",
+        "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "countries",
+        "kind": 5,
+        "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "peekOfCode": "countries = st.sidebar.multiselect(\n    \"Select Countries (leave empty for all)\",\n    options=sorted(df['country'].unique()),\n    default=[]\n)\nsex_filter = st.sidebar.selectbox(\n    \"Select Sex\",\n    options=['All', 'male', 'female', 'both'],\n    index=0\n)",
+        "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "sex_filter",
+        "kind": 5,
+        "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "peekOfCode": "sex_filter = st.sidebar.selectbox(\n    \"Select Sex\",\n    options=['All', 'male', 'female', 'both'],\n    index=0\n)\nage_filter = st.sidebar.selectbox(\n    \"Select Age Group\",\n    options=['All'] + sorted(df['age_group'].unique().tolist()),\n    index=0\n)",
+        "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "age_filter",
+        "kind": 5,
+        "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "peekOfCode": "age_filter = st.sidebar.selectbox(\n    \"Select Age Group\",\n    options=['All'] + sorted(df['age_group'].unique().tolist()),\n    index=0\n)\ndf_filtered = df[\n    (df['year'] >= year_range[0]) &\n    (df['year'] <= year_range[1])\n]\nif countries:",
+        "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "documentation": {}
+    },
+    {
+        "label": "df_filtered",
+        "kind": 5,
+        "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
+        "peekOfCode": "df_filtered = df[\n    (df['year'] >= year_range[0]) &\n    (df['year'] <= year_range[1])\n]\nif countries:\n    df_filtered = df_filtered[df_filtered['country'].isin(countries)]\nif sex_filter != 'All':\n    df_filtered = df_filtered[df_filtered['sex'] == sex_filter]\nif age_filter != 'All':\n    df_filtered = df_filtered[df_filtered['age_group'] == age_filter]",
         "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
         "documentation": {}
     },

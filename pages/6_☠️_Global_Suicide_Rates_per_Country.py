@@ -21,6 +21,7 @@ except FileNotFoundError:
 st.markdown(
     Components.page_header("☠️  Global Suicide Rates per Country 2000-2021 Analysis"), unsafe_allow_html=True
 )
+st.markdown("### Exploring patterns in suicide rates across countries, demographics, and time", text_alignment="center")
 
 @st.cache_data
 def load_data():
@@ -38,7 +39,108 @@ def load_data():
     return df
 
 df = load_data()
-   
+
+# Sidebar filters
+st.sidebar.header("🔍 Filters")
+
+year_range = st.sidebar.slider(
+    "Select Year Range",
+    int(df['year'].min()),
+    int(df['year'].max()),
+    (int(df['year'].min()), int(df['year'].max()))
+)
+
+countries = st.sidebar.multiselect(
+    "Select Countries (leave empty for all)",
+    options=sorted(df['country'].unique()),
+    default=[]
+)
+
+sex_filter = st.sidebar.selectbox(
+    "Select Sex",
+    options=['All', 'male', 'female', 'both'],
+    index=0
+)
+
+age_filter = st.sidebar.selectbox(
+    "Select Age Group",
+    options=['All'] + sorted(df['age_group'].unique().tolist()),
+    index=0
+)
+
+df_filtered = df[
+    (df['year'] >= year_range[0]) &
+    (df['year'] <= year_range[1])
+]
+
+if countries:
+    df_filtered = df_filtered[df_filtered['country'].isin(countries)]
+    
+if sex_filter != 'All':
+    df_filtered = df_filtered[df_filtered['sex'] == sex_filter]
+
+if age_filter != 'All':
+    df_filtered = df_filtered[df_filtered['age_group'] == age_filter]
+    
+st.subheader("📈 :rainbow[Key Metrics]", divider="rainbow")
+
+col1, col2, col3, col4 = st.columns(4)
+with col1:
+    avg_rate = df_filtered['suicide_rate'].mean()
+    st.markdown(
+        Components.metric_card(
+            title="Average Suicide Rate",
+            value=f"{avg_rate:.2f} per 100k",
+            delta="",
+            card_type="info"
+        ), unsafe_allow_html=True
+    )
+with col2:
+    total_countries = df_filtered['country'].nunique()
+    st.markdown(
+        Components.metric_card(
+            title="Countries Analyzed",
+            value=f"{total_countries}",
+            delta="",
+            card_type="info"
+        ), unsafe_allow_html=True
+    )
+with col3:
+    max_rate = df_filtered['suicide_rate'].max()
+    st.markdown(
+        Components.metric_card(
+            title="Highest Rate",
+            value=f"{max_rate:.2f} per 100k",
+            delta="",
+            card_type="info"
+        ), unsafe_allow_html=True
+    )
+with col4:
+    years_covered = df_filtered['year'].nunique()
+    st.markdown(
+        Components.metric_card(
+            title="Years of Data",
+            value=f"{years_covered}",
+            delta="",
+            card_type="info"
+        ), unsafe_allow_html=True
+    )
+st.markdown("   ")
+
+st.subheader("🌍 :blue[Geographic Analysis]", divider="blue")
+st.markdown("   ")
+
+st.markdown(":blue[#### Geographic Distribution of Suicide Rates]")
+
+st.subheader("👥 :violet[Demographic Patterns]", divider="violet")
+st.markdown("   ")
+st.subheader("📅 :yellow[Temporal Trends]", divider="yellow")
+st.markdown("   ")
+st.subheader("🔝 :green[Rankings]", divider="green")
+st.markdown("   ")
+st.subheader("📊 :red[Raw Data]", divider="red")
+st.markdown("   ")
+
 # ============================================
 # FOOTER
 # ============================================
