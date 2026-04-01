@@ -127,15 +127,6 @@
         "documentation": {}
     },
     {
-        "label": "EmojioneV1FlagForMorocco",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "EmojioneV1FlagForMorocco",
-        "description": "EmojioneV1FlagForMorocco",
-        "detail": "EmojioneV1FlagForMorocco",
-        "documentation": {}
-    },
-    {
         "label": "load_data",
         "kind": 2,
         "importPath": "pages.1_📽️_Global_Movie_Trends_(2026)",

@@ -427,7 +427,7 @@ with col1:
             ), unsafe_allow_html=True
         )
 
-import EmojioneV1FlagForMorocco from '~icons/emojione-v1/flag-for-morocco';        
+       
 with col2:
     st.markdown("### 🌍 :green[Geographic]")
     if len(df_filtered) > 0:
