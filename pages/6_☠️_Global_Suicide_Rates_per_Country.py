@@ -400,9 +400,31 @@ with col1:
     female_avg = df_filtered[(df_filtered['sex'] == 'female') & (df_filtered['age_group'] == 'ALL')]['suicide_rate'].mean()
     
     if not pd.isna(male_avg) and not pd.isna(female_avg):
-        st.metric("Male Rate", f"{male_avg:.2f} per 100k")
-        st.metric("Female Rate", f"{female_avg:.2f} per 100k")
-        st.metric("Gender Gap", f"{(male_avg - female_avg):.2f}")
+        st.markdown(
+            Components.metric_card(
+                title="Male Rate",
+                value=f"{male_avg:.2f} per 100k",
+                delta="",
+                card_type="info"
+            ), unsafe_allow_html=True
+        )
+        st.markdown(
+            Components.metric_card(
+                title="Female Rate",
+                value=f"{female_avg:.2f} per 100k",
+                delta="",
+                card_type="info"
+            ), unsafe_allow_html=True
+        )
+        st.markdown(
+            Components.metric_card(
+                title="Gender Gap",
+                value=f"{(male_avg - female_avg):.2f}",
+                delta="",
+                card_type="info"
+            ), unsafe_allow_html=True
+        )
+
         
 with col2:
     st.markdown("### 🌍 :green[Geographic]")
