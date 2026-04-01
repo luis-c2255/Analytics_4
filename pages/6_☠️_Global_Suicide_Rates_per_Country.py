@@ -462,11 +462,11 @@ with insights_col1:
     if len(df_filtered) > 0:
         age_vulnerability = df_filtered[df_filtered['sex'] == 'both'].groupby('age_group')['suicide_rate'].mean().sort_values(ascending=False)
     if len(age_vulnerability) > 0:
-        with st.expander("🎯 Most Vulnerable Age Group:"):
+        with st.expander("🎯 Most Vulnerable Age Group:", expanded=True):
             st.write(f"{age_vulnerability.index[0]} ({age_vulnerability.values[0]:.2f} per 100k)")
     if not pd.isna(male_avg) and not pd.isna(female_avg) and female_avg > 0:
         gender_ratio = male_avg / female_avg
-        with st.expander("⚖️ Gender Disparity:"):
+        with st.expander("⚖️ Gender Disparity:", expanded=True):
             st.write(f"Females are {gender_ratio:.1f}x more likely")
             
         # Geographic concentration
@@ -475,7 +475,7 @@ with insights_col1:
         overall_avg = country_rates.mean()
         if overall_avg > 0:
             concentration = top_10_pct / overall_avg
-            with st.expander("🌍 Geographic Concentration:"):
+            with st.expander("🌍 Geographic Concentration:", expanded=True):
                 st.write(f"Top 10% of countries have {concentration:.1f}x the average rate")
     
             
