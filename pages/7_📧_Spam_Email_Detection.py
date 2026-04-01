@@ -94,6 +94,7 @@ with col3:
             card_type="error"
         ), unsafe_allow_html=True
     )
+st.markdown("   ")
 col4, col5 = st.columns(2)    
 with col4:
     avg_spam_rep = df[df['label'] == 1]['sender_reputation_score'].mean() if spam_emails > 0 else 0
