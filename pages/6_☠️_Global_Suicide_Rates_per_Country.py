@@ -142,22 +142,20 @@ st.markdown("   ")
 st.markdown("##### :blue[Geographic Distribution of Suicide Rates]")
 
 map_data = df_filtered[df_filtered['age_group'] == 'ALL'].groupby(
-    ['country', 'latitude', 'longitude', 'iso_a3']
+    ['country', 'iso_a3']
 )['suicide_rate'].mean().reset_index()
 
-fig_map = px.scatter_geo(
+fig_map = px.choropleth(
     map_data,
-    lat='latitude',
-    lon='longitude',
+    locations='iso_a3',
     hover_name='country',
-    size='suicide_rate',
     color='suicide_rate',
-    color_continuous_scale='bluered',
+    color_continuous_scale='Reds',
     title='Global Suicide Rates Heat Map',
     projection='natural earth',
-    size_max=30
+    labels={'suicide_rate': 'Rate per 100k'}
 )
-fig_map.update_layout(height=500)
+fig_map.update_layout(height=500, geo=dict(showframe=False, showcoastlines=True))
 st.plotly_chart(fig_map, width="stretch")
 st.markdown("   ")
 
