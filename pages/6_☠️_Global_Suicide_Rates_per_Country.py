@@ -395,7 +395,7 @@ st.subheader("🔑 :yellow[Key Takeaways]")
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    st.markdown("### 👥 :violet[Demographics]")
+    st.markdown("### 👥 :violet[Demographics]", text_alignment="center")
     male_avg = df_filtered[(df_filtered['sex'] == 'male') & (df_filtered['age_group'] == 'ALL')]['suicide_rate'].mean()
     female_avg = df_filtered[(df_filtered['sex'] == 'female') & (df_filtered['age_group'] == 'ALL')]['suicide_rate'].mean()
     
@@ -429,7 +429,7 @@ with col1:
 
        
 with col2:
-    st.markdown("### 🌍 :green[Geographic]")
+    st.markdown("### 🌍 :green[Geographic]", text_alignment="center")
     if len(df_filtered) > 0:
         highest_country_data = df_filtered[df_filtered['age_group'] == 'ALL'].groupby('country')['suicide_rate'].mean().sort_values(ascending=False)
     if len(highest_country_data) > 0:
