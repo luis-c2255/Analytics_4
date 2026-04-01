@@ -1949,7 +1949,7 @@
         "kind": 5,
         "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
         "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
-        "peekOfCode": "fig_top = px.bar(\n    x=top_countries.values,\n    y=top_countries.index,\n    orientation='h',\n    title='Top 15 Countries by Average Suicide Rate',\n    labels={'x': 'Rate per 100k', 'y': 'Country'},\n    color=top_countries.values,\n    color_continuous_scale='Reds'\n)\nfig_top.update_layout(height=700, showlegend=False, xaxis={'categoryorder':'total descending'})",
+        "peekOfCode": "fig_top = px.bar(\n    x=top_countries.values,\n    y=top_countries.index,\n    orientation='h',\n    title='Top 15 Countries by Average Suicide Rate',\n    labels={'x': 'Rate per 100k', 'y': 'Country'},\n    color=top_countries.values,\n    color_continuous_scale='Reds'\n)\nfig_top.update_layout(height=700, showlegend=False, xaxis={'categoryorder':'total ascending'})",
         "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
         "documentation": {}
     },
