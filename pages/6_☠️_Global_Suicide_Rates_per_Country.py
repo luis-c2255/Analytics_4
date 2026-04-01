@@ -378,7 +378,7 @@ df_display_formatted['longitude'] = df_display_formatted['longitude'].round(4)
 
 st.dataframe(df_display_formatted, width="stretch", height=600)
 
-st.markdown("#####📥 :red[Download Data]")
+st.markdown("📥 :green[Download Data]")
 
 csv = df_filtered.to_csv(index=False).encode('utf-8')
 

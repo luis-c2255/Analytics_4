@@ -2120,7 +2120,7 @@
         "kind": 5,
         "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
         "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
-        "peekOfCode": "df_display_formatted = df_display.copy()\ndf_display_formatted['suicide_rate'] = df_display_formatted['suicide_rate'].round(2)\ndf_display_formatted['latitude'] = df_display_formatted['latitude'].round(4)\ndf_display_formatted['longitude'] = df_display_formatted['longitude'].round(4)\nst.dataframe(df_display_formatted, width=\"stretch\", height=600)\nst.markdown(\"#####📥 :red[Download Data]\")\ncsv = df_filtered.to_csv(index=False).encode('utf-8')\nst.download_button(\n    label=\"Download Filtered Data as CSV\",\n    data=csv,",
+        "peekOfCode": "df_display_formatted = df_display.copy()\ndf_display_formatted['suicide_rate'] = df_display_formatted['suicide_rate'].round(2)\ndf_display_formatted['latitude'] = df_display_formatted['latitude'].round(4)\ndf_display_formatted['longitude'] = df_display_formatted['longitude'].round(4)\nst.dataframe(df_display_formatted, width=\"stretch\", height=600)\nst.markdown(\"📥 :green[Download Data]\")\ncsv = df_filtered.to_csv(index=False).encode('utf-8')\nst.download_button(\n    label=\"Download Filtered Data as CSV\",\n    data=csv,",
         "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
         "documentation": {}
     },
@@ -2129,7 +2129,7 @@
         "kind": 5,
         "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
         "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
-        "peekOfCode": "df_display_formatted['suicide_rate'] = df_display_formatted['suicide_rate'].round(2)\ndf_display_formatted['latitude'] = df_display_formatted['latitude'].round(4)\ndf_display_formatted['longitude'] = df_display_formatted['longitude'].round(4)\nst.dataframe(df_display_formatted, width=\"stretch\", height=600)\nst.markdown(\"#####📥 :red[Download Data]\")\ncsv = df_filtered.to_csv(index=False).encode('utf-8')\nst.download_button(\n    label=\"Download Filtered Data as CSV\",\n    data=csv,\n    file_name=f\"suicide_rates-filtered_{year_range[0]}_{year_range[1]}.csv\",",
+        "peekOfCode": "df_display_formatted['suicide_rate'] = df_display_formatted['suicide_rate'].round(2)\ndf_display_formatted['latitude'] = df_display_formatted['latitude'].round(4)\ndf_display_formatted['longitude'] = df_display_formatted['longitude'].round(4)\nst.dataframe(df_display_formatted, width=\"stretch\", height=600)\nst.markdown(\"📥 :green[Download Data]\")\ncsv = df_filtered.to_csv(index=False).encode('utf-8')\nst.download_button(\n    label=\"Download Filtered Data as CSV\",\n    data=csv,\n    file_name=f\"suicide_rates-filtered_{year_range[0]}_{year_range[1]}.csv\",",
         "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
         "documentation": {}
     },
@@ -2138,7 +2138,7 @@
         "kind": 5,
         "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
         "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
-        "peekOfCode": "df_display_formatted['latitude'] = df_display_formatted['latitude'].round(4)\ndf_display_formatted['longitude'] = df_display_formatted['longitude'].round(4)\nst.dataframe(df_display_formatted, width=\"stretch\", height=600)\nst.markdown(\"#####📥 :red[Download Data]\")\ncsv = df_filtered.to_csv(index=False).encode('utf-8')\nst.download_button(\n    label=\"Download Filtered Data as CSV\",\n    data=csv,\n    file_name=f\"suicide_rates-filtered_{year_range[0]}_{year_range[1]}.csv\",\n    mime='text/csv'",
+        "peekOfCode": "df_display_formatted['latitude'] = df_display_formatted['latitude'].round(4)\ndf_display_formatted['longitude'] = df_display_formatted['longitude'].round(4)\nst.dataframe(df_display_formatted, width=\"stretch\", height=600)\nst.markdown(\"📥 :green[Download Data]\")\ncsv = df_filtered.to_csv(index=False).encode('utf-8')\nst.download_button(\n    label=\"Download Filtered Data as CSV\",\n    data=csv,\n    file_name=f\"suicide_rates-filtered_{year_range[0]}_{year_range[1]}.csv\",\n    mime='text/csv'",
         "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
         "documentation": {}
     },
@@ -2147,7 +2147,7 @@
         "kind": 5,
         "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
         "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
-        "peekOfCode": "df_display_formatted['longitude'] = df_display_formatted['longitude'].round(4)\nst.dataframe(df_display_formatted, width=\"stretch\", height=600)\nst.markdown(\"#####📥 :red[Download Data]\")\ncsv = df_filtered.to_csv(index=False).encode('utf-8')\nst.download_button(\n    label=\"Download Filtered Data as CSV\",\n    data=csv,\n    file_name=f\"suicide_rates-filtered_{year_range[0]}_{year_range[1]}.csv\",\n    mime='text/csv'\n)",
+        "peekOfCode": "df_display_formatted['longitude'] = df_display_formatted['longitude'].round(4)\nst.dataframe(df_display_formatted, width=\"stretch\", height=600)\nst.markdown(\"📥 :green[Download Data]\")\ncsv = df_filtered.to_csv(index=False).encode('utf-8')\nst.download_button(\n    label=\"Download Filtered Data as CSV\",\n    data=csv,\n    file_name=f\"suicide_rates-filtered_{year_range[0]}_{year_range[1]}.csv\",\n    mime='text/csv'\n)",
         "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
         "documentation": {}
     },
