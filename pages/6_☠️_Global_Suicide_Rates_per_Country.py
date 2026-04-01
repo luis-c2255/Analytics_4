@@ -440,7 +440,7 @@ with col2:
         st.markdown(Components.metric_card(title="Rate", value=f"{highest_rate:.2f} per 100k", delta="💹", card_type="info"), unsafe_allow_html=True)
 
 with col3:
-    st.markdown("### 📅 :blue[Temporal]")
+    st.markdown("### 📅 :blue[Temporal]", text_alignment="center")
     if len(yearly_trend) > 1:
         first_year_rate = yearly_trend.iloc[0]['suicide_rate']
         last_year_rate = yearly_trend.iloc[-1]['suicide_rate']
