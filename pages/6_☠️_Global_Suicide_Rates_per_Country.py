@@ -494,26 +494,26 @@ with insights_col2:
 st.markdown("   ")
 with st.expander("ℹ️ About This Dashboard"):
     st.markdown("""
-        ### :orange[Data Source]
+        ### :orange-background[Data Source]
         This dashboard analyzes global suicide rates from the WHO and other international health organizations.
         
-        ### :blue[Methodology]
+        ### :blue-background[Methodology]
         - Data Cleaning: Numeric values were normalized and validated
         - Aggregation: Rates are averaged across years and demographics as selected
         - Visualization: Interactive Plotly charts allow detailed exploration
         - Filters: Use the sidebar to drill down into specific subsets
         
-        ### :red[Metrics Explained]
+        ### :red-background[Metrics Explained]
         - Suicide Rate: Number of suicides per 100,000 population
         - Age Groups: Various age brackets including "ALL" for overall population
         - Sex Categories: Male, Female, and Both (combined)
         
-        ### :green[Limitations]
+        ### :green-background[Limitations]
         - Data quality varies by country and year
         - Some countries may have incomplete reporting
         - Cultural and reporting differences affect comparability
         
-        ### :violet[Usage]
+        ### :violet-background[Usage]
         This tool is intendedd for research, policy analysis, and public health planning.
         It should not be used for individual risk assessment or clinical purposes.
         """)
