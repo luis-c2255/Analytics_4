@@ -446,9 +446,9 @@ with col3:
         last_year_rate = yearly_trend.iloc[-1]['suicide_rate']
         change = last_year_rate - first_year_rate
         pct_change = (change / first_year_rate * 100) if first_year_rate > 0 else 0
-        st.metric("Rate Change", f"{change:+.2f} per 100k", f"{pct_change:+.1f}%")
-        st.metric("First Year", f"{first_year_rate:.2f} per 100k")
-        st.metric("Last Year", f"{last_year_rate:.2f} per 100k")
+        st.markdown(Components.metric_card(title="Rate Change", value=f"{change:+.2f} per 100k", delta=f"{pct_change:+.1f}%", card_type="info"), unsafe_allow_html=True)
+        st.markdown(Components.metric_card(title="First Year", value=f"{first_year_rate:.2f} per 100k", delta="", card_type="info"), unsafe_allow_html=True)
+        st.markdown(Components.metric_card(title="Last Year", value=f"{last_year_rate:.2f} per 100k", delta="", card_type="info"), unsafe_allow_html=True)
         
 st.markdown("   ")
 st.subheader("💡 :orange[Analytical Insights]")
