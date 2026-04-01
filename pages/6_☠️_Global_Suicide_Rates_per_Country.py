@@ -462,11 +462,23 @@ with insights_col1:
     if len(df_filtered) > 0:
         age_vulnerability = df_filtered[df_filtered['sex'] == 'both'].groupby('age_group')['suicide_rate'].mean().sort_values(ascending=False)
     if len(age_vulnerability) > 0:
-        st.write(f"🎯 Most Vulnerable Age Group: {age_vulnerability.index[0]} ({age_vulnerability.values[0]:.2f} per 100k)")
+        with st.expander("🎯 Most Vulnerable Age Group:"):
+            st.write(f"{age_vulnerability.index[0]} ({age_vulnerability.values[0]:.2f} per 100k)")
     if not pd.isna(male_avg) and not pd.isna(female_avg) and female_avg > 0:
         gender_ratio = male_avg / female_avg
-        st.write(f"⚖️ Gender Disparity: Males are {gender_ratio:.1f}x more likely")
-        
+        with st.expander("⚖️ Gender Disparity:"):
+            st.write(f"Females are {gender_ratio:.1f}x more likely")
+            
+        # Geographic concentration
+        country_rates = df_filtered[df_filtered['age_group'] == 'ALL'].groupby('country')['suicide_rate'].mean()
+        top_10_pct = country_rates.nlargest(int(len(country_rates) * 0.1)).mean()
+        overall_avg = country_rates.mean()
+        if overall_avg > 0:
+            concentration = top_10_pct / overall_avg
+            with st.expander("🌍 Geographic Concentration:"):
+                st.write(f"Top 10% of countries have {concentration:.1f}x the average rate")
+    
+            
 
 # ============================================
 # FOOTER
