@@ -24,7 +24,7 @@ st.markdown(
 def load_data():
     df = pd.read_csv("suicide_rates_master.csv")
     for col in ['suicide_rate', 'latitude', 'longitude']:
-        df[col] = df[col].astype(str).apply(lambda x: '.'.join(x.split('.')[:2]) if '.' in x else x)
+        df[col] = df[col].astype(str).str.replace(',', '.')
         df[col] = pd.to_numeric(df[col], errors='coerce')
     
     df = df.dropna(subset=['suicide_rate', 'latitude', 'longitude'])
