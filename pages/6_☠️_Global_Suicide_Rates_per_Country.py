@@ -23,7 +23,7 @@ st.markdown(
 @st.cache_data
 def load_data():
     df = pd.read_csv("suicide_rates_master.csv")
-    for col in ['suicide_rate', 'latitude', 'longitude']:
+    for col in ['suicide_rate', 'latitude', 'longitude', 'year']:
         df[col] = df[col].astype(str).str.replace(',', '.')
         df[col] = pd.to_numeric(df[col], errors='coerce')
     
@@ -33,13 +33,19 @@ def load_data():
     return df
 
 df = load_data()
+st.write(f"Rows loaded: {len(df)}")
 
 st.sidebar.header("Filter Options")
 
 all_countries = sorted(df['country'].unique())
 selected_countries = st.sidebar.multiselect("Select Country(s)", all_countries, default=all_countries)
 
-min_year, max_year = int(df['year'].min()), int(df['year'].max())
+if not df.empty and df['year'].notna().any():
+    min_year = int(df['year'].min())
+    max_year = int(df['year'].max())
+else:
+    min_year, max_year = 2000, 2021
+
 year_range = st.sidebar.slider("Select Year Range", min_value=min_year, max_value=max_year, value=(min_year, max_year))
 
 all_sex = df['sex'].unique()

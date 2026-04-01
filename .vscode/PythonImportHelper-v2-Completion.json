@@ -1859,7 +1859,7 @@
         "kind": 2,
         "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
         "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
-        "peekOfCode": "def load_data():\n    df = pd.read_csv(\"suicide_rates_master.csv\")\n    for col in ['suicide_rate', 'latitude', 'longitude']:\n        df[col] = df[col].astype(str).str.replace(',', '.')\n        df[col] = pd.to_numeric(df[col], errors='coerce')\n    df = df.dropna(subset=['suicide_rate', 'latitude', 'longitude', 'year'])\n    df = df.drop_duplicates()\n    df['year'] = df['year'].astype(int)\n    return df\ndf = load_data()",
+        "peekOfCode": "def load_data():\n    df = pd.read_csv(\"suicide_rates_master.csv\")\n    for col in ['suicide_rate', 'latitude', 'longitude', 'year']:\n        df[col] = df[col].astype(str).str.replace(',', '.')\n        df[col] = pd.to_numeric(df[col], errors='coerce')\n    df = df.dropna(subset=['suicide_rate', 'latitude', 'longitude', 'year'])\n    df = df.drop_duplicates()\n    df['year'] = df['year'].astype(int)\n    return df\ndf = load_data()",
         "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
         "documentation": {}
     },
@@ -1868,7 +1868,7 @@
         "kind": 5,
         "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
         "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
-        "peekOfCode": "df = load_data()\nst.sidebar.header(\"Filter Options\")\nall_countries = sorted(df['country'].unique())\nselected_countries = st.sidebar.multiselect(\"Select Country(s)\", all_countries, default=all_countries)\nmin_year, max_year = int(df['year'].min()), int(df['year'].max())\nyear_range = st.sidebar.slider(\"Select Year Range\", min_value=min_year, max_value=max_year, value=(min_year, max_year))\nall_sex = df['sex'].unique()\nselected_sex = st.sidebar.multiselect(\"Select Sex\", all_sex, default=all_sex)\nall_age_groups = sorted(df['age_group'].unique())\nselected_age_groups = st.sidebar.multiselect(\"Select Age Group(s)\", all_age_groups, default=all_age_groups)",
+        "peekOfCode": "df = load_data()\nst.write(f\"Rows loaded: {len(df)}\")\nst.sidebar.header(\"Filter Options\")\nall_countries = sorted(df['country'].unique())\nselected_countries = st.sidebar.multiselect(\"Select Country(s)\", all_countries, default=all_countries)\nif not df.empty and df['year'].notna().any():\n    min_year = int(df['year'].min())\n    max_year = int(df['year'].max())\nelse:\n    min_year, max_year = 2000, 2021",
         "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
         "documentation": {}
     },
@@ -1877,7 +1877,7 @@
         "kind": 5,
         "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
         "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
-        "peekOfCode": "all_countries = sorted(df['country'].unique())\nselected_countries = st.sidebar.multiselect(\"Select Country(s)\", all_countries, default=all_countries)\nmin_year, max_year = int(df['year'].min()), int(df['year'].max())\nyear_range = st.sidebar.slider(\"Select Year Range\", min_value=min_year, max_value=max_year, value=(min_year, max_year))\nall_sex = df['sex'].unique()\nselected_sex = st.sidebar.multiselect(\"Select Sex\", all_sex, default=all_sex)\nall_age_groups = sorted(df['age_group'].unique())\nselected_age_groups = st.sidebar.multiselect(\"Select Age Group(s)\", all_age_groups, default=all_age_groups)\nfiltered_df = df [\n    (df['country'].isin(selected_countries)) &",
+        "peekOfCode": "all_countries = sorted(df['country'].unique())\nselected_countries = st.sidebar.multiselect(\"Select Country(s)\", all_countries, default=all_countries)\nif not df.empty and df['year'].notna().any():\n    min_year = int(df['year'].min())\n    max_year = int(df['year'].max())\nelse:\n    min_year, max_year = 2000, 2021\nyear_range = st.sidebar.slider(\"Select Year Range\", min_value=min_year, max_value=max_year, value=(min_year, max_year))\nall_sex = df['sex'].unique()\nselected_sex = st.sidebar.multiselect(\"Select Sex\", all_sex, default=all_sex)",
         "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
         "documentation": {}
     },
@@ -1886,7 +1886,7 @@
         "kind": 5,
         "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
         "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
-        "peekOfCode": "selected_countries = st.sidebar.multiselect(\"Select Country(s)\", all_countries, default=all_countries)\nmin_year, max_year = int(df['year'].min()), int(df['year'].max())\nyear_range = st.sidebar.slider(\"Select Year Range\", min_value=min_year, max_value=max_year, value=(min_year, max_year))\nall_sex = df['sex'].unique()\nselected_sex = st.sidebar.multiselect(\"Select Sex\", all_sex, default=all_sex)\nall_age_groups = sorted(df['age_group'].unique())\nselected_age_groups = st.sidebar.multiselect(\"Select Age Group(s)\", all_age_groups, default=all_age_groups)\nfiltered_df = df [\n    (df['country'].isin(selected_countries)) &\n    (df['year'] >= year_range[0]) &",
+        "peekOfCode": "selected_countries = st.sidebar.multiselect(\"Select Country(s)\", all_countries, default=all_countries)\nif not df.empty and df['year'].notna().any():\n    min_year = int(df['year'].min())\n    max_year = int(df['year'].max())\nelse:\n    min_year, max_year = 2000, 2021\nyear_range = st.sidebar.slider(\"Select Year Range\", min_value=min_year, max_value=max_year, value=(min_year, max_year))\nall_sex = df['sex'].unique()\nselected_sex = st.sidebar.multiselect(\"Select Sex\", all_sex, default=all_sex)\nall_age_groups = sorted(df['age_group'].unique())",
         "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
         "documentation": {}
     },
