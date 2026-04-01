@@ -408,6 +408,7 @@ with col1:
                 card_type="info"
             ), unsafe_allow_html=True
         )
+        st.markdown("   ")
         st.markdown(
             Components.metric_card(
                 title="Female Rate",
@@ -416,6 +417,7 @@ with col1:
                 card_type="info"
             ), unsafe_allow_html=True
         )
+        st.markdown("   ")
         st.markdown(
             Components.metric_card(
                 title="Gender Gap",
