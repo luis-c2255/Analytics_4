@@ -27,14 +27,23 @@ st.markdown("### Exploring patterns in suicide rates across countries, demograph
 def load_data():
     df = pd.read_csv("suicide_rates_master.csv")
     
-    def clean_numeric(value):
+    def strip_dots(value):
         if pd.isna(value):
             return np.nan
         return float(str(value).replace('.', ''))
-
-    df['suicide_rate'] = df['suicide_rate'].apply(clean_numeric) / 1_000_000
-    df['latitude'] = df['latitude'].apply(clean_numeric) / 1_000_000
-    df['longitude'] = df['longitude'].apply(clean_numeric) / 1_000_000
+    def normalize_to_range(raw, low, high):
+        """Find the right power-of-10 divisor so the value falls in [low, high]"""
+        if pd.isna(raw) or raw == 0:
+            return raw
+        for exp in range(25):
+            result = raw / (10 ** exp)
+            if low <= result <= high:
+                return result
+        return np.nan
+    
+    df['suicide_rate'] = df['suicide_rate'].apply(strip_dots).apply(lambda x: normalize_to_range(x, 0, 500))
+    df['latitude'] = df['latitude'].apply(strip_dots).apply(lambda x: normalize_to_range(x, -90, 90))
+    df['longitude'] = df['longitude'].apply(strip_dots).apply(lambda x: normalize_to_range(x, -180, 180))
     df = df.drop_duplicates()
     return df
 

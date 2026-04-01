@@ -1859,7 +1859,7 @@
         "kind": 2,
         "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
         "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
-        "peekOfCode": "def load_data():\n    df = pd.read_csv(\"suicide_rates_master.csv\")\n    def clean_numeric(value):\n        if pd.isna(value):\n            return np.nan\n        return float(str(value).replace('.', ''))\n    df['suicide_rate'] = df['suicide_rate'].apply(clean_numeric) / 1_000_000\n    df['latitude'] = df['latitude'].apply(clean_numeric) / 1_000_000\n    df['longitude'] = df['longitude'].apply(clean_numeric) / 1_000_000\n    df = df.drop_duplicates()",
+        "peekOfCode": "def load_data():\n    df = pd.read_csv(\"suicide_rates_master.csv\")\n    def strip_dots(value):\n        if pd.isna(value):\n            return np.nan\n        return float(str(value).replace('.', ''))\n    def normalize_to_range(raw, low, high):\n        \"\"\"Find the right power-of-10 divisor so the value falls in [low, high]\"\"\"\n        if pd.isna(raw) or raw == 0:\n            return raw",
         "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
         "documentation": {}
     },
