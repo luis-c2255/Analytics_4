@@ -159,7 +159,7 @@ fig_map.update_layout(height=700, geo=dict(showframe=False, showcoastlines=True)
 st.plotly_chart(fig_map, width="stretch")
 st.markdown("   ")
 
-top_countries = df_filtered[df_filtered['age_group'] == 'ALL'].groupby(['country'])['suicide_rate'].mean().sort_values(ascending=True).head(15)
+top_countries = df_filtered[df_filtered['age_group'] == 'ALL'].groupby(['country'])['suicide_rate'].mean().sort_values(ascending=False).head(15)
 
 fig_top = px.bar(
     x=top_countries.values,
