@@ -1967,7 +1967,7 @@
         "kind": 5,
         "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
         "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
-        "peekOfCode": "fig_sex = px.bar(\n    sex_data,\n    x='sex',\n    y='suicide_rate',\n    title='Average Suicide Rate by Sex',\n    labels={'suicide_rate': 'Rate per 100k', 'sex': 'Sex'},\n    color='sex',\n    color_discrete_map={'male': '#3498db', 'female': '#e74c3c'}\n)\nfig_sex.update_layout(showlegend=False)",
+        "peekOfCode": "fig_sex = px.bar(\n    sex_data,\n    x='sex',\n    y='suicide_rate',\n    title='Average Suicide Rate by Sex',\n    labels={'suicide_rate': 'Rate per 100k', 'sex': 'Sex'},\n    text_auto=True,\n    color='sex',\n    color_discrete_map={'male': '#3498db', 'female': '#e74c3c'}\n)",
         "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
         "documentation": {}
     },
@@ -1976,7 +1976,7 @@
         "kind": 5,
         "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
         "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
-        "peekOfCode": "age_data = df_filtered[df_filtered['sex'] == 'both'].groupby('age_group')['suicide_rate'].mean().sort_values(ascending=False).reset_index()\nfig_age = px.bar(\n    age_data,\n    x='age_group',\n    y='suicide_rate',\n    title='Suicide Rates by Age Group',\n    labels={'suicide_rate': 'Rate per 100k', 'age_group': 'Age Group'},\n    color='suicide_rate',\n    color_continuous_scale='Oranges'\n)",
+        "peekOfCode": "age_data = df_filtered[df_filtered['sex'] == 'both'].groupby('age_group')['suicide_rate'].mean().sort_values(ascending=False).reset_index()\nfig_age = px.bar(\n    age_data,\n    x='age_group',\n    y='suicide_rate',\n    title='Suicide Rates by Age Group',\n    labels={'suicide_rate': 'Rate per 100k', 'age_group': 'Age Group'},\n    text_auto=True,\n    color='suicide_rate',\n    color_continuous_scale='Oranges'",
         "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
         "documentation": {}
     },
@@ -1985,7 +1985,7 @@
         "kind": 5,
         "importPath": "pages.6_☠️_Global_Suicide_Rates_per_Country",
         "description": "pages.6_☠️_Global_Suicide_Rates_per_Country",
-        "peekOfCode": "fig_age = px.bar(\n    age_data,\n    x='age_group',\n    y='suicide_rate',\n    title='Suicide Rates by Age Group',\n    labels={'suicide_rate': 'Rate per 100k', 'age_group': 'Age Group'},\n    color='suicide_rate',\n    color_continuous_scale='Oranges'\n)\nfig_age.update_layout(showlegend=False)",
+        "peekOfCode": "fig_age = px.bar(\n    age_data,\n    x='age_group',\n    y='suicide_rate',\n    title='Suicide Rates by Age Group',\n    labels={'suicide_rate': 'Rate per 100k', 'age_group': 'Age Group'},\n    text_auto=True,\n    color='suicide_rate',\n    color_continuous_scale='Oranges'\n)",
         "detail": "pages.6_☠️_Global_Suicide_Rates_per_Country",
         "documentation": {}
     },

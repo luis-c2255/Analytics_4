@@ -188,6 +188,7 @@ fig_sex = px.bar(
     y='suicide_rate',
     title='Average Suicide Rate by Sex',
     labels={'suicide_rate': 'Rate per 100k', 'sex': 'Sex'},
+    text_auto=True,
     color='sex',
     color_discrete_map={'male': '#3498db', 'female': '#e74c3c'}
 )
@@ -211,6 +212,7 @@ fig_age = px.bar(
     y='suicide_rate',
     title='Suicide Rates by Age Group',
     labels={'suicide_rate': 'Rate per 100k', 'age_group': 'Age Group'},
+    text_auto=True,
     color='suicide_rate',
     color_continuous_scale='Oranges'
 )
