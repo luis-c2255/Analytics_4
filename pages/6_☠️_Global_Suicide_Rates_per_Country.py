@@ -525,7 +525,7 @@ st.markdown("---")
 st.markdown("""
 <div style='text-align: center; color: #666;'>
     <p><strong>☠️  Global Suicide Rates per Country 2000-2021 Analysis</strong></p>
-    <p>Explore key metrics, population trends, distribution, composition and growth.</p>
+    <p>Explore key metrics, geographic distribution, demographic patterns, temporal trends, country rankings, recommendations and insights analysis.</p>
     <p style='font-size: 0.9rem;'>Navigate using the sidebar to explore different datasets</p>
 </div>
 """, unsafe_allow_html=True)
