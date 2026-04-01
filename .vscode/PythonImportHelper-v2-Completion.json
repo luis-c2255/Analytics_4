@@ -2161,6 +2161,537 @@
         "documentation": {}
     },
     {
+        "label": "load_data",
+        "kind": 2,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "def load_data():\n    df = pd.read_csv(\"spam_email_dataset.csv\")\n    df['is_spam_text'] = df['label'].apply(lambda x: \"Spam\" if x == 1 else \"Not Spam\")\n    return df\ndf = load_data()\nst.sidebar.header(\"Filter Options\")\nlabel_filter = st.sidebar.multiselect(\n    \"Select Email Type\",\n    options=df['label'].unique(),\n    default=df['label'].unique(),",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "df",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "df = load_data()\nst.sidebar.header(\"Filter Options\")\nlabel_filter = st.sidebar.multiselect(\n    \"Select Email Type\",\n    options=df['label'].unique(),\n    default=df['label'].unique(),\n    format_func=lambda x: \"Spam\" if x == 1 else \"Not Spam\"\n)\ntop_n_domains = st.sidebar.slider(\"Show Top N Sender Domains (for analysis)\", 5, 30, 10)\nall_top_domains = df['sender_domain'].value_counts().nlargest(top_n_domains).index.tolist()",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "label_filter",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "label_filter = st.sidebar.multiselect(\n    \"Select Email Type\",\n    options=df['label'].unique(),\n    default=df['label'].unique(),\n    format_func=lambda x: \"Spam\" if x == 1 else \"Not Spam\"\n)\ntop_n_domains = st.sidebar.slider(\"Show Top N Sender Domains (for analysis)\", 5, 30, 10)\nall_top_domains = df['sender_domain'].value_counts().nlargest(top_n_domains).index.tolist()\ndomain_filter = st.sidebar.multiselect(\n    \"Select Sender Domain (for charts)\",",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "top_n_domains",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "top_n_domains = st.sidebar.slider(\"Show Top N Sender Domains (for analysis)\", 5, 30, 10)\nall_top_domains = df['sender_domain'].value_counts().nlargest(top_n_domains).index.tolist()\ndomain_filter = st.sidebar.multiselect(\n    \"Select Sender Domain (for charts)\",\n    options=all_top_domains,\n    default=all_top_domains\n)\nmin_rep_score, max_rep_score = st.sidebar.slider(\n    \"Sender Reputation Score Range\",\n    float(df['sender_reputation_score'].min()),",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "all_top_domains",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "all_top_domains = df['sender_domain'].value_counts().nlargest(top_n_domains).index.tolist()\ndomain_filter = st.sidebar.multiselect(\n    \"Select Sender Domain (for charts)\",\n    options=all_top_domains,\n    default=all_top_domains\n)\nmin_rep_score, max_rep_score = st.sidebar.slider(\n    \"Sender Reputation Score Range\",\n    float(df['sender_reputation_score'].min()),\n    float(df['sender_reputation_score'].max()),",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "domain_filter",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "domain_filter = st.sidebar.multiselect(\n    \"Select Sender Domain (for charts)\",\n    options=all_top_domains,\n    default=all_top_domains\n)\nmin_rep_score, max_rep_score = st.sidebar.slider(\n    \"Sender Reputation Score Range\",\n    float(df['sender_reputation_score'].min()),\n    float(df['sender_reputation_score'].max()),\n    (float(df['sender_reputation_score'].min()), float(df['sender_reputation_score'].max()))",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "filtered_df",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "filtered_df = df[df['label'].isin(label_filter)]\nfiltered_df = filtered_df[filtered_df['sender_domain'].isin(domain_filter)]\nfiltered_df = filtered_df[\n    (filtered_df['sender_reputation_score'] >= min_rep_score) &\n    (filtered_df['sender_reputation_score'] <= max_rep_score)\n]\nst.subheader(\":rainbow[Key Metrics (Overall Dataset)]\", divider=\"rainbow\")\nst.markdown(\"   \")\ncol1, col2, col3, col4, col5 = st.columns(5)\nwith col1:",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "filtered_df",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "filtered_df = filtered_df[filtered_df['sender_domain'].isin(domain_filter)]\nfiltered_df = filtered_df[\n    (filtered_df['sender_reputation_score'] >= min_rep_score) &\n    (filtered_df['sender_reputation_score'] <= max_rep_score)\n]\nst.subheader(\":rainbow[Key Metrics (Overall Dataset)]\", divider=\"rainbow\")\nst.markdown(\"   \")\ncol1, col2, col3, col4, col5 = st.columns(5)\nwith col1:\n    total_emails = df.shape[0]",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "filtered_df",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "filtered_df = filtered_df[\n    (filtered_df['sender_reputation_score'] >= min_rep_score) &\n    (filtered_df['sender_reputation_score'] <= max_rep_score)\n]\nst.subheader(\":rainbow[Key Metrics (Overall Dataset)]\", divider=\"rainbow\")\nst.markdown(\"   \")\ncol1, col2, col3, col4, col5 = st.columns(5)\nwith col1:\n    total_emails = df.shape[0]\n    st.markdown(",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "total_filtered",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "total_filtered = filtered_df.shape[0]\nspam_filtered = filtered_df[filtered_df['label'] == 1].shape[0]\nspam_rate_filtered = (spam_filtered / total_filtered) * 100 if total_filtered > 0 else 0\ncol1, col2, col3 = st.columns(3)\nwith col1: \n    st.markdown(\n        Components.metric_card(\n            title=\"Filtered Emails\",\n            value=f\"{total_filtered:,}\",\n            delta=\"- (based on filters)\",",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "spam_filtered",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "spam_filtered = filtered_df[filtered_df['label'] == 1].shape[0]\nspam_rate_filtered = (spam_filtered / total_filtered) * 100 if total_filtered > 0 else 0\ncol1, col2, col3 = st.columns(3)\nwith col1: \n    st.markdown(\n        Components.metric_card(\n            title=\"Filtered Emails\",\n            value=f\"{total_filtered:,}\",\n            delta=\"- (based on filters)\",\n            card_type=\"info\"",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "spam_rate_filtered",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "spam_rate_filtered = (spam_filtered / total_filtered) * 100 if total_filtered > 0 else 0\ncol1, col2, col3 = st.columns(3)\nwith col1: \n    st.markdown(\n        Components.metric_card(\n            title=\"Filtered Emails\",\n            value=f\"{total_filtered:,}\",\n            delta=\"- (based on filters)\",\n            card_type=\"info\"\n        ), unsafe_allow_html=True",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "email_type_counts",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "email_type_counts = filtered_df['is_spam_text'].value_counts().reset_index()\nemail_type_counts.columns = ['Email Type', 'count']\nfig_pie = px.pie(\n    email_type_counts, \n    values='count', \n    names='Email Type',\n    title='Distribution of Email Types (Filtered)',\n    color_discrete_map={\"Spam\": \"salmon\", \"Not Spam\": \"lightgreen\"}\n)\nst.plotly_chart(fig_pie, width=\"stretch\")",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "email_type_counts.columns",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "email_type_counts.columns = ['Email Type', 'count']\nfig_pie = px.pie(\n    email_type_counts, \n    values='count', \n    names='Email Type',\n    title='Distribution of Email Types (Filtered)',\n    color_discrete_map={\"Spam\": \"salmon\", \"Not Spam\": \"lightgreen\"}\n)\nst.plotly_chart(fig_pie, width=\"stretch\")\nst.markdown(\"   \")",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "fig_pie",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "fig_pie = px.pie(\n    email_type_counts, \n    values='count', \n    names='Email Type',\n    title='Distribution of Email Types (Filtered)',\n    color_discrete_map={\"Spam\": \"salmon\", \"Not Spam\": \"lightgreen\"}\n)\nst.plotly_chart(fig_pie, width=\"stretch\")\nst.markdown(\"   \")\nst.markdown(\":green-background[Distribution of Email Lengths (Words)]\")",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "fig_hist_words",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "fig_hist_words = px.histogram(\n    filtered_df, \n    x='num_words', \n    color='is_spam_text',\n    title='Distribution of Number of Words by Email Type (Filtered)',\n    labels={'is_spam_text': 'Email Type'},\n    nbins=50,\n    color_discrete_map={\"Not Spam\": 'lightgreen', \"Spam\": 'salmon'}\n)\nfig_hist_words.update_layout(xaxis_title=\"Number of Words\", yaxis_title=\"Count\")",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "fig_box_rep",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "fig_box_rep = px.box(\n    filtered_df, \n    y='sender_reputation_score', \n    x='is_spam_text',\n    title='Sender Reputation Score Distribution by Email Type (Filtered)',\n    labels={'is_spam_text': 'Email Type'},\n    color='is_spam_text',\n    color_discrete_map={\"Not Spam\": 'lightgreen', \"Spam\": 'salmon'}\n)\nfig_box_rep.update_layout(xaxis_title=\"Email Type\", yaxis_title=\"Reputation Score\")",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "spam_only_df",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "spam_only_df = filtered_df[filtered_df['label'] == 1]\nspam_with_susp_link = spam_only_df['has_suspicious_link'].sum()\nspam_with_money_terms = spam_only_df['contains_money_terms'].sum()\navg_spam_links = spam_only_df['num_links'].mean() if not spam_only_df.empty else 0\ncol1, col2, col3 = st.columns(3)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n            title=\"Spam with Susp. Link\",\n            value=f\"{spam_with_susp_link:,}\",",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "spam_with_susp_link",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "spam_with_susp_link = spam_only_df['has_suspicious_link'].sum()\nspam_with_money_terms = spam_only_df['contains_money_terms'].sum()\navg_spam_links = spam_only_df['num_links'].mean() if not spam_only_df.empty else 0\ncol1, col2, col3 = st.columns(3)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n            title=\"Spam with Susp. Link\",\n            value=f\"{spam_with_susp_link:,}\",\n            delta=\"+ (high indicator)\",",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "spam_with_money_terms",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "spam_with_money_terms = spam_only_df['contains_money_terms'].sum()\navg_spam_links = spam_only_df['num_links'].mean() if not spam_only_df.empty else 0\ncol1, col2, col3 = st.columns(3)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n            title=\"Spam with Susp. Link\",\n            value=f\"{spam_with_susp_link:,}\",\n            delta=\"+ (high indicator)\",\n            card_type=\"error\"",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "avg_spam_links",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "avg_spam_links = spam_only_df['num_links'].mean() if not spam_only_df.empty else 0\ncol1, col2, col3 = st.columns(3)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n            title=\"Spam with Susp. Link\",\n            value=f\"{spam_with_susp_link:,}\",\n            delta=\"+ (high indicator)\",\n            card_type=\"error\"\n        ), unsafe_allow_html=True",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "susp_link_counts",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "susp_link_counts = spam_only_df['has_suspicious_link'].value_counts().reset_index()\nsusp_link_counts.columns = ['has_suspicious_link', 'count']\nsusp_link_counts['label_text'] = susp_link_counts['has_suspicious_link'].apply(lambda x: \"Yes\" if x == 1 else \"No\")\nfig_susp_link = px.pie(\n    susp_link_counts, \n    values='count', \n    names='label_text',\n    title='Spam: Has Suspicious Link?',\n    color_discrete_map={\"Yes\": \"salmon\", \"No\": \"lightgrey\"}\n)",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "susp_link_counts.columns",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "susp_link_counts.columns = ['has_suspicious_link', 'count']\nsusp_link_counts['label_text'] = susp_link_counts['has_suspicious_link'].apply(lambda x: \"Yes\" if x == 1 else \"No\")\nfig_susp_link = px.pie(\n    susp_link_counts, \n    values='count', \n    names='label_text',\n    title='Spam: Has Suspicious Link?',\n    color_discrete_map={\"Yes\": \"salmon\", \"No\": \"lightgrey\"}\n)\nst.plotly_chart(fig_susp_link, width=\"stretch\")",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "susp_link_counts['label_text']",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "susp_link_counts['label_text'] = susp_link_counts['has_suspicious_link'].apply(lambda x: \"Yes\" if x == 1 else \"No\")\nfig_susp_link = px.pie(\n    susp_link_counts, \n    values='count', \n    names='label_text',\n    title='Spam: Has Suspicious Link?',\n    color_discrete_map={\"Yes\": \"salmon\", \"No\": \"lightgrey\"}\n)\nst.plotly_chart(fig_susp_link, width=\"stretch\")\nst.markdown(\"   \")",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "fig_susp_link",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "fig_susp_link = px.pie(\n    susp_link_counts, \n    values='count', \n    names='label_text',\n    title='Spam: Has Suspicious Link?',\n    color_discrete_map={\"Yes\": \"salmon\", \"No\": \"lightgrey\"}\n)\nst.plotly_chart(fig_susp_link, width=\"stretch\")\nst.markdown(\"   \")\nst.markdown(\":orange-background[Contains Money Terms]\")",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "money_terms_counts",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "money_terms_counts = spam_only_df['contains_money_terms'].value_counts().reset_index()\nmoney_terms_counts.columns = ['contains_money_terms', 'count']\nmoney_terms_counts['label_text'] = money_terms_counts['contains_money_terms'].apply(lambda x: \"Yes\" if x == 1 else \"No\")\nfig_money_terms = px.pie(\n    money_terms_counts, \n    values='count', \n    names='label_text',\n    title='Spam: Contains Money Terms?',\n    color_discrete_map={\"Yes\": \"darkorange\", \"No\": \"lightgrey\"}\n)",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "money_terms_counts.columns",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "money_terms_counts.columns = ['contains_money_terms', 'count']\nmoney_terms_counts['label_text'] = money_terms_counts['contains_money_terms'].apply(lambda x: \"Yes\" if x == 1 else \"No\")\nfig_money_terms = px.pie(\n    money_terms_counts, \n    values='count', \n    names='label_text',\n    title='Spam: Contains Money Terms?',\n    color_discrete_map={\"Yes\": \"darkorange\", \"No\": \"lightgrey\"}\n)\nst.plotly_chart(fig_money_terms, width=\"stretch\")",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "money_terms_counts['label_text']",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "money_terms_counts['label_text'] = money_terms_counts['contains_money_terms'].apply(lambda x: \"Yes\" if x == 1 else \"No\")\nfig_money_terms = px.pie(\n    money_terms_counts, \n    values='count', \n    names='label_text',\n    title='Spam: Contains Money Terms?',\n    color_discrete_map={\"Yes\": \"darkorange\", \"No\": \"lightgrey\"}\n)\nst.plotly_chart(fig_money_terms, width=\"stretch\")\nst.markdown(\"   \")",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "fig_money_terms",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "fig_money_terms = px.pie(\n    money_terms_counts, \n    values='count', \n    names='label_text',\n    title='Spam: Contains Money Terms?',\n    color_discrete_map={\"Yes\": \"darkorange\", \"No\": \"lightgrey\"}\n)\nst.plotly_chart(fig_money_terms, width=\"stretch\")\nst.markdown(\"   \")\nst.markdown(\":orange-background[Contains Urgency Terms]\")",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "urgency_terms_counts",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "urgency_terms_counts = spam_only_df['contains_urgency_terms'].value_counts().reset_index()\nurgency_terms_counts.columns = ['contains_urgency_terms', 'count']\nurgency_terms_counts['label_text'] = urgency_terms_counts['contains_urgency_terms'].apply(lambda x: \"Yes\" if x == 1 else \"No\")\nfig_urgency_terms = px.pie(\n    urgency_terms_counts, \n    values='count', \n    names='label_text',\n    title='Spam: Contains Urgency Terms?',\n    color_discrete_map={\"Yes\": \"red\", \"No\": \"lightgrey\"}\n)",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "urgency_terms_counts.columns",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "urgency_terms_counts.columns = ['contains_urgency_terms', 'count']\nurgency_terms_counts['label_text'] = urgency_terms_counts['contains_urgency_terms'].apply(lambda x: \"Yes\" if x == 1 else \"No\")\nfig_urgency_terms = px.pie(\n    urgency_terms_counts, \n    values='count', \n    names='label_text',\n    title='Spam: Contains Urgency Terms?',\n    color_discrete_map={\"Yes\": \"red\", \"No\": \"lightgrey\"}\n)\nst.plotly_chart(fig_urgency_terms, width=\"stretch\")",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "urgency_terms_counts['label_text']",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "urgency_terms_counts['label_text'] = urgency_terms_counts['contains_urgency_terms'].apply(lambda x: \"Yes\" if x == 1 else \"No\")\nfig_urgency_terms = px.pie(\n    urgency_terms_counts, \n    values='count', \n    names='label_text',\n    title='Spam: Contains Urgency Terms?',\n    color_discrete_map={\"Yes\": \"red\", \"No\": \"lightgrey\"}\n)\nst.plotly_chart(fig_urgency_terms, width=\"stretch\")\nst.markdown(\"   \")",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "fig_urgency_terms",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "fig_urgency_terms = px.pie(\n    urgency_terms_counts, \n    values='count', \n    names='label_text',\n    title='Spam: Contains Urgency Terms?',\n    color_discrete_map={\"Yes\": \"red\", \"No\": \"lightgrey\"}\n)\nst.plotly_chart(fig_urgency_terms, width=\"stretch\")\nst.markdown(\"   \")\nst.subheader(\":orange-background[Number of Links in Spam Emails]\")",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "fig_links",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "fig_links = px.histogram(\n    spam_only_df, \n    x='num_links',\n    title='Distribution of Number of Links in Spam Emails',\n    nbins=20,\n    color_discrete_sequence=['salmon']\n)\nst.plotly_chart(fig_links, width=\"stretch\")\nst.markdown(\"   \")\nst.subheader(\":orange-background[Number of Exclamation Marks in Spam Emails]\")",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "fig_exclamations",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "fig_exclamations = px.histogram(\n    spam_only_df, \n    x='num_exclamation_marks',\n    title='Distribution of Exclamation Marks in Spam Emails',\n    nbins=10,\n    color_discrete_sequence=['purple']\n)\nst.plotly_chart(fig_exclamations, width=\"stretch\")\nst.markdown(\"   \")\nst.subheader(\":orange-background[Number of Attachments in Spam Emails]\")",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "attachments_counts",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "attachments_counts = spam_only_df['num_attachments'].value_counts().reset_index()\nattachments_counts.columns = ['num_attachments', 'count']\nfig_attachments = px.bar(\n    attachments_counts.sort_values('num_attachments'), \n    x='num_attachments', \n    y='count',\n    title='Distribution of Number of Attachments in Spam Emails',\n    color_discrete_sequence=['teal']\n)\nst.plotly_chart(fig_attachments, width=\"stretch\")",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "attachments_counts.columns",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "attachments_counts.columns = ['num_attachments', 'count']\nfig_attachments = px.bar(\n    attachments_counts.sort_values('num_attachments'), \n    x='num_attachments', \n    y='count',\n    title='Distribution of Number of Attachments in Spam Emails',\n    color_discrete_sequence=['teal']\n)\nst.plotly_chart(fig_attachments, width=\"stretch\")\nst.markdown(\"   \")",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "fig_attachments",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "fig_attachments = px.bar(\n    attachments_counts.sort_values('num_attachments'), \n    x='num_attachments', \n    y='count',\n    title='Distribution of Number of Attachments in Spam Emails',\n    color_discrete_sequence=['teal']\n)\nst.plotly_chart(fig_attachments, width=\"stretch\")\nst.markdown(\"   \")\nst.subheader(\":violet[Temporal Patterns]\", divider=\"violet\")",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "most_common_hour_spam",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "most_common_hour_spam = filtered_df[filtered_df['label'] == 1]['email_hour'].mode()[0] if not filtered_df[filtered_df['label'] == 1].empty else 'N/A'\nmost_common_day_spam = filtered_df[filtered_df['label'] == 1]['email_day_of_week'].mode()[0] if not filtered_df[filtered_df['label'] == 1].empty else 'N/A'\nday_of_week_map_for_metrics = {0: 'Mon', 1: 'Tue', 2: 'Wed', 3: 'Thu', 4: 'Fri', 5: 'Sat', 6: 'Sun'}\ncol1, col2, col3 = st.columns(3)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n            title=\"Peak Spam Hour\",\n            value=f\"{most_common_hour_spam}:00\",\n            delta=\"+ (consistent)\",",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "most_common_day_spam",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "most_common_day_spam = filtered_df[filtered_df['label'] == 1]['email_day_of_week'].mode()[0] if not filtered_df[filtered_df['label'] == 1].empty else 'N/A'\nday_of_week_map_for_metrics = {0: 'Mon', 1: 'Tue', 2: 'Wed', 3: 'Thu', 4: 'Fri', 5: 'Sat', 6: 'Sun'}\ncol1, col2, col3 = st.columns(3)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n            title=\"Peak Spam Hour\",\n            value=f\"{most_common_hour_spam}:00\",\n            delta=\"+ (consistent)\",\n            card_type=\"warning\"",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "day_of_week_map_for_metrics",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "day_of_week_map_for_metrics = {0: 'Mon', 1: 'Tue', 2: 'Wed', 3: 'Thu', 4: 'Fri', 5: 'Sat', 6: 'Sun'}\ncol1, col2, col3 = st.columns(3)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n            title=\"Peak Spam Hour\",\n            value=f\"{most_common_hour_spam}:00\",\n            delta=\"+ (consistent)\",\n            card_type=\"warning\"\n        ), unsafe_allow_html=True",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "day_of_week_map",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "day_of_week_map = {0: 'Mon', 1: 'Tue', 2: 'Wed', 3: 'Thu', 4: 'Fri', 5: 'Sat', 6: 'Sun'}\nday_of_week_counts = filtered_df.groupby(['email_day_of_week', 'is_spam_text']).size().reset_index(name='count')\nday_of_week_counts['day_name'] = day_of_week_counts['email_day_of_week'].map(day_of_week_map)\nfig_day = px.bar(\n    day_of_week_counts, \n    x='day_name', \n    y='count', \n    color='is_spam_text',\n    title='Email Activity by Day of Week (Filtered)',\n    labels={'day_name': 'Day of Week', 'count': 'Number of Emails'},",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "day_of_week_counts",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "day_of_week_counts = filtered_df.groupby(['email_day_of_week', 'is_spam_text']).size().reset_index(name='count')\nday_of_week_counts['day_name'] = day_of_week_counts['email_day_of_week'].map(day_of_week_map)\nfig_day = px.bar(\n    day_of_week_counts, \n    x='day_name', \n    y='count', \n    color='is_spam_text',\n    title='Email Activity by Day of Week (Filtered)',\n    labels={'day_name': 'Day of Week', 'count': 'Number of Emails'},\n    category_orders={'day_name': ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']},",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "day_of_week_counts['day_name']",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "day_of_week_counts['day_name'] = day_of_week_counts['email_day_of_week'].map(day_of_week_map)\nfig_day = px.bar(\n    day_of_week_counts, \n    x='day_name', \n    y='count', \n    color='is_spam_text',\n    title='Email Activity by Day of Week (Filtered)',\n    labels={'day_name': 'Day of Week', 'count': 'Number of Emails'},\n    category_orders={'day_name': ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']},\n    color_discrete_map={\"Spam\": \"salmon\", \"Not Spam\": \"lightgreen\"}",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "fig_day",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "fig_day = px.bar(\n    day_of_week_counts, \n    x='day_name', \n    y='count', \n    color='is_spam_text',\n    title='Email Activity by Day of Week (Filtered)',\n    labels={'day_name': 'Day of Week', 'count': 'Number of Emails'},\n    category_orders={'day_name': ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']},\n    color_discrete_map={\"Spam\": \"salmon\", \"Not Spam\": \"lightgreen\"}\n)",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "hourly_counts",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "hourly_counts = filtered_df.groupby(['email_hour', 'is_spam_text']).size().reset_index(name='count')\nfig_hour = px.line(\n    hourly_counts, \n    x='email_hour', \n    y='count', \n    color='is_spam_text',\n    title='Email Activity by Hour of Day (Filtered)',\n    labels={'email_hour': 'Hour of Day (24-hour)', 'count': 'Number of Emails'},\n    markers=True,\n    color_discrete_map={\"Spam\": \"salmon\", \"Not Spam\": \"lightgreen\"}",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "fig_hour",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "fig_hour = px.line(\n    hourly_counts, \n    x='email_hour', \n    y='count', \n    color='is_spam_text',\n    title='Email Activity by Hour of Day (Filtered)',\n    labels={'email_hour': 'Hour of Day (24-hour)', 'count': 'Number of Emails'},\n    markers=True,\n    color_discrete_map={\"Spam\": \"salmon\", \"Not Spam\": \"lightgreen\"}\n)",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "num_links_spam",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "num_links_spam = filtered_df[filtered_df['label']==1]['num_links'].max() if not filtered_df[filtered_df['label']==1].empty else 0\nnum_excl_marks_spam = filtered_df[filtered_df['label']==1]['num_exclamation_marks'].max() if not filtered_df[filtered_df['label']==1].empty else 0\nspam_domains_count = filtered_df[filtered_df['label'] == 1]['sender_domain'].nunique()\ncol1, col2, col3 = st.columns(3)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n            title=\"Max Links in Spam (Filtered)\",\n            value=f\"{num_links_spam:,}\",\n            delta=\"+ (high alert)\",",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "num_excl_marks_spam",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "num_excl_marks_spam = filtered_df[filtered_df['label']==1]['num_exclamation_marks'].max() if not filtered_df[filtered_df['label']==1].empty else 0\nspam_domains_count = filtered_df[filtered_df['label'] == 1]['sender_domain'].nunique()\ncol1, col2, col3 = st.columns(3)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n            title=\"Max Links in Spam (Filtered)\",\n            value=f\"{num_links_spam:,}\",\n            delta=\"+ (high alert)\",\n            card_type=\"error\"",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "spam_domains_count",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "spam_domains_count = filtered_df[filtered_df['label'] == 1]['sender_domain'].nunique()\ncol1, col2, col3 = st.columns(3)\nwith col1:\n    st.markdown(\n        Components.metric_card(\n            title=\"Max Links in Spam (Filtered)\",\n            value=f\"{num_links_spam:,}\",\n            delta=\"+ (high alert)\",\n            card_type=\"error\"\n        ), unsafe_allow_html=True",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "fig_scatter_words_chars",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "fig_scatter_words_chars = px.scatter(\n    filtered_df, \n    x='num_words', \n    y='num_characters', \n    color='is_spam_text',\n    title='Number of Words vs. Characters by Email Type (Filtered)',\n    labels={'is_spam_text': 'Email Type'},\n    hover_data=['subject'],\n    color_discrete_map={\"Not Spam\": 'lightgreen', \"Spam\": 'salmon'}\n)",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "fig_scatter_links_excl",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "fig_scatter_links_excl = px.scatter(\n    filtered_df, \n    x='num_links', \n    y='num_exclamation_marks', \n    color='is_spam_text',\n    title='Number of Links vs. Exclamation Marks by Email Type (Filtered)',\n    labels={'is_spam_text': 'Email Type'},\n    hover_data=['subject'],\n    color_discrete_map={\"Not Spam\": 'lightgreen', \"Spam\": 'salmon'}\n)",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "fig_violin_recipients",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "fig_violin_recipients = px.violin(\n    filtered_df, \n    x='is_spam_text', \n    y='num_recipients', \n    color='is_spam_text',\n    title='Number of Recipients Distribution by Email Type (Filtered)',\n    labels={'is_spam_text': 'Email Type', 'num_recipients': 'Number of Recipients'},\n    box=True, # show box plot inside violin\n    color_discrete_map={\"Not Spam\": 'lightgreen', \"Spam\": 'salmon'}\n)",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "numerical_df",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "numerical_df = filtered_df[['num_words', 'num_characters', 'num_exclamation_marks',\n                            'num_links', 'num_attachments', 'sender_reputation_score',\n                            'num_recipients', 'label']].copy()\nnumerical_df.rename(columns={'label': 'is_spam'}, inplace=True)\ncorrelation_matrix = numerical_df.corr()\nfig_heatmap = px.heatmap(\n    correlation_matrix,\n    text_auto=True,\n    color_continuous_scale=px.colors.sequential.Viridis,\n    title='Correlation Matrix of Numerical Features (Filtered)')",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "correlation_matrix",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "correlation_matrix = numerical_df.corr()\nfig_heatmap = px.heatmap(\n    correlation_matrix,\n    text_auto=True,\n    color_continuous_scale=px.colors.sequential.Viridis,\n    title='Correlation Matrix of Numerical Features (Filtered)')\nst.plotly_chart(fig_heatmap,  width=\"stretch\")\nst.markdown(\"   \")\nst.subheader(\":red-background[Top Sender Domains by Spam Count]\")\nspam_domain_counts = filtered_df[filtered_df['label'] == 1]['sender_domain'].value_counts().nlargest(top_n_domains).reset_index()",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "fig_heatmap",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "fig_heatmap = px.heatmap(\n    correlation_matrix,\n    text_auto=True,\n    color_continuous_scale=px.colors.sequential.Viridis,\n    title='Correlation Matrix of Numerical Features (Filtered)')\nst.plotly_chart(fig_heatmap,  width=\"stretch\")\nst.markdown(\"   \")\nst.subheader(\":red-background[Top Sender Domains by Spam Count]\")\nspam_domain_counts = filtered_df[filtered_df['label'] == 1]['sender_domain'].value_counts().nlargest(top_n_domains).reset_index()\nspam_domain_counts.columns = ['Sender Domain', 'Spam Count']",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "spam_domain_counts",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "spam_domain_counts = filtered_df[filtered_df['label'] == 1]['sender_domain'].value_counts().nlargest(top_n_domains).reset_index()\nspam_domain_counts.columns = ['Sender Domain', 'Spam Count']\nfig_domain_bar = px.bar(\n    spam_domain_counts.sort_values('Spam Count', ascending=True), \n    y='Sender Domain', \n    x='Spam Count',\n    title=f'Top {top_n_domains} Sender Domains by Spam Count (Filtered)',\n    color_discrete_sequence=['darkred']\n)\nst.plotly_chart(fig_domain_bar, width=\"stretch\")",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "spam_domain_counts.columns",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "spam_domain_counts.columns = ['Sender Domain', 'Spam Count']\nfig_domain_bar = px.bar(\n    spam_domain_counts.sort_values('Spam Count', ascending=True), \n    y='Sender Domain', \n    x='Spam Count',\n    title=f'Top {top_n_domains} Sender Domains by Spam Count (Filtered)',\n    color_discrete_sequence=['darkred']\n)\nst.plotly_chart(fig_domain_bar, width=\"stretch\")\nst.markdown(\"   \")",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
+        "label": "fig_domain_bar",
+        "kind": 5,
+        "importPath": "pages.7_📧_Spam_Email_Detection",
+        "description": "pages.7_📧_Spam_Email_Detection",
+        "peekOfCode": "fig_domain_bar = px.bar(\n    spam_domain_counts.sort_values('Spam Count', ascending=True), \n    y='Sender Domain', \n    x='Spam Count',\n    title=f'Top {top_n_domains} Sender Domains by Spam Count (Filtered)',\n    color_discrete_sequence=['darkred']\n)\nst.plotly_chart(fig_domain_bar, width=\"stretch\")\nst.markdown(\"   \")\n# ============================================",
+        "detail": "pages.7_📧_Spam_Email_Detection",
+        "documentation": {}
+    },
+    {
         "label": "Colors",
         "kind": 6,
         "importPath": "utils.theme",
