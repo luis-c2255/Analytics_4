@@ -2534,7 +2534,7 @@
         "kind": 5,
         "importPath": "pages.7_📧_Spam_Email_Detection",
         "description": "pages.7_📧_Spam_Email_Detection",
-        "peekOfCode": "day_of_week_counts = filtered_df.groupby(['email_day_of_week', 'is_spam_text']).size().reset_index(name='count')\nday_of_week_counts['day_name'] = day_of_week_counts['email_day_of_week'].map(day_of_week_map)\nfig_day = px.bar(\n    day_of_week_counts, \n    x='day_name', \n    y='count', \n    color='is_spam_text',\n    title='Email Activity by Day of Week (Filtered)',\n    labels={'day_name': 'Day of Week', 'count': 'Number of Emails'},\n    category_orders={'day_name': ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']},",
+        "peekOfCode": "day_of_week_counts = filtered_df.groupby(['email_day_of_week', 'is_spam_text']).size().reset_index(name='count')\nday_of_week_counts['day_name'] = day_of_week_counts['email_day_of_week'].map(day_of_week_map)\nfig_day = px.bar(\n    day_of_week_counts, \n    x='day_name', \n    y='count', \n    color='is_spam_text',\n    title='Email Activity by Day of Week (Filtered)',\n    labels={'day_name': 'Day of Week', 'count': 'Number of Emails'},\n    text_auto=True,",
         "detail": "pages.7_📧_Spam_Email_Detection",
         "documentation": {}
     },
@@ -2543,7 +2543,7 @@
         "kind": 5,
         "importPath": "pages.7_📧_Spam_Email_Detection",
         "description": "pages.7_📧_Spam_Email_Detection",
-        "peekOfCode": "day_of_week_counts['day_name'] = day_of_week_counts['email_day_of_week'].map(day_of_week_map)\nfig_day = px.bar(\n    day_of_week_counts, \n    x='day_name', \n    y='count', \n    color='is_spam_text',\n    title='Email Activity by Day of Week (Filtered)',\n    labels={'day_name': 'Day of Week', 'count': 'Number of Emails'},\n    category_orders={'day_name': ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']},\n    color_discrete_map={\"Spam\": \"salmon\", \"Not Spam\": \"lightgreen\"}",
+        "peekOfCode": "day_of_week_counts['day_name'] = day_of_week_counts['email_day_of_week'].map(day_of_week_map)\nfig_day = px.bar(\n    day_of_week_counts, \n    x='day_name', \n    y='count', \n    color='is_spam_text',\n    title='Email Activity by Day of Week (Filtered)',\n    labels={'day_name': 'Day of Week', 'count': 'Number of Emails'},\n    text_auto=True,\n    category_orders={'day_name': ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']},",
         "detail": "pages.7_📧_Spam_Email_Detection",
         "documentation": {}
     },
@@ -2552,7 +2552,7 @@
         "kind": 5,
         "importPath": "pages.7_📧_Spam_Email_Detection",
         "description": "pages.7_📧_Spam_Email_Detection",
-        "peekOfCode": "fig_day = px.bar(\n    day_of_week_counts, \n    x='day_name', \n    y='count', \n    color='is_spam_text',\n    title='Email Activity by Day of Week (Filtered)',\n    labels={'day_name': 'Day of Week', 'count': 'Number of Emails'},\n    category_orders={'day_name': ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']},\n    color_discrete_map={\"Spam\": \"salmon\", \"Not Spam\": \"lightgreen\"}\n)",
+        "peekOfCode": "fig_day = px.bar(\n    day_of_week_counts, \n    x='day_name', \n    y='count', \n    color='is_spam_text',\n    title='Email Activity by Day of Week (Filtered)',\n    labels={'day_name': 'Day of Week', 'count': 'Number of Emails'},\n    text_auto=True,\n    category_orders={'day_name': ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']},\n    color_discrete_map={\"Spam\": \"salmon\", \"Not Spam\": \"lightgreen\"}",
         "detail": "pages.7_📧_Spam_Email_Detection",
         "documentation": {}
     },

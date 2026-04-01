@@ -355,6 +355,7 @@ fig_day = px.bar(
     color='is_spam_text',
     title='Email Activity by Day of Week (Filtered)',
     labels={'day_name': 'Day of Week', 'count': 'Number of Emails'},
+    text_auto=True,
     category_orders={'day_name': ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']},
     color_discrete_map={"Spam": "salmon", "Not Spam": "lightgreen"}
 )
