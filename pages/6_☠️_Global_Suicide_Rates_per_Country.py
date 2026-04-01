@@ -199,7 +199,7 @@ if len(sex_data) == 2:
     male_rate = sex_data[sex_data['sex'] == 'male']['suicide_rate'].values[0]
     female_rate = sex_data[sex_data['sex'] == 'female']['suicide_rate'].values[0]
     ratio = male_rate / female_rate if female_rate > 0 else 0
-    st.info(f"💡 Insight: Male suicide rate is {ratio:.1f}x higher than female rate")
+    st.info(f"💡 Insight: Female suicide rate is {ratio:.1f}x higher than female rate")
 st.markdown("   ")
 
    # Age group analysis
